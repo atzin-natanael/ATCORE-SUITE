@@ -28,17 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoXperto));
             Toppanel = new Panel();
             label1 = new Label();
             Leftpanel = new Panel();
+            Hide = new Button();
             SubpanelMenu = new Panel();
             BtnValidarPedido = new Button();
             BtnNuevoPedido = new Button();
             Btnpedido = new Button();
             Primarypanel = new Panel();
             pictureBox1 = new PictureBox();
-            Hide = new Button();
+            collapseTimer = new System.Windows.Forms.Timer(components);
+            BtnAdministrador = new Button();
             Toppanel.SuspendLayout();
             Leftpanel.SuspendLayout();
             SubpanelMenu.SuspendLayout();
@@ -71,6 +74,7 @@
             // Leftpanel
             // 
             Leftpanel.BackColor = Color.FromArgb(23, 24, 37);
+            Leftpanel.Controls.Add(BtnAdministrador);
             Leftpanel.Controls.Add(Hide);
             Leftpanel.Controls.Add(SubpanelMenu);
             Leftpanel.Controls.Add(Btnpedido);
@@ -79,6 +83,26 @@
             Leftpanel.Name = "Leftpanel";
             Leftpanel.Size = new Size(240, 533);
             Leftpanel.TabIndex = 1;
+            Leftpanel.MouseEnter += Leftpanel_MouseEnter;
+            Leftpanel.MouseLeave += Leftpanel_MouseLeave;
+            // 
+            // Hide
+            // 
+            Hide.Cursor = Cursors.Hand;
+            Hide.Dock = DockStyle.Bottom;
+            Hide.FlatAppearance.BorderSize = 0;
+            Hide.FlatAppearance.MouseDownBackColor = Color.White;
+            Hide.FlatAppearance.MouseOverBackColor = Color.FromArgb(49, 46, 178);
+            Hide.FlatStyle = FlatStyle.Flat;
+            Hide.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Hide.ForeColor = Color.White;
+            Hide.Location = new Point(0, 491);
+            Hide.Name = "Hide";
+            Hide.Size = new Size(240, 42);
+            Hide.TabIndex = 2;
+            Hide.Text = "Ocultar";
+            Hide.UseVisualStyleBackColor = true;
+            Hide.Click += Hide_Click;
             // 
             // SubpanelMenu
             // 
@@ -107,6 +131,7 @@
             BtnValidarPedido.TabIndex = 2;
             BtnValidarPedido.Text = "Validar Pedido";
             BtnValidarPedido.UseVisualStyleBackColor = false;
+            BtnValidarPedido.Click += BtnValidarPedido_Click;
             // 
             // BtnNuevoPedido
             // 
@@ -125,6 +150,7 @@
             BtnNuevoPedido.TabIndex = 1;
             BtnNuevoPedido.Text = "Nuevo Pedido";
             BtnNuevoPedido.UseVisualStyleBackColor = false;
+            BtnNuevoPedido.Click += BtnNuevoPedido_Click;
             // 
             // Btnpedido
             // 
@@ -143,6 +169,9 @@
             Btnpedido.Text = "Pedidos";
             Btnpedido.UseVisualStyleBackColor = true;
             Btnpedido.Click += Btnpedido_Click;
+            Btnpedido.MouseDown += Btnpedido_MouseDown;
+            Btnpedido.MouseEnter += Btnpedido_MouseEnter;
+            Btnpedido.MouseLeave += Btnpedido_MouseLeave;
             // 
             // Primarypanel
             // 
@@ -166,23 +195,27 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // Hide
+            // collapseTimer
             // 
-            Hide.Cursor = Cursors.Hand;
-            Hide.Dock = DockStyle.Bottom;
-            Hide.FlatAppearance.BorderSize = 0;
-            Hide.FlatAppearance.MouseDownBackColor = Color.White;
-            Hide.FlatAppearance.MouseOverBackColor = Color.FromArgb(49, 46, 178);
-            Hide.FlatStyle = FlatStyle.Flat;
-            Hide.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Hide.ForeColor = Color.White;
-            Hide.Location = new Point(0, 491);
-            Hide.Name = "Hide";
-            Hide.Size = new Size(240, 42);
-            Hide.TabIndex = 2;
-            Hide.Text = "Ocultar";
-            Hide.UseVisualStyleBackColor = true;
-            Hide.Click += Hide_Click;
+            collapseTimer.Interval = 300;
+            collapseTimer.Tick += collapseTimer_Tick;
+            // 
+            // BtnAdministrador
+            // 
+            BtnAdministrador.Cursor = Cursors.Hand;
+            BtnAdministrador.Dock = DockStyle.Top;
+            BtnAdministrador.FlatAppearance.BorderSize = 0;
+            BtnAdministrador.FlatAppearance.MouseDownBackColor = Color.White;
+            BtnAdministrador.FlatAppearance.MouseOverBackColor = Color.FromArgb(49, 46, 178);
+            BtnAdministrador.FlatStyle = FlatStyle.Flat;
+            BtnAdministrador.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnAdministrador.ForeColor = Color.White;
+            BtnAdministrador.Location = new Point(0, 177);
+            BtnAdministrador.Name = "BtnAdministrador";
+            BtnAdministrador.Size = new Size(240, 58);
+            BtnAdministrador.TabIndex = 3;
+            BtnAdministrador.Text = "Administrador";
+            BtnAdministrador.UseVisualStyleBackColor = true;
             // 
             // PedidoXperto
             // 
@@ -194,7 +227,9 @@
             Controls.Add(Toppanel);
             MinimumSize = new Size(1024, 720);
             Name = "PedidoXperto";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PedidoXperto";
+            WindowState = FormWindowState.Maximized;
             Toppanel.ResumeLayout(false);
             Toppanel.PerformLayout();
             Leftpanel.ResumeLayout(false);
@@ -216,5 +251,7 @@
         private Button BtnValidarPedido;
         private Button BtnNuevoPedido;
         private Button Hide;
+        private System.Windows.Forms.Timer collapseTimer;
+        private Button BtnAdministrador;
     }
 }
