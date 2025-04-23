@@ -1,4 +1,6 @@
-﻿namespace ProyectoXperto
+﻿using PedidoXperto;
+
+namespace ProyectoXperto
 {
     partial class PedidoXperto
     {
@@ -29,24 +31,26 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidoXperto));
             Toppanel = new Panel();
             label1 = new Label();
             Leftpanel = new Panel();
+            SubPanelMenuAdmin = new Panel();
+            BtnUsuarios = new Button();
+            BtnAdministrador = new Button();
             Hide = new Button();
-            SubpanelMenu = new Panel();
+            SubpanelMenuPedido = new Panel();
             BtnValidarPedido = new Button();
             BtnNuevoPedido = new Button();
             Btnpedido = new Button();
             Primarypanel = new Panel();
-            pictureBox1 = new PictureBox();
+            ImageMain = new PictureBox();
             collapseTimer = new System.Windows.Forms.Timer(components);
-            BtnAdministrador = new Button();
             Toppanel.SuspendLayout();
             Leftpanel.SuspendLayout();
-            SubpanelMenu.SuspendLayout();
+            SubPanelMenuAdmin.SuspendLayout();
+            SubpanelMenuPedido.SuspendLayout();
             Primarypanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ImageMain).BeginInit();
             SuspendLayout();
             // 
             // Toppanel
@@ -74,9 +78,10 @@
             // Leftpanel
             // 
             Leftpanel.BackColor = Color.FromArgb(23, 24, 37);
+            Leftpanel.Controls.Add(SubPanelMenuAdmin);
             Leftpanel.Controls.Add(BtnAdministrador);
             Leftpanel.Controls.Add(Hide);
-            Leftpanel.Controls.Add(SubpanelMenu);
+            Leftpanel.Controls.Add(SubpanelMenuPedido);
             Leftpanel.Controls.Add(Btnpedido);
             Leftpanel.Dock = DockStyle.Left;
             Leftpanel.Location = new Point(0, 148);
@@ -85,6 +90,52 @@
             Leftpanel.TabIndex = 1;
             Leftpanel.MouseEnter += Leftpanel_MouseEnter;
             Leftpanel.MouseLeave += Leftpanel_MouseLeave;
+            // 
+            // SubPanelMenuAdmin
+            // 
+            SubPanelMenuAdmin.Controls.Add(BtnUsuarios);
+            SubPanelMenuAdmin.Dock = DockStyle.Top;
+            SubPanelMenuAdmin.Location = new Point(0, 235);
+            SubPanelMenuAdmin.Name = "SubPanelMenuAdmin";
+            SubPanelMenuAdmin.Size = new Size(240, 60);
+            SubPanelMenuAdmin.TabIndex = 4;
+            // 
+            // BtnUsuarios
+            // 
+            BtnUsuarios.BackColor = Color.FromArgb(60, 60, 60);
+            BtnUsuarios.Cursor = Cursors.Hand;
+            BtnUsuarios.Dock = DockStyle.Top;
+            BtnUsuarios.FlatAppearance.BorderSize = 0;
+            BtnUsuarios.FlatAppearance.MouseDownBackColor = Color.White;
+            BtnUsuarios.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 70, 190);
+            BtnUsuarios.FlatStyle = FlatStyle.Flat;
+            BtnUsuarios.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnUsuarios.ForeColor = Color.White;
+            BtnUsuarios.Location = new Point(0, 0);
+            BtnUsuarios.Name = "BtnUsuarios";
+            BtnUsuarios.Size = new Size(240, 58);
+            BtnUsuarios.TabIndex = 1;
+            BtnUsuarios.Text = "Usuarios";
+            BtnUsuarios.UseVisualStyleBackColor = false;
+            BtnUsuarios.Click += BtnUsuarios_Click;
+            // 
+            // BtnAdministrador
+            // 
+            BtnAdministrador.Cursor = Cursors.Hand;
+            BtnAdministrador.Dock = DockStyle.Top;
+            BtnAdministrador.FlatAppearance.BorderSize = 0;
+            BtnAdministrador.FlatAppearance.MouseDownBackColor = Color.White;
+            BtnAdministrador.FlatAppearance.MouseOverBackColor = Color.FromArgb(49, 46, 178);
+            BtnAdministrador.FlatStyle = FlatStyle.Flat;
+            BtnAdministrador.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnAdministrador.ForeColor = Color.White;
+            BtnAdministrador.Location = new Point(0, 177);
+            BtnAdministrador.Name = "BtnAdministrador";
+            BtnAdministrador.Size = new Size(240, 58);
+            BtnAdministrador.TabIndex = 3;
+            BtnAdministrador.Text = "Administrador";
+            BtnAdministrador.UseVisualStyleBackColor = true;
+            BtnAdministrador.Click += BtnAdministrador_Click;
             // 
             // Hide
             // 
@@ -104,15 +155,15 @@
             Hide.UseVisualStyleBackColor = true;
             Hide.Click += Hide_Click;
             // 
-            // SubpanelMenu
+            // SubpanelMenuPedido
             // 
-            SubpanelMenu.Controls.Add(BtnValidarPedido);
-            SubpanelMenu.Controls.Add(BtnNuevoPedido);
-            SubpanelMenu.Dock = DockStyle.Top;
-            SubpanelMenu.Location = new Point(0, 58);
-            SubpanelMenu.Name = "SubpanelMenu";
-            SubpanelMenu.Size = new Size(240, 119);
-            SubpanelMenu.TabIndex = 1;
+            SubpanelMenuPedido.Controls.Add(BtnValidarPedido);
+            SubpanelMenuPedido.Controls.Add(BtnNuevoPedido);
+            SubpanelMenuPedido.Dock = DockStyle.Top;
+            SubpanelMenuPedido.Location = new Point(0, 58);
+            SubpanelMenuPedido.Name = "SubpanelMenuPedido";
+            SubpanelMenuPedido.Size = new Size(240, 119);
+            SubpanelMenuPedido.TabIndex = 1;
             // 
             // BtnValidarPedido
             // 
@@ -176,46 +227,29 @@
             // Primarypanel
             // 
             Primarypanel.BackColor = Color.White;
-            Primarypanel.Controls.Add(pictureBox1);
+            Primarypanel.Controls.Add(ImageMain);
             Primarypanel.Dock = DockStyle.Fill;
             Primarypanel.Location = new Point(240, 148);
             Primarypanel.Name = "Primarypanel";
             Primarypanel.Size = new Size(768, 533);
             Primarypanel.TabIndex = 2;
             // 
-            // pictureBox1
+            // ImageMain
             // 
-            pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(233, 136);
-            pictureBox1.MaximumSize = new Size(466, 366);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(311, 244);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            ImageMain.Anchor = AnchorStyles.None;
+            ImageMain.Image = ResourcesXperto.Logo;
+            ImageMain.Location = new Point(158, 58);
+            ImageMain.MaximumSize = new Size(466, 366);
+            ImageMain.Name = "ImageMain";
+            ImageMain.Size = new Size(466, 366);
+            ImageMain.SizeMode = PictureBoxSizeMode.StretchImage;
+            ImageMain.TabIndex = 0;
+            ImageMain.TabStop = false;
             // 
             // collapseTimer
             // 
             collapseTimer.Interval = 300;
             collapseTimer.Tick += collapseTimer_Tick;
-            // 
-            // BtnAdministrador
-            // 
-            BtnAdministrador.Cursor = Cursors.Hand;
-            BtnAdministrador.Dock = DockStyle.Top;
-            BtnAdministrador.FlatAppearance.BorderSize = 0;
-            BtnAdministrador.FlatAppearance.MouseDownBackColor = Color.White;
-            BtnAdministrador.FlatAppearance.MouseOverBackColor = Color.FromArgb(49, 46, 178);
-            BtnAdministrador.FlatStyle = FlatStyle.Flat;
-            BtnAdministrador.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnAdministrador.ForeColor = Color.White;
-            BtnAdministrador.Location = new Point(0, 177);
-            BtnAdministrador.Name = "BtnAdministrador";
-            BtnAdministrador.Size = new Size(240, 58);
-            BtnAdministrador.TabIndex = 3;
-            BtnAdministrador.Text = "Administrador";
-            BtnAdministrador.UseVisualStyleBackColor = true;
             // 
             // PedidoXperto
             // 
@@ -233,9 +267,10 @@
             Toppanel.ResumeLayout(false);
             Toppanel.PerformLayout();
             Leftpanel.ResumeLayout(false);
-            SubpanelMenu.ResumeLayout(false);
+            SubPanelMenuAdmin.ResumeLayout(false);
+            SubpanelMenuPedido.ResumeLayout(false);
             Primarypanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ImageMain).EndInit();
             ResumeLayout(false);
         }
 
@@ -245,13 +280,15 @@
         private Label label1;
         private Panel Leftpanel;
         private Panel Primarypanel;
-        private PictureBox pictureBox1;
+        private PictureBox ImageMain;
         private Button Btnpedido;
-        private Panel SubpanelMenu;
+        private Panel SubpanelMenuPedido;
         private Button BtnValidarPedido;
         private Button BtnNuevoPedido;
         private Button Hide;
         private System.Windows.Forms.Timer collapseTimer;
         private Button BtnAdministrador;
+        private Panel SubPanelMenuAdmin;
+        private Button BtnUsuarios;
     }
 }

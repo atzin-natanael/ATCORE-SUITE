@@ -13,11 +13,12 @@ namespace ProyectoXperto
 
         private void Btnpedido_Click(object sender, EventArgs e)
         {
-            mostrarSubmenu(SubpanelMenu);
+            mostrarSubmenu(SubpanelMenuPedido);
         }
         public void Design()
         {
-            SubpanelMenu.Visible = false;
+            SubpanelMenuPedido.Visible = false;
+            SubPanelMenuAdmin.Visible = false;
         }
         public void mostrarSubmenu(Panel subMenu)
         {
@@ -32,9 +33,13 @@ namespace ProyectoXperto
         }
         public void HideSubmenu()
         {
-            if (SubpanelMenu.Visible == true)
+            if (SubpanelMenuPedido.Visible == true)
             {
-                SubpanelMenu.Visible = false;
+                SubpanelMenuPedido.Visible = false;
+            }
+            if (SubPanelMenuAdmin.Visible == true)
+            {
+                SubPanelMenuAdmin.Visible = false;
             }
         }
 
@@ -48,7 +53,12 @@ namespace ProyectoXperto
                     if (ctrl is Button && ctrl != Hide)
                         ctrl.Visible = true;
                 }
-                foreach (Control ctrl in SubpanelMenu.Controls)
+                foreach (Control ctrl in SubpanelMenuPedido.Controls)
+                {
+                    if (ctrl is Button)
+                        ctrl.Visible = true;
+                }
+                foreach (Control ctrl in SubPanelMenuAdmin.Controls)
                 {
                     if (ctrl is Button)
                         ctrl.Visible = true;
@@ -63,7 +73,12 @@ namespace ProyectoXperto
                     if (ctrl is Button && ctrl != Hide)
                         ctrl.Visible = false;
                 }
-                foreach (Control ctrl in SubpanelMenu.Controls)
+                foreach (Control ctrl in SubpanelMenuPedido.Controls)
+                {
+                    if (ctrl is Button)
+                        ctrl.Visible = false;
+                }
+                foreach (Control ctrl in SubPanelMenuAdmin.Controls)
                 {
                     if (ctrl is Button)
                         ctrl.Visible = false;
@@ -111,7 +126,12 @@ namespace ProyectoXperto
                 if (ctrl is Button && ctrl != Hide)
                     ctrl.Visible = false;
             }
-            foreach (Control ctrl in SubpanelMenu.Controls)
+            foreach (Control ctrl in SubpanelMenuPedido.Controls)
+            {
+                if (ctrl is Button)
+                    ctrl.Visible = false;
+            }
+            foreach (Control ctrl in SubPanelMenuAdmin.Controls)
             {
                 if (ctrl is Button)
                     ctrl.Visible = false;
@@ -126,7 +146,12 @@ namespace ProyectoXperto
                 if (ctrl is Button && ctrl != Hide)
                     ctrl.Visible = true;
             }
-            foreach (Control ctrl in SubpanelMenu.Controls)
+            foreach (Control ctrl in SubpanelMenuPedido.Controls)
+            {
+                if (ctrl is Button)
+                    ctrl.Visible = true;
+            }
+            foreach (Control ctrl in SubPanelMenuAdmin.Controls)
             {
                 if (ctrl is Button)
                     ctrl.Visible = true;
@@ -152,7 +177,12 @@ namespace ProyectoXperto
                     if (ctrl is Button && ctrl != Hide)
                         ctrl.Visible = false;
                 }
-                foreach (Control ctrl in SubpanelMenu.Controls)
+                foreach (Control ctrl in SubpanelMenuPedido.Controls)
+                {
+                    if (ctrl is Button)
+                        ctrl.Visible = false;
+                }
+                foreach(Control ctrl in SubPanelMenuAdmin.Controls)
                 {
                     if (ctrl is Button)
                         ctrl.Visible = false;
@@ -191,6 +221,18 @@ namespace ProyectoXperto
         private void BtnNuevoPedido_Click(object sender, EventArgs e)
         {
             openChild(new FormCrearPedido());
+            HideSubmenu();
+            Ocultar();
+        }
+
+        private void BtnAdministrador_Click(object sender, EventArgs e)
+        {
+            mostrarSubmenu(SubPanelMenuAdmin);
+        }
+
+        private void BtnUsuarios_Click(object sender, EventArgs e)
+        {
+            openChild(new FormAdminUsuarios());
             HideSubmenu();
             Ocultar();
         }
