@@ -2,7 +2,7 @@
 
 namespace ProyectoXperto
 {
-    partial class PedidoXperto
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -32,6 +32,7 @@ namespace ProyectoXperto
         {
             components = new System.ComponentModel.Container();
             Toppanel = new Panel();
+            LbUsuario = new Label();
             label1 = new Label();
             Leftpanel = new Panel();
             SubPanelMenuAdmin = new Panel();
@@ -56,12 +57,24 @@ namespace ProyectoXperto
             // Toppanel
             // 
             Toppanel.BackColor = Color.FromArgb(49, 46, 178);
+            Toppanel.Controls.Add(LbUsuario);
             Toppanel.Controls.Add(label1);
             Toppanel.Dock = DockStyle.Top;
             Toppanel.Location = new Point(0, 0);
             Toppanel.Name = "Toppanel";
             Toppanel.Size = new Size(1008, 148);
             Toppanel.TabIndex = 0;
+            // 
+            // LbUsuario
+            // 
+            LbUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            LbUsuario.AutoSize = true;
+            LbUsuario.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LbUsuario.ForeColor = SystemColors.Control;
+            LbUsuario.Location = new Point(697, 124);
+            LbUsuario.Name = "LbUsuario";
+            LbUsuario.Size = new Size(0, 21);
+            LbUsuario.TabIndex = 1;
             // 
             // label1
             // 
@@ -102,15 +115,15 @@ namespace ProyectoXperto
             // 
             // BtnUsuarios
             // 
-            BtnUsuarios.BackColor = Color.FromArgb(60, 60, 60);
+            BtnUsuarios.BackColor = Color.White;
             BtnUsuarios.Cursor = Cursors.Hand;
             BtnUsuarios.Dock = DockStyle.Top;
             BtnUsuarios.FlatAppearance.BorderSize = 0;
             BtnUsuarios.FlatAppearance.MouseDownBackColor = Color.White;
-            BtnUsuarios.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 70, 190);
+            BtnUsuarios.FlatAppearance.MouseOverBackColor = Color.Silver;
             BtnUsuarios.FlatStyle = FlatStyle.Flat;
             BtnUsuarios.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnUsuarios.ForeColor = Color.White;
+            BtnUsuarios.ForeColor = Color.Black;
             BtnUsuarios.Location = new Point(0, 0);
             BtnUsuarios.Name = "BtnUsuarios";
             BtnUsuarios.Size = new Size(240, 58);
@@ -125,7 +138,7 @@ namespace ProyectoXperto
             BtnAdministrador.Dock = DockStyle.Top;
             BtnAdministrador.FlatAppearance.BorderSize = 0;
             BtnAdministrador.FlatAppearance.MouseDownBackColor = Color.White;
-            BtnAdministrador.FlatAppearance.MouseOverBackColor = Color.FromArgb(49, 46, 178);
+            BtnAdministrador.FlatAppearance.MouseOverBackColor = SystemColors.AppWorkspace;
             BtnAdministrador.FlatStyle = FlatStyle.Flat;
             BtnAdministrador.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnAdministrador.ForeColor = Color.White;
@@ -167,15 +180,15 @@ namespace ProyectoXperto
             // 
             // BtnValidarPedido
             // 
-            BtnValidarPedido.BackColor = Color.FromArgb(60, 60, 60);
+            BtnValidarPedido.BackColor = Color.White;
             BtnValidarPedido.Cursor = Cursors.Hand;
             BtnValidarPedido.Dock = DockStyle.Top;
             BtnValidarPedido.FlatAppearance.BorderSize = 0;
             BtnValidarPedido.FlatAppearance.MouseDownBackColor = Color.White;
-            BtnValidarPedido.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 70, 190);
+            BtnValidarPedido.FlatAppearance.MouseOverBackColor = Color.Silver;
             BtnValidarPedido.FlatStyle = FlatStyle.Flat;
             BtnValidarPedido.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnValidarPedido.ForeColor = Color.White;
+            BtnValidarPedido.ForeColor = Color.Black;
             BtnValidarPedido.Location = new Point(0, 58);
             BtnValidarPedido.Name = "BtnValidarPedido";
             BtnValidarPedido.Size = new Size(240, 58);
@@ -186,15 +199,15 @@ namespace ProyectoXperto
             // 
             // BtnNuevoPedido
             // 
-            BtnNuevoPedido.BackColor = Color.FromArgb(60, 60, 60);
+            BtnNuevoPedido.BackColor = Color.White;
             BtnNuevoPedido.Cursor = Cursors.Hand;
             BtnNuevoPedido.Dock = DockStyle.Top;
             BtnNuevoPedido.FlatAppearance.BorderSize = 0;
             BtnNuevoPedido.FlatAppearance.MouseDownBackColor = Color.White;
-            BtnNuevoPedido.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 70, 190);
+            BtnNuevoPedido.FlatAppearance.MouseOverBackColor = Color.Silver;
             BtnNuevoPedido.FlatStyle = FlatStyle.Flat;
             BtnNuevoPedido.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnNuevoPedido.ForeColor = Color.White;
+            BtnNuevoPedido.ForeColor = Color.Black;
             BtnNuevoPedido.Location = new Point(0, 0);
             BtnNuevoPedido.Name = "BtnNuevoPedido";
             BtnNuevoPedido.Size = new Size(240, 58);
@@ -209,7 +222,7 @@ namespace ProyectoXperto
             Btnpedido.Dock = DockStyle.Top;
             Btnpedido.FlatAppearance.BorderSize = 0;
             Btnpedido.FlatAppearance.MouseDownBackColor = Color.White;
-            Btnpedido.FlatAppearance.MouseOverBackColor = Color.FromArgb(49, 46, 178);
+            Btnpedido.FlatAppearance.MouseOverBackColor = SystemColors.AppWorkspace;
             Btnpedido.FlatStyle = FlatStyle.Flat;
             Btnpedido.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Btnpedido.ForeColor = Color.White;
@@ -251,7 +264,7 @@ namespace ProyectoXperto
             collapseTimer.Interval = 300;
             collapseTimer.Tick += collapseTimer_Tick;
             // 
-            // PedidoXperto
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -260,7 +273,7 @@ namespace ProyectoXperto
             Controls.Add(Leftpanel);
             Controls.Add(Toppanel);
             MinimumSize = new Size(1024, 720);
-            Name = "PedidoXperto";
+            Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PedidoXperto";
             WindowState = FormWindowState.Maximized;
@@ -290,5 +303,6 @@ namespace ProyectoXperto
         private Button BtnAdministrador;
         private Panel SubPanelMenuAdmin;
         private Button BtnUsuarios;
+        public Label LbUsuario;
     }
 }

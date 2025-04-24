@@ -128,6 +128,7 @@
             button4.TabIndex = 7;
             button4.Text = "CAMBIAR NOMBRE";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // button3
             // 

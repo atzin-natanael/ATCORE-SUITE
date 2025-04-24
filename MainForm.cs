@@ -2,9 +2,9 @@ using PedidoXperto.ChildForms;
 
 namespace ProyectoXperto
 {
-    public partial class PedidoXperto : Form
+    public partial class MainForm : Form
     {
-        public PedidoXperto()
+        public MainForm()
         {
             InitializeComponent();
             this.BackColor = Color.FromArgb(49, 46, 178);
