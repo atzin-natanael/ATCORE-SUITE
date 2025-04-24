@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using PedidoXperto.Logic;
 
 namespace PedidoXperto.ChildForms
 {
@@ -20,6 +12,29 @@ namespace PedidoXperto.ChildForms
         private void Exit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtBox_clienteId_TextChanged(object sender, EventArgs e)
+        {
+            if (InvalidText())
+                return;
+
+            Data bridge = new();
+
+            var data = bridge.SearchClient(txtBox_clienteId.Text);
+
+            if (data != null)
+            {
+                lblNombreCliente.Text = "Cliente no encontrado";
+            }
+            else
+                lblNombreCliente.Text = data;
+        }
+
+        private bool InvalidText()
+        {
+            var clientId = txtBox_clienteId.Text;
+            return string.IsNullOrEmpty(clientId) || clientId.Length < 4;
         }
     }
 }
