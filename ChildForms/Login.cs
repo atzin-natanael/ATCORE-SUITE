@@ -46,7 +46,8 @@ namespace PedidoXperto.ChildForms
 
         private void ForgetPw_Click(object sender, EventArgs e)
         {
-
+            ChangePw changePw = new ChangePw();
+            changePw.ShowDialog();
         }
 
         private void Exit_Click(object sender, EventArgs e)
