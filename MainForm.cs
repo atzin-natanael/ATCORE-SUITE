@@ -182,7 +182,7 @@ namespace ProyectoXperto
                     if (ctrl is Button)
                         ctrl.Visible = false;
                 }
-                foreach(Control ctrl in SubPanelMenuAdmin.Controls)
+                foreach (Control ctrl in SubPanelMenuAdmin.Controls)
                 {
                     if (ctrl is Button)
                         ctrl.Visible = false;
@@ -235,6 +235,34 @@ namespace ProyectoXperto
             openChild(new FormAdminUsuarios());
             HideSubmenu();
             Ocultar();
+        }
+
+        private void LogOut_MouseEnter(object sender, EventArgs e)
+        {
+            LogOut.ForeColor = System.Drawing.Color.SteelBlue;
+        }
+
+        private void LogOut_MouseLeave(object sender, EventArgs e)
+        {
+            LogOut.ForeColor = SystemColors.Control;
+        }
+
+        private void LogOut_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+               "¿Estás seguro de que deseas cerrar sesión?\nTodo el trabajo no guardado se perderá.",
+               "Confirmar cierre de sesión",
+               MessageBoxButtons.OKCancel,
+               MessageBoxIcon.Warning
+           );
+
+            if (result == DialogResult.OK)
+            {
+                this.Hide();
+                Login login = new Login();
+                login.ShowDialog();
+                this.Close();
+            }
         }
     }
 }

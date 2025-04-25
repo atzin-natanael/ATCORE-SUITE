@@ -33,7 +33,7 @@
             Cb_Usuario = new ComboBox();
             TxtPw = new TextBox();
             Enter = new Button();
-            button1 = new Button();
+            Exit = new Button();
             ForgetPw = new Label();
             panelTop = new Panel();
             label3 = new Label();
@@ -46,7 +46,7 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(59, 153);
             label1.Name = "label1";
-            label1.Size = new Size(103, 21);
+            label1.Size = new Size(125, 23);
             label1.TabIndex = 0;
             label1.Text = "Contraseña";
             // 
@@ -56,8 +56,8 @@
             label2.ForeColor = Color.White;
             label2.Location = new Point(96, 88);
             label2.Name = "label2";
-            label2.Size = new Size(66, 21);
-            label2.TabIndex = 1;
+            label2.Size = new Size(79, 23);
+            label2.TabIndex = 0;
             label2.Text = "Usuario";
             // 
             // Cb_Usuario
@@ -65,16 +65,19 @@
             Cb_Usuario.FormattingEnabled = true;
             Cb_Usuario.Location = new Point(209, 88);
             Cb_Usuario.Name = "Cb_Usuario";
-            Cb_Usuario.Size = new Size(295, 29);
-            Cb_Usuario.TabIndex = 2;
+            Cb_Usuario.Size = new Size(295, 31);
+            Cb_Usuario.TabIndex = 1;
+            Cb_Usuario.KeyDown += Cb_Usuario_KeyDown;
+            Cb_Usuario.KeyPress += Cb_Usuario_KeyPress;
             // 
             // TxtPw
             // 
             TxtPw.Location = new Point(209, 153);
             TxtPw.Name = "TxtPw";
-            TxtPw.Size = new Size(295, 27);
-            TxtPw.TabIndex = 3;
+            TxtPw.Size = new Size(295, 32);
+            TxtPw.TabIndex = 2;
             TxtPw.UseSystemPasswordChar = true;
+            TxtPw.KeyDown += TxtPw_KeyDown;
             // 
             // Enter
             // 
@@ -87,27 +90,27 @@
             Enter.Location = new Point(237, 265);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
-            Enter.TabIndex = 4;
+            Enter.TabIndex = 3;
             Enter.Text = "Ingresar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Exit_Click;
             // 
-            // button1
+            // Exit
             // 
-            button1.Anchor = AnchorStyles.Top;
-            button1.BackColor = SystemColors.ActiveBorder;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(551, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(55, 27);
-            button1.TabIndex = 6;
-            button1.Text = "Salir";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            Exit.Anchor = AnchorStyles.Top;
+            Exit.BackColor = SystemColors.ActiveBorder;
+            Exit.Cursor = Cursors.Hand;
+            Exit.FlatAppearance.BorderSize = 0;
+            Exit.FlatStyle = FlatStyle.Flat;
+            Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Exit.ForeColor = Color.Black;
+            Exit.Location = new Point(542, 0);
+            Exit.Name = "Exit";
+            Exit.Size = new Size(64, 27);
+            Exit.TabIndex = 4;
+            Exit.Text = "Salir";
+            Exit.UseVisualStyleBackColor = false;
+            Exit.Click += button1_Click;
             // 
             // ForgetPw
             // 
@@ -115,15 +118,15 @@
             ForgetPw.ForeColor = Color.White;
             ForgetPw.Location = new Point(223, 209);
             ForgetPw.Name = "ForgetPw";
-            ForgetPw.Size = new Size(177, 21);
-            ForgetPw.TabIndex = 7;
+            ForgetPw.Size = new Size(221, 23);
+            ForgetPw.TabIndex = 6;
             ForgetPw.Text = "Olvidé mi contraseña";
             ForgetPw.Click += ForgetPw_Click;
             // 
             // panelTop
             // 
             panelTop.Controls.Add(label3);
-            panelTop.Controls.Add(button1);
+            panelTop.Controls.Add(Exit);
             panelTop.Cursor = Cursors.Hand;
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
@@ -137,16 +140,16 @@
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(209, 5);
+            label3.Location = new Point(182, 0);
             label3.Name = "label3";
-            label3.Size = new Size(218, 22);
-            label3.TabIndex = 9;
+            label3.Size = new Size(276, 30);
+            label3.TabIndex = 0;
             label3.Text = "LOGIN PEDIDOXPERTO";
             label3.MouseDown += label3_MouseDown;
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(10F, 21F);
+            AutoScaleDimensions = new SizeF(12F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(60, 60, 60);
             ClientSize = new Size(606, 338);
@@ -176,7 +179,7 @@
         private ComboBox Cb_Usuario;
         private TextBox TxtPw;
         private Button Enter;
-        private Button button1;
+        private Button Exit;
         private Label ForgetPw;
         private Panel panelTop;
         private Label label3;

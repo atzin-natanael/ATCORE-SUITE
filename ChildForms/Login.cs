@@ -99,5 +99,28 @@ namespace PedidoXperto.ChildForms
 
             }
         }
+
+        private void Cb_Usuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                TxtPw.Focus();
+            }
+        }
+
+        private void TxtPw_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                Enter.Focus();
+            }
+        }
+
+        private void Cb_Usuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.ToUpper(e.KeyChar);
+        }
     }
 }
