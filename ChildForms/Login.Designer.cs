@@ -30,13 +30,13 @@
         {
             label1 = new Label();
             label2 = new Label();
-            Cb_Usuario = new ComboBox();
             TxtPw = new TextBox();
             Enter = new Button();
             Exit = new Button();
             ForgetPw = new Label();
             panelTop = new Panel();
             label3 = new Label();
+            Txt_Usuario = new TextBox();
             panelTop.SuspendLayout();
             SuspendLayout();
             // 
@@ -46,7 +46,7 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(59, 153);
             label1.Name = "label1";
-            label1.Size = new Size(125, 23);
+            label1.Size = new Size(103, 21);
             label1.TabIndex = 0;
             label1.Text = "Contraseña";
             // 
@@ -56,25 +56,15 @@
             label2.ForeColor = Color.White;
             label2.Location = new Point(96, 88);
             label2.Name = "label2";
-            label2.Size = new Size(79, 23);
+            label2.Size = new Size(66, 21);
             label2.TabIndex = 0;
             label2.Text = "Usuario";
-            // 
-            // Cb_Usuario
-            // 
-            Cb_Usuario.FormattingEnabled = true;
-            Cb_Usuario.Location = new Point(209, 88);
-            Cb_Usuario.Name = "Cb_Usuario";
-            Cb_Usuario.Size = new Size(295, 31);
-            Cb_Usuario.TabIndex = 1;
-            Cb_Usuario.KeyDown += Cb_Usuario_KeyDown;
-            Cb_Usuario.KeyPress += Cb_Usuario_KeyPress;
             // 
             // TxtPw
             // 
             TxtPw.Location = new Point(209, 153);
             TxtPw.Name = "TxtPw";
-            TxtPw.Size = new Size(295, 32);
+            TxtPw.Size = new Size(295, 27);
             TxtPw.TabIndex = 2;
             TxtPw.UseSystemPasswordChar = true;
             TxtPw.KeyDown += TxtPw_KeyDown;
@@ -93,7 +83,7 @@
             Enter.TabIndex = 3;
             Enter.Text = "Ingresar";
             Enter.UseVisualStyleBackColor = false;
-            Enter.Click += Exit_Click;
+            Enter.Click += Enter_Click;
             // 
             // Exit
             // 
@@ -110,7 +100,7 @@
             Exit.TabIndex = 4;
             Exit.Text = "Salir";
             Exit.UseVisualStyleBackColor = false;
-            Exit.Click += button1_Click;
+            Exit.Click += Exit_Click;
             // 
             // ForgetPw
             // 
@@ -119,8 +109,8 @@
             ForgetPw.ForeColor = Color.White;
             ForgetPw.Location = new Point(209, 209);
             ForgetPw.Name = "ForgetPw";
-            ForgetPw.Size = new Size(221, 23);
-            ForgetPw.TabIndex = 6;
+            ForgetPw.Size = new Size(177, 21);
+            ForgetPw.TabIndex = 5;
             ForgetPw.Text = "Olvidé mi contraseña";
             ForgetPw.Click += ForgetPw_Click;
             ForgetPw.MouseEnter += ForgetPw_MouseEnter;
@@ -145,22 +135,30 @@
             label3.ForeColor = Color.White;
             label3.Location = new Point(182, 0);
             label3.Name = "label3";
-            label3.Size = new Size(276, 30);
+            label3.Size = new Size(218, 22);
             label3.TabIndex = 0;
             label3.Text = "LOGIN PEDIDOXPERTO";
             label3.MouseDown += label3_MouseDown;
             // 
+            // Txt_Usuario
+            // 
+            Txt_Usuario.CharacterCasing = CharacterCasing.Upper;
+            Txt_Usuario.Location = new Point(209, 85);
+            Txt_Usuario.Name = "Txt_Usuario";
+            Txt_Usuario.Size = new Size(295, 27);
+            Txt_Usuario.TabIndex = 1;
+            // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(12F, 23F);
+            AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(60, 60, 60);
             ClientSize = new Size(606, 338);
+            Controls.Add(Txt_Usuario);
             Controls.Add(panelTop);
             Controls.Add(ForgetPw);
             Controls.Add(Enter);
             Controls.Add(TxtPw);
-            Controls.Add(Cb_Usuario);
             Controls.Add(label2);
             Controls.Add(label1);
             Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -179,12 +177,12 @@
 
         private Label label1;
         private Label label2;
-        private ComboBox Cb_Usuario;
         private TextBox TxtPw;
         private Button Enter;
         private Button Exit;
         private Label ForgetPw;
         private Panel panelTop;
         private Label label3;
+        private TextBox Txt_Usuario;
     }
 }

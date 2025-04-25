@@ -33,10 +33,9 @@
             Exit = new Button();
             Enter = new Button();
             TxtPw = new TextBox();
-            Cb_Usuario = new ComboBox();
             LbUser = new Label();
             LbPw = new Label();
-            TxtPw2 = new TextBox();
+            Txt_Usuario = new TextBox();
             panelTop.SuspendLayout();
             SuspendLayout();
             // 
@@ -56,9 +55,9 @@
             Lb_Title.AutoSize = true;
             Lb_Title.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Lb_Title.ForeColor = Color.White;
-            Lb_Title.Location = new Point(146, 0);
+            Lb_Title.Location = new Point(192, 2);
             Lb_Title.Name = "Lb_Title";
-            Lb_Title.Size = new Size(294, 30);
+            Lb_Title.Size = new Size(234, 22);
             Lb_Title.TabIndex = 0;
             Lb_Title.Text = "CAMBIAR CONTRASENA";
             // 
@@ -90,7 +89,7 @@
             Enter.Location = new Point(233, 264);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
-            Enter.TabIndex = 13;
+            Enter.TabIndex = 3;
             Enter.Text = "Ingresar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Enter_Click;
@@ -99,17 +98,9 @@
             // 
             TxtPw.Location = new Point(170, 190);
             TxtPw.Name = "TxtPw";
-            TxtPw.Size = new Size(295, 32);
-            TxtPw.TabIndex = 12;
+            TxtPw.Size = new Size(295, 27);
+            TxtPw.TabIndex = 2;
             TxtPw.UseSystemPasswordChar = true;
-            // 
-            // Cb_Usuario
-            // 
-            Cb_Usuario.FormattingEnabled = true;
-            Cb_Usuario.Location = new Point(170, 94);
-            Cb_Usuario.Name = "Cb_Usuario";
-            Cb_Usuario.Size = new Size(295, 31);
-            Cb_Usuario.TabIndex = 11;
             // 
             // LbUser
             // 
@@ -128,30 +119,28 @@
             LbPw.ForeColor = Color.White;
             LbPw.Location = new Point(26, 193);
             LbPw.Name = "LbPw";
-            LbPw.Size = new Size(125, 23);
+            LbPw.Size = new Size(103, 21);
             LbPw.TabIndex = 10;
             LbPw.Text = "Contraseña";
             // 
-            // TxtPw2
+            // Txt_Usuario
             // 
-            TxtPw2.Location = new Point(170, 93);
-            TxtPw2.Name = "TxtPw2";
-            TxtPw2.Size = new Size(295, 32);
-            TxtPw2.TabIndex = 16;
-            TxtPw2.UseSystemPasswordChar = true;
-            TxtPw2.Visible = false;
+            Txt_Usuario.CharacterCasing = CharacterCasing.Upper;
+            Txt_Usuario.Location = new Point(170, 95);
+            Txt_Usuario.Name = "Txt_Usuario";
+            Txt_Usuario.Size = new Size(295, 27);
+            Txt_Usuario.TabIndex = 1;
             // 
             // ChangePw
             // 
-            AutoScaleDimensions = new SizeF(12F, 23F);
+            AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(60, 60, 60);
             ClientSize = new Size(606, 338);
-            Controls.Add(TxtPw2);
+            Controls.Add(Txt_Usuario);
             Controls.Add(panelTop);
             Controls.Add(Enter);
             Controls.Add(TxtPw);
-            Controls.Add(Cb_Usuario);
             Controls.Add(LbUser);
             Controls.Add(LbPw);
             Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -173,9 +162,8 @@
         private Label Lb_Title;
         private Button Enter;
         private TextBox TxtPw;
-        private ComboBox Cb_Usuario;
         private Label LbUser;
         private Label LbPw;
-        private TextBox TxtPw2;
+        private TextBox Txt_Usuario;
     }
 }

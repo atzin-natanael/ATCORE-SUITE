@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DocumentFormat.OpenXml.Math;
 using LiteDB;
+using Microsoft.VisualBasic.ApplicationServices;
 using Org.BouncyCastle.Crypto.Generators;
 using PedidoXperto.ChildClases;
 using ProyectoXperto;
@@ -46,13 +47,25 @@ namespace PedidoXperto.ChildForms
 
         private void ForgetPw_Click(object sender, EventArgs e)
         {
-            ChangePw changePw = new ChangePw();
+            string existUser = null;
+            if (Txt_Usuario.Text != string.Empty)
+                existUser = ValidarUsuario();
+            else
+            {
+                MessageBox.Show("Ingrese un usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (existUser == null)
+            {
+                MessageBox.Show("Usuario no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            ChangePw changePw = new ChangePw(existUser);
             changePw.ShowDialog();
         }
-
-        private void Exit_Click(object sender, EventArgs e)
+        public string ValidarUsuario()
         {
-            if (TxtPw.Text != string.Empty && Cb_Usuario.Text != string.Empty)
+            if (Txt_Usuario.Text != string.Empty)
             {
                 using (var db = new LiteDatabase("C:\\ConfigDB\\USUARIOS_TRASPASOS.db"))
                 {
@@ -60,7 +73,75 @@ namespace PedidoXperto.ChildForms
                     var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
 
                     // Buscar el usuario que coincida con el nombre de usuario ingresado
-                    var usuario = usuarios.FindOne(x => x.UsuarioName == Cb_Usuario.Text);  // Asegúrate de que el campo sea el nombre de usuario
+                    var usuario = usuarios.FindOne(x => x.UsuarioName == Txt_Usuario.Text);  // Asegúrate de que el campo sea el nombre de usuario
+
+                    if (usuario != null)
+                    {
+                        return usuario.UsuarioName;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Txt_Usuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                TxtPw.Focus();
+            }
+        }
+
+        private void TxtPw_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                Enter.Focus();
+            }
+        }
+
+        private void Txt_Usuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.ToUpper(e.KeyChar);
+        }
+
+        private void ForgetPw_MouseEnter(object sender, EventArgs e)
+        {
+            ForgetPw.ForeColor = System.Drawing.Color.SteelBlue;
+            ForgetPw.Font = new Font(ForgetPw.Font, FontStyle.Underline);
+        }
+
+        private void ForgetPw_MouseLeave(object sender, EventArgs e)
+        {
+            ForgetPw.ForeColor = System.Drawing.Color.White;
+            ForgetPw.Font = new Font(ForgetPw.Font, FontStyle.Regular);
+        }
+
+        private void Enter_Click(object sender, EventArgs e)
+        {
+            if (TxtPw.Text != string.Empty && Txt_Usuario.Text != string.Empty)
+            {
+                using (var db = new LiteDatabase("C:\\ConfigDB\\USUARIOS_TRASPASOS.db"))
+                {
+
+                    var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
+
+                    // Buscar el usuario que coincida con el nombre de usuario ingresado
+                    var usuario = usuarios.FindOne(x => x.UsuarioName == Txt_Usuario.Text);  // Asegúrate de que el campo sea el nombre de usuario
 
                     if (usuario != null)
                     {
@@ -99,41 +180,6 @@ namespace PedidoXperto.ChildForms
                 }
 
             }
-        }
-
-        private void Cb_Usuario_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-                TxtPw.Focus();
-            }
-        }
-
-        private void TxtPw_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-                Enter.Focus();
-            }
-        }
-
-        private void Cb_Usuario_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.KeyChar = char.ToUpper(e.KeyChar);
-        }
-
-        private void ForgetPw_MouseEnter(object sender, EventArgs e)
-        {
-            ForgetPw.ForeColor = System.Drawing.Color.SteelBlue;
-            ForgetPw.Font = new Font(ForgetPw.Font, FontStyle.Underline);
-        }
-
-        private void ForgetPw_MouseLeave(object sender, EventArgs e)
-        {
-            ForgetPw.ForeColor  =System.Drawing.Color.White;
-            ForgetPw.Font = new Font(ForgetPw.Font, FontStyle.Regular);
         }
     }
 }
