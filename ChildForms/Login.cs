@@ -122,5 +122,17 @@ namespace PedidoXperto.ChildForms
         {
             e.KeyChar = char.ToUpper(e.KeyChar);
         }
+
+        private void ForgetPw_MouseEnter(object sender, EventArgs e)
+        {
+            ForgetPw.ForeColor = System.Drawing.Color.SteelBlue;
+            ForgetPw.Font = new Font(ForgetPw.Font, FontStyle.Underline);
+        }
+
+        private void ForgetPw_MouseLeave(object sender, EventArgs e)
+        {
+            ForgetPw.ForeColor  =System.Drawing.Color.White;
+            ForgetPw.Font = new Font(ForgetPw.Font, FontStyle.Regular);
+        }
     }
 }

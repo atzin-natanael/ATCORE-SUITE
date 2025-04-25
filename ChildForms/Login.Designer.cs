@@ -87,7 +87,7 @@
             Enter.FlatAppearance.BorderSize = 0;
             Enter.FlatStyle = FlatStyle.Flat;
             Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(237, 265);
+            Enter.Location = new Point(245, 265);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
             Enter.TabIndex = 3;
@@ -115,13 +115,16 @@
             // ForgetPw
             // 
             ForgetPw.AutoSize = true;
+            ForgetPw.Cursor = Cursors.Hand;
             ForgetPw.ForeColor = Color.White;
-            ForgetPw.Location = new Point(223, 209);
+            ForgetPw.Location = new Point(209, 209);
             ForgetPw.Name = "ForgetPw";
             ForgetPw.Size = new Size(221, 23);
             ForgetPw.TabIndex = 6;
             ForgetPw.Text = "Olvidé mi contraseña";
             ForgetPw.Click += ForgetPw_Click;
+            ForgetPw.MouseEnter += ForgetPw_MouseEnter;
+            ForgetPw.MouseLeave += ForgetPw_MouseLeave;
             // 
             // panelTop
             // 
