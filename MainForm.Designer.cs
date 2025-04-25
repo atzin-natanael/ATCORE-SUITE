@@ -63,9 +63,8 @@ namespace ProyectoXperto
             Toppanel.Controls.Add(label1);
             Toppanel.Dock = DockStyle.Top;
             Toppanel.Location = new Point(0, 0);
-            Toppanel.Margin = new Padding(3, 4, 3, 4);
             Toppanel.Name = "Toppanel";
-            Toppanel.Size = new Size(1152, 197);
+            Toppanel.Size = new Size(1008, 148);
             Toppanel.TabIndex = 0;
             // 
             // LogOut
@@ -75,9 +74,9 @@ namespace ProyectoXperto
             LogOut.Cursor = Cursors.Hand;
             LogOut.Font = new Font("Century Gothic", 12F, FontStyle.Underline, GraphicsUnit.Point, 0);
             LogOut.ForeColor = SystemColors.Control;
-            LogOut.Location = new Point(1016, 9);
+            LogOut.Location = new Point(889, 7);
             LogOut.Name = "LogOut";
-            LogOut.Size = new Size(136, 23);
+            LogOut.Size = new Size(110, 21);
             LogOut.TabIndex = 2;
             LogOut.Text = "Cerrar Sesion";
             LogOut.Click += LogOut_Click;
@@ -87,13 +86,13 @@ namespace ProyectoXperto
             // LbUsuario
             // 
             LbUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            LbUsuario.AutoSize = true;
             LbUsuario.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             LbUsuario.ForeColor = SystemColors.Control;
-            LbUsuario.Location = new Point(1140, 42);
+            LbUsuario.Location = new Point(649, 32);
             LbUsuario.Name = "LbUsuario";
-            LbUsuario.Size = new Size(0, 23);
+            LbUsuario.Size = new Size(349, 55);
             LbUsuario.TabIndex = 1;
+            LbUsuario.TextAlign = ContentAlignment.TopRight;
             // 
             // label1
             // 
@@ -101,9 +100,9 @@ namespace ProyectoXperto
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(521, 28);
+            label1.Location = new Point(456, 21);
             label1.Name = "label1";
-            label1.Size = new Size(216, 37);
+            label1.Size = new Size(170, 28);
             label1.TabIndex = 0;
             label1.Text = "PedidoXperto";
             // 
@@ -116,10 +115,9 @@ namespace ProyectoXperto
             Leftpanel.Controls.Add(SubpanelMenuPedido);
             Leftpanel.Controls.Add(Btnpedido);
             Leftpanel.Dock = DockStyle.Left;
-            Leftpanel.Location = new Point(0, 197);
-            Leftpanel.Margin = new Padding(3, 4, 3, 4);
+            Leftpanel.Location = new Point(0, 148);
             Leftpanel.Name = "Leftpanel";
-            Leftpanel.Size = new Size(274, 711);
+            Leftpanel.Size = new Size(240, 533);
             Leftpanel.TabIndex = 1;
             Leftpanel.MouseEnter += Leftpanel_MouseEnter;
             Leftpanel.MouseLeave += Leftpanel_MouseLeave;
@@ -128,10 +126,9 @@ namespace ProyectoXperto
             // 
             SubPanelMenuAdmin.Controls.Add(BtnUsuarios);
             SubPanelMenuAdmin.Dock = DockStyle.Top;
-            SubPanelMenuAdmin.Location = new Point(0, 313);
-            SubPanelMenuAdmin.Margin = new Padding(3, 4, 3, 4);
+            SubPanelMenuAdmin.Location = new Point(0, 235);
             SubPanelMenuAdmin.Name = "SubPanelMenuAdmin";
-            SubPanelMenuAdmin.Size = new Size(274, 80);
+            SubPanelMenuAdmin.Size = new Size(240, 60);
             SubPanelMenuAdmin.TabIndex = 4;
             // 
             // BtnUsuarios
@@ -146,9 +143,8 @@ namespace ProyectoXperto
             BtnUsuarios.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnUsuarios.ForeColor = Color.Black;
             BtnUsuarios.Location = new Point(0, 0);
-            BtnUsuarios.Margin = new Padding(3, 4, 3, 4);
             BtnUsuarios.Name = "BtnUsuarios";
-            BtnUsuarios.Size = new Size(274, 77);
+            BtnUsuarios.Size = new Size(240, 58);
             BtnUsuarios.TabIndex = 1;
             BtnUsuarios.Text = "Usuarios";
             BtnUsuarios.UseVisualStyleBackColor = false;
@@ -164,10 +160,9 @@ namespace ProyectoXperto
             BtnAdministrador.FlatStyle = FlatStyle.Flat;
             BtnAdministrador.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnAdministrador.ForeColor = Color.White;
-            BtnAdministrador.Location = new Point(0, 236);
-            BtnAdministrador.Margin = new Padding(3, 4, 3, 4);
+            BtnAdministrador.Location = new Point(0, 177);
             BtnAdministrador.Name = "BtnAdministrador";
-            BtnAdministrador.Size = new Size(274, 77);
+            BtnAdministrador.Size = new Size(240, 58);
             BtnAdministrador.TabIndex = 3;
             BtnAdministrador.Text = "Administrador";
             BtnAdministrador.UseVisualStyleBackColor = true;
@@ -183,10 +178,9 @@ namespace ProyectoXperto
             Hide.FlatStyle = FlatStyle.Flat;
             Hide.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Hide.ForeColor = Color.White;
-            Hide.Location = new Point(0, 655);
-            Hide.Margin = new Padding(3, 4, 3, 4);
+            Hide.Location = new Point(0, 491);
             Hide.Name = "Hide";
-            Hide.Size = new Size(274, 56);
+            Hide.Size = new Size(240, 42);
             Hide.TabIndex = 2;
             Hide.Text = "Ocultar";
             Hide.UseVisualStyleBackColor = true;
@@ -197,10 +191,9 @@ namespace ProyectoXperto
             SubpanelMenuPedido.Controls.Add(BtnValidarPedido);
             SubpanelMenuPedido.Controls.Add(BtnNuevoPedido);
             SubpanelMenuPedido.Dock = DockStyle.Top;
-            SubpanelMenuPedido.Location = new Point(0, 77);
-            SubpanelMenuPedido.Margin = new Padding(3, 4, 3, 4);
+            SubpanelMenuPedido.Location = new Point(0, 58);
             SubpanelMenuPedido.Name = "SubpanelMenuPedido";
-            SubpanelMenuPedido.Size = new Size(274, 159);
+            SubpanelMenuPedido.Size = new Size(240, 119);
             SubpanelMenuPedido.TabIndex = 1;
             // 
             // BtnValidarPedido
@@ -214,10 +207,9 @@ namespace ProyectoXperto
             BtnValidarPedido.FlatStyle = FlatStyle.Flat;
             BtnValidarPedido.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnValidarPedido.ForeColor = Color.Black;
-            BtnValidarPedido.Location = new Point(0, 77);
-            BtnValidarPedido.Margin = new Padding(3, 4, 3, 4);
+            BtnValidarPedido.Location = new Point(0, 58);
             BtnValidarPedido.Name = "BtnValidarPedido";
-            BtnValidarPedido.Size = new Size(274, 77);
+            BtnValidarPedido.Size = new Size(240, 58);
             BtnValidarPedido.TabIndex = 2;
             BtnValidarPedido.Text = "Validar Pedido";
             BtnValidarPedido.UseVisualStyleBackColor = false;
@@ -235,9 +227,8 @@ namespace ProyectoXperto
             BtnNuevoPedido.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnNuevoPedido.ForeColor = Color.Black;
             BtnNuevoPedido.Location = new Point(0, 0);
-            BtnNuevoPedido.Margin = new Padding(3, 4, 3, 4);
             BtnNuevoPedido.Name = "BtnNuevoPedido";
-            BtnNuevoPedido.Size = new Size(274, 77);
+            BtnNuevoPedido.Size = new Size(240, 58);
             BtnNuevoPedido.TabIndex = 1;
             BtnNuevoPedido.Text = "Nuevo Pedido";
             BtnNuevoPedido.UseVisualStyleBackColor = false;
@@ -254,9 +245,8 @@ namespace ProyectoXperto
             Btnpedido.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Btnpedido.ForeColor = Color.White;
             Btnpedido.Location = new Point(0, 0);
-            Btnpedido.Margin = new Padding(3, 4, 3, 4);
             Btnpedido.Name = "Btnpedido";
-            Btnpedido.Size = new Size(274, 77);
+            Btnpedido.Size = new Size(240, 58);
             Btnpedido.TabIndex = 0;
             Btnpedido.Text = "Pedidos";
             Btnpedido.UseVisualStyleBackColor = true;
@@ -270,21 +260,19 @@ namespace ProyectoXperto
             Primarypanel.BackColor = Color.White;
             Primarypanel.Controls.Add(ImageMain);
             Primarypanel.Dock = DockStyle.Fill;
-            Primarypanel.Location = new Point(274, 197);
-            Primarypanel.Margin = new Padding(3, 4, 3, 4);
+            Primarypanel.Location = new Point(240, 148);
             Primarypanel.Name = "Primarypanel";
-            Primarypanel.Size = new Size(878, 711);
+            Primarypanel.Size = new Size(768, 533);
             Primarypanel.TabIndex = 2;
             // 
             // ImageMain
             // 
             ImageMain.Anchor = AnchorStyles.None;
             ImageMain.Image = ResourcesXperto.Logo;
-            ImageMain.Location = new Point(181, 77);
-            ImageMain.Margin = new Padding(3, 4, 3, 4);
-            ImageMain.MaximumSize = new Size(533, 488);
+            ImageMain.Location = new Point(158, 58);
+            ImageMain.MaximumSize = new Size(466, 366);
             ImageMain.Name = "ImageMain";
-            ImageMain.Size = new Size(533, 488);
+            ImageMain.Size = new Size(466, 366);
             ImageMain.SizeMode = PictureBoxSizeMode.StretchImage;
             ImageMain.TabIndex = 0;
             ImageMain.TabStop = false;
@@ -296,14 +284,13 @@ namespace ProyectoXperto
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1152, 908);
+            ClientSize = new Size(1008, 681);
             Controls.Add(Primarypanel);
             Controls.Add(Leftpanel);
             Controls.Add(Toppanel);
-            Margin = new Padding(3, 4, 3, 4);
-            MinimumSize = new Size(1168, 944);
+            MinimumSize = new Size(1024, 718);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PedidoXperto";

@@ -47,19 +47,21 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(606, 30);
+            panelTop.Size = new Size(606, 78);
             panelTop.TabIndex = 15;
             // 
             // Lb_Title
             // 
-            Lb_Title.AutoSize = true;
+            Lb_Title.Anchor = AnchorStyles.None;
+            Lb_Title.FlatStyle = FlatStyle.Flat;
             Lb_Title.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Lb_Title.ForeColor = Color.White;
-            Lb_Title.Location = new Point(192, 2);
+            Lb_Title.Location = new Point(79, 5);
             Lb_Title.Name = "Lb_Title";
-            Lb_Title.Size = new Size(234, 22);
+            Lb_Title.Size = new Size(457, 69);
             Lb_Title.TabIndex = 0;
             Lb_Title.Text = "CAMBIAR CONTRASENA";
+            Lb_Title.TextAlign = ContentAlignment.TopCenter;
             // 
             // Exit
             // 
@@ -86,7 +88,7 @@
             Enter.FlatAppearance.BorderSize = 0;
             Enter.FlatStyle = FlatStyle.Flat;
             Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(233, 264);
+            Enter.Location = new Point(245, 259);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
             Enter.TabIndex = 3;
@@ -101,6 +103,7 @@
             TxtPw.Size = new Size(295, 27);
             TxtPw.TabIndex = 2;
             TxtPw.UseSystemPasswordChar = true;
+            TxtPw.KeyDown += TxtPw_KeyDown;
             // 
             // LbUser
             // 
@@ -130,6 +133,7 @@
             Txt_Usuario.Name = "Txt_Usuario";
             Txt_Usuario.Size = new Size(295, 27);
             Txt_Usuario.TabIndex = 1;
+            Txt_Usuario.KeyDown += Txt_Usuario_KeyDown;
             // 
             // ChangePw
             // 
@@ -150,7 +154,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ChangePw";
             panelTop.ResumeLayout(false);
-            panelTop.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

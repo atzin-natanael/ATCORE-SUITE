@@ -44,7 +44,7 @@
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(59, 153);
+            label1.Location = new Point(36, 153);
             label1.Name = "label1";
             label1.Size = new Size(103, 21);
             label1.TabIndex = 0;
@@ -54,7 +54,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(96, 88);
+            label2.Location = new Point(55, 91);
             label2.Name = "label2";
             label2.Size = new Size(66, 21);
             label2.TabIndex = 0;
@@ -62,7 +62,7 @@
             // 
             // TxtPw
             // 
-            TxtPw.Location = new Point(209, 153);
+            TxtPw.Location = new Point(168, 153);
             TxtPw.Name = "TxtPw";
             TxtPw.Size = new Size(295, 27);
             TxtPw.TabIndex = 2;
@@ -77,7 +77,7 @@
             Enter.FlatAppearance.BorderSize = 0;
             Enter.FlatStyle = FlatStyle.Flat;
             Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(245, 265);
+            Enter.Location = new Point(238, 260);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
             Enter.TabIndex = 3;
@@ -107,7 +107,7 @@
             ForgetPw.AutoSize = true;
             ForgetPw.Cursor = Cursors.Hand;
             ForgetPw.ForeColor = Color.White;
-            ForgetPw.Location = new Point(209, 209);
+            ForgetPw.Location = new Point(223, 193);
             ForgetPw.Name = "ForgetPw";
             ForgetPw.Size = new Size(177, 21);
             ForgetPw.TabIndex = 5;
@@ -143,7 +143,7 @@
             // Txt_Usuario
             // 
             Txt_Usuario.CharacterCasing = CharacterCasing.Upper;
-            Txt_Usuario.Location = new Point(209, 85);
+            Txt_Usuario.Location = new Point(168, 91);
             Txt_Usuario.Name = "Txt_Usuario";
             Txt_Usuario.Size = new Size(295, 27);
             Txt_Usuario.TabIndex = 1;

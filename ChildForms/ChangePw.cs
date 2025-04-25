@@ -38,7 +38,7 @@ namespace PedidoXperto.ChildForms
 
                     // Buscar el usuario que coincida con el nombre de usuario ingresado
                     var usuario = usuarios.FindOne(x => x.UsuarioName == UsuarioModificado);  // Asegúrate de que el campo sea el nombre de usuario
-                    if(LbPw.Text == "Confirmar")
+                    if (LbPw.Text == "Confirmar")
                     {
                         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(TxtPw.Text);
                         usuario.Password = hashedPassword;
@@ -63,11 +63,11 @@ namespace PedidoXperto.ChildForms
                             LbPw.Text = "Confirmar";
                             Enter.Text = "Cambiar";
                             Txt_Usuario.Focus();
-                            Lb_Title.Text = "Administrando "+UsuarioModificado;
+                            Lb_Title.Text = "Administrando " + UsuarioModificado;
                         }
                         else if (!isMatch)
                         {
-                            MessageBox.Show("Contrasena Incorrecta", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            MessageBox.Show("Contrasena Incorrecta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             this.Close();
                         }
                     }
@@ -79,6 +79,24 @@ namespace PedidoXperto.ChildForms
                     }
                 }
 
+            }
+        }
+
+        private void Txt_Usuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                TxtPw.Focus();
+            }
+        }
+
+        private void TxtPw_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                Enter.Focus();
             }
         }
     }
