@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             Exit = new Button();
             Titulo = new Label();
             panelTop = new Panel();
@@ -68,6 +69,7 @@
             Titulo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             Titulo.FlatStyle = FlatStyle.Flat;
             Titulo.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Titulo.ForeColor = Color.White;
             Titulo.Location = new Point(515, 9);
             Titulo.Name = "Titulo";
             Titulo.Size = new Size(443, 28);
@@ -77,6 +79,7 @@
             // 
             // panelTop
             // 
+            panelTop.BackColor = Color.FromArgb(49, 46, 178);
             panelTop.Controls.Add(Exit);
             panelTop.Controls.Add(Titulo);
             panelTop.Dock = DockStyle.Top;
@@ -88,21 +91,21 @@
             // button1
             // 
             button1.AutoSize = true;
-            button1.BackColor = SystemColors.ActiveCaptionText;
+            button1.BackColor = Color.DimGray;
             button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Left;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(0, 0);
+            button1.Location = new Point(164, 0);
             button1.Name = "button1";
-            button1.Size = new Size(345, 62);
+            button1.Size = new Size(137, 62);
             button1.TabIndex = 4;
             button1.Text = "AGREGAR USUARIO";
             button1.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
+            panel2.BackColor = Color.FromArgb(49, 46, 178);
             panel2.Controls.Add(button4);
             panel2.Controls.Add(button3);
             panel2.Controls.Add(button2);
@@ -116,15 +119,14 @@
             // button4
             // 
             button4.AutoSize = true;
-            button4.BackColor = SystemColors.ActiveCaptionText;
+            button4.BackColor = Color.DimGray;
             button4.Cursor = Cursors.Hand;
-            button4.Dock = DockStyle.Left;
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
             button4.ForeColor = Color.White;
             button4.Location = new Point(1035, 0);
             button4.Name = "button4";
-            button4.Size = new Size(345, 62);
+            button4.Size = new Size(155, 62);
             button4.TabIndex = 7;
             button4.Text = "CAMBIAR NOMBRE";
             button4.UseVisualStyleBackColor = false;
@@ -133,15 +135,14 @@
             // button3
             // 
             button3.AutoSize = true;
-            button3.BackColor = SystemColors.ActiveCaptionText;
+            button3.BackColor = Color.DimGray;
             button3.Cursor = Cursors.Hand;
-            button3.Dock = DockStyle.Left;
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
             button3.ForeColor = Color.White;
             button3.Location = new Point(690, 0);
             button3.Name = "button3";
-            button3.Size = new Size(345, 62);
+            button3.Size = new Size(159, 62);
             button3.TabIndex = 6;
             button3.Text = "CAMBIAR CONTRASEÑA";
             button3.UseVisualStyleBackColor = false;
@@ -149,15 +150,14 @@
             // button2
             // 
             button2.AutoSize = true;
-            button2.BackColor = SystemColors.ActiveCaptionText;
+            button2.BackColor = Color.DimGray;
             button2.Cursor = Cursors.Hand;
-            button2.Dock = DockStyle.Left;
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
             button2.ForeColor = Color.White;
             button2.Location = new Point(345, 0);
             button2.Name = "button2";
-            button2.Size = new Size(345, 62);
+            button2.Size = new Size(159, 62);
             button2.TabIndex = 5;
             button2.Text = "ELIMINAR USUARIO";
             button2.UseVisualStyleBackColor = false;
@@ -177,15 +177,29 @@
             TablaUsuarios.AllowUserToDeleteRows = false;
             TablaUsuarios.AllowUserToResizeColumns = false;
             TablaUsuarios.AllowUserToResizeRows = false;
+            TablaUsuarios.BackgroundColor = SystemColors.ActiveBorder;
             TablaUsuarios.BorderStyle = BorderStyle.None;
+            TablaUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Black;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            TablaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             TablaUsuarios.ColumnHeadersHeight = 50;
             TablaUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             TablaUsuarios.Columns.AddRange(new DataGridViewColumn[] { Id, Column1, Column2 });
             TablaUsuarios.Dock = DockStyle.Fill;
+            TablaUsuarios.EnableHeadersVisualStyles = false;
+            TablaUsuarios.GridColor = Color.Black;
             TablaUsuarios.Location = new Point(0, 0);
             TablaUsuarios.Name = "TablaUsuarios";
             TablaUsuarios.ReadOnly = true;
             TablaUsuarios.RowHeadersVisible = false;
+            TablaUsuarios.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            TablaUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             TablaUsuarios.Size = new Size(1383, 709);
             TablaUsuarios.TabIndex = 0;
             // 

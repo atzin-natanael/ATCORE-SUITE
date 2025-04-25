@@ -32,6 +32,8 @@ namespace PedidoXperto.ChildForms
             TxtPedido.Select();
             Tabla.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             CargarExcel();
+            TxtPedido.Focus();
+            TxtPedido.Select();
             //ModuloIA();
         }
         public void Config()
@@ -435,6 +437,7 @@ namespace PedidoXperto.ChildForms
                         comentario = string.Empty;
                     }
                     rows.Add(Articulos[i].Id, Articulos[i].Codigo, Articulos[i].Descripcion, Articulos[i].Solicitado, Articulos[i].Recibido, comentario, Articulos[i].Pendiente);
+                    Tabla.Rows[i].Height = 45;
                     GlobalSettings.Instance.Renglones = Tabla.RowCount;
                     Lb_renglones.Text = GlobalSettings.Instance.Renglones.ToString();
                 }
@@ -839,6 +842,7 @@ namespace PedidoXperto.ChildForms
                     comentario = string.Empty;
                 }
                 rows.Add(Articulos[ListaTabla[i] - a].Id, Articulos[ListaTabla[i] - a].Codigo, Articulos[ListaTabla[i] - a].Descripcion, Articulos[ListaTabla[i] - a].Solicitado, Articulos[ListaTabla[i] - a].Recibido, comentario, Articulos[ListaTabla[i] - a].Pendiente);
+                Tabla.Rows[i].Height = 45;
                 DataGridViewRow row = Tabla.Rows[i];
                 if (Articulos[ListaTabla[i] - a].Solicitado - Articulos[ListaTabla[i] - a].Recibido > 0 && Articulos[ListaTabla[i] - a].Recibido != 0)
                 {
@@ -925,5 +929,41 @@ namespace PedidoXperto.ChildForms
                 con.Close();
             }
         }
+
+        private void TxtPedido_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                BtnPedido.Focus();
+            }
+        }
+
+        private void BtnPedido_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                Cb_Surtidor.Focus();
+            }
+        }
+
+        private void Cb_Surtidor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                TxtCodigo.Focus();
+            }
+        }
+
+        private void TxtCodigo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                BtnCodigo.Focus();
+            }
+        }
     }
-    }
+}
