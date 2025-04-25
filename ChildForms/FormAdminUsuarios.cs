@@ -18,6 +18,7 @@ namespace PedidoXperto.ChildForms
         {
             InitializeComponent();
             CargarUsers();
+            Design();
         }
         public void CargarUsers()
         {
@@ -45,6 +46,32 @@ namespace PedidoXperto.ChildForms
         private void button4_Click(object sender, EventArgs e)
         {
 
+        }
+        public void Design()
+        {
+            SubpanelMenu.Visible = false;
+        }
+        public void HideSubmenu()
+        {
+            if (SubpanelMenu.Visible == true)
+            {
+                SubpanelMenu.Visible = false;
+            }
+        }
+        public void mostrarSubmenu(Panel subMenu)
+        {
+            if (subMenu.Visible == false)
+            {
+                subMenu.Visible = true;
+            }
+            else
+            {
+                subMenu.Visible = false;
+            }
+        }
+        private void BtnMen_Click(object sender, EventArgs e)
+        {
+            mostrarSubmenu(SubpanelMenu);
         }
     }
 }

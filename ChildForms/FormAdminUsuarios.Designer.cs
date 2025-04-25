@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdminUsuarios));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             Exit = new Button();
             Titulo = new Label();
             panelTop = new Panel();
-            button1 = new Button();
             panel2 = new Panel();
+            SubpanelMenu = new Panel();
+            button5 = new Button();
             button4 = new Button();
             button3 = new Button();
             button2 = new Button();
+            button1 = new Button();
+            BtnMen = new Button();
             panel1 = new Panel();
             TablaUsuarios = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
@@ -44,6 +48,7 @@
             Column2 = new DataGridViewTextBoxColumn();
             panelTop.SuspendLayout();
             panel2.SuspendLayout();
+            SubpanelMenu.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TablaUsuarios).BeginInit();
             SuspendLayout();
@@ -85,90 +90,146 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(1383, 51);
+            panelTop.Size = new Size(1383, 53);
             panelTop.TabIndex = 5;
-            // 
-            // button1
-            // 
-            button1.AutoSize = true;
-            button1.BackColor = Color.DimGray;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(164, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(137, 62);
-            button1.TabIndex = 4;
-            button1.Text = "AGREGAR USUARIO";
-            button1.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(49, 46, 178);
-            panel2.Controls.Add(button4);
-            panel2.Controls.Add(button3);
-            panel2.Controls.Add(button2);
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(SubpanelMenu);
+            panel2.Controls.Add(BtnMen);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 51);
+            panel2.Location = new Point(0, 53);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1383, 62);
+            panel2.Size = new Size(1383, 46);
             panel2.TabIndex = 5;
+            // 
+            // SubpanelMenu
+            // 
+            SubpanelMenu.Controls.Add(button5);
+            SubpanelMenu.Controls.Add(button4);
+            SubpanelMenu.Controls.Add(button3);
+            SubpanelMenu.Controls.Add(button2);
+            SubpanelMenu.Controls.Add(button1);
+            SubpanelMenu.Dock = DockStyle.Fill;
+            SubpanelMenu.Location = new Point(115, 0);
+            SubpanelMenu.Name = "SubpanelMenu";
+            SubpanelMenu.Size = new Size(1268, 46);
+            SubpanelMenu.TabIndex = 7;
+            // 
+            // button5
+            // 
+            button5.AutoSize = true;
+            button5.BackColor = Color.FromArgb(150, 150, 150);
+            button5.Cursor = Cursors.Hand;
+            button5.Dock = DockStyle.Left;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.Black;
+            button5.Location = new Point(688, 0);
+            button5.Name = "button5";
+            button5.Size = new Size(172, 46);
+            button5.TabIndex = 12;
+            button5.Text = "Cambiar Contraseña";
+            button5.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
             button4.AutoSize = true;
-            button4.BackColor = Color.DimGray;
+            button4.BackColor = Color.FromArgb(150, 150, 150);
             button4.Cursor = Cursors.Hand;
+            button4.Dock = DockStyle.Left;
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.ForeColor = Color.White;
-            button4.Location = new Point(1035, 0);
+            button4.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.ForeColor = Color.Black;
+            button4.Location = new Point(516, 0);
             button4.Name = "button4";
-            button4.Size = new Size(155, 62);
-            button4.TabIndex = 7;
-            button4.Text = "CAMBIAR NOMBRE";
+            button4.Size = new Size(172, 46);
+            button4.TabIndex = 11;
+            button4.Text = "Cambiar Nombre";
             button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
             // 
             // button3
             // 
             button3.AutoSize = true;
-            button3.BackColor = Color.DimGray;
+            button3.BackColor = Color.FromArgb(150, 150, 150);
             button3.Cursor = Cursors.Hand;
+            button3.Dock = DockStyle.Left;
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(690, 0);
+            button3.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.Black;
+            button3.Location = new Point(344, 0);
             button3.Name = "button3";
-            button3.Size = new Size(159, 62);
-            button3.TabIndex = 6;
-            button3.Text = "CAMBIAR CONTRASEÑA";
+            button3.Size = new Size(172, 46);
+            button3.TabIndex = 10;
+            button3.Text = "Editar Rol";
             button3.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
             button2.AutoSize = true;
-            button2.BackColor = Color.DimGray;
+            button2.BackColor = Color.FromArgb(150, 150, 150);
             button2.Cursor = Cursors.Hand;
+            button2.Dock = DockStyle.Left;
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(345, 0);
+            button2.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.ForeColor = Color.Black;
+            button2.Location = new Point(172, 0);
             button2.Name = "button2";
-            button2.Size = new Size(159, 62);
-            button2.TabIndex = 5;
-            button2.Text = "ELIMINAR USUARIO";
+            button2.Size = new Size(172, 46);
+            button2.TabIndex = 9;
+            button2.Text = "Eliminar Usuario";
             button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.AutoSize = true;
+            button1.BackColor = Color.FromArgb(150, 150, 150);
+            button1.Cursor = Cursors.Hand;
+            button1.Dock = DockStyle.Left;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Black;
+            button1.Location = new Point(0, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(172, 46);
+            button1.TabIndex = 8;
+            button1.Text = "Agregar Usuario";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // BtnMen
+            // 
+            BtnMen.BackColor = Color.DimGray;
+            BtnMen.Cursor = Cursors.Hand;
+            BtnMen.Dock = DockStyle.Left;
+            BtnMen.FlatAppearance.BorderSize = 0;
+            BtnMen.FlatAppearance.MouseOverBackColor = SystemColors.Highlight;
+            BtnMen.FlatStyle = FlatStyle.Flat;
+            BtnMen.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnMen.ForeColor = Color.Black;
+            BtnMen.Image = (Image)resources.GetObject("BtnMen.Image");
+            BtnMen.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnMen.Location = new Point(0, 0);
+            BtnMen.Name = "BtnMen";
+            BtnMen.Size = new Size(115, 46);
+            BtnMen.TabIndex = 6;
+            BtnMen.Text = "Menú";
+            BtnMen.TextAlign = ContentAlignment.MiddleRight;
+            BtnMen.UseVisualStyleBackColor = false;
+            BtnMen.Click += BtnMen_Click;
             // 
             // panel1
             // 
             panel1.Controls.Add(TablaUsuarios);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 113);
+            panel1.Location = new Point(0, 99);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1383, 709);
+            panel1.Size = new Size(1383, 723);
             panel1.TabIndex = 6;
             // 
             // TablaUsuarios
@@ -184,8 +245,8 @@
             dataGridViewCellStyle1.BackColor = Color.Black;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             TablaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             TablaUsuarios.ColumnHeadersHeight = 50;
@@ -200,7 +261,7 @@
             TablaUsuarios.RowHeadersVisible = false;
             TablaUsuarios.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             TablaUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            TablaUsuarios.Size = new Size(1383, 709);
+            TablaUsuarios.Size = new Size(1383, 723);
             TablaUsuarios.TabIndex = 0;
             // 
             // Id
@@ -236,7 +297,8 @@
             Text = "FormAdminUsuarios";
             panelTop.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            SubpanelMenu.ResumeLayout(false);
+            SubpanelMenu.PerformLayout();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)TablaUsuarios).EndInit();
             ResumeLayout(false);
@@ -248,14 +310,17 @@
         private Label Titulo;
         private Panel panelTop;
         private Panel panel2;
-        private Button button1;
-        private Button button4;
-        private Button button3;
-        private Button button2;
         private Panel panel1;
         private DataGridView TablaUsuarios;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
+        private Button BtnMen;
+        private Button button1;
+        private Panel SubpanelMenu;
+        private Button button5;
+        private Button button4;
+        private Button button3;
+        private Button button2;
     }
 }
