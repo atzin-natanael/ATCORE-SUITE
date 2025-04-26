@@ -117,8 +117,8 @@
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
             tableLayoutPanel2.Controls.Add(panel2, 0, 0);
             tableLayoutPanel2.Controls.Add(panel3, 1, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
@@ -146,12 +146,13 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1106, 772);
+            panel2.Size = new Size(968, 772);
             panel2.TabIndex = 1;
             // 
             // button2
             // 
-            button2.Location = new Point(906, 725);
+            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button2.Location = new Point(768, 725);
             button2.Name = "button2";
             button2.Size = new Size(186, 35);
             button2.TabIndex = 23;
@@ -160,7 +161,6 @@
             // 
             // lblNombreCliente
             // 
-            lblNombreCliente.Anchor = AnchorStyles.Top;
             lblNombreCliente.FlatStyle = FlatStyle.Flat;
             lblNombreCliente.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
             lblNombreCliente.Location = new Point(542, 16);
@@ -172,7 +172,6 @@
             // 
             // txtBox_clienteId
             // 
-            txtBox_clienteId.Anchor = AnchorStyles.Top;
             txtBox_clienteId.Location = new Point(179, 14);
             txtBox_clienteId.Name = "txtBox_clienteId";
             txtBox_clienteId.Size = new Size(348, 27);
@@ -181,7 +180,6 @@
             // 
             // label3
             // 
-            label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
@@ -198,7 +196,7 @@
             label1.AutoSize = true;
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
-            label1.Location = new Point(444, 133);
+            label1.Location = new Point(375, 133);
             label1.Name = "label1";
             label1.Size = new Size(215, 23);
             label1.TabIndex = 19;
@@ -208,11 +206,12 @@
             // dataGridView1
             // 
             dataGridView1.AllowUserToOrderColumns = true;
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.BackgroundColor = SystemColors.Window;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(11, 175);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1081, 441);
+            dataGridView1.Size = new Size(943, 544);
             dataGridView1.TabIndex = 18;
             // 
             // numericUpDown1
@@ -224,7 +223,6 @@
             // 
             // TxtPedido
             // 
-            TxtPedido.Anchor = AnchorStyles.Top;
             TxtPedido.Location = new Point(178, 54);
             TxtPedido.Name = "TxtPedido";
             TxtPedido.Size = new Size(348, 27);
@@ -232,7 +230,6 @@
             // 
             // label4
             // 
-            label4.Anchor = AnchorStyles.Top;
             label4.AutoSize = true;
             label4.FlatStyle = FlatStyle.Flat;
             label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
@@ -258,10 +255,10 @@
             panel3.Controls.Add(label2);
             panel3.Controls.Add(dataGridView2);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(1106, 0);
+            panel3.Location = new Point(968, 0);
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(277, 772);
+            panel3.Size = new Size(415, 772);
             panel3.TabIndex = 2;
             // 
             // label2
@@ -270,7 +267,7 @@
             label2.AutoSize = true;
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
-            label2.Location = new Point(45, 133);
+            label2.Location = new Point(114, 133);
             label2.Name = "label2";
             label2.Size = new Size(189, 23);
             label2.TabIndex = 20;
@@ -280,11 +277,13 @@
             // dataGridView2
             // 
             dataGridView2.AllowUserToOrderColumns = true;
+            dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView2.BackgroundColor = SystemColors.Window;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Location = new Point(13, 175);
+            dataGridView2.Margin = new Padding(5, 0, 5, 0);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(252, 441);
+            dataGridView2.Size = new Size(390, 544);
             dataGridView2.TabIndex = 19;
             // 
             // FormCrearPedido

@@ -24,7 +24,6 @@ namespace PedidoXperto.ChildForms
         public FormValidarPedido()
         {
             InitializeComponent();
-            Config();
             //pedidos = new Pedido();
             Leer_Datos();
             Cb_Surtidor.SelectedIndex = -1;
@@ -36,45 +35,7 @@ namespace PedidoXperto.ChildForms
             TxtPedido.Select();
             //ModuloIA();
         }
-        public void Config()
-        {
-            string filePath = GlobalSettings.Instance.PathConfig+"DB.txt"; // Ruta de tu archivo de texto
-            List<string> lineas = new List<string>();
-
-            // Verificar si el archivo existe
-            if (File.Exists(filePath))
-            {
-                // Leer todas las líneas del archivo
-                using (StreamReader sr = new StreamReader(filePath))
-                {
-                    string linea;
-                    while ((linea = sr.ReadLine()) != null)
-                    {
-                        GlobalSettings.Instance.Config.Add(linea);
-                    }
-
-                }
-                GlobalSettings.Instance.Ip = GlobalSettings.Instance.Config[0];
-                GlobalSettings.Instance.Puerto = GlobalSettings.Instance.Config[1];
-                GlobalSettings.Instance.Direccion = GlobalSettings.Instance.Config[2];
-                GlobalSettings.Instance.User = GlobalSettings.Instance.Config[3];
-                GlobalSettings.Instance.Pw = GlobalSettings.Instance.Config[4];
-
-                GlobalSettings.Instance.StringConnection =
-                    "User=" + GlobalSettings.Instance.User + ";" +
-                    "Password=" + GlobalSettings.Instance.Pw + ";" +
-                    "Database=" + GlobalSettings.Instance.Direccion + ";" +
-                    "DataSource=" + GlobalSettings.Instance.Ip + ";" +
-                    "Port=" + GlobalSettings.Instance.Puerto + ";" +
-                    "Dialect=3;" +
-                    "Charset=UTF8;";
-            }
-            else
-            {
-                MessageBox.Show("Credenciales para base de datos no encontradas", "DB.txt", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
+        
         public void CargarExcel()
         {
             string filePath = "C:\\clavesSurtido\\Claves.xlsx";

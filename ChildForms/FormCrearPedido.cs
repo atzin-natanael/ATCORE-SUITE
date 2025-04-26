@@ -21,9 +21,9 @@ namespace PedidoXperto.ChildForms
 
             Data bridge = new();
 
-            var data = bridge.SearchClient(txtBox_clienteId.Text);
+            var data = bridge.GetClientName(txtBox_clienteId.Text);
 
-            if (data != null)
+            if (data == null)
             {
                 lblNombreCliente.Text = "Cliente no encontrado";
             }
@@ -34,7 +34,7 @@ namespace PedidoXperto.ChildForms
         private bool InvalidText()
         {
             var clientId = txtBox_clienteId.Text;
-            return string.IsNullOrEmpty(clientId) || clientId.Length < 4;
+            return string.IsNullOrEmpty(clientId) || clientId.Length < 6;
         }
     }
 }

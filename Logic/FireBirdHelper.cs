@@ -1,14 +1,19 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
+using PedidoXperto.ChildClases;
 using System.Data;
 
 namespace PedidoXperto.Logic
 {
     public class FireBirdHelper
     {
-        private readonly string _connectionString = "emptyConnectionString";
-        public FireBirdHelper(string connectionString)
+        private string _connectionString;
+
+        public FireBirdHelper(string? connectionString = null)
         {
-            _connectionString = connectionString;
+            if (connectionString == null)//Conexion por defecto
+                _connectionString = GlobalSettings.Instance.StringConnection;
+            else
+                _connectionString = connectionString;
         }
 
         /// <summary>
