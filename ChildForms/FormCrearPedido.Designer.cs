@@ -59,26 +59,27 @@
             // 
             // Titulo
             // 
-            Titulo.Dock = DockStyle.Left;
+            Titulo.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             Titulo.FlatStyle = FlatStyle.Flat;
             Titulo.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Titulo.Location = new Point(0, 0);
             Titulo.Margin = new Padding(0);
             Titulo.Name = "Titulo";
-            Titulo.Size = new Size(1236, 50);
+            Titulo.Size = new Size(1242, 50);
             Titulo.TabIndex = 3;
             Titulo.Text = "CREAR PEDIDO";
             Titulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Exit
             // 
+            Exit.Anchor = AnchorStyles.Right;
             Exit.BackColor = SystemColors.ActiveCaptionText;
             Exit.Cursor = Cursors.Hand;
-            Exit.Dock = DockStyle.Right;
             Exit.FlatAppearance.BorderSize = 0;
             Exit.FlatStyle = FlatStyle.Flat;
             Exit.ForeColor = Color.White;
             Exit.Location = new Point(1242, 0);
+            Exit.Margin = new Padding(0);
             Exit.Name = "Exit";
             Exit.Size = new Size(141, 50);
             Exit.TabIndex = 2;
