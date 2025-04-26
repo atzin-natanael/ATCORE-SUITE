@@ -31,7 +31,7 @@ namespace PedidoXperto.ChildForms
         {
             if (TxtPw.Text != string.Empty && Txt_Usuario.Text != string.Empty)
             {
-                using (var db = new LiteDatabase("C:\\ConfigDB\\USUARIOS_TRASPASOS.db"))
+                using (var db = new LiteDatabase(GlobalSettings.Instance.PathConfig+"USUARIOS_TRASPASOS.db"))
                 {
 
                     var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");

@@ -22,7 +22,7 @@ namespace PedidoXperto.ChildForms
         }
         public void CargarUsers()
         {
-            using (var db = new LiteDatabase("C:\\ConfigDB\\USUARIOS_TRASPASOS.db"))
+            using (var db = new LiteDatabase(GlobalSettings.Instance.PathConfig+"USUARIOS_TRASPASOS.db"))
             {
                 var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
                 // Obtener todos los usuarios de la base de datos

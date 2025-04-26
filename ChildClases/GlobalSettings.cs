@@ -65,7 +65,7 @@ namespace PedidoXperto.ChildClases
         public string Crear_clave { get; set; }
         public string Crear_Nombre { get; set; }
         public int Bd { get; set; }
-
+        public string PathConfig { get; } = "C:\\ConfigDB\\";
         public int Trn { get; set; }
         private GlobalSettings()
         {

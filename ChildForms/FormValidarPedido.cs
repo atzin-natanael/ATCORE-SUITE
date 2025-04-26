@@ -38,7 +38,7 @@ namespace PedidoXperto.ChildForms
         }
         public void Config()
         {
-            string filePath = "C:\\ConfigDB\\DB.txt"; // Ruta de tu archivo de texto
+            string filePath = GlobalSettings.Instance.PathConfig+"DB.txt"; // Ruta de tu archivo de texto
             List<string> lineas = new List<string>();
 
             // Verificar si el archivo existe
@@ -77,7 +77,7 @@ namespace PedidoXperto.ChildForms
         }
         public void CargarExcel()
         {
-            string filePath = "C:\\clavesSurtido\\Faltantes Excluidos.xlsx";
+            string filePath = "C:\\clavesSurtido\\Claves.xlsx";
             //string filePath = "C:\\clavesSurtido\\Claves.xlsx";
             using (SLDocument documento = new SLDocument(filePath))
             {
