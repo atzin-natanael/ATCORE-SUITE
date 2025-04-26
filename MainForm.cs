@@ -129,7 +129,7 @@ namespace ProyectoXperto
 
         private void Btnpedido_MouseClick(object sender, MouseEventArgs e)
         {
-            Btnpedido.ForeColor = Color.FromArgb(49, 46, 178);
+            //Btnpedido.ForeColor = Color.FromArgb(49, 46, 178);
         }
         private void Btnpedido_MouseEnter(object sender, EventArgs e)
         {
@@ -139,7 +139,7 @@ namespace ProyectoXperto
 
         private void Btnpedido_MouseLeave(object sender, EventArgs e)
         {
-            Btnpedido.ForeColor = Color.WhiteSmoke;
+            Btnpedido.ForeColor = Color.Black;
         }
 
         private void Btnpedido_MouseDown(object sender, MouseEventArgs e)
@@ -303,6 +303,16 @@ namespace ProyectoXperto
                 login.ShowDialog();
                 this.Close();
             }
+        }
+
+        private void BtnAdministrador_MouseEnter(object sender, EventArgs e)
+        {
+            BtnAdministrador.ForeColor = Color.WhiteSmoke;
+        }
+
+        private void BtnAdministrador_MouseLeave(object sender, EventArgs e)
+        {
+            BtnAdministrador.ForeColor = Color.Black;
         }
     }
 }

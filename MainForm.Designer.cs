@@ -153,14 +153,14 @@ namespace ProyectoXperto
             // 
             // BtnAdministrador
             // 
-            BtnAdministrador.BackColor = Color.Red;
+            BtnAdministrador.BackColor = Color.Silver;
             BtnAdministrador.Cursor = Cursors.Hand;
             BtnAdministrador.Dock = DockStyle.Top;
             BtnAdministrador.FlatAppearance.BorderSize = 0;
-            BtnAdministrador.FlatAppearance.MouseOverBackColor = Color.Maroon;
+            BtnAdministrador.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnAdministrador.FlatStyle = FlatStyle.Flat;
             BtnAdministrador.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnAdministrador.ForeColor = Color.White;
+            BtnAdministrador.ForeColor = Color.Black;
             BtnAdministrador.Location = new Point(0, 171);
             BtnAdministrador.Name = "BtnAdministrador";
             BtnAdministrador.Size = new Size(240, 58);
@@ -168,6 +168,8 @@ namespace ProyectoXperto
             BtnAdministrador.Text = "Administrador";
             BtnAdministrador.UseVisualStyleBackColor = false;
             BtnAdministrador.Click += BtnAdministrador_Click;
+            BtnAdministrador.MouseEnter += BtnAdministrador_MouseEnter;
+            BtnAdministrador.MouseLeave += BtnAdministrador_MouseLeave;
             // 
             // Hide
             // 
@@ -235,14 +237,14 @@ namespace ProyectoXperto
             // 
             // Btnpedido
             // 
-            Btnpedido.BackColor = Color.Red;
+            Btnpedido.BackColor = Color.Silver;
             Btnpedido.Cursor = Cursors.Hand;
             Btnpedido.Dock = DockStyle.Top;
             Btnpedido.FlatAppearance.BorderSize = 0;
-            Btnpedido.FlatAppearance.MouseOverBackColor = Color.Maroon;
+            Btnpedido.FlatAppearance.MouseOverBackColor = Color.Gray;
             Btnpedido.FlatStyle = FlatStyle.Flat;
             Btnpedido.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Btnpedido.ForeColor = Color.White;
+            Btnpedido.ForeColor = Color.Black;
             Btnpedido.Location = new Point(0, 0);
             Btnpedido.Name = "Btnpedido";
             Btnpedido.Size = new Size(240, 58);

@@ -77,9 +77,9 @@
             Titulo.FlatStyle = FlatStyle.Flat;
             Titulo.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Titulo.ForeColor = Color.White;
-            Titulo.Location = new Point(515, 9);
+            Titulo.Location = new Point(139, 0);
             Titulo.Name = "Titulo";
-            Titulo.Size = new Size(443, 28);
+            Titulo.Size = new Size(1097, 53);
             Titulo.TabIndex = 4;
             Titulo.Text = "ADMINISTRADOR DE USUARIOS";
             Titulo.TextAlign = ContentAlignment.MiddleCenter;
@@ -208,14 +208,14 @@
             // 
             // BtnMen
             // 
-            BtnMen.BackColor = Color.Red;
+            BtnMen.BackColor = Color.Silver;
             BtnMen.Cursor = Cursors.Hand;
             BtnMen.Dock = DockStyle.Left;
             BtnMen.FlatAppearance.BorderSize = 0;
-            BtnMen.FlatAppearance.MouseOverBackColor = Color.Maroon;
+            BtnMen.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnMen.FlatStyle = FlatStyle.Flat;
             BtnMen.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnMen.ForeColor = Color.White;
+            BtnMen.ForeColor = Color.Black;
             BtnMen.Image = (Image)resources.GetObject("BtnMen.Image");
             BtnMen.ImageAlign = ContentAlignment.MiddleLeft;
             BtnMen.Location = new Point(0, 0);

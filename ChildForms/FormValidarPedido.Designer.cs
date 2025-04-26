@@ -112,7 +112,7 @@
             label2.Name = "label2";
             label2.Size = new Size(201, 28);
             label2.TabIndex = 0;
-            label2.Text = "CODIGO DE BARRAS:";
+            label2.Text = "CÓDIGO DE BARRAS:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label3
@@ -142,6 +142,7 @@
             BtnPedido.BackColor = SystemColors.ActiveCaptionText;
             BtnPedido.Cursor = Cursors.Hand;
             BtnPedido.FlatAppearance.BorderSize = 0;
+            BtnPedido.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnPedido.FlatStyle = FlatStyle.Flat;
             BtnPedido.ForeColor = Color.White;
             BtnPedido.Location = new Point(395, 37);
@@ -159,6 +160,7 @@
             BtnCodigo.BackColor = SystemColors.ActiveCaptionText;
             BtnCodigo.Cursor = Cursors.Hand;
             BtnCodigo.FlatAppearance.BorderSize = 0;
+            BtnCodigo.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnCodigo.FlatStyle = FlatStyle.Flat;
             BtnCodigo.ForeColor = Color.White;
             BtnCodigo.Location = new Point(545, 150);
@@ -219,6 +221,7 @@
             Cargar.BackColor = SystemColors.ActiveCaptionText;
             Cargar.Cursor = Cursors.Hand;
             Cargar.FlatAppearance.BorderSize = 0;
+            Cargar.FlatAppearance.MouseOverBackColor = Color.Gray;
             Cargar.FlatStyle = FlatStyle.Flat;
             Cargar.ForeColor = Color.White;
             Cargar.Location = new Point(1242, 77);
