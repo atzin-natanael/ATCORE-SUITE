@@ -30,16 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdminUsuarios));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             Exit = new Button();
             Titulo = new Label();
             panelTop = new Panel();
             panel2 = new Panel();
             SubpanelMenu = new Panel();
-            button5 = new Button();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            BtnChangePassword = new Button();
+            BtnChangeName = new Button();
+            BtnEditRol = new Button();
+            BtnAddUser = new Button();
+            BtnDeleteUser = new Button();
             BtnMen = new Button();
             panel1 = new Panel();
             TablaUsuarios = new DataGridView();
@@ -59,6 +60,7 @@
             Exit.BackColor = SystemColors.ActiveCaptionText;
             Exit.Cursor = Cursors.Hand;
             Exit.FlatAppearance.BorderSize = 0;
+            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
             Exit.FlatStyle = FlatStyle.Flat;
             Exit.ForeColor = Color.White;
             Exit.Location = new Point(1242, 0);
@@ -106,112 +108,114 @@
             // 
             // SubpanelMenu
             // 
-            SubpanelMenu.Controls.Add(button5);
-            SubpanelMenu.Controls.Add(button4);
-            SubpanelMenu.Controls.Add(button3);
-            SubpanelMenu.Controls.Add(button2);
-            SubpanelMenu.Controls.Add(button1);
+            SubpanelMenu.Controls.Add(BtnChangePassword);
+            SubpanelMenu.Controls.Add(BtnChangeName);
+            SubpanelMenu.Controls.Add(BtnEditRol);
+            SubpanelMenu.Controls.Add(BtnAddUser);
+            SubpanelMenu.Controls.Add(BtnDeleteUser);
             SubpanelMenu.Dock = DockStyle.Fill;
             SubpanelMenu.Location = new Point(115, 0);
             SubpanelMenu.Name = "SubpanelMenu";
             SubpanelMenu.Size = new Size(1268, 46);
             SubpanelMenu.TabIndex = 7;
+            SubpanelMenu.Resize += SubpanelMenu_Resize;
             // 
-            // button5
+            // BtnChangePassword
             // 
-            button5.AutoSize = true;
-            button5.BackColor = Color.FromArgb(150, 150, 150);
-            button5.Cursor = Cursors.Hand;
-            button5.Dock = DockStyle.Left;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.Black;
-            button5.Location = new Point(688, 0);
-            button5.Name = "button5";
-            button5.Size = new Size(172, 46);
-            button5.TabIndex = 12;
-            button5.Text = "Cambiar Contraseña";
-            button5.UseVisualStyleBackColor = false;
+            BtnChangePassword.BackColor = Color.Black;
+            BtnChangePassword.Cursor = Cursors.Hand;
+            BtnChangePassword.Dock = DockStyle.Left;
+            BtnChangePassword.FlatAppearance.BorderSize = 0;
+            BtnChangePassword.FlatAppearance.MouseOverBackColor = Color.Gray;
+            BtnChangePassword.FlatStyle = FlatStyle.Flat;
+            BtnChangePassword.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnChangePassword.ForeColor = Color.White;
+            BtnChangePassword.Location = new Point(786, 0);
+            BtnChangePassword.Name = "BtnChangePassword";
+            BtnChangePassword.Size = new Size(255, 46);
+            BtnChangePassword.TabIndex = 12;
+            BtnChangePassword.Text = "Cambiar Contraseña";
+            BtnChangePassword.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // BtnChangeName
             // 
-            button4.AutoSize = true;
-            button4.BackColor = Color.FromArgb(150, 150, 150);
-            button4.Cursor = Cursors.Hand;
-            button4.Dock = DockStyle.Left;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.ForeColor = Color.Black;
-            button4.Location = new Point(516, 0);
-            button4.Name = "button4";
-            button4.Size = new Size(172, 46);
-            button4.TabIndex = 11;
-            button4.Text = "Cambiar Nombre";
-            button4.UseVisualStyleBackColor = false;
+            BtnChangeName.BackColor = Color.Black;
+            BtnChangeName.Cursor = Cursors.Hand;
+            BtnChangeName.Dock = DockStyle.Left;
+            BtnChangeName.FlatAppearance.BorderSize = 0;
+            BtnChangeName.FlatAppearance.MouseOverBackColor = Color.Gray;
+            BtnChangeName.FlatStyle = FlatStyle.Flat;
+            BtnChangeName.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnChangeName.ForeColor = Color.White;
+            BtnChangeName.Location = new Point(604, 0);
+            BtnChangeName.Name = "BtnChangeName";
+            BtnChangeName.Size = new Size(182, 46);
+            BtnChangeName.TabIndex = 11;
+            BtnChangeName.Text = "Cambiar Nombre";
+            BtnChangeName.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // BtnEditRol
             // 
-            button3.AutoSize = true;
-            button3.BackColor = Color.FromArgb(150, 150, 150);
-            button3.Cursor = Cursors.Hand;
-            button3.Dock = DockStyle.Left;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.ForeColor = Color.Black;
-            button3.Location = new Point(344, 0);
-            button3.Name = "button3";
-            button3.Size = new Size(172, 46);
-            button3.TabIndex = 10;
-            button3.Text = "Editar Rol";
-            button3.UseVisualStyleBackColor = false;
+            BtnEditRol.BackColor = Color.Black;
+            BtnEditRol.Cursor = Cursors.Hand;
+            BtnEditRol.Dock = DockStyle.Left;
+            BtnEditRol.FlatAppearance.BorderSize = 0;
+            BtnEditRol.FlatAppearance.MouseOverBackColor = Color.Gray;
+            BtnEditRol.FlatStyle = FlatStyle.Flat;
+            BtnEditRol.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnEditRol.ForeColor = Color.White;
+            BtnEditRol.Location = new Point(391, 0);
+            BtnEditRol.Name = "BtnEditRol";
+            BtnEditRol.Size = new Size(213, 46);
+            BtnEditRol.TabIndex = 10;
+            BtnEditRol.Text = "Editar Rol";
+            BtnEditRol.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // BtnAddUser
             // 
-            button2.AutoSize = true;
-            button2.BackColor = Color.FromArgb(150, 150, 150);
-            button2.Cursor = Cursors.Hand;
-            button2.Dock = DockStyle.Left;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.Black;
-            button2.Location = new Point(172, 0);
-            button2.Name = "button2";
-            button2.Size = new Size(172, 46);
-            button2.TabIndex = 9;
-            button2.Text = "Eliminar Usuario";
-            button2.UseVisualStyleBackColor = false;
+            BtnAddUser.BackColor = Color.Black;
+            BtnAddUser.Cursor = Cursors.Hand;
+            BtnAddUser.Dock = DockStyle.Left;
+            BtnAddUser.FlatAppearance.BorderSize = 0;
+            BtnAddUser.FlatAppearance.MouseOverBackColor = Color.Gray;
+            BtnAddUser.FlatStyle = FlatStyle.Flat;
+            BtnAddUser.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnAddUser.ForeColor = Color.White;
+            BtnAddUser.Location = new Point(196, 0);
+            BtnAddUser.Name = "BtnAddUser";
+            BtnAddUser.Size = new Size(195, 46);
+            BtnAddUser.TabIndex = 8;
+            BtnAddUser.Text = "Agregar Usuario";
+            BtnAddUser.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // BtnDeleteUser
             // 
-            button1.AutoSize = true;
-            button1.BackColor = Color.FromArgb(150, 150, 150);
-            button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Left;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(0, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(172, 46);
-            button1.TabIndex = 8;
-            button1.Text = "Agregar Usuario";
-            button1.UseVisualStyleBackColor = false;
+            BtnDeleteUser.BackColor = Color.Black;
+            BtnDeleteUser.Cursor = Cursors.Hand;
+            BtnDeleteUser.Dock = DockStyle.Left;
+            BtnDeleteUser.FlatAppearance.BorderSize = 0;
+            BtnDeleteUser.FlatAppearance.MouseOverBackColor = Color.Gray;
+            BtnDeleteUser.FlatStyle = FlatStyle.Flat;
+            BtnDeleteUser.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnDeleteUser.ForeColor = Color.White;
+            BtnDeleteUser.Location = new Point(0, 0);
+            BtnDeleteUser.Name = "BtnDeleteUser";
+            BtnDeleteUser.Size = new Size(196, 46);
+            BtnDeleteUser.TabIndex = 9;
+            BtnDeleteUser.Text = "Eliminar Usuario";
+            BtnDeleteUser.UseVisualStyleBackColor = false;
+            BtnDeleteUser.MouseEnter += BtnDeleteUser_MouseEnter;
             // 
             // BtnMen
             // 
-            BtnMen.BackColor = Color.DimGray;
+            BtnMen.BackColor = Color.Red;
             BtnMen.Cursor = Cursors.Hand;
             BtnMen.Dock = DockStyle.Left;
             BtnMen.FlatAppearance.BorderSize = 0;
-            BtnMen.FlatAppearance.MouseOverBackColor = SystemColors.Highlight;
+            BtnMen.FlatAppearance.MouseOverBackColor = Color.Maroon;
             BtnMen.FlatStyle = FlatStyle.Flat;
             BtnMen.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnMen.ForeColor = Color.Black;
+            BtnMen.ForeColor = Color.White;
             BtnMen.Image = (Image)resources.GetObject("BtnMen.Image");
             BtnMen.ImageAlign = ContentAlignment.MiddleLeft;
             BtnMen.Location = new Point(0, 0);
@@ -242,16 +246,24 @@
             TablaUsuarios.BorderStyle = BorderStyle.None;
             TablaUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.Black;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(49, 46, 178);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(49, 46, 178);
             dataGridViewCellStyle1.SelectionForeColor = Color.White;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             TablaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             TablaUsuarios.ColumnHeadersHeight = 50;
             TablaUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             TablaUsuarios.Columns.AddRange(new DataGridViewColumn[] { Id, Column1, Column2 });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Yellow;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            TablaUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
             TablaUsuarios.Dock = DockStyle.Fill;
             TablaUsuarios.EnableHeadersVisualStyles = false;
             TablaUsuarios.GridColor = Color.Black;
@@ -298,7 +310,6 @@
             panelTop.ResumeLayout(false);
             panel2.ResumeLayout(false);
             SubpanelMenu.ResumeLayout(false);
-            SubpanelMenu.PerformLayout();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)TablaUsuarios).EndInit();
             ResumeLayout(false);
@@ -316,11 +327,11 @@
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private Button BtnMen;
-        private Button button1;
+        private Button BtnAddUser;
+        private Button BtnChangePassword;
+        private Button BtnChangeName;
+        private Button BtnEditRol;
+        private Button BtnDeleteUser;
         private Panel SubpanelMenu;
-        private Button button5;
-        private Button button4;
-        private Button button3;
-        private Button button2;
     }
 }

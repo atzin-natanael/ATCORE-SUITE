@@ -76,6 +76,7 @@
             Exit.BackColor = SystemColors.ActiveCaptionText;
             Exit.Cursor = Cursors.Hand;
             Exit.FlatAppearance.BorderSize = 0;
+            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
             Exit.FlatStyle = FlatStyle.Flat;
             Exit.ForeColor = Color.White;
             Exit.Location = new Point(1242, 0);

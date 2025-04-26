@@ -22,7 +22,7 @@ namespace PedidoXperto.ChildForms
         }
         public void CargarUsers()
         {
-            using (var db = new LiteDatabase(GlobalSettings.Instance.PathConfig+"USUARIOS_TRASPASOS.db"))
+            using (var db = new LiteDatabase(GlobalSettings.Instance.PathConfig + "USUARIOS_TRASPASOS.db"))
             {
                 var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
                 // Obtener todos los usuarios de la base de datos
@@ -72,6 +72,20 @@ namespace PedidoXperto.ChildForms
         private void BtnMen_Click(object sender, EventArgs e)
         {
             mostrarSubmenu(SubpanelMenu);
+        }
+
+        private void SubpanelMenu_Resize(object sender, EventArgs e)
+        {
+            BtnAddUser.Width = SubpanelMenu.Width / 5;
+            BtnChangeName.Width = SubpanelMenu.Width / 5;
+            BtnDeleteUser.Width = SubpanelMenu.Width / 5;
+            BtnEditRol.Width = SubpanelMenu.Width / 5;
+            BtnChangePassword.Width = SubpanelMenu.Width / 5;
+        }
+
+        private void BtnDeleteUser_MouseEnter(object sender, EventArgs e)
+        {
+            BtnDeleteUser.ForeColor = System.Drawing.Color.White;
         }
     }
 }
