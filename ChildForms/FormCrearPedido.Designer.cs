@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             Titulo = new Label();
             Exit = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -46,23 +46,23 @@
             txtBox_clienteId = new TextBox();
             button1 = new Button();
             lblNombreCliente = new Label();
-            label4 = new Label();
-            TxtPedido = new TextBox();
             label3 = new Label();
-            numericUpDown1 = new NumericUpDown();
             label1 = new Label();
             button2 = new Button();
             panel3 = new Panel();
             panel7 = new Panel();
+            panel10 = new Panel();
+            label5 = new Label();
+            panel9 = new Panel();
             dataGridView1 = new DataGridView();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             panel8 = new Panel();
             panel6 = new Panel();
             label2 = new Label();
-            panel9 = new Panel();
-            panel10 = new Panel();
-            label5 = new Label();
+            textBox1 = new TextBox();
+            Cb_Surtidor = new ComboBox();
+            label4 = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -70,13 +70,12 @@
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Tabla).BeginInit();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             panel3.SuspendLayout();
             panel7.SuspendLayout();
+            panel10.SuspendLayout();
+            panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel6.SuspendLayout();
-            panel9.SuspendLayout();
-            panel10.SuspendLayout();
             SuspendLayout();
             // 
             // Titulo
@@ -184,14 +183,14 @@
             Tabla.AllowUserToDeleteRows = false;
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle7.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             Tabla.ColumnHeadersHeight = 50;
             Tabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             Tabla.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
@@ -233,13 +232,13 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(label4);
+            panel4.Controls.Add(Cb_Surtidor);
+            panel4.Controls.Add(textBox1);
             panel4.Controls.Add(txtBox_clienteId);
             panel4.Controls.Add(button1);
             panel4.Controls.Add(lblNombreCliente);
-            panel4.Controls.Add(label4);
-            panel4.Controls.Add(TxtPedido);
             panel4.Controls.Add(label3);
-            panel4.Controls.Add(numericUpDown1);
             panel4.Controls.Add(label1);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
@@ -249,9 +248,9 @@
             // 
             // txtBox_clienteId
             // 
-            txtBox_clienteId.Location = new Point(173, 14);
+            txtBox_clienteId.Location = new Point(341, 50);
             txtBox_clienteId.Name = "txtBox_clienteId";
-            txtBox_clienteId.Size = new Size(348, 27);
+            txtBox_clienteId.Size = new Size(298, 27);
             txtBox_clienteId.TabIndex = 21;
             txtBox_clienteId.TextChanged += txtBox_clienteId_TextChanged;
             // 
@@ -263,11 +262,11 @@
             button1.FlatAppearance.MouseOverBackColor = Color.Gray;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.White;
-            button1.Location = new Point(696, 56);
+            button1.Location = new Point(823, 3);
             button1.Name = "button1";
-            button1.Size = new Size(88, 33);
+            button1.Size = new Size(145, 33);
             button1.TabIndex = 0;
-            button1.Text = "Agregar";
+            button1.Text = "Guardar Pedido";
             button1.UseVisualStyleBackColor = false;
             // 
             // lblNombreCliente
@@ -275,32 +274,12 @@
             lblNombreCliente.FlatStyle = FlatStyle.Flat;
             lblNombreCliente.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             lblNombreCliente.ForeColor = Color.White;
-            lblNombreCliente.Location = new Point(536, 16);
+            lblNombreCliente.Location = new Point(3, 52);
             lblNombreCliente.Name = "lblNombreCliente";
-            lblNombreCliente.Size = new Size(423, 23);
+            lblNombreCliente.Size = new Size(160, 21);
             lblNombreCliente.TabIndex = 22;
-            lblNombreCliente.Text = "NombreDelCliente";
+            lblNombreCliente.Text = "Clave Cliente:";
             lblNombreCliente.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.FlatStyle = FlatStyle.Flat;
-            label4.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(8, 61);
-            label4.Name = "label4";
-            label4.Size = new Size(177, 25);
-            label4.TabIndex = 11;
-            label4.Text = "Codigo Articulo:";
-            label4.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // TxtPedido
-            // 
-            TxtPedido.Location = new Point(191, 62);
-            TxtPedido.Name = "TxtPedido";
-            TxtPedido.Size = new Size(348, 27);
-            TxtPedido.TabIndex = 14;
             // 
             // label3
             // 
@@ -308,19 +287,12 @@
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(6, 16);
+            label3.Location = new Point(341, 80);
             label3.Name = "label3";
-            label3.Size = new Size(89, 25);
+            label3.Size = new Size(213, 25);
             label3.TabIndex = 20;
-            label3.Text = "Cliente:";
+            label3.Text = "Nombre del cliente:";
             label3.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Location = new Point(571, 62);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(95, 27);
-            numericUpDown1.TabIndex = 17;
             // 
             // label1
             // 
@@ -329,7 +301,7 @@
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(359, 133);
+            label1.Location = new Point(381, 133);
             label1.Name = "label1";
             label1.Size = new Size(238, 25);
             label1.TabIndex = 19;
@@ -374,20 +346,52 @@
             panel7.Size = new Size(415, 594);
             panel7.TabIndex = 22;
             // 
+            // panel10
+            // 
+            panel10.Controls.Add(label5);
+            panel10.Dock = DockStyle.Top;
+            panel10.Location = new Point(46, 286);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(369, 286);
+            panel10.TabIndex = 24;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.None;
+            label5.AutoSize = true;
+            label5.FlatStyle = FlatStyle.Flat;
+            label5.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(133, 121);
+            label5.Name = "label5";
+            label5.Size = new Size(95, 25);
+            label5.TabIndex = 20;
+            label5.Text = "TOTALES";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel9
+            // 
+            panel9.Controls.Add(dataGridView1);
+            panel9.Dock = DockStyle.Top;
+            panel9.Location = new Point(46, 0);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(369, 286);
+            panel9.TabIndex = 23;
+            // 
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle8.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridView1.ColumnHeadersHeight = 50;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
@@ -446,37 +450,34 @@
             label2.Text = "Recomendaciones:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panel9
+            // textBox1
             // 
-            panel9.Controls.Add(dataGridView1);
-            panel9.Dock = DockStyle.Top;
-            panel9.Location = new Point(46, 0);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(369, 286);
-            panel9.TabIndex = 23;
+            textBox1.Location = new Point(169, 50);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(140, 27);
+            textBox1.TabIndex = 23;
             // 
-            // panel10
+            // Cb_Surtidor
             // 
-            panel10.Controls.Add(label5);
-            panel10.Dock = DockStyle.Top;
-            panel10.Location = new Point(46, 286);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(369, 286);
-            panel10.TabIndex = 24;
+            Cb_Surtidor.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Cb_Surtidor.FormattingEnabled = true;
+            Cb_Surtidor.Location = new Point(138, 3);
+            Cb_Surtidor.Name = "Cb_Surtidor";
+            Cb_Surtidor.Size = new Size(348, 27);
+            Cb_Surtidor.TabIndex = 25;
             // 
-            // label5
+            // label4
             // 
-            label5.Anchor = AnchorStyles.None;
-            label5.AutoSize = true;
-            label5.FlatStyle = FlatStyle.Flat;
-            label5.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(133, 121);
-            label5.Name = "label5";
-            label5.Size = new Size(95, 25);
-            label5.TabIndex = 20;
-            label5.Text = "TOTALES";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
+            label4.AutoSize = true;
+            label4.FlatStyle = FlatStyle.Flat;
+            label4.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(3, 3);
+            label4.Name = "label4";
+            label4.Size = new Size(120, 25);
+            label4.TabIndex = 26;
+            label4.Text = "Vendedor:";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FormCrearPedido
             // 
@@ -498,15 +499,14 @@
             ((System.ComponentModel.ISupportInitialize)Tabla).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             panel3.ResumeLayout(false);
             panel7.ResumeLayout(false);
+            panel10.ResumeLayout(false);
+            panel10.PerformLayout();
+            panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
-            panel9.ResumeLayout(false);
-            panel10.ResumeLayout(false);
-            panel10.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -518,10 +518,7 @@
         private Panel panel1;
         private Panel panel2;
         private Button button1;
-        private Label label4;
-        private TextBox TxtPedido;
         private Label label1;
-        private NumericUpDown numericUpDown1;
         private TableLayoutPanel tableLayoutPanel2;
         private Panel panel3;
         private TextBox txtBox_clienteId;
@@ -545,5 +542,8 @@
         private Panel panel10;
         private Label label5;
         private Panel panel9;
+        private TextBox textBox1;
+        private Label label4;
+        private ComboBox Cb_Surtidor;
     }
 }
