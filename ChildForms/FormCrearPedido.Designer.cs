@@ -81,7 +81,7 @@
             // Titulo
             // 
             Titulo.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            Titulo.BackColor = Color.FromArgb(180, 210, 186);
+            Titulo.BackColor = Color.White;
             Titulo.FlatStyle = FlatStyle.Flat;
             Titulo.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Titulo.ForeColor = Color.Black;
@@ -181,6 +181,7 @@
             // 
             Tabla.AllowUserToAddRows = false;
             Tabla.AllowUserToDeleteRows = false;
+            Tabla.BackgroundColor = Color.Beige;
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -232,7 +233,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.FromArgb(180, 210, 186);
+            panel4.BackColor = Color.White;
             panel4.Controls.Add(label4);
             panel4.Controls.Add(Cb_Surtidor);
             panel4.Controls.Add(textBox1);
@@ -367,7 +368,7 @@
             // 
             // panel7
             // 
-            panel7.BackColor = Color.FromArgb(180, 210, 186);
+            panel7.BackColor = Color.White;
             panel7.Controls.Add(panel10);
             panel7.Controls.Add(panel9);
             panel7.Controls.Add(panel8);
@@ -379,7 +380,7 @@
             // 
             // panel10
             // 
-            panel10.BackColor = Color.FromArgb(180, 210, 186);
+            panel10.BackColor = Color.White;
             panel10.Controls.Add(label5);
             panel10.Dock = DockStyle.Top;
             panel10.Location = new Point(46, 286);
@@ -414,6 +415,7 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.BackgroundColor = Color.Beige;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -453,7 +455,7 @@
             // 
             // panel8
             // 
-            panel8.BackColor = Color.FromArgb(180, 210, 186);
+            panel8.BackColor = Color.White;
             panel8.Dock = DockStyle.Left;
             panel8.Location = new Point(0, 0);
             panel8.Name = "panel8";
@@ -462,7 +464,7 @@
             // 
             // panel6
             // 
-            panel6.BackColor = Color.FromArgb(180, 210, 186);
+            panel6.BackColor = Color.White;
             panel6.Controls.Add(label2);
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 0);

@@ -192,7 +192,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(180, 210, 227);
+            panel1.BackColor = Color.Beige;
             panel1.Controls.Add(Cargar);
             panel1.Controls.Add(Cancelado);
             panel1.Controls.Add(Lb_Incompletos);
