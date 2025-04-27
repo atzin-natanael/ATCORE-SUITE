@@ -59,7 +59,7 @@ namespace ProyectoXperto
             // 
             // Toppanel
             // 
-            Toppanel.BackColor = Color.FromArgb(49, 46, 178);
+            Toppanel.BackColor = Color.FromArgb(60, 60, 60);
             Toppanel.Controls.Add(LogOut);
             Toppanel.Controls.Add(LbUsuario);
             Toppanel.Controls.Add(label1);
@@ -110,7 +110,7 @@ namespace ProyectoXperto
             // 
             // Leftpanel
             // 
-            Leftpanel.BackColor = Color.Black;
+            Leftpanel.BackColor = Color.FromArgb(205, 202, 204);
             Leftpanel.Controls.Add(SubPanelMenuAdmin);
             Leftpanel.Controls.Add(BtnAdministrador);
             Leftpanel.Controls.Add(Hide);
@@ -135,7 +135,7 @@ namespace ProyectoXperto
             // 
             // BtnUsuarios
             // 
-            BtnUsuarios.BackColor = Color.Black;
+            BtnUsuarios.BackColor = Color.FromArgb(60, 60, 60);
             BtnUsuarios.Cursor = Cursors.Hand;
             BtnUsuarios.Dock = DockStyle.Top;
             BtnUsuarios.FlatAppearance.BorderSize = 0;
@@ -201,7 +201,7 @@ namespace ProyectoXperto
             // 
             // BtnValidarPedido
             // 
-            BtnValidarPedido.BackColor = Color.Black;
+            BtnValidarPedido.BackColor = Color.FromArgb(60, 60, 60);
             BtnValidarPedido.Cursor = Cursors.Hand;
             BtnValidarPedido.Dock = DockStyle.Top;
             BtnValidarPedido.FlatAppearance.BorderSize = 0;
@@ -219,7 +219,7 @@ namespace ProyectoXperto
             // 
             // BtnNuevoPedido
             // 
-            BtnNuevoPedido.BackColor = Color.Black;
+            BtnNuevoPedido.BackColor = Color.FromArgb(60, 60, 60);
             BtnNuevoPedido.Cursor = Cursors.Hand;
             BtnNuevoPedido.Dock = DockStyle.Top;
             BtnNuevoPedido.FlatAppearance.BorderSize = 0;
@@ -285,6 +285,7 @@ namespace ProyectoXperto
             // 
             // Primarypanel
             // 
+            Primarypanel.BackColor = Color.FromArgb(180, 210, 186);
             Primarypanel.Controls.Add(ImageMain);
             Primarypanel.Dock = DockStyle.Fill;
             Primarypanel.Location = new Point(0, 58);

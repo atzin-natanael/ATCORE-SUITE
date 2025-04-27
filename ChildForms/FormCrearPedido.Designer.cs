@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             Titulo = new Label();
             Exit = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -43,6 +43,9 @@
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             panel4 = new Panel();
+            label4 = new Label();
+            Cb_Surtidor = new ComboBox();
+            textBox1 = new TextBox();
             txtBox_clienteId = new TextBox();
             button1 = new Button();
             lblNombreCliente = new Label();
@@ -60,9 +63,6 @@
             panel8 = new Panel();
             panel6 = new Panel();
             label2 = new Label();
-            textBox1 = new TextBox();
-            Cb_Surtidor = new ComboBox();
-            label4 = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -81,10 +81,10 @@
             // Titulo
             // 
             Titulo.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            Titulo.BackColor = Color.FromArgb(49, 46, 178);
+            Titulo.BackColor = Color.FromArgb(180, 210, 186);
             Titulo.FlatStyle = FlatStyle.Flat;
             Titulo.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Titulo.ForeColor = Color.White;
+            Titulo.ForeColor = Color.Black;
             Titulo.Location = new Point(0, 0);
             Titulo.Margin = new Padding(0);
             Titulo.Name = "Titulo";
@@ -96,7 +96,7 @@
             // Exit
             // 
             Exit.Anchor = AnchorStyles.Right;
-            Exit.BackColor = SystemColors.ActiveCaptionText;
+            Exit.BackColor = Color.FromArgb(60, 60, 60);
             Exit.Cursor = Cursors.Hand;
             Exit.FlatAppearance.BorderSize = 0;
             Exit.FlatAppearance.MouseOverBackColor = Color.Red;
@@ -183,14 +183,14 @@
             Tabla.AllowUserToDeleteRows = false;
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle7.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             Tabla.ColumnHeadersHeight = 50;
             Tabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             Tabla.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
@@ -232,6 +232,7 @@
             // 
             // panel4
             // 
+            panel4.BackColor = Color.FromArgb(180, 210, 186);
             panel4.Controls.Add(label4);
             panel4.Controls.Add(Cb_Surtidor);
             panel4.Controls.Add(textBox1);
@@ -246,6 +247,35 @@
             panel4.Size = new Size(968, 178);
             panel4.TabIndex = 24;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.FlatStyle = FlatStyle.Flat;
+            label4.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
+            label4.ForeColor = Color.Black;
+            label4.Location = new Point(3, 3);
+            label4.Name = "label4";
+            label4.Size = new Size(120, 25);
+            label4.TabIndex = 26;
+            label4.Text = "Vendedor:";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // Cb_Surtidor
+            // 
+            Cb_Surtidor.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Cb_Surtidor.FormattingEnabled = true;
+            Cb_Surtidor.Location = new Point(138, 3);
+            Cb_Surtidor.Name = "Cb_Surtidor";
+            Cb_Surtidor.Size = new Size(348, 27);
+            Cb_Surtidor.TabIndex = 25;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(169, 50);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(140, 27);
+            textBox1.TabIndex = 23;
+            // 
             // txtBox_clienteId
             // 
             txtBox_clienteId.Location = new Point(341, 50);
@@ -257,7 +287,7 @@
             // button1
             // 
             button1.AutoSize = true;
-            button1.BackColor = Color.Black;
+            button1.BackColor = Color.FromArgb(60, 60, 60);
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatAppearance.MouseOverBackColor = Color.Gray;
             button1.FlatStyle = FlatStyle.Flat;
@@ -273,7 +303,7 @@
             // 
             lblNombreCliente.FlatStyle = FlatStyle.Flat;
             lblNombreCliente.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            lblNombreCliente.ForeColor = Color.White;
+            lblNombreCliente.ForeColor = Color.Black;
             lblNombreCliente.Location = new Point(3, 52);
             lblNombreCliente.Name = "lblNombreCliente";
             lblNombreCliente.Size = new Size(160, 21);
@@ -286,7 +316,7 @@
             label3.AutoSize = true;
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            label3.ForeColor = Color.White;
+            label3.ForeColor = Color.Black;
             label3.Location = new Point(341, 80);
             label3.Name = "label3";
             label3.Size = new Size(213, 25);
@@ -300,7 +330,7 @@
             label1.AutoSize = true;
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(381, 133);
             label1.Name = "label1";
             label1.Size = new Size(238, 25);
@@ -337,6 +367,7 @@
             // 
             // panel7
             // 
+            panel7.BackColor = Color.FromArgb(180, 210, 186);
             panel7.Controls.Add(panel10);
             panel7.Controls.Add(panel9);
             panel7.Controls.Add(panel8);
@@ -348,6 +379,7 @@
             // 
             // panel10
             // 
+            panel10.BackColor = Color.FromArgb(180, 210, 186);
             panel10.Controls.Add(label5);
             panel10.Dock = DockStyle.Top;
             panel10.Location = new Point(46, 286);
@@ -361,7 +393,7 @@
             label5.AutoSize = true;
             label5.FlatStyle = FlatStyle.Flat;
             label5.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            label5.ForeColor = Color.White;
+            label5.ForeColor = Color.Black;
             label5.Location = new Point(133, 121);
             label5.Name = "label5";
             label5.Size = new Size(95, 25);
@@ -384,14 +416,14 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle8.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeight = 50;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
@@ -421,6 +453,7 @@
             // 
             // panel8
             // 
+            panel8.BackColor = Color.FromArgb(180, 210, 186);
             panel8.Dock = DockStyle.Left;
             panel8.Location = new Point(0, 0);
             panel8.Name = "panel8";
@@ -429,6 +462,7 @@
             // 
             // panel6
             // 
+            panel6.BackColor = Color.FromArgb(180, 210, 186);
             panel6.Controls.Add(label2);
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 0);
@@ -442,42 +476,13 @@
             label2.AutoSize = true;
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            label2.ForeColor = Color.White;
+            label2.ForeColor = Color.Black;
             label2.Location = new Point(127, 133);
             label2.Name = "label2";
             label2.Size = new Size(209, 25);
             label2.TabIndex = 20;
             label2.Text = "Recomendaciones:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(169, 50);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(140, 27);
-            textBox1.TabIndex = 23;
-            // 
-            // Cb_Surtidor
-            // 
-            Cb_Surtidor.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Cb_Surtidor.FormattingEnabled = true;
-            Cb_Surtidor.Location = new Point(138, 3);
-            Cb_Surtidor.Name = "Cb_Surtidor";
-            Cb_Surtidor.Size = new Size(348, 27);
-            Cb_Surtidor.TabIndex = 25;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.FlatStyle = FlatStyle.Flat;
-            label4.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(3, 3);
-            label4.Name = "label4";
-            label4.Size = new Size(120, 25);
-            label4.TabIndex = 26;
-            label4.Text = "Vendedor:";
-            label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FormCrearPedido
             // 

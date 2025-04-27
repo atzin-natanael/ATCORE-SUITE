@@ -85,7 +85,7 @@ namespace PedidoXperto.ChildForms
 
         private void BtnDeleteUser_MouseEnter(object sender, EventArgs e)
         {
-            BtnDeleteUser.ForeColor = System.Drawing.Color.White;
+            //BtnDeleteUser.ForeColor = System.Drawing.Color.White;
         }
     }
 }

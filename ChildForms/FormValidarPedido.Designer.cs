@@ -63,7 +63,7 @@
             // Exit
             // 
             Exit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Exit.BackColor = SystemColors.ActiveCaptionText;
+            Exit.BackColor = Color.FromArgb(60, 60, 60);
             Exit.Cursor = Cursors.Hand;
             Exit.FlatAppearance.BorderSize = 0;
             Exit.FlatAppearance.MouseOverBackColor = Color.Red;
@@ -82,7 +82,7 @@
             Titulo.Anchor = AnchorStyles.Top;
             Titulo.FlatStyle = FlatStyle.Flat;
             Titulo.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Titulo.ForeColor = SystemColors.Control;
+            Titulo.ForeColor = Color.Black;
             Titulo.Location = new Point(568, 0);
             Titulo.Name = "Titulo";
             Titulo.Size = new Size(305, 28);
@@ -94,7 +94,7 @@
             // 
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.Control;
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(10, 75);
             label1.Name = "label1";
             label1.Size = new Size(144, 28);
@@ -107,7 +107,7 @@
             label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = SystemColors.Control;
+            label2.ForeColor = Color.Black;
             label2.Location = new Point(12, 150);
             label2.Name = "label2";
             label2.Size = new Size(201, 28);
@@ -119,7 +119,7 @@
             // 
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.Control;
+            label3.ForeColor = Color.Black;
             label3.Location = new Point(27, 38);
             label3.Name = "label3";
             label3.Size = new Size(150, 28);
@@ -139,7 +139,7 @@
             // 
             // BtnPedido
             // 
-            BtnPedido.BackColor = SystemColors.ActiveCaptionText;
+            BtnPedido.BackColor = Color.FromArgb(60, 60, 60);
             BtnPedido.Cursor = Cursors.Hand;
             BtnPedido.FlatAppearance.BorderSize = 0;
             BtnPedido.FlatAppearance.MouseOverBackColor = Color.Gray;
@@ -157,7 +157,7 @@
             // BtnCodigo
             // 
             BtnCodigo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            BtnCodigo.BackColor = SystemColors.ActiveCaptionText;
+            BtnCodigo.BackColor = Color.FromArgb(60, 60, 60);
             BtnCodigo.Cursor = Cursors.Hand;
             BtnCodigo.FlatAppearance.BorderSize = 0;
             BtnCodigo.FlatAppearance.MouseOverBackColor = Color.Gray;
@@ -192,7 +192,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(49, 46, 178);
+            panel1.BackColor = Color.FromArgb(180, 210, 227);
             panel1.Controls.Add(Cargar);
             panel1.Controls.Add(Cancelado);
             panel1.Controls.Add(Lb_Incompletos);
@@ -218,7 +218,7 @@
             // Cargar
             // 
             Cargar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Cargar.BackColor = SystemColors.ActiveCaptionText;
+            Cargar.BackColor = Color.FromArgb(60, 60, 60);
             Cargar.Cursor = Cursors.Hand;
             Cargar.FlatAppearance.BorderSize = 0;
             Cargar.FlatAppearance.MouseOverBackColor = Color.Gray;
@@ -244,7 +244,7 @@
             Lb_Incompletos.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             Lb_Incompletos.FlatStyle = FlatStyle.Flat;
             Lb_Incompletos.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
-            Lb_Incompletos.ForeColor = SystemColors.Control;
+            Lb_Incompletos.ForeColor = Color.Black;
             Lb_Incompletos.Location = new Point(1293, 164);
             Lb_Incompletos.Name = "Lb_Incompletos";
             Lb_Incompletos.Size = new Size(78, 28);
@@ -257,7 +257,7 @@
             Lb_renglones.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             Lb_renglones.FlatStyle = FlatStyle.Flat;
             Lb_renglones.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
-            Lb_renglones.ForeColor = SystemColors.Control;
+            Lb_renglones.ForeColor = Color.Black;
             Lb_renglones.Location = new Point(1293, 136);
             Lb_renglones.Name = "Lb_renglones";
             Lb_renglones.Size = new Size(78, 28);
@@ -270,7 +270,7 @@
             label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label5.FlatStyle = FlatStyle.Flat;
             label5.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
-            label5.ForeColor = SystemColors.Control;
+            label5.ForeColor = Color.Black;
             label5.Location = new Point(1035, 164);
             label5.Name = "label5";
             label5.Size = new Size(262, 28);
@@ -283,7 +283,7 @@
             label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label4.FlatStyle = FlatStyle.Flat;
             label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
-            label4.ForeColor = SystemColors.Control;
+            label4.ForeColor = Color.Black;
             label4.Location = new Point(1059, 136);
             label4.Name = "label4";
             label4.Size = new Size(238, 28);
@@ -307,10 +307,10 @@
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(60, 60, 60);
             dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(60, 60, 60);
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
