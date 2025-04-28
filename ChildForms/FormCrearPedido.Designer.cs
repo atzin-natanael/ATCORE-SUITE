@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             Titulo = new Label();
             Exit = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -47,7 +47,7 @@
             Cb_Surtidor = new ComboBox();
             textBox1 = new TextBox();
             txtBox_clienteId = new TextBox();
-            button1 = new Button();
+            Save = new Button();
             lblNombreCliente = new Label();
             label3 = new Label();
             label1 = new Label();
@@ -184,14 +184,14 @@
             Tabla.BackgroundColor = Color.Beige;
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle3.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             Tabla.ColumnHeadersHeight = 50;
             Tabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             Tabla.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
@@ -238,7 +238,7 @@
             panel4.Controls.Add(Cb_Surtidor);
             panel4.Controls.Add(textBox1);
             panel4.Controls.Add(txtBox_clienteId);
-            panel4.Controls.Add(button1);
+            panel4.Controls.Add(Save);
             panel4.Controls.Add(lblNombreCliente);
             panel4.Controls.Add(label3);
             panel4.Controls.Add(label1);
@@ -285,20 +285,21 @@
             txtBox_clienteId.TabIndex = 21;
             txtBox_clienteId.TextChanged += txtBox_clienteId_TextChanged;
             // 
-            // button1
+            // Save
             // 
-            button1.AutoSize = true;
-            button1.BackColor = Color.FromArgb(60, 60, 60);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseOverBackColor = Color.Gray;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(823, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(145, 33);
-            button1.TabIndex = 0;
-            button1.Text = "Guardar Pedido";
-            button1.UseVisualStyleBackColor = false;
+            Save.AutoSize = true;
+            Save.BackColor = Color.FromArgb(60, 60, 60);
+            Save.FlatAppearance.BorderSize = 0;
+            Save.FlatAppearance.MouseOverBackColor = Color.Gray;
+            Save.FlatStyle = FlatStyle.Flat;
+            Save.ForeColor = Color.White;
+            Save.Location = new Point(823, 3);
+            Save.Name = "Save";
+            Save.Size = new Size(145, 33);
+            Save.TabIndex = 0;
+            Save.Text = "Guardar Pedido";
+            Save.UseVisualStyleBackColor = false;
+            Save.Click += Save_Click;
             // 
             // lblNombreCliente
             // 
@@ -418,14 +419,14 @@
             dataGridView1.BackgroundColor = Color.Beige;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.ColumnHeadersHeight = 50;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
@@ -524,7 +525,7 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel1;
         private Panel panel2;
-        private Button button1;
+        private Button Save;
         private Label label1;
         private TableLayoutPanel tableLayoutPanel2;
         private Panel panel3;

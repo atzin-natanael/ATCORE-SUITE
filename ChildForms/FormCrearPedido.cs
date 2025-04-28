@@ -36,5 +36,10 @@ namespace PedidoXperto.ChildForms
             var clientId = txtBox_clienteId.Text;
             return string.IsNullOrEmpty(clientId) || clientId.Length < 6;
         }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

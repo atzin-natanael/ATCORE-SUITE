@@ -86,7 +86,7 @@
             // 
             // panelTop
             // 
-            panelTop.BackColor = Color.FromArgb(180, 210, 227);
+            panelTop.BackColor = Color.Beige;
             panelTop.Controls.Add(Exit);
             panelTop.Controls.Add(Titulo);
             panelTop.Dock = DockStyle.Top;
@@ -97,7 +97,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(180, 210, 227);
+            panel2.BackColor = Color.Beige;
             panel2.Controls.Add(SubpanelMenu);
             panel2.Controls.Add(BtnMen);
             panel2.Dock = DockStyle.Top;
@@ -108,7 +108,7 @@
             // 
             // SubpanelMenu
             // 
-            SubpanelMenu.BackColor = Color.FromArgb(180, 210, 227);
+            SubpanelMenu.BackColor = Color.Beige;
             SubpanelMenu.Controls.Add(BtnChangePassword);
             SubpanelMenu.Controls.Add(BtnChangeName);
             SubpanelMenu.Controls.Add(BtnEditRol);
@@ -137,6 +137,7 @@
             BtnChangePassword.TabIndex = 12;
             BtnChangePassword.Text = "Cambiar Contraseña";
             BtnChangePassword.UseVisualStyleBackColor = false;
+            BtnChangePassword.Click += BtnChangePassword_Click;
             // 
             // BtnChangeName
             // 
@@ -154,6 +155,7 @@
             BtnChangeName.TabIndex = 11;
             BtnChangeName.Text = "Cambiar Nombre";
             BtnChangeName.UseVisualStyleBackColor = false;
+            BtnChangeName.Click += BtnChangeName_Click;
             // 
             // BtnEditRol
             // 
@@ -171,6 +173,7 @@
             BtnEditRol.TabIndex = 10;
             BtnEditRol.Text = "Editar Rol";
             BtnEditRol.UseVisualStyleBackColor = false;
+            BtnEditRol.Click += BtnEditRol_Click;
             // 
             // BtnAddUser
             // 
@@ -188,6 +191,7 @@
             BtnAddUser.TabIndex = 8;
             BtnAddUser.Text = "Agregar Usuario";
             BtnAddUser.UseVisualStyleBackColor = false;
+            BtnAddUser.Click += BtnAddUser_Click;
             // 
             // BtnDeleteUser
             // 
@@ -205,6 +209,7 @@
             BtnDeleteUser.TabIndex = 9;
             BtnDeleteUser.Text = "Eliminar Usuario";
             BtnDeleteUser.UseVisualStyleBackColor = false;
+            BtnDeleteUser.Click += BtnDeleteUser_Click;
             BtnDeleteUser.MouseEnter += BtnDeleteUser_MouseEnter;
             // 
             // BtnMen
@@ -243,7 +248,7 @@
             TablaUsuarios.AllowUserToDeleteRows = false;
             TablaUsuarios.AllowUserToResizeColumns = false;
             TablaUsuarios.AllowUserToResizeRows = false;
-            TablaUsuarios.BackgroundColor = Color.LightGray;
+            TablaUsuarios.BackgroundColor = Color.Beige;
             TablaUsuarios.BorderStyle = BorderStyle.None;
             TablaUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -257,6 +262,7 @@
             TablaUsuarios.ColumnHeadersHeight = 50;
             TablaUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             TablaUsuarios.Columns.AddRange(new DataGridViewColumn[] { Id, Column1, Column2 });
+            TablaUsuarios.Cursor = Cursors.Hand;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -269,6 +275,7 @@
             TablaUsuarios.EnableHeadersVisualStyles = false;
             TablaUsuarios.GridColor = Color.Black;
             TablaUsuarios.Location = new Point(0, 0);
+            TablaUsuarios.MultiSelect = false;
             TablaUsuarios.Name = "TablaUsuarios";
             TablaUsuarios.ReadOnly = true;
             TablaUsuarios.RowHeadersVisible = false;
@@ -323,7 +330,6 @@
         private Panel panelTop;
         private Panel panel2;
         private Panel panel1;
-        private DataGridView TablaUsuarios;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
@@ -334,5 +340,6 @@
         private Button BtnEditRol;
         private Button BtnDeleteUser;
         private Panel SubpanelMenu;
+        public DataGridView TablaUsuarios;
     }
 }
