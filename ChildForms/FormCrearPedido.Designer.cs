@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             Titulo = new Label();
             Exit = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -38,14 +38,10 @@
             panel2 = new Panel();
             panel5 = new Panel();
             Tabla = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
             panel4 = new Panel();
             label4 = new Label();
-            Cb_Surtidor = new ComboBox();
-            textBox1 = new TextBox();
+            Cb_Vendedor = new ComboBox();
+            txtBox_clienteNombre = new TextBox();
             txtBox_clienteId = new TextBox();
             Save = new Button();
             lblNombreCliente = new Label();
@@ -63,6 +59,9 @@
             panel8 = new Panel();
             panel6 = new Panel();
             label2 = new Label();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -130,6 +129,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.White;
             panel1.Controls.Add(Titulo);
             panel1.Controls.Add(Exit);
             panel1.Dock = DockStyle.Fill;
@@ -157,7 +157,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(49, 46, 178);
+            panel2.BackColor = Color.White;
             panel2.Controls.Add(panel5);
             panel2.Controls.Add(panel4);
             panel2.Controls.Add(button2);
@@ -184,59 +184,34 @@
             Tabla.BackgroundColor = Color.Beige;
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             Tabla.ColumnHeadersHeight = 50;
             Tabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            Tabla.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
+            Tabla.Columns.AddRange(new DataGridViewColumn[] { Column2, Column3, Column4 });
             Tabla.Dock = DockStyle.Fill;
             Tabla.EnableHeadersVisualStyles = false;
             Tabla.GridColor = Color.Black;
             Tabla.Location = new Point(0, 0);
+            Tabla.MultiSelect = false;
             Tabla.Name = "Tabla";
-            Tabla.ReadOnly = true;
             Tabla.RowHeadersVisible = false;
             Tabla.RowHeadersWidth = 50;
             Tabla.Size = new Size(968, 594);
             Tabla.TabIndex = 24;
             // 
-            // Column1
-            // 
-            Column1.HeaderText = "Id";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Codigo";
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column3.HeaderText = "Descripcion";
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Cantidad";
-            Column4.Name = "Column4";
-            Column4.ReadOnly = true;
-            // 
             // panel4
             // 
             panel4.BackColor = Color.White;
             panel4.Controls.Add(label4);
-            panel4.Controls.Add(Cb_Surtidor);
-            panel4.Controls.Add(textBox1);
+            panel4.Controls.Add(Cb_Vendedor);
+            panel4.Controls.Add(txtBox_clienteNombre);
             panel4.Controls.Add(txtBox_clienteId);
             panel4.Controls.Add(Save);
             panel4.Controls.Add(lblNombreCliente);
@@ -256,34 +231,36 @@
             label4.ForeColor = Color.Black;
             label4.Location = new Point(3, 3);
             label4.Name = "label4";
-            label4.Size = new Size(120, 25);
+            label4.Size = new Size(114, 25);
             label4.TabIndex = 26;
-            label4.Text = "Vendedor:";
+            label4.Text = "Vendedor";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // Cb_Surtidor
+            // Cb_Vendedor
             // 
-            Cb_Surtidor.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Cb_Surtidor.FormattingEnabled = true;
-            Cb_Surtidor.Location = new Point(138, 3);
-            Cb_Surtidor.Name = "Cb_Surtidor";
-            Cb_Surtidor.Size = new Size(348, 27);
-            Cb_Surtidor.TabIndex = 25;
+            Cb_Vendedor.FlatStyle = FlatStyle.Flat;
+            Cb_Vendedor.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Cb_Vendedor.FormattingEnabled = true;
+            Cb_Vendedor.Location = new Point(138, 3);
+            Cb_Vendedor.Name = "Cb_Vendedor";
+            Cb_Vendedor.Size = new Size(276, 27);
+            Cb_Vendedor.TabIndex = 25;
             // 
-            // textBox1
+            // txtBox_clienteNombre
             // 
-            textBox1.Location = new Point(169, 50);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(140, 27);
-            textBox1.TabIndex = 23;
+            txtBox_clienteNombre.Location = new Point(201, 72);
+            txtBox_clienteNombre.Name = "txtBox_clienteNombre";
+            txtBox_clienteNombre.Size = new Size(370, 27);
+            txtBox_clienteNombre.TabIndex = 23;
             // 
             // txtBox_clienteId
             // 
-            txtBox_clienteId.Location = new Point(341, 50);
+            txtBox_clienteId.Location = new Point(9, 72);
             txtBox_clienteId.Name = "txtBox_clienteId";
-            txtBox_clienteId.Size = new Size(298, 27);
+            txtBox_clienteId.Size = new Size(154, 27);
             txtBox_clienteId.TabIndex = 21;
             txtBox_clienteId.TextChanged += txtBox_clienteId_TextChanged;
+            txtBox_clienteId.KeyDown += txtBox_clienteId_KeyDown;
             // 
             // Save
             // 
@@ -306,11 +283,11 @@
             lblNombreCliente.FlatStyle = FlatStyle.Flat;
             lblNombreCliente.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             lblNombreCliente.ForeColor = Color.Black;
-            lblNombreCliente.Location = new Point(3, 52);
+            lblNombreCliente.Location = new Point(3, 44);
             lblNombreCliente.Name = "lblNombreCliente";
             lblNombreCliente.Size = new Size(160, 21);
             lblNombreCliente.TabIndex = 22;
-            lblNombreCliente.Text = "Clave Cliente:";
+            lblNombreCliente.Text = "Clave Cliente";
             lblNombreCliente.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label3
@@ -319,11 +296,11 @@
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(341, 80);
+            label3.Location = new Point(201, 44);
             label3.Name = "label3";
-            label3.Size = new Size(213, 25);
+            label3.Size = new Size(207, 25);
             label3.TabIndex = 20;
-            label3.Text = "Nombre del cliente:";
+            label3.Text = "Nombre del cliente";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label1
@@ -333,7 +310,7 @@
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(381, 133);
+            label1.Location = new Point(351, 150);
             label1.Name = "label1";
             label1.Size = new Size(238, 25);
             label1.TabIndex = 19;
@@ -357,7 +334,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.FromArgb(49, 46, 178);
+            panel3.BackColor = Color.White;
             panel3.Controls.Add(panel7);
             panel3.Controls.Add(panel6);
             panel3.Dock = DockStyle.Fill;
@@ -419,14 +396,14 @@
             dataGridView1.BackgroundColor = Color.Beige;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle4.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeight = 50;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
@@ -487,6 +464,22 @@
             label2.Text = "Recomendaciones:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // Column2
+            // 
+            Column2.HeaderText = "Codigo";
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column3.HeaderText = "Descripcion";
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Cantidad";
+            Column4.Name = "Column4";
+            // 
             // FormCrearPedido
             // 
             AutoScaleDimensions = new SizeF(10F, 21F);
@@ -535,10 +528,6 @@
         private Button button2;
         private Label lblNombreCliente;
         private DataGridView Tabla;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
         private Panel panel5;
         private Panel panel4;
         private Panel panel7;
@@ -550,8 +539,11 @@
         private Panel panel10;
         private Label label5;
         private Panel panel9;
-        private TextBox textBox1;
+        private TextBox txtBox_clienteNombre;
         private Label label4;
-        private ComboBox Cb_Surtidor;
+        private ComboBox Cb_Vendedor;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
     }
 }

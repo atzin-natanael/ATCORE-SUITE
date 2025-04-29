@@ -240,7 +240,7 @@ namespace ProyectoXperto
         {
             if (activeForm != null)
             {
-                activeForm.Close();
+                activeForm.Hide();
             }
             activeForm = childForm;
             childForm.TopLevel = false;
