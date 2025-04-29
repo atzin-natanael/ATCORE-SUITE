@@ -1,8 +1,10 @@
 ﻿using System.Data;
 using System.Web;
+using System.Windows.Forms;
 using FirebirdSql.Data.FirebirdClient;
 using PedidoXperto.ChildClases;
 using PedidoXperto.Logic;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace PedidoXperto.ChildForms
 {
@@ -112,19 +114,45 @@ namespace PedidoXperto.ChildForms
                 {
                     if (InvalidText())
                         return;
-
                     GetFireBirdValue bridge = new();
-                    string query = "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + Tabla.CurrentRow.Cells[0].Value.ToString() + "'";
-                    var data = bridge.GetValue(query);
-                    var descripcion = bridge.GetValue("SELECT NOMBRE FROM ARTICULOS WHERE ARTICULO_ID = '" + data + "'");
-
-                    if (descripcion == null)
+                    
+                    string[] DatosArticulo = new string[2];
+                    string descuento = "";
+                    DatosArticulo = bridge.BuscarDatosArticulos(Tabla.CurrentCell.Value.ToString());
+                    if (DatosArticulo == null)
                     {
-                        MessageBox.Show("Articulo no encontrado");
+                        MessageBox.Show("Artículo no encontrado", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                     else
                     {
-                        Tabla.CurrentRow.Cells[1].Value = descripcion;
+                        Tabla.CurrentRow.Cells[1].Value = DatosArticulo[1];
+                        Tabla.CurrentRow.Cells[3].Value = DatosArticulo[2];
+                        string articulo_id = bridge.GetValue("SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + DatosArticulo[0] + "';");
+                        string cliente_id = bridge.GetValue("SELECT CLIENTE_ID FROM CLAVES_CLIENTES WHERE CLAVE_CLIENTE = '"+txtBox_clienteId.Text+"';");
+
+                        descuento = bridge.GetValue("SELECT POLITICAS_DSCTOS_ART_CLI.DESCUENTO" +
+                    "            FROM DIRS_CLIENTES" +
+                    "           JOIN CLAVES_CLIENTES ON CLAVES_CLIENTES.CLIENTE_ID = DIRS_CLIENTES.CLIENTE_ID" +
+                    "            JOIN PRECIOS_CLI_CLI ON PRECIOS_CLI_CLI.CLIENTE_ID = DIRS_CLIENTES.CLIENTE_ID" +
+                    "            JOIN POLITICAS_DSCTOS_ART_CLI ON POLITICAS_DSCTOS_ART_CLI.POLITICA_DSCTO_ART_CLI_ID = PRECIOS_CLI_CLI.POLITICA_DSCTO_ART_CLI_ID" +
+                    "           WHERE DIRS_CLIENTES.CLIENTE_ID ='" + cliente_id + "';");
+                        string descextra = bridge.GetValue("SELECT DESCUENTO FROM DSCTOS_PROMO_ARTS WHERE ARTICULO_ID = '" + articulo_id + "';");
+                        if (descextra == null)
+                            Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[4].Value = 40;
+                        else
+                        {
+                            decimal descuento1Decimal = decimal.Parse(descuento) / 100m; // Usamos 'm' para indicar que es decimal
+                            decimal descuento2Decimal = decimal.Parse(descextra) / 100m; // Usamos 'm' para indicar que es decimal
+
+                            // Calcular el descuento total efectivo usando la fórmula
+                            decimal descuentoTotal = 1 - ((1 - descuento1Decimal) * (1 - descuento2Decimal));
+
+                            // Convertir a porcentaje y mostrar el resultado
+                            decimal porcentajeDescuentoTotal = descuentoTotal * 100;
+                            Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[4].Value = porcentajeDescuentoTotal;
+                        }
+                        Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[5].Value = 0;
                         Tabla.CurrentCell = Tabla.CurrentRow.Cells[2];
                         Tabla.BeginEdit(true);
                     }

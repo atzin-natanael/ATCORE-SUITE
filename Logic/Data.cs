@@ -1,4 +1,6 @@
-﻿namespace PedidoXperto.Logic
+﻿using PedidoXperto.ChildClases;
+
+namespace PedidoXperto.Logic
 {
     public class Data
     {
@@ -28,6 +30,7 @@
             // Devuelve el primer valor o null si no existe
             return rows.FirstOrDefault();
         }
+        
     }
 
 }
