@@ -86,7 +86,7 @@
             // 
             // panelTop
             // 
-            panelTop.BackColor = Color.Beige;
+            panelTop.BackColor = Color.White;
             panelTop.Controls.Add(Exit);
             panelTop.Controls.Add(Titulo);
             panelTop.Dock = DockStyle.Top;
@@ -97,7 +97,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.Beige;
+            panel2.BackColor = Color.White;
             panel2.Controls.Add(SubpanelMenu);
             panel2.Controls.Add(BtnMen);
             panel2.Dock = DockStyle.Top;
@@ -108,9 +108,9 @@
             // 
             // SubpanelMenu
             // 
-            SubpanelMenu.BackColor = Color.Beige;
-            SubpanelMenu.Controls.Add(BtnChangePassword);
+            SubpanelMenu.BackColor = Color.White;
             SubpanelMenu.Controls.Add(BtnChangeName);
+            SubpanelMenu.Controls.Add(BtnChangePassword);
             SubpanelMenu.Controls.Add(BtnEditRol);
             SubpanelMenu.Controls.Add(BtnAddUser);
             SubpanelMenu.Controls.Add(BtnDeleteUser);
@@ -123,7 +123,7 @@
             // 
             // BtnChangePassword
             // 
-            BtnChangePassword.BackColor = Color.FromArgb(180, 210, 186);
+            BtnChangePassword.BackColor = Color.Silver;
             BtnChangePassword.Cursor = Cursors.Hand;
             BtnChangePassword.Dock = DockStyle.Left;
             BtnChangePassword.FlatAppearance.BorderSize = 0;
@@ -131,7 +131,7 @@
             BtnChangePassword.FlatStyle = FlatStyle.Flat;
             BtnChangePassword.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnChangePassword.ForeColor = Color.Black;
-            BtnChangePassword.Location = new Point(786, 0);
+            BtnChangePassword.Location = new Point(604, 0);
             BtnChangePassword.Name = "BtnChangePassword";
             BtnChangePassword.Size = new Size(255, 46);
             BtnChangePassword.TabIndex = 12;
@@ -141,7 +141,7 @@
             // 
             // BtnChangeName
             // 
-            BtnChangeName.BackColor = Color.FromArgb(180, 210, 186);
+            BtnChangeName.BackColor = Color.Silver;
             BtnChangeName.Cursor = Cursors.Hand;
             BtnChangeName.Dock = DockStyle.Left;
             BtnChangeName.FlatAppearance.BorderSize = 0;
@@ -149,7 +149,7 @@
             BtnChangeName.FlatStyle = FlatStyle.Flat;
             BtnChangeName.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnChangeName.ForeColor = Color.Black;
-            BtnChangeName.Location = new Point(604, 0);
+            BtnChangeName.Location = new Point(859, 0);
             BtnChangeName.Name = "BtnChangeName";
             BtnChangeName.Size = new Size(182, 46);
             BtnChangeName.TabIndex = 11;
@@ -159,7 +159,7 @@
             // 
             // BtnEditRol
             // 
-            BtnEditRol.BackColor = Color.FromArgb(180, 210, 186);
+            BtnEditRol.BackColor = Color.Silver;
             BtnEditRol.Cursor = Cursors.Hand;
             BtnEditRol.Dock = DockStyle.Left;
             BtnEditRol.FlatAppearance.BorderSize = 0;
@@ -177,7 +177,7 @@
             // 
             // BtnAddUser
             // 
-            BtnAddUser.BackColor = Color.FromArgb(180, 210, 186);
+            BtnAddUser.BackColor = Color.Silver;
             BtnAddUser.Cursor = Cursors.Hand;
             BtnAddUser.Dock = DockStyle.Left;
             BtnAddUser.FlatAppearance.BorderSize = 0;
@@ -195,7 +195,7 @@
             // 
             // BtnDeleteUser
             // 
-            BtnDeleteUser.BackColor = Color.FromArgb(180, 210, 186);
+            BtnDeleteUser.BackColor = Color.Silver;
             BtnDeleteUser.Cursor = Cursors.Hand;
             BtnDeleteUser.Dock = DockStyle.Left;
             BtnDeleteUser.FlatAppearance.BorderSize = 0;
