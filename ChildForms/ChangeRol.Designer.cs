@@ -46,8 +46,7 @@
             Txt_Usuario.Location = new Point(168, 105);
             Txt_Usuario.Name = "Txt_Usuario";
             Txt_Usuario.Size = new Size(295, 23);
-            Txt_Usuario.TabIndex = 11;
-            //Txt_Usuario.TextChanged += this.Txt_Usuario_TextChanged;
+            Txt_Usuario.TabIndex = 0;
             // 
             // panelTop
             // 
@@ -59,8 +58,7 @@
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
             panelTop.Size = new Size(606, 30);
-            panelTop.TabIndex = 15;
-            //panelTop.Paint += this.panelTop_Paint;
+            panelTop.TabIndex = 0;
             // 
             // label3
             // 
@@ -85,7 +83,7 @@
             Exit.Location = new Point(542, 0);
             Exit.Name = "Exit";
             Exit.Size = new Size(64, 27);
-            Exit.TabIndex = 4;
+            Exit.TabIndex = 3;
             Exit.Text = "Salir";
             Exit.UseVisualStyleBackColor = false;
             Exit.Click += Exit_Click;
@@ -101,7 +99,7 @@
             Enter.Location = new Point(244, 218);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
-            Enter.TabIndex = 13;
+            Enter.TabIndex = 2;
             Enter.Text = "Modificar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Enter_Click;
@@ -115,7 +113,6 @@
             label2.Size = new Size(47, 15);
             label2.TabIndex = 9;
             label2.Text = "Usuario";
-            //label2.Click += this.label2_Click;
             // 
             // label1
             // 
@@ -135,8 +132,8 @@
             Cb_Rol.Location = new Point(168, 159);
             Cb_Rol.Name = "Cb_Rol";
             Cb_Rol.Size = new Size(295, 23);
-            Cb_Rol.TabIndex = 16;
-            //Cb_Rol.SelectedIndexChanged += this.Cb_Rol_SelectedIndexChanged;
+            Cb_Rol.TabIndex = 1;
+            Cb_Rol.KeyDown += Cb_Rol_KeyDown;
             // 
             // ChangeRol
             // 
@@ -152,6 +149,7 @@
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ChangeRol";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ChangeRol";
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();

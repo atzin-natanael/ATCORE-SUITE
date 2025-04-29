@@ -61,5 +61,13 @@ namespace PedidoXperto.ChildForms
         {
 
         }
+
+        private void Txt_Usuario2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Enter.Focus();
+            }
+        }
     }
 }

@@ -110,7 +110,7 @@ namespace ProyectoXperto
             // 
             // Leftpanel
             // 
-            Leftpanel.BackColor = Color.FromArgb(205, 202, 204);
+            Leftpanel.BackColor = Color.Beige;
             Leftpanel.Controls.Add(SubPanelMenuAdmin);
             Leftpanel.Controls.Add(BtnAdministrador);
             Leftpanel.Controls.Add(Hide);
@@ -135,14 +135,14 @@ namespace ProyectoXperto
             // 
             // BtnUsuarios
             // 
-            BtnUsuarios.BackColor = Color.FromArgb(60, 60, 60);
+            BtnUsuarios.BackColor = Color.Silver;
             BtnUsuarios.Cursor = Cursors.Hand;
             BtnUsuarios.Dock = DockStyle.Top;
             BtnUsuarios.FlatAppearance.BorderSize = 0;
             BtnUsuarios.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnUsuarios.FlatStyle = FlatStyle.Flat;
             BtnUsuarios.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnUsuarios.ForeColor = Color.White;
+            BtnUsuarios.ForeColor = Color.Black;
             BtnUsuarios.Location = new Point(0, 0);
             BtnUsuarios.Name = "BtnUsuarios";
             BtnUsuarios.Size = new Size(240, 58);
@@ -153,14 +153,14 @@ namespace ProyectoXperto
             // 
             // BtnAdministrador
             // 
-            BtnAdministrador.BackColor = Color.Silver;
+            BtnAdministrador.BackColor = Color.FromArgb(60, 60, 60);
             BtnAdministrador.Cursor = Cursors.Hand;
             BtnAdministrador.Dock = DockStyle.Top;
             BtnAdministrador.FlatAppearance.BorderSize = 0;
             BtnAdministrador.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnAdministrador.FlatStyle = FlatStyle.Flat;
             BtnAdministrador.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnAdministrador.ForeColor = Color.Black;
+            BtnAdministrador.ForeColor = SystemColors.Control;
             BtnAdministrador.Location = new Point(0, 171);
             BtnAdministrador.Name = "BtnAdministrador";
             BtnAdministrador.Size = new Size(240, 58);
@@ -201,14 +201,14 @@ namespace ProyectoXperto
             // 
             // BtnValidarPedido
             // 
-            BtnValidarPedido.BackColor = Color.FromArgb(60, 60, 60);
+            BtnValidarPedido.BackColor = Color.Silver;
             BtnValidarPedido.Cursor = Cursors.Hand;
             BtnValidarPedido.Dock = DockStyle.Top;
             BtnValidarPedido.FlatAppearance.BorderSize = 0;
             BtnValidarPedido.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnValidarPedido.FlatStyle = FlatStyle.Flat;
             BtnValidarPedido.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnValidarPedido.ForeColor = Color.White;
+            BtnValidarPedido.ForeColor = Color.Black;
             BtnValidarPedido.Location = new Point(0, 58);
             BtnValidarPedido.Name = "BtnValidarPedido";
             BtnValidarPedido.Size = new Size(240, 58);
@@ -219,14 +219,14 @@ namespace ProyectoXperto
             // 
             // BtnNuevoPedido
             // 
-            BtnNuevoPedido.BackColor = Color.FromArgb(60, 60, 60);
+            BtnNuevoPedido.BackColor = Color.Silver;
             BtnNuevoPedido.Cursor = Cursors.Hand;
             BtnNuevoPedido.Dock = DockStyle.Top;
             BtnNuevoPedido.FlatAppearance.BorderSize = 0;
             BtnNuevoPedido.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnNuevoPedido.FlatStyle = FlatStyle.Flat;
             BtnNuevoPedido.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnNuevoPedido.ForeColor = Color.White;
+            BtnNuevoPedido.ForeColor = Color.Black;
             BtnNuevoPedido.Location = new Point(0, 0);
             BtnNuevoPedido.Name = "BtnNuevoPedido";
             BtnNuevoPedido.Size = new Size(240, 58);
@@ -237,14 +237,14 @@ namespace ProyectoXperto
             // 
             // Btnpedido
             // 
-            Btnpedido.BackColor = Color.Silver;
+            Btnpedido.BackColor = Color.FromArgb(60, 60, 60);
             Btnpedido.Cursor = Cursors.Hand;
             Btnpedido.Dock = DockStyle.Top;
             Btnpedido.FlatAppearance.BorderSize = 0;
             Btnpedido.FlatAppearance.MouseOverBackColor = Color.Gray;
             Btnpedido.FlatStyle = FlatStyle.Flat;
             Btnpedido.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Btnpedido.ForeColor = Color.Black;
+            Btnpedido.ForeColor = SystemColors.Control;
             Btnpedido.Location = new Point(0, 0);
             Btnpedido.Name = "Btnpedido";
             Btnpedido.Size = new Size(240, 58);
@@ -285,7 +285,7 @@ namespace ProyectoXperto
             // 
             // Primarypanel
             // 
-            Primarypanel.BackColor = Color.FromArgb(180, 210, 186);
+            Primarypanel.BackColor = Color.Beige;
             Primarypanel.Controls.Add(ImageMain);
             Primarypanel.Dock = DockStyle.Fill;
             Primarypanel.Location = new Point(0, 58);

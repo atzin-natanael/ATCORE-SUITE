@@ -47,7 +47,6 @@
             Txt_Usuario.Name = "Txt_Usuario";
             Txt_Usuario.Size = new Size(295, 23);
             Txt_Usuario.TabIndex = 0;
-            //Txt_Usuario.TextChanged += this.Txt_Usuario_TextChanged;
             // 
             // panelTop
             // 
@@ -60,7 +59,6 @@
             panelTop.Name = "panelTop";
             panelTop.Size = new Size(606, 30);
             panelTop.TabIndex = 0;
-            //panelTop.Paint += this.panelTop_Paint;
             // 
             // label3
             // 
@@ -85,7 +83,7 @@
             Exit.Location = new Point(542, 0);
             Exit.Name = "Exit";
             Exit.Size = new Size(64, 27);
-            Exit.TabIndex = 4;
+            Exit.TabIndex = 3;
             Exit.Text = "Salir";
             Exit.UseVisualStyleBackColor = false;
             Exit.Click += Exit_Click;
@@ -115,7 +113,6 @@
             label2.Size = new Size(47, 15);
             label2.TabIndex = 17;
             label2.Text = "Usuario";
-            //label2.Click += this.label2_Click;
             // 
             // label1
             // 
@@ -135,7 +132,7 @@
             Txt_Usuario2.Name = "Txt_Usuario2";
             Txt_Usuario2.Size = new Size(295, 23);
             Txt_Usuario2.TabIndex = 1;
-            //Txt_Usuario2.TextChanged += this.Txt_Usuario2_TextChanged;
+            Txt_Usuario2.KeyDown += Txt_Usuario2_KeyDown;
             // 
             // ChangeName
             // 

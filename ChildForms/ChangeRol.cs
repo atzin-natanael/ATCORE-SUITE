@@ -57,5 +57,13 @@ namespace PedidoXperto.ChildForms
                 MessageBox.Show("Seleccione un rol");
             }
         }
+
+        private void Cb_Rol_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Enter.Focus();
+            }
+        }
     }
 }

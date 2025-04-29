@@ -47,8 +47,9 @@
             TxtPw.Location = new Point(168, 155);
             TxtPw.Name = "TxtPw";
             TxtPw.Size = new Size(295, 23);
-            TxtPw.TabIndex = 21;
+            TxtPw.TabIndex = 1;
             TxtPw.UseSystemPasswordChar = true;
+            TxtPw.KeyDown += TxtPw_KeyDown;
             // 
             // Txt_Usuario
             // 
@@ -57,7 +58,7 @@
             Txt_Usuario.Location = new Point(168, 90);
             Txt_Usuario.Name = "Txt_Usuario";
             Txt_Usuario.Size = new Size(295, 23);
-            Txt_Usuario.TabIndex = 19;
+            Txt_Usuario.TabIndex = 0;
             // 
             // panelTop
             // 
@@ -69,7 +70,7 @@
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
             panelTop.Size = new Size(606, 30);
-            panelTop.TabIndex = 20;
+            panelTop.TabIndex = 0;
             // 
             // label3
             // 
@@ -110,7 +111,7 @@
             Enter.Location = new Point(244, 271);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
-            Enter.TabIndex = 22;
+            Enter.TabIndex = 3;
             Enter.Text = "Modificar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Enter_Click;
@@ -141,8 +142,9 @@
             TxtPw2.Location = new Point(168, 224);
             TxtPw2.Name = "TxtPw2";
             TxtPw2.Size = new Size(295, 23);
-            TxtPw2.TabIndex = 25;
+            TxtPw2.TabIndex = 2;
             TxtPw2.UseSystemPasswordChar = true;
+            TxtPw2.KeyDown += TxtPw2_KeyDown;
             // 
             // label4
             // 
@@ -170,6 +172,7 @@
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ChangePasswordMenu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ChangePasswordMenu";
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();
