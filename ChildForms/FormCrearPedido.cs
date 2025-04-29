@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Web;
 using FirebirdSql.Data.FirebirdClient;
 using PedidoXperto.ChildClases;
 using PedidoXperto.Logic;
@@ -82,7 +83,7 @@ namespace PedidoXperto.ChildForms
         private bool InvalidText()
         {
             var clientId = txtBox_clienteId.Text;
-            return string.IsNullOrEmpty(clientId) || clientId.Length < 6;
+            return clientId.Length != 6;
         }
 
         private void Save_Click(object sender, EventArgs e)
@@ -92,13 +93,56 @@ namespace PedidoXperto.ChildForms
 
         private void txtBox_clienteId_KeyDown(object sender, KeyEventArgs e)
         {
-            if(txtBox_clienteNombre.Text != "Cliente no encontrado")
+            if (txtBox_clienteNombre.Text != "Cliente no encontrado")
             {
                 if (e.KeyCode == Keys.Enter)
                 {
                     e.SuppressKeyPress = true;
                     Tabla.Rows.Add();
                     Tabla.Focus();
+                }
+            }
+        }
+
+        private void Tabla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if(Tabla.CurrentCell != null)
+            {
+                if (Tabla.CurrentCell.ColumnIndex == 0)
+                {
+                    if (InvalidText())
+                        return;
+
+                    GetFireBirdValue bridge = new();
+                    string query = "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + Tabla.CurrentRow.Cells[0].Value.ToString() + "'";
+                    var data = bridge.GetValue(query);
+                    var descripcion = bridge.GetValue("SELECT NOMBRE FROM ARTICULOS WHERE ARTICULO_ID = '" + data + "'");
+
+                    if (descripcion == null)
+                    {
+                        MessageBox.Show("Articulo no encontrado");
+                    }
+                    else
+                    {
+                        Tabla.CurrentRow.Cells[1].Value = descripcion;
+                        Tabla.CurrentCell = Tabla.CurrentRow.Cells[2];
+                        Tabla.BeginEdit(true);
+                    }
+                }
+                else if(Tabla.CurrentCell.ColumnIndex == 2)
+                {
+                    if (e.RowIndex == Tabla.Rows.Count - 1)
+                    {
+                        Tabla.Rows.Add();
+                    }
+
+                    // Mover a la siguiente fila, columna 0
+                    int siguienteFila = e.RowIndex + 1;
+                    if (siguienteFila < Tabla.Rows.Count)
+                    {
+                        Tabla.CurrentCell = Tabla.Rows[siguienteFila].Cells[0];
+                        Tabla.BeginEdit(true);
+                    }
                 }
             }
         }

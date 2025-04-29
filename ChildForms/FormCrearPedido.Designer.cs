@@ -38,6 +38,9 @@
             panel2 = new Panel();
             panel5 = new Panel();
             Tabla = new DataGridView();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
             panel4 = new Panel();
             label4 = new Label();
             Cb_Vendedor = new ComboBox();
@@ -59,9 +62,6 @@
             panel8 = new Panel();
             panel6 = new Panel();
             label2 = new Label();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -205,6 +205,23 @@
             Tabla.RowHeadersWidth = 50;
             Tabla.Size = new Size(968, 594);
             Tabla.TabIndex = 24;
+            Tabla.CellEndEdit += Tabla_CellEndEdit;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Codigo";
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column3.HeaderText = "Descripcion";
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Cantidad";
+            Column4.Name = "Column4";
             // 
             // panel4
             // 
@@ -463,22 +480,6 @@
             label2.TabIndex = 20;
             label2.Text = "Recomendaciones:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Codigo";
-            Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column3.HeaderText = "Descripcion";
-            Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Cantidad";
-            Column4.Name = "Column4";
             // 
             // FormCrearPedido
             // 
