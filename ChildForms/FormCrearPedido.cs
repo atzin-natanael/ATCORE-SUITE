@@ -22,10 +22,15 @@ namespace PedidoXperto.ChildForms
             {
                 nombres.Add(vendedor[1]);
             }
-            Cb_Vendedor.DropDownStyle = ComboBoxStyle.DropDownList;
             // Limpiar y agregar los nombres
             Cb_Vendedor.Items.Clear();
             Cb_Vendedor.Items.AddRange(nombres.ToArray());
+
+            // Configurar autocompletado
+            Cb_Vendedor.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            Cb_Vendedor.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            Cb_Vendedor.AutoCompleteCustomSource = new AutoCompleteStringCollection();
+            Cb_Vendedor.AutoCompleteCustomSource.AddRange(nombres.ToArray());
         }
         public void CargarVendedores()
         {
@@ -85,9 +90,8 @@ namespace PedidoXperto.ChildForms
         private bool InvalidText()
         {
             var clientId = txtBox_clienteId.Text;
-            return clientId.Length != 6;
+            return string.IsNullOrWhiteSpace(clientId) || clientId.Length > 6;
         }
-
         private void Save_Click(object sender, EventArgs e)
         {
 
@@ -132,14 +136,14 @@ namespace PedidoXperto.ChildForms
 
         private void Tabla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if(Tabla.CurrentCell != null)
+            if (Tabla.CurrentCell != null)
             {
                 if (Tabla.CurrentCell.ColumnIndex == 0)
                 {
                     if (InvalidText())
                         return;
                     GetFireBirdValue bridge = new();
-                    
+
                     string[] DatosArticulo = new string[2];
                     string descuento = "";
                     DatosArticulo = bridge.BuscarDatosArticulos(Tabla.CurrentCell.Value.ToString());
@@ -153,7 +157,7 @@ namespace PedidoXperto.ChildForms
                         Tabla.CurrentRow.Cells[1].Value = DatosArticulo[1];
                         Tabla.CurrentRow.Cells[3].Value = DatosArticulo[2];
                         string articulo_id = bridge.GetValue("SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + DatosArticulo[0] + "';");
-                        string cliente_id = bridge.GetValue("SELECT CLIENTE_ID FROM CLAVES_CLIENTES WHERE CLAVE_CLIENTE = '"+txtBox_clienteId.Text+"';");
+                        string cliente_id = bridge.GetValue("SELECT CLIENTE_ID FROM CLAVES_CLIENTES WHERE CLAVE_CLIENTE = '" + txtBox_clienteId.Text + "';");
 
                         descuento = bridge.GetValue("SELECT POLITICAS_DSCTOS_ART_CLI.DESCUENTO" +
                     "            FROM DIRS_CLIENTES" +
@@ -181,7 +185,7 @@ namespace PedidoXperto.ChildForms
                         Tabla.BeginEdit(true);
                     }
                 }
-                else if(Tabla.CurrentCell.ColumnIndex == 2 && Tabla.CurrentCell.Value != null)
+                else if (Tabla.CurrentCell.ColumnIndex == 2 && Tabla.CurrentCell.Value != null)
                 {
                     //if (e.RowIndex == Tabla.Rows.Count - 1)
                     //{
@@ -214,8 +218,69 @@ namespace PedidoXperto.ChildForms
                         }
                     }
                 }
-                
+
             }
+        }
+
+        private void Cb_Vendedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.ToUpper(e.KeyChar);
+        }
+
+        private void Tabla_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                var selectedCell = Tabla.SelectedCells[0];
+                MessageBox.Show("asdasdasd");
+                // do something with selectedCell...
+            }
+            if (e.KeyCode == Keys.F4)
+            {
+                if (Tabla.CurrentCell != null && Tabla.CurrentCell.ColumnIndex == 1)
+                {
+                    string valorCelda = Tabla.CurrentCell.Value?.ToString() ?? "";
+                    MessageBox.Show(valorCelda);
+
+                    string query = $@"
+                SELECT CLAVES_ARTICULOS.CLAVE_ARTICULO, ARTICULOS.NOMBRE, PRECIOS_ARTICULOS.PRECIO  
+                FROM ARTICULOS
+                JOIN CLAVES_ARTICULOS ON CLAVES_ARTICULOS.ARTICULO_ID = ARTICULOS.ARTICULO_ID
+                JOIN PRECIOS_ARTICULOS ON PRECIOS_ARTICULOS.ARTICULO_ID = ARTICULOS.ARTICULO_ID
+                WHERE CLAVES_ARTICULOS.ROL_CLAVE_ART_ID = '17'
+                  AND PRECIOS_ARTICULOS.PRECIO_EMPRESA_ID = '42'
+                  AND ARTICULOS.NOMBRE LIKE '%{valorCelda}%';";
+
+                    SearchMenu buscar = new SearchMenu(query);
+                    buscar.ShowDialog();
+                }
+            }
+            else if (e.Control && e.KeyCode == Keys.Delete)
+            {
+                if (Tabla.CurrentCell != null)
+                {
+                    if (Tabla.Rows.Count >= 1)
+                    {
+                        Tabla.Rows.RemoveAt(Tabla.CurrentCell.RowIndex);
+                        ActualizarPrecios();
+                    }
+                }
+            }
+        }
+
+        private void Tabla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.F4)
+            {
+                MessageBox.Show("You press Enter");
+            }
+        }
+
+        private void Tabla_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            DataGridViewTextBoxEditingControl tb = (DataGridViewTextBoxEditingControl)e.Control;
+            tb.KeyPress += new KeyPressEventHandler(Tabla_KeyPress);
+            e.Control.KeyPress += new KeyPressEventHandler(Tabla_KeyPress);
         }
     }
 }

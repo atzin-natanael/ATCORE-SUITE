@@ -35,7 +35,7 @@ namespace PedidoXperto.ChildForms
             TxtPedido.Select();
             //ModuloIA();
         }
-        
+
         public void CargarExcel()
         {
             string filePath = "C:\\clavesSurtido\\Claves.xlsx";
@@ -925,6 +925,11 @@ namespace PedidoXperto.ChildForms
                 e.SuppressKeyPress = true;
                 BtnCodigo.Focus();
             }
+        }
+
+        private void Cb_Surtidor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.ToUpper(e.KeyChar);
         }
     }
 }

@@ -189,6 +189,7 @@
             Cb_Surtidor.Size = new Size(348, 27);
             Cb_Surtidor.TabIndex = 3;
             Cb_Surtidor.KeyDown += Cb_Surtidor_KeyDown;
+            Cb_Surtidor.KeyPress += Cb_Surtidor_KeyPress;
             // 
             // panel1
             // 

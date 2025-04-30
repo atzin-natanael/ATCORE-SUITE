@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Titulo = new Label();
             Exit = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -203,6 +204,14 @@
             Tabla.ColumnHeadersHeight = 50;
             Tabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             Tabla.Columns.AddRange(new DataGridViewColumn[] { Column2, Column3, Column4, Column1, Column5, Column6 });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            Tabla.DefaultCellStyle = dataGridViewCellStyle2;
             Tabla.Dock = DockStyle.Fill;
             Tabla.EnableHeadersVisualStyles = false;
             Tabla.GridColor = Color.Black;
@@ -214,6 +223,9 @@
             Tabla.Size = new Size(968, 594);
             Tabla.TabIndex = 24;
             Tabla.CellEndEdit += Tabla_CellEndEdit;
+            Tabla.EditingControlShowing += Tabla_EditingControlShowing;
+            Tabla.KeyDown += Tabla_KeyDown;
+            Tabla.KeyPress += Tabla_KeyPress;
             // 
             // Column2
             // 
@@ -299,9 +311,11 @@
             Cb_Vendedor.Name = "Cb_Vendedor";
             Cb_Vendedor.Size = new Size(276, 27);
             Cb_Vendedor.TabIndex = 1;
+            Cb_Vendedor.KeyPress += Cb_Vendedor_KeyPress;
             // 
             // txtBox_clienteNombre
             // 
+            txtBox_clienteNombre.CharacterCasing = CharacterCasing.Upper;
             txtBox_clienteNombre.Location = new Point(201, 79);
             txtBox_clienteNombre.Name = "txtBox_clienteNombre";
             txtBox_clienteNombre.Size = new Size(370, 27);
@@ -309,6 +323,7 @@
             // 
             // txtBox_clienteId
             // 
+            txtBox_clienteId.CharacterCasing = CharacterCasing.Upper;
             txtBox_clienteId.Location = new Point(12, 79);
             txtBox_clienteId.Name = "txtBox_clienteId";
             txtBox_clienteId.Size = new Size(154, 27);
@@ -518,14 +533,14 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle3.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.ColumnHeadersHeight = 50;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });

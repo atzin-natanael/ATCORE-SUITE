@@ -1,0 +1,201 @@
+﻿namespace PedidoXperto.ChildForms
+{
+    partial class SearchMenu
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            Txt_Codigo = new TextBox();
+            panelTop = new Panel();
+            label3 = new Label();
+            Exit = new Button();
+            Buscar = new Button();
+            label2 = new Label();
+            Tabla = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            panel1 = new Panel();
+            panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Tabla).BeginInit();
+            panel1.SuspendLayout();
+            SuspendLayout();
+            // 
+            // Txt_Codigo
+            // 
+            Txt_Codigo.CharacterCasing = CharacterCasing.Upper;
+            Txt_Codigo.Location = new Point(128, 54);
+            Txt_Codigo.Name = "Txt_Codigo";
+            Txt_Codigo.Size = new Size(365, 23);
+            Txt_Codigo.TabIndex = 11;
+            // 
+            // panelTop
+            // 
+            panelTop.BackColor = Color.FromArgb(60, 60, 60);
+            panelTop.Controls.Add(label3);
+            panelTop.Controls.Add(Exit);
+            panelTop.Cursor = Cursors.Hand;
+            panelTop.Dock = DockStyle.Top;
+            panelTop.Location = new Point(0, 0);
+            panelTop.Name = "panelTop";
+            panelTop.Size = new Size(676, 30);
+            panelTop.TabIndex = 15;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(236, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(182, 22);
+            label3.TabIndex = 0;
+            label3.Text = "BUSCAR ARTICULO";
+            // 
+            // Exit
+            // 
+            Exit.Anchor = AnchorStyles.Top;
+            Exit.BackColor = SystemColors.ActiveBorder;
+            Exit.Cursor = Cursors.Hand;
+            Exit.FlatAppearance.BorderSize = 0;
+            Exit.FlatStyle = FlatStyle.Flat;
+            Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Exit.ForeColor = Color.Black;
+            Exit.Location = new Point(612, 0);
+            Exit.Name = "Exit";
+            Exit.Size = new Size(64, 30);
+            Exit.TabIndex = 4;
+            Exit.Text = "Salir";
+            Exit.UseVisualStyleBackColor = false;
+            Exit.Click += Exit_Click;
+            // 
+            // Buscar
+            // 
+            Buscar.Anchor = AnchorStyles.Top;
+            Buscar.BackColor = SystemColors.ActiveBorder;
+            Buscar.Cursor = Cursors.Hand;
+            Buscar.FlatAppearance.BorderSize = 0;
+            Buscar.FlatStyle = FlatStyle.Flat;
+            Buscar.ForeColor = Color.Black;
+            Buscar.Location = new Point(528, 50);
+            Buscar.Name = "Buscar";
+            Buscar.Size = new Size(87, 28);
+            Buscar.TabIndex = 13;
+            Buscar.Text = "Buscar";
+            Buscar.UseVisualStyleBackColor = false;
+            Buscar.Click += Buscar_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Beige;
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(45, 57);
+            label2.Name = "label2";
+            label2.Size = new Size(51, 15);
+            label2.TabIndex = 9;
+            label2.Text = "Nombre";
+            // 
+            // Tabla
+            // 
+            Tabla.AllowUserToAddRows = false;
+            Tabla.AllowUserToDeleteRows = false;
+            Tabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Tabla.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
+            Tabla.Dock = DockStyle.Fill;
+            Tabla.Location = new Point(0, 0);
+            Tabla.Name = "Tabla";
+            Tabla.ReadOnly = true;
+            Tabla.RowHeadersVisible = false;
+            Tabla.Size = new Size(676, 222);
+            Tabla.TabIndex = 16;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Código";
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column2.HeaderText = "Nombre";
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Precio Lista";
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(Tabla);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 112);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(676, 222);
+            panel1.TabIndex = 17;
+            // 
+            // SearchMenu
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Beige;
+            ClientSize = new Size(676, 334);
+            Controls.Add(panel1);
+            Controls.Add(Txt_Codigo);
+            Controls.Add(panelTop);
+            Controls.Add(Buscar);
+            Controls.Add(label2);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "SearchMenu";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "SearchMenu";
+            panelTop.ResumeLayout(false);
+            panelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Tabla).EndInit();
+            panel1.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private TextBox Txt_Codigo;
+        private Panel panelTop;
+        private Label label3;
+        private Button Exit;
+        private Button Buscar;
+        private Label label2;
+        private DataGridView Tabla;
+        private Panel panel1;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+    }
+}
