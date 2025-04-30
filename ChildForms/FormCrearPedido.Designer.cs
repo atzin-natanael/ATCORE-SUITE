@@ -41,6 +41,9 @@
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             panel4 = new Panel();
             label4 = new Label();
             Cb_Vendedor = new ComboBox();
@@ -54,6 +57,11 @@
             panel3 = new Panel();
             panel7 = new Panel();
             panel10 = new Panel();
+            valorDescuento = new Label();
+            label9 = new Label();
+            precioDescuento = new Label();
+            precioTotal = new Label();
+            label6 = new Label();
             label5 = new Label();
             panel9 = new Panel();
             dataGridView1 = new DataGridView();
@@ -62,9 +70,6 @@
             panel8 = new Panel();
             panel6 = new Panel();
             label2 = new Label();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -91,7 +96,7 @@
             Titulo.Margin = new Padding(0);
             Titulo.Name = "Titulo";
             Titulo.Size = new Size(1242, 50);
-            Titulo.TabIndex = 3;
+            Titulo.TabIndex = 0;
             Titulo.Text = "CREACIÓN DE PEDIDO";
             Titulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -213,18 +218,47 @@
             // Column2
             // 
             Column2.HeaderText = "Codigo";
+            Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
+            Column2.Width = 125;
             // 
             // Column3
             // 
             Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Column3.HeaderText = "Descripcion";
+            Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
             // 
             // Column4
             // 
             Column4.HeaderText = "Cantidad";
+            Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
+            Column4.Width = 125;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Precio";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Width = 125;
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Descuento";
+            Column5.MinimumWidth = 6;
+            Column5.Name = "Column5";
+            Column5.ReadOnly = true;
+            Column5.Width = 125;
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "Total";
+            Column6.MinimumWidth = 6;
+            Column6.Name = "Column6";
+            Column6.ReadOnly = true;
+            Column6.Width = 125;
             // 
             // panel4
             // 
@@ -245,40 +279,40 @@
             // 
             // label4
             // 
-            label4.AutoSize = true;
             label4.FlatStyle = FlatStyle.Flat;
             label4.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(3, 3);
+            label4.Location = new Point(21, 7);
             label4.Name = "label4";
-            label4.Size = new Size(114, 25);
-            label4.TabIndex = 26;
+            label4.Size = new Size(145, 32);
+            label4.TabIndex = 0;
             label4.Text = "Vendedor";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Cb_Vendedor
             // 
+            Cb_Vendedor.BackColor = Color.Beige;
             Cb_Vendedor.FlatStyle = FlatStyle.Flat;
             Cb_Vendedor.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Cb_Vendedor.FormattingEnabled = true;
-            Cb_Vendedor.Location = new Point(138, 3);
+            Cb_Vendedor.Location = new Point(201, 7);
             Cb_Vendedor.Name = "Cb_Vendedor";
-            Cb_Vendedor.Size = new Size(276, 27);
-            Cb_Vendedor.TabIndex = 25;
+            Cb_Vendedor.Size = new Size(276, 31);
+            Cb_Vendedor.TabIndex = 1;
             // 
             // txtBox_clienteNombre
             // 
-            txtBox_clienteNombre.Location = new Point(201, 72);
+            txtBox_clienteNombre.Location = new Point(201, 79);
             txtBox_clienteNombre.Name = "txtBox_clienteNombre";
-            txtBox_clienteNombre.Size = new Size(370, 27);
-            txtBox_clienteNombre.TabIndex = 23;
+            txtBox_clienteNombre.Size = new Size(370, 32);
+            txtBox_clienteNombre.TabIndex = 3;
             // 
             // txtBox_clienteId
             // 
-            txtBox_clienteId.Location = new Point(9, 72);
+            txtBox_clienteId.Location = new Point(12, 79);
             txtBox_clienteId.Name = "txtBox_clienteId";
-            txtBox_clienteId.Size = new Size(154, 27);
-            txtBox_clienteId.TabIndex = 21;
+            txtBox_clienteId.Size = new Size(154, 32);
+            txtBox_clienteId.TabIndex = 2;
             txtBox_clienteId.TextChanged += txtBox_clienteId_TextChanged;
             txtBox_clienteId.KeyDown += txtBox_clienteId_KeyDown;
             // 
@@ -305,20 +339,19 @@
             lblNombreCliente.ForeColor = Color.Black;
             lblNombreCliente.Location = new Point(3, 44);
             lblNombreCliente.Name = "lblNombreCliente";
-            lblNombreCliente.Size = new Size(160, 21);
+            lblNombreCliente.Size = new Size(160, 32);
             lblNombreCliente.TabIndex = 22;
             lblNombreCliente.Text = "Clave Cliente";
             lblNombreCliente.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
-            label3.AutoSize = true;
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label3.ForeColor = Color.Black;
             label3.Location = new Point(201, 44);
             label3.Name = "label3";
-            label3.Size = new Size(207, 25);
+            label3.Size = new Size(264, 32);
             label3.TabIndex = 20;
             label3.Text = "Nombre del cliente";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -330,9 +363,9 @@
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(351, 150);
+            label1.Location = new Point(351, 143);
             label1.Name = "label1";
-            label1.Size = new Size(238, 25);
+            label1.Size = new Size(304, 32);
             label1.TabIndex = 19;
             label1.Text = "Articulos en el Pedido:";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -379,6 +412,11 @@
             // panel10
             // 
             panel10.BackColor = Color.White;
+            panel10.Controls.Add(valorDescuento);
+            panel10.Controls.Add(label9);
+            panel10.Controls.Add(precioDescuento);
+            panel10.Controls.Add(precioTotal);
+            panel10.Controls.Add(label6);
             panel10.Controls.Add(label5);
             panel10.Dock = DockStyle.Top;
             panel10.Location = new Point(46, 286);
@@ -386,18 +424,82 @@
             panel10.Size = new Size(369, 286);
             panel10.TabIndex = 24;
             // 
+            // valorDescuento
+            // 
+            valorDescuento.Anchor = AnchorStyles.None;
+            valorDescuento.FlatStyle = FlatStyle.Flat;
+            valorDescuento.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            valorDescuento.ForeColor = Color.Black;
+            valorDescuento.Location = new Point(17, 205);
+            valorDescuento.Name = "valorDescuento";
+            valorDescuento.Size = new Size(332, 46);
+            valorDescuento.TabIndex = 5;
+            valorDescuento.Text = "TOTALES";
+            valorDescuento.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            label9.Anchor = AnchorStyles.None;
+            label9.FlatStyle = FlatStyle.Flat;
+            label9.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.Red;
+            label9.Location = new Point(17, 149);
+            label9.Name = "label9";
+            label9.Size = new Size(332, 47);
+            label9.TabIndex = 4;
+            label9.Text = "TOTAL";
+            label9.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // precioDescuento
+            // 
+            precioDescuento.Anchor = AnchorStyles.None;
+            precioDescuento.FlatStyle = FlatStyle.Flat;
+            precioDescuento.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
+            precioDescuento.ForeColor = Color.Black;
+            precioDescuento.Location = new Point(17, 115);
+            precioDescuento.Name = "precioDescuento";
+            precioDescuento.Size = new Size(332, 34);
+            precioDescuento.TabIndex = 3;
+            precioDescuento.Text = "TOTALES";
+            precioDescuento.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // precioTotal
+            // 
+            precioTotal.Anchor = AnchorStyles.None;
+            precioTotal.FlatStyle = FlatStyle.Flat;
+            precioTotal.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
+            precioTotal.ForeColor = Color.Black;
+            precioTotal.Location = new Point(18, 37);
+            precioTotal.Name = "precioTotal";
+            precioTotal.Size = new Size(332, 34);
+            precioTotal.TabIndex = 2;
+            precioTotal.Text = "TOTALES";
+            precioTotal.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.None;
+            label6.FlatStyle = FlatStyle.Flat;
+            label6.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
+            label6.ForeColor = Color.Red;
+            label6.Location = new Point(17, 71);
+            label6.Name = "label6";
+            label6.Size = new Size(332, 34);
+            label6.TabIndex = 1;
+            label6.Text = "DESCUENTO";
+            label6.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // label5
             // 
             label5.Anchor = AnchorStyles.None;
-            label5.AutoSize = true;
             label5.FlatStyle = FlatStyle.Flat;
             label5.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            label5.ForeColor = Color.Black;
-            label5.Location = new Point(133, 121);
+            label5.ForeColor = Color.Red;
+            label5.Location = new Point(18, 3);
             label5.Name = "label5";
-            label5.Size = new Size(95, 25);
-            label5.TabIndex = 20;
-            label5.Text = "TOTALES";
+            label5.Size = new Size(332, 34);
+            label5.TabIndex = 0;
+            label5.Text = "SUBTOTAL";
             label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel9
@@ -441,13 +543,16 @@
             // dataGridViewTextBoxColumn2
             // 
             dataGridViewTextBoxColumn2.HeaderText = "Codigo";
+            dataGridViewTextBoxColumn2.MinimumWidth = 6;
             dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             dataGridViewTextBoxColumn2.ReadOnly = true;
+            dataGridViewTextBoxColumn2.Width = 125;
             // 
             // dataGridViewTextBoxColumn3
             // 
             dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn3.HeaderText = "Descripcion";
+            dataGridViewTextBoxColumn3.MinimumWidth = 6;
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
@@ -479,32 +584,14 @@
             label2.ForeColor = Color.Black;
             label2.Location = new Point(127, 133);
             label2.Name = "label2";
-            label2.Size = new Size(209, 25);
+            label2.Size = new Size(268, 32);
             label2.TabIndex = 20;
             label2.Text = "Recomendaciones:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // Column1
-            // 
-            Column1.HeaderText = "Precio";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Descuento";
-            Column5.Name = "Column5";
-            Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Total";
-            Column6.Name = "Column6";
-            Column6.ReadOnly = true;
-            // 
             // FormCrearPedido
             // 
-            AutoScaleDimensions = new SizeF(10F, 21F);
+            AutoScaleDimensions = new SizeF(12F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Khaki;
             ClientSize = new Size(1383, 822);
@@ -525,7 +612,6 @@
             panel3.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel10.ResumeLayout(false);
-            panel10.PerformLayout();
             panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel6.ResumeLayout(false);
@@ -570,5 +656,10 @@
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
+        private Label precioDescuento;
+        private Label precioTotal;
+        private Label label6;
+        private Label valorDescuento;
+        private Label label9;
     }
 }

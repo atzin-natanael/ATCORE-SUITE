@@ -92,7 +92,30 @@ namespace PedidoXperto.ChildForms
         {
 
         }
-
+        public decimal Sumartabla()
+        {
+            decimal sumatoria = 0;
+            for (int i = 0; i < Tabla.Rows.Count; i++)
+            {
+                if (Tabla.Rows.Count >= 1)
+                {
+                    if (Tabla.Rows[i].Cells[5].Value != null)
+                    {
+                        sumatoria += decimal.Parse(Tabla.Rows[i].Cells[2].Value.ToString()) * decimal.Parse(Tabla.Rows[i].Cells[3].Value.ToString());
+                    }
+                }
+            }
+            return sumatoria * 1.16m;
+        }
+        public void ActualizarPrecios()
+        {
+            decimal sumatoria = Sumartabla();
+            precioTotal.Text = "$ " + Math.Round(sumatoria, 2);
+            decimal precioDesc = sumatoria - (sumatoria * decimal.Parse("40") / 100);
+            precioDescuento.Text = "$ " + Math.Round(precioDesc, 2);
+            decimal descuento = sumatoria - precioDesc;
+            valorDescuento.Text = "$ " + Math.Round(descuento, 2);
+        }
         private void txtBox_clienteId_KeyDown(object sender, KeyEventArgs e)
         {
             if (txtBox_clienteNombre.Text != "Cliente no encontrado")
@@ -101,6 +124,7 @@ namespace PedidoXperto.ChildForms
                 {
                     e.SuppressKeyPress = true;
                     Tabla.Rows.Add();
+                    Tabla.Rows[Tabla.CurrentCell.RowIndex].Height = 40;
                     Tabla.Focus();
                 }
             }
@@ -157,21 +181,40 @@ namespace PedidoXperto.ChildForms
                         Tabla.BeginEdit(true);
                     }
                 }
-                else if(Tabla.CurrentCell.ColumnIndex == 2)
+                else if(Tabla.CurrentCell.ColumnIndex == 2 && Tabla.CurrentCell.Value != null)
                 {
-                    if (e.RowIndex == Tabla.Rows.Count - 1)
-                    {
-                        Tabla.Rows.Add();
-                    }
+                    //if (e.RowIndex == Tabla.Rows.Count - 1)
+                    //{
+                    //    Tabla.Rows.Add();
+                    //}
 
-                    // Mover a la siguiente fila, columna 0
-                    int siguienteFila = e.RowIndex + 1;
-                    if (siguienteFila < Tabla.Rows.Count)
+                    //// Mover a la siguiente fila, columna 0
+                    //int siguienteFila = e.RowIndex + 1;
+                    //if (siguienteFila < Tabla.Rows.Count)
+                    //{
+                    //    Tabla.CurrentCell = Tabla.Rows[siguienteFila].Cells[0];
+                    //    Tabla.BeginEdit(true);
+                    //}
+                    if (Tabla.CurrentCell.Value.ToString() != string.Empty)
                     {
-                        Tabla.CurrentCell = Tabla.Rows[siguienteFila].Cells[0];
-                        Tabla.BeginEdit(true);
+                        decimal precio = decimal.Parse(Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[3].Value.ToString());
+                        decimal cantidad = decimal.Parse(Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[2].Value.ToString());
+                        decimal descuentoind = decimal.Parse(Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[4].Value.ToString());
+
+                        decimal total = precio * cantidad;
+                        decimal descuentoAplicado = total * (descuentoind / 100);  // Conviertes el descuento a un porcentaje
+                        decimal totalConDescuento = total - descuentoAplicado;
+                        Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[5].Value = totalConDescuento;
+                        ActualizarPrecios();
+                        if ((Tabla.CurrentCell.RowIndex) + 1 == Tabla.Rows.Count)
+                        {
+                            Tabla.Rows.Add();
+                            Tabla.Rows[Tabla.CurrentCell.RowIndex + 1].Height = 40;
+                            Tabla.CurrentCell = Tabla.Rows[Tabla.CurrentCell.RowIndex + 1].Cells[0];
+                        }
                     }
                 }
+                
             }
         }
     }
