@@ -297,21 +297,21 @@
             Cb_Vendedor.FormattingEnabled = true;
             Cb_Vendedor.Location = new Point(201, 7);
             Cb_Vendedor.Name = "Cb_Vendedor";
-            Cb_Vendedor.Size = new Size(276, 31);
+            Cb_Vendedor.Size = new Size(276, 27);
             Cb_Vendedor.TabIndex = 1;
             // 
             // txtBox_clienteNombre
             // 
             txtBox_clienteNombre.Location = new Point(201, 79);
             txtBox_clienteNombre.Name = "txtBox_clienteNombre";
-            txtBox_clienteNombre.Size = new Size(370, 32);
+            txtBox_clienteNombre.Size = new Size(370, 27);
             txtBox_clienteNombre.TabIndex = 3;
             // 
             // txtBox_clienteId
             // 
             txtBox_clienteId.Location = new Point(12, 79);
             txtBox_clienteId.Name = "txtBox_clienteId";
-            txtBox_clienteId.Size = new Size(154, 32);
+            txtBox_clienteId.Size = new Size(154, 27);
             txtBox_clienteId.TabIndex = 2;
             txtBox_clienteId.TextChanged += txtBox_clienteId_TextChanged;
             txtBox_clienteId.KeyDown += txtBox_clienteId_KeyDown;
@@ -365,7 +365,7 @@
             label1.ForeColor = Color.Black;
             label1.Location = new Point(351, 143);
             label1.Name = "label1";
-            label1.Size = new Size(304, 32);
+            label1.Size = new Size(238, 25);
             label1.TabIndex = 19;
             label1.Text = "Articulos en el Pedido:";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -418,10 +418,10 @@
             panel10.Controls.Add(precioTotal);
             panel10.Controls.Add(label6);
             panel10.Controls.Add(label5);
-            panel10.Dock = DockStyle.Top;
+            panel10.Dock = DockStyle.Fill;
             panel10.Location = new Point(46, 286);
             panel10.Name = "panel10";
-            panel10.Size = new Size(369, 286);
+            panel10.Size = new Size(369, 308);
             panel10.TabIndex = 24;
             // 
             // valorDescuento
@@ -430,11 +430,11 @@
             valorDescuento.FlatStyle = FlatStyle.Flat;
             valorDescuento.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             valorDescuento.ForeColor = Color.Black;
-            valorDescuento.Location = new Point(17, 205);
+            valorDescuento.Location = new Point(17, 227);
             valorDescuento.Name = "valorDescuento";
             valorDescuento.Size = new Size(332, 46);
             valorDescuento.TabIndex = 5;
-            valorDescuento.Text = "TOTALES";
+            valorDescuento.Text = "$ 0";
             valorDescuento.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label9
@@ -443,7 +443,7 @@
             label9.FlatStyle = FlatStyle.Flat;
             label9.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Red;
-            label9.Location = new Point(17, 149);
+            label9.Location = new Point(17, 171);
             label9.Name = "label9";
             label9.Size = new Size(332, 47);
             label9.TabIndex = 4;
@@ -456,11 +456,11 @@
             precioDescuento.FlatStyle = FlatStyle.Flat;
             precioDescuento.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             precioDescuento.ForeColor = Color.Black;
-            precioDescuento.Location = new Point(17, 115);
+            precioDescuento.Location = new Point(17, 126);
             precioDescuento.Name = "precioDescuento";
             precioDescuento.Size = new Size(332, 34);
             precioDescuento.TabIndex = 3;
-            precioDescuento.Text = "TOTALES";
+            precioDescuento.Text = "$ 0";
             precioDescuento.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // precioTotal
@@ -469,11 +469,11 @@
             precioTotal.FlatStyle = FlatStyle.Flat;
             precioTotal.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             precioTotal.ForeColor = Color.Black;
-            precioTotal.Location = new Point(18, 37);
+            precioTotal.Location = new Point(18, 48);
             precioTotal.Name = "precioTotal";
             precioTotal.Size = new Size(332, 34);
             precioTotal.TabIndex = 2;
-            precioTotal.Text = "TOTALES";
+            precioTotal.Text = "$ 0";
             precioTotal.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label6
@@ -482,7 +482,7 @@
             label6.FlatStyle = FlatStyle.Flat;
             label6.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label6.ForeColor = Color.Red;
-            label6.Location = new Point(17, 71);
+            label6.Location = new Point(17, 82);
             label6.Name = "label6";
             label6.Size = new Size(332, 34);
             label6.TabIndex = 1;
@@ -495,7 +495,7 @@
             label5.FlatStyle = FlatStyle.Flat;
             label5.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label5.ForeColor = Color.Red;
-            label5.Location = new Point(18, 3);
+            label5.Location = new Point(18, 14);
             label5.Name = "label5";
             label5.Size = new Size(332, 34);
             label5.TabIndex = 0;
@@ -584,14 +584,14 @@
             label2.ForeColor = Color.Black;
             label2.Location = new Point(127, 133);
             label2.Name = "label2";
-            label2.Size = new Size(268, 32);
+            label2.Size = new Size(209, 25);
             label2.TabIndex = 20;
             label2.Text = "Recomendaciones:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FormCrearPedido
             // 
-            AutoScaleDimensions = new SizeF(12F, 23F);
+            AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Khaki;
             ClientSize = new Size(1383, 822);
