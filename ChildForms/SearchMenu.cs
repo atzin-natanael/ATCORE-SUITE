@@ -1,31 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FirebirdSql.Data.FirebirdClient;
+﻿using FirebirdSql.Data.FirebirdClient;
 using PedidoXperto.ChildClases;
 
 namespace PedidoXperto.ChildForms
 {
     public partial class SearchMenu : Form
     {
-        string query = string.Empty;
-        public SearchMenu(string querie)
+        public SearchMenu(string parametros)
         {
             InitializeComponent();
-            query = querie;
-            CargarQuery();
+            Txt_Codigo.Text = parametros;
+            CargarQuery(parametros);
         }
-        public void CargarQuery()
+        public void CargarQuery(string parametros)
         {
             FbConnection con = new FbConnection(GlobalSettings.Instance.StringConnection);
             try
             {
+                string[] arrayParametros = parametros.Split(' ');
+                string query = $@"
+                    SELECT CLAVES_ARTICULOS.CLAVE_ARTICULO, ARTICULOS.NOMBRE, PRECIOS_ARTICULOS.PRECIO  
+                    FROM ARTICULOS
+                    JOIN CLAVES_ARTICULOS ON CLAVES_ARTICULOS.ARTICULO_ID = ARTICULOS.ARTICULO_ID
+                    JOIN PRECIOS_ARTICULOS ON PRECIOS_ARTICULOS.ARTICULO_ID = ARTICULOS.ARTICULO_ID
+                    WHERE CLAVES_ARTICULOS.ROL_CLAVE_ART_ID = '17'
+                    AND PRECIOS_ARTICULOS.PRECIO_EMPRESA_ID = '42'";
+                
+                foreach (string parametro in arrayParametros)
+                {
+                    query += $@"AND ARTICULOS.NOMBRE LIKE '%{parametro}%' ";
+                }
+                
+                query += ";";
+
                 con.Open();
                 FbCommand commando = new FbCommand(query, con);
 

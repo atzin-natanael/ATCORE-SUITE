@@ -1,12 +1,12 @@
-﻿using System.Text.Json;
-using System.Text;
-using PedidoXperto.ChildClases;
+﻿using System.Text;
+using System.Text.Json;
 
 namespace PedidoXperto.Logic
 {
-    public class Data
+    public class DataBridge
     {
-        public string? SearchClient(string claveCliente)
+        #region Datos Cliente
+        static public string? SearchClient(string claveCliente)
         {
             var sql = "SELECT CLIENTE_ID FROM CLAVES_CLIENTES WHERE CLAVE_CLIENTE = @c;";
             var rows = new FireBirdHelper().ExecuteSingleColumn(sql, new Dictionary<string, object>
@@ -17,7 +17,7 @@ namespace PedidoXperto.Logic
             // Devuelve el primer valor o null si no existe
             return rows.FirstOrDefault();
         }
-        public string? GetClientName(string claveCliente)
+        static public string? GetClientName(string claveCliente)
         {
             var client_id = SearchClient(claveCliente);
             if (client_id == null)
@@ -32,19 +32,12 @@ namespace PedidoXperto.Logic
             // Devuelve el primer valor o null si no existe
             return rows.FirstOrDefault();
         }
-
-        public string? GetArticuloId(string claveArticulo)
-        {
-            var sql = "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = @c;";
-            var rows = new FireBirdHelper().ExecuteSingleColumn(sql, new Dictionary<string, object>
-            {
-                {"@c", claveArticulo}
-            });
-
-            // Devuelve el primer valor o null si no existe
-            return rows.FirstOrDefault();
-        }
-        public Tuple<string, string>? GetDiscount(string cliente_id, string articulo_id)
+        /// <summary>
+        /// Obtiene el descuento de un cliente
+        /// </summary>
+        /// <param name="cliente_id"></param>
+        /// <returns>Descuento por cliente <cliente_id> </returns>
+        static public string? GetDiscountByClient(string cliente_id)
         {
             var sql = "SELECT POLITICAS_DSCTOS_ART_CLI.DESCUENTO" +
             "            FROM DIRS_CLIENTES" +
@@ -57,15 +50,39 @@ namespace PedidoXperto.Logic
                 {"@c", cliente_id}
             });
 
+            return rows.FirstOrDefault();
+        }
+        #endregion
+        #region Datos Articulo
+        static public string? GetArticuloId(string claveArticulo)
+        {
+            var sql = "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = @c;";
+            var rows = new FireBirdHelper().ExecuteSingleColumn(sql, new Dictionary<string, object>
+            {
+                {"@c", claveArticulo}
+            });
+
             // Devuelve el primer valor o null si no existe
-            sql = "SELECT DESCUENTO FROM DSCTOS_PROMO_ARTS WHERE ARTICULO_ID = @c;";
-            var rows2 = new FireBirdHelper().ExecuteSingleColumn(sql, new Dictionary<string, object>
+            return rows.FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Obtiene el descuento de un articulo
+        /// </summary>
+        /// <param name="cliente_id"></param>
+        /// <returns>Descuento de un articulo_id </returns>
+        static public string? GetDiscountByArticle(string articulo_id)
+        {
+            var sql = "SELECT DESCUENTO FROM DSCTOS_PROMO_ARTS WHERE ARTICULO_ID = @c;";
+            var rows = new FireBirdHelper().ExecuteSingleColumn(sql, new Dictionary<string, object>
             {
                 {"@c", articulo_id}
-            });     
-            Tuple<string, string> discount = new Tuple<string, string>(rows.FirstOrDefault(), rows2.FirstOrDefault());
-            return discount;
+            });
+            return rows.FirstOrDefault();
         }
+
+        #endregion
+        #region Knn
         public static async Task<List<string>> ObtenerRecomendado(string Clave_articulo)
         {
             List<string> recomendaciones = new List<string>();
@@ -117,6 +134,7 @@ namespace PedidoXperto.Logic
                 ? recomendaciones.GetRange(0, 2)
                 : recomendaciones;
         }
+        #endregion
 
     }
 
