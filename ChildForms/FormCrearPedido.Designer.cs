@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             Titulo = new Label();
             Exit = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -58,14 +58,14 @@
             panel3 = new Panel();
             panel7 = new Panel();
             panel10 = new Panel();
-            valorDescuento = new Label();
+            precioConDescuento = new Label();
             label9 = new Label();
-            precioDescuento = new Label();
+            valorDescuento = new Label();
             precioTotal = new Label();
             label6 = new Label();
             label5 = new Label();
             panel9 = new Panel();
-            dataGridView1 = new DataGridView();
+            TablaRecomendados = new DataGridView();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             panel8 = new Panel();
@@ -82,7 +82,7 @@
             panel7.SuspendLayout();
             panel10.SuspendLayout();
             panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TablaRecomendados).BeginInit();
             panel6.SuspendLayout();
             SuspendLayout();
             // 
@@ -193,25 +193,25 @@
             Tabla.BackgroundColor = Color.White;
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             Tabla.ColumnHeadersHeight = 50;
             Tabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             Tabla.Columns.AddRange(new DataGridViewColumn[] { Column2, Column3, Column4, Column1, Column5, Column6 });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            Tabla.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            Tabla.DefaultCellStyle = dataGridViewCellStyle5;
             Tabla.Dock = DockStyle.Fill;
             Tabla.EnableHeadersVisualStyles = false;
             Tabla.GridColor = Color.Black;
@@ -225,7 +225,6 @@
             Tabla.CellEndEdit += Tabla_CellEndEdit;
             Tabla.EditingControlShowing += Tabla_EditingControlShowing;
             Tabla.KeyDown += Tabla_KeyDown;
-            Tabla.KeyPress += Tabla_KeyPress;
             // 
             // Column2
             // 
@@ -427,9 +426,9 @@
             // panel10
             // 
             panel10.BackColor = Color.Beige;
-            panel10.Controls.Add(valorDescuento);
+            panel10.Controls.Add(precioConDescuento);
             panel10.Controls.Add(label9);
-            panel10.Controls.Add(precioDescuento);
+            panel10.Controls.Add(valorDescuento);
             panel10.Controls.Add(precioTotal);
             panel10.Controls.Add(label6);
             panel10.Controls.Add(label5);
@@ -439,18 +438,18 @@
             panel10.Size = new Size(369, 308);
             panel10.TabIndex = 24;
             // 
-            // valorDescuento
+            // precioConDescuento
             // 
-            valorDescuento.Anchor = AnchorStyles.Bottom;
-            valorDescuento.FlatStyle = FlatStyle.Flat;
-            valorDescuento.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            valorDescuento.ForeColor = Color.Black;
-            valorDescuento.Location = new Point(17, 227);
-            valorDescuento.Name = "valorDescuento";
-            valorDescuento.Size = new Size(332, 46);
-            valorDescuento.TabIndex = 5;
-            valorDescuento.Text = "$ 0";
-            valorDescuento.TextAlign = ContentAlignment.MiddleCenter;
+            precioConDescuento.Anchor = AnchorStyles.Bottom;
+            precioConDescuento.FlatStyle = FlatStyle.Flat;
+            precioConDescuento.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            precioConDescuento.ForeColor = Color.Black;
+            precioConDescuento.Location = new Point(17, 227);
+            precioConDescuento.Name = "precioConDescuento";
+            precioConDescuento.Size = new Size(332, 46);
+            precioConDescuento.TabIndex = 5;
+            precioConDescuento.Text = "$ 0";
+            precioConDescuento.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
@@ -465,18 +464,18 @@
             label9.Text = "TOTAL";
             label9.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // precioDescuento
+            // valorDescuento
             // 
-            precioDescuento.Anchor = AnchorStyles.None;
-            precioDescuento.FlatStyle = FlatStyle.Flat;
-            precioDescuento.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            precioDescuento.ForeColor = Color.Black;
-            precioDescuento.Location = new Point(17, 126);
-            precioDescuento.Name = "precioDescuento";
-            precioDescuento.Size = new Size(332, 34);
-            precioDescuento.TabIndex = 3;
-            precioDescuento.Text = "$ 0";
-            precioDescuento.TextAlign = ContentAlignment.MiddleCenter;
+            valorDescuento.Anchor = AnchorStyles.None;
+            valorDescuento.FlatStyle = FlatStyle.Flat;
+            valorDescuento.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
+            valorDescuento.ForeColor = Color.Black;
+            valorDescuento.Location = new Point(17, 126);
+            valorDescuento.Name = "valorDescuento";
+            valorDescuento.Size = new Size(332, 34);
+            valorDescuento.TabIndex = 3;
+            valorDescuento.Text = "$ 0";
+            valorDescuento.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // precioTotal
             // 
@@ -519,41 +518,41 @@
             // 
             // panel9
             // 
-            panel9.Controls.Add(dataGridView1);
+            panel9.Controls.Add(TablaRecomendados);
             panel9.Dock = DockStyle.Top;
             panel9.Location = new Point(46, 0);
             panel9.Name = "panel9";
             panel9.Size = new Size(369, 286);
             panel9.TabIndex = 23;
             // 
-            // dataGridView1
+            // TablaRecomendados
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.ColumnHeadersHeight = 50;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.GridColor = Color.Black;
-            dataGridView1.Location = new Point(0, 0);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 50;
-            dataGridView1.Size = new Size(369, 286);
-            dataGridView1.TabIndex = 25;
+            TablaRecomendados.AllowUserToAddRows = false;
+            TablaRecomendados.AllowUserToDeleteRows = false;
+            TablaRecomendados.BackgroundColor = Color.White;
+            TablaRecomendados.BorderStyle = BorderStyle.None;
+            TablaRecomendados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle6.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            TablaRecomendados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            TablaRecomendados.ColumnHeadersHeight = 50;
+            TablaRecomendados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            TablaRecomendados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
+            TablaRecomendados.Dock = DockStyle.Fill;
+            TablaRecomendados.EnableHeadersVisualStyles = false;
+            TablaRecomendados.GridColor = Color.Black;
+            TablaRecomendados.Location = new Point(0, 0);
+            TablaRecomendados.Name = "TablaRecomendados";
+            TablaRecomendados.ReadOnly = true;
+            TablaRecomendados.RowHeadersVisible = false;
+            TablaRecomendados.RowHeadersWidth = 50;
+            TablaRecomendados.Size = new Size(369, 286);
+            TablaRecomendados.TabIndex = 25;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -628,7 +627,7 @@
             panel7.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TablaRecomendados).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             ResumeLayout(false);
@@ -650,12 +649,11 @@
         private Label label2;
         private Button button2;
         private Label lblNombreCliente;
-        private DataGridView Tabla;
         private Panel panel5;
         private Panel panel4;
         private Panel panel7;
         private Panel panel6;
-        private DataGridView dataGridView1;
+        private DataGridView TablaRecomendados;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private Panel panel8;
@@ -671,10 +669,11 @@
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
-        private Label precioDescuento;
+        private Label valorDescuento;
         private Label precioTotal;
         private Label label6;
-        private Label valorDescuento;
+        private Label precioConDescuento;
         private Label label9;
+        public DataGridView Tabla;
     }
 }

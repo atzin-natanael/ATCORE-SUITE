@@ -62,5 +62,15 @@ namespace PedidoXperto.ChildForms
         {
 
         }
+
+        private void Tabla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = Tabla.Rows[e.RowIndex];
+                GlobalSettings.Instance.Crear_clave = row.Cells[0].Value.ToString();//codigo principal
+                this.Close();
+            }
+        }
     }
 }

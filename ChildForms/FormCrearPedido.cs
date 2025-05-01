@@ -96,30 +96,38 @@ namespace PedidoXperto.ChildForms
         {
 
         }
-        public decimal Sumartabla()
+        public Tuple<decimal, decimal>  Sumartabla()
         {
             decimal sumatoria = 0;
+            decimal sumatoriaDescuento = 0;
+            decimal cantidad = 0;
+            Tuple<decimal, decimal> descuentos = new(0, 0);
             for (int i = 0; i < Tabla.Rows.Count; i++)
             {
                 if (Tabla.Rows.Count >= 1)
                 {
                     if (Tabla.Rows[i].Cells[5].Value != null)
                     {
-                        sumatoria += decimal.Parse(Tabla.Rows[i].Cells[2].Value.ToString()) * decimal.Parse(Tabla.Rows[i].Cells[3].Value.ToString());
+                        cantidad = decimal.Parse(Tabla.Rows[i].Cells[2].Value.ToString());
+                        if(cantidad <= 0)
+                            continue;
+                        sumatoria += cantidad * decimal.Parse(Tabla.Rows[i].Cells[3].Value.ToString());
+                        sumatoriaDescuento += cantidad * decimal.Parse(Tabla.Rows[i].Cells[3].Value.ToString()) * (decimal.Parse(Tabla.Rows[i].Cells[4].Value.ToString()) / 100);
                     }
                 }
             }
-            return sumatoria * 1.16m;
+            descuentos = new(sumatoria* 1.16m, sumatoriaDescuento * 1.16m);
+            return descuentos;
         }
+        
         public void ActualizarPrecios()
         {
-            decimal sumatoria = Sumartabla();
-            precioTotal.Text = "$ " + Math.Round(sumatoria, 2);
-            decimal precioDesc = sumatoria - (sumatoria * decimal.Parse("40") / 100);
-            precioDescuento.Text = "$ " + Math.Round(precioDesc, 2);
-            decimal descuento = sumatoria - precioDesc;
-            valorDescuento.Text = "$ " + Math.Round(descuento, 2);
+            Tuple<decimal, decimal> resultados = Sumartabla();
+            precioTotal.Text = "$ " + Math.Round(resultados.Item1, 2);
+            valorDescuento.Text = "$ " + Math.Round(resultados.Item2, 2);
+            precioConDescuento.Text = "$ " + Math.Round(resultados.Item1 - resultados.Item2 , 2);
         }
+
         private void txtBox_clienteId_KeyDown(object sender, KeyEventArgs e)
         {
             if (txtBox_clienteNombre.Text != "Cliente no encontrado")
@@ -133,57 +141,85 @@ namespace PedidoXperto.ChildForms
                 }
             }
         }
+        
+        private void CalcularDescuento(string _clave_articulo)
+        {
+            string articulo_id = new Data().GetArticuloId(_clave_articulo);
+            string cliente_id = new Data().SearchClient(txtBox_clienteId.Text);
+
+            Tuple<string, string> descuentos = new Data().GetDiscount(cliente_id, articulo_id);
+            if (descuentos.Item2 == null)//Descuento por cliente
+                Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[4].Value = descuentos.Item1;
+            else //Descuento por cliente
+            {
+                decimal descuento1Decimal = decimal.Parse(descuentos.Item1) / 100m; // Descuento por cliente
+                decimal descuento2Decimal = decimal.Parse(descuentos.Item2) / 100m; // Descuento por artículo
+
+                // Calcular el descuento total efectivo usando la fórmula
+                decimal descuentoTotal = 1 - ((1 - descuento1Decimal) * (1 - descuento2Decimal));
+
+                // Convertir a porcentaje y mostrar el resultado
+                decimal porcentajeDescuentoTotal = descuentoTotal * 100;
+                Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[4].Value = porcentajeDescuentoTotal;
+            }
+        }
+
+        private async void LlenarDatos()
+        {
+            if (InvalidText())
+                return;
+            GetFireBirdValue bridge = new();
+
+            string[] DatosArticulo = new string[2];
+            string descuento = "";
+            string codigoBarras = "";
+            if(GlobalSettings.Instance.Crear_clave != null)
+            {
+                codigoBarras = GlobalSettings.Instance.Crear_clave;
+                GlobalSettings.Instance.Crear_clave = null;
+            }
+            else
+            {
+                codigoBarras = Tabla.CurrentCell.Value.ToString();
+            }
+            DatosArticulo = bridge.BuscarDatosArticulos(codigoBarras);
+            if (DatosArticulo == null)
+            {
+                MessageBox.Show("Artículo no encontrado", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                string CLAVE_ARTICULO = DatosArticulo[0];
+                Tabla.EndEdit();
+                Tabla.CurrentRow.Cells[0].Value = CLAVE_ARTICULO;
+                Tabla.CurrentRow.Cells[1].Value = DatosArticulo[1]; //NOMBRE
+                Tabla.CurrentRow.Cells[3].Value = DatosArticulo[2]; //PRECIO
+                //IA
+                string codigoenviado = Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                List<string> resultado = await Data.ObtenerRecomendado(codigoenviado);
+                string[] InfoArt = bridge.BuscarDatosArticulos(resultado[0]);
+                string[] InfoArt2 = bridge.BuscarDatosArticulos(resultado[1]);
+                TablaRecomendados.Rows.Add(resultado[0], InfoArt[1]);
+                TablaRecomendados.Rows.Add(resultado[1], InfoArt2[1]);
+                //CODIGO1.Text = resultado.Count > 0 ? resultado[0] : "";
+                //CODIGO2.Text = resultado.Count > 1 ? resultado[1] : "";
+
+                CalcularDescuento(CLAVE_ARTICULO);
+          
+                Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[5].Value = 0;//precio total
+                Tabla.CurrentCell = Tabla.CurrentRow.Cells[2]; //cantidad
+                Tabla.BeginEdit(true);
+            }
+        }
 
         private void Tabla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (Tabla.CurrentCell != null)
             {
-                if (Tabla.CurrentCell.ColumnIndex == 0)
+                if (Tabla.CurrentCell.ColumnIndex == 0)//Es cuando llena la celda de clave_articulo
                 {
-                    if (InvalidText())
-                        return;
-                    GetFireBirdValue bridge = new();
-
-                    string[] DatosArticulo = new string[2];
-                    string descuento = "";
-                    DatosArticulo = bridge.BuscarDatosArticulos(Tabla.CurrentCell.Value.ToString());
-                    if (DatosArticulo == null)
-                    {
-                        MessageBox.Show("Artículo no encontrado", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        Tabla.CurrentRow.Cells[1].Value = DatosArticulo[1];
-                        Tabla.CurrentRow.Cells[3].Value = DatosArticulo[2];
-                        string articulo_id = bridge.GetValue("SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + DatosArticulo[0] + "';");
-                        string cliente_id = bridge.GetValue("SELECT CLIENTE_ID FROM CLAVES_CLIENTES WHERE CLAVE_CLIENTE = '" + txtBox_clienteId.Text + "';");
-
-                        descuento = bridge.GetValue("SELECT POLITICAS_DSCTOS_ART_CLI.DESCUENTO" +
-                    "            FROM DIRS_CLIENTES" +
-                    "           JOIN CLAVES_CLIENTES ON CLAVES_CLIENTES.CLIENTE_ID = DIRS_CLIENTES.CLIENTE_ID" +
-                    "            JOIN PRECIOS_CLI_CLI ON PRECIOS_CLI_CLI.CLIENTE_ID = DIRS_CLIENTES.CLIENTE_ID" +
-                    "            JOIN POLITICAS_DSCTOS_ART_CLI ON POLITICAS_DSCTOS_ART_CLI.POLITICA_DSCTO_ART_CLI_ID = PRECIOS_CLI_CLI.POLITICA_DSCTO_ART_CLI_ID" +
-                    "           WHERE DIRS_CLIENTES.CLIENTE_ID ='" + cliente_id + "';");
-                        string descextra = bridge.GetValue("SELECT DESCUENTO FROM DSCTOS_PROMO_ARTS WHERE ARTICULO_ID = '" + articulo_id + "';");
-                        if (descextra == null)
-                            Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[4].Value = 40;
-                        else
-                        {
-                            decimal descuento1Decimal = decimal.Parse(descuento) / 100m; // Usamos 'm' para indicar que es decimal
-                            decimal descuento2Decimal = decimal.Parse(descextra) / 100m; // Usamos 'm' para indicar que es decimal
-
-                            // Calcular el descuento total efectivo usando la fórmula
-                            decimal descuentoTotal = 1 - ((1 - descuento1Decimal) * (1 - descuento2Decimal));
-
-                            // Convertir a porcentaje y mostrar el resultado
-                            decimal porcentajeDescuentoTotal = descuentoTotal * 100;
-                            Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[4].Value = porcentajeDescuentoTotal;
-                        }
-                        Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[5].Value = 0;
-                        Tabla.CurrentCell = Tabla.CurrentRow.Cells[2];
-                        Tabla.BeginEdit(true);
-                    }
+                    LlenarDatos();//LLena la tabla con los datos
                 }
                 else if (Tabla.CurrentCell.ColumnIndex == 2 && Tabla.CurrentCell.Value != null)
                 {
@@ -199,7 +235,7 @@ namespace PedidoXperto.ChildForms
                     //    Tabla.CurrentCell = Tabla.Rows[siguienteFila].Cells[0];
                     //    Tabla.BeginEdit(true);
                     //}
-                    if (Tabla.CurrentCell.Value.ToString() != string.Empty)
+                    if (Tabla.CurrentCell.Value.ToString() != string.Empty && decimal.Parse(Tabla.CurrentCell.Value.ToString()) > 0)
                     {
                         decimal precio = decimal.Parse(Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[3].Value.ToString());
                         decimal cantidad = decimal.Parse(Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[2].Value.ToString());
@@ -227,60 +263,65 @@ namespace PedidoXperto.ChildForms
             e.KeyChar = char.ToUpper(e.KeyChar);
         }
 
+        
+
         private void Tabla_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F1)
-            {
-                var selectedCell = Tabla.SelectedCells[0];
-                MessageBox.Show("asdasdasd");
-                // do something with selectedCell...
-            }
             if (e.KeyCode == Keys.F4)
             {
                 if (Tabla.CurrentCell != null && Tabla.CurrentCell.ColumnIndex == 1)
                 {
-                    string valorCelda = Tabla.CurrentCell.Value?.ToString() ?? "";
-                    MessageBox.Show(valorCelda);
-
+                    string valorCelda = Tabla.CurrentCell.EditedFormattedValue?.ToString() ?? "";
                     string query = $@"
-                SELECT CLAVES_ARTICULOS.CLAVE_ARTICULO, ARTICULOS.NOMBRE, PRECIOS_ARTICULOS.PRECIO  
-                FROM ARTICULOS
-                JOIN CLAVES_ARTICULOS ON CLAVES_ARTICULOS.ARTICULO_ID = ARTICULOS.ARTICULO_ID
-                JOIN PRECIOS_ARTICULOS ON PRECIOS_ARTICULOS.ARTICULO_ID = ARTICULOS.ARTICULO_ID
-                WHERE CLAVES_ARTICULOS.ROL_CLAVE_ART_ID = '17'
-                  AND PRECIOS_ARTICULOS.PRECIO_EMPRESA_ID = '42'
-                  AND ARTICULOS.NOMBRE LIKE '%{valorCelda}%';";
+                    SELECT CLAVES_ARTICULOS.CLAVE_ARTICULO, ARTICULOS.NOMBRE, PRECIOS_ARTICULOS.PRECIO  
+                    FROM ARTICULOS
+                    JOIN CLAVES_ARTICULOS ON CLAVES_ARTICULOS.ARTICULO_ID = ARTICULOS.ARTICULO_ID
+                    JOIN PRECIOS_ARTICULOS ON PRECIOS_ARTICULOS.ARTICULO_ID = ARTICULOS.ARTICULO_ID
+                    WHERE CLAVES_ARTICULOS.ROL_CLAVE_ART_ID = '17'
+                    AND PRECIOS_ARTICULOS.PRECIO_EMPRESA_ID = '42'";
+                    string[] parametros = valorCelda.Split(' ');
+                    foreach (string parametro in parametros)
+                    {
+                        query += $@"AND ARTICULOS.NOMBRE LIKE '%{parametro}%' ";
+                    }
+                    query += ";";
 
                     SearchMenu buscar = new SearchMenu(query);
+                    buscar.Txt_Codigo.Text = valorCelda;
+                    //buscar.Tabla.Rows.Clear();
+                    buscar.Tabla.Focus();
                     buscar.ShowDialog();
-                }
-            }
-            else if (e.Control && e.KeyCode == Keys.Delete)
-            {
-                if (Tabla.CurrentCell != null)
-                {
-                    if (Tabla.Rows.Count >= 1)
+
+                    e.Handled = true; // Opcional, previene otros efectos
+                    if (GlobalSettings.Instance.Crear_clave != null)
                     {
-                        Tabla.Rows.RemoveAt(Tabla.CurrentCell.RowIndex);
-                        ActualizarPrecios();
+                        LlenarDatos();
+                        Tabla.CurrentCell = Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[2];
+                        Tabla.BeginEdit(true);
                     }
                 }
             }
-        }
-
-        private void Tabla_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.F4)
+            if (e.Control && e.KeyCode == Keys.Delete)  // Verifica que Ctrl + Supr se presionen
             {
-                MessageBox.Show("You press Enter");
+                if (Tabla.CurrentRow != null)  // Verifica si hay una fila seleccionada
+                {
+                    // Elimina la fila seleccionada
+                    Tabla.Rows.Remove(Tabla.CurrentRow);
+                    ActualizarPrecios();
+                }
             }
         }
 
+
+
         private void Tabla_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            DataGridViewTextBoxEditingControl tb = (DataGridViewTextBoxEditingControl)e.Control;
-            tb.KeyPress += new KeyPressEventHandler(Tabla_KeyPress);
-            e.Control.KeyPress += new KeyPressEventHandler(Tabla_KeyPress);
+            if (e.Control is TextBox tb)
+            {
+                // Evita suscripciones múltiples
+                tb.KeyDown -= Tabla_KeyDown;
+                tb.KeyDown += Tabla_KeyDown;
+            }
         }
     }
 }

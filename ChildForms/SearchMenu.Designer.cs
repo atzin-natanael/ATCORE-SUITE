@@ -50,7 +50,7 @@
             Txt_Codigo.Location = new Point(128, 54);
             Txt_Codigo.Name = "Txt_Codigo";
             Txt_Codigo.Size = new Size(365, 23);
-            Txt_Codigo.TabIndex = 11;
+            Txt_Codigo.TabIndex = 1;
             // 
             // panelTop
             // 
@@ -103,7 +103,7 @@
             Buscar.Location = new Point(528, 50);
             Buscar.Name = "Buscar";
             Buscar.Size = new Size(87, 28);
-            Buscar.TabIndex = 13;
+            Buscar.TabIndex = 2;
             Buscar.Text = "Buscar";
             Buscar.UseVisualStyleBackColor = false;
             Buscar.Click += Buscar_Click;
@@ -127,11 +127,14 @@
             Tabla.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
             Tabla.Dock = DockStyle.Fill;
             Tabla.Location = new Point(0, 0);
+            Tabla.MultiSelect = false;
             Tabla.Name = "Tabla";
             Tabla.ReadOnly = true;
             Tabla.RowHeadersVisible = false;
+            Tabla.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             Tabla.Size = new Size(676, 222);
-            Tabla.TabIndex = 16;
+            Tabla.TabIndex = 0;
+            Tabla.CellDoubleClick += Tabla_CellDoubleClick;
             // 
             // Column1
             // 
@@ -185,17 +188,16 @@
         }
 
         #endregion
-
-        private TextBox Txt_Codigo;
         private Panel panelTop;
         private Label label3;
         private Button Exit;
         private Button Buscar;
         private Label label2;
-        private DataGridView Tabla;
         private Panel panel1;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
+        public TextBox Txt_Codigo;
+        public DataGridView Tabla;
     }
 }
