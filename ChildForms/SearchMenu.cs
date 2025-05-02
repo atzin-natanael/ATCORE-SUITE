@@ -8,7 +8,7 @@ namespace PedidoXperto.ChildForms
         public SearchMenu(string parametros)
         {
             InitializeComponent();
-            Txt_Codigo.Text = parametros;
+            Txt_Nombre.Text = parametros;
             CargarQuery(parametros);
         }
         public void CargarQuery(string parametros)
@@ -66,7 +66,10 @@ namespace PedidoXperto.ChildForms
 
         private void Buscar_Click(object sender, EventArgs e)
         {
+            if(Txt_Nombre.Text != string.Empty)
+            {
 
+            }
         }
 
         private void Tabla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

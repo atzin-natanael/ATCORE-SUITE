@@ -48,6 +48,7 @@ namespace ProyectoXperto
             collapseTimer = new System.Windows.Forms.Timer(components);
             CompletePanel = new Panel();
             Primarypanel = new Panel();
+            button1 = new Button();
             Toppanel.SuspendLayout();
             Leftpanel.SuspendLayout();
             SubPanelMenuAdmin.SuspendLayout();
@@ -110,7 +111,7 @@ namespace ProyectoXperto
             // 
             // Leftpanel
             // 
-            Leftpanel.BackColor = Color.Beige;
+            Leftpanel.BackColor = Color.White;
             Leftpanel.Controls.Add(SubPanelMenuAdmin);
             Leftpanel.Controls.Add(BtnAdministrador);
             Leftpanel.Controls.Add(Hide);
@@ -126,11 +127,12 @@ namespace ProyectoXperto
             // 
             // SubPanelMenuAdmin
             // 
+            SubPanelMenuAdmin.Controls.Add(button1);
             SubPanelMenuAdmin.Controls.Add(BtnUsuarios);
             SubPanelMenuAdmin.Dock = DockStyle.Top;
             SubPanelMenuAdmin.Location = new Point(0, 229);
             SubPanelMenuAdmin.Name = "SubPanelMenuAdmin";
-            SubPanelMenuAdmin.Size = new Size(240, 60);
+            SubPanelMenuAdmin.Size = new Size(240, 118);
             SubPanelMenuAdmin.TabIndex = 4;
             // 
             // BtnUsuarios
@@ -293,6 +295,23 @@ namespace ProyectoXperto
             Primarypanel.Size = new Size(1110, 671);
             Primarypanel.TabIndex = 1;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Silver;
+            button1.Cursor = Cursors.Hand;
+            button1.Dock = DockStyle.Top;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseOverBackColor = Color.Gray;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Black;
+            button1.Location = new Point(0, 58);
+            button1.Name = "button1";
+            button1.Size = new Size(240, 58);
+            button1.TabIndex = 2;
+            button1.Text = "Roles";
+            button1.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -335,5 +354,6 @@ namespace ProyectoXperto
         public Label LogOut;
         private Panel CompletePanel;
         private Panel Primarypanel;
+        private Button button1;
     }
 }

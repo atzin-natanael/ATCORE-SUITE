@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Txt_Codigo = new TextBox();
+            Txt_Nombre = new TextBox();
             panelTop = new Panel();
             label3 = new Label();
             Exit = new Button();
@@ -44,13 +44,13 @@
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // Txt_Codigo
+            // Txt_Nombre
             // 
-            Txt_Codigo.CharacterCasing = CharacterCasing.Upper;
-            Txt_Codigo.Location = new Point(128, 54);
-            Txt_Codigo.Name = "Txt_Codigo";
-            Txt_Codigo.Size = new Size(365, 23);
-            Txt_Codigo.TabIndex = 1;
+            Txt_Nombre.CharacterCasing = CharacterCasing.Upper;
+            Txt_Nombre.Location = new Point(128, 54);
+            Txt_Nombre.Name = "Txt_Nombre";
+            Txt_Nombre.Size = new Size(365, 23);
+            Txt_Nombre.TabIndex = 1;
             // 
             // panelTop
             // 
@@ -171,7 +171,7 @@
             BackColor = Color.Beige;
             ClientSize = new Size(676, 334);
             Controls.Add(panel1);
-            Controls.Add(Txt_Codigo);
+            Controls.Add(Txt_Nombre);
             Controls.Add(panelTop);
             Controls.Add(Buscar);
             Controls.Add(label2);
@@ -197,7 +197,7 @@
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
-        public TextBox Txt_Codigo;
+        public TextBox Txt_Nombre;
         public DataGridView Tabla;
     }
 }
