@@ -202,13 +202,12 @@ namespace PedidoXperto.ChildForms
                 Tabla.CurrentRow.Cells[3].Value = DatosArticulo[2]; //PRECIO
                 //IA
                 string codigoenviado = Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[0].Value.ToString();
-                List<string> resultado = await DataBridge.ObtenerRecomendado(codigoenviado);
-                string[] InfoArt = bridge.BuscarDatosArticulos(resultado[0]);
-                string[] InfoArt2 = bridge.BuscarDatosArticulos(resultado[1]);
-                TablaRecomendados.Rows.Add(resultado[0], InfoArt[1]);
-                TablaRecomendados.Rows.Add(resultado[1], InfoArt2[1]);
-                //CODIGO1.Text = resultado.Count > 0 ? resultado[0] : "";
-                //CODIGO2.Text = resultado.Count > 1 ? resultado[1] : "";
+                //List<string> resultado = await DataBridge.ObtenerRecomendado(codigoenviado);
+                //string[] InfoArt = bridge.BuscarDatosArticulos(resultado[0]);
+                //string[] InfoArt2 = bridge.BuscarDatosArticulos(resultado[1]);
+                //TablaRecomendados.Rows.Add(resultado[0], InfoArt[1]);
+                //TablaRecomendados.Rows.Add(resultado[1], InfoArt2[1]);
+
 
                 CalcularDescuentoArticulo(articulo_id);
 
