@@ -68,7 +68,8 @@ namespace PedidoXperto.ChildForms
         {
             if(Txt_Nombre.Text != string.Empty)
             {
-
+                Tabla.Rows.Clear(); 
+                CargarQuery(Txt_Nombre.Text);
             }
         }
 

@@ -7,6 +7,7 @@ namespace PedidoXperto.ChildForms
     public partial class FormCrearPedido : Form
     {
         private decimal descuentoPorCliente = -1;
+        private PriorityQueue<string, int> recomendados;
         public enum ColTabla
         {
             CodigoBarras = 0,
@@ -21,6 +22,7 @@ namespace PedidoXperto.ChildForms
             InitializeComponent();
             CargarVendedores();
             descuentoPorCliente = 0;
+            recomendados = new PriorityQueue<string, int>();
         }
         public void CargarComboBox(List<List<string>> vendedores)
         {
@@ -83,21 +85,26 @@ namespace PedidoXperto.ChildForms
                 return;
 
 
-            var data = DataBridge.GetClientName(txtBox_clienteId.Text);
-
-            if (data == null)
+            var cliente_id = DataBridge.SearchClient(txtBox_clienteId.Text);
+            if (cliente_id == null)
             {
                 txtBox_clienteNombre.Text = "Cliente no encontrado";
             }
             else
             {
-                txtBox_clienteNombre.Text = data;
+                var name = DataBridge.GetClientName(cliente_id);
+                if (name == null)
+                {
+                    txtBox_clienteNombre.Text = "Cliente no encontrado";
+                    return;
+                }
+                txtBox_clienteNombre.Text = name;
                 //Obtiene el descuento por cliente una sola vez
-                descuentoPorCliente = decimal.Parse(DataBridge.GetDiscountByClient(txtBox_clienteId.Text) ?? "-1");
+                descuentoPorCliente = decimal.Parse(DataBridge.GetDiscountByClient(cliente_id) ?? "-1");
             }
         }
 
-        private bool InvalidText(string codigo, int minLength = 6)
+        private bool InvalidText(string codigo, int minLength = 3)
         {
             return string.IsNullOrWhiteSpace(codigo) || codigo.Length < minLength;
         }
@@ -118,7 +125,10 @@ namespace PedidoXperto.ChildForms
 
             for (int i = 0; i < Tabla.Rows.Count; i++)
             {
-                if (Tabla.Rows[i].Cells[(int)ColTabla.Total].Value == null) continue; //Valor nulo? no deberia ser posible
+                if (Tabla.Rows[i].Cells[(int)ColTabla.Total].Value == null ||
+                Tabla.Rows[i].Cells[(int)ColTabla.Cantidad].Value == null ||
+                Tabla.Rows[i].Cells[(int)ColTabla.Precio].Value == null
+                ) continue; //Valor nulo? no deberia ser posible
 
                 cantidad = decimal.Parse(Tabla.Rows[i].Cells[(int)ColTabla.Cantidad].Value.ToString() ?? "0");
                 precio = decimal.Parse(Tabla.Rows[i].Cells[(int)ColTabla.Precio].Value.ToString() ?? "0");
@@ -153,6 +163,41 @@ namespace PedidoXperto.ChildForms
             }
         }
 
+        /// <summary>
+        /// Añade los articulos recomendados a la tabla de recomendados, si hay 6 o más no añade más
+        /// </summary>
+        private async Task ManejarTablaRecomendado(string clave_principal)
+        {
+            //IA
+            List<string> resultados = await DataBridge.ObtenerRecomendado(clave_principal);
+
+            if (resultados == null || resultados.Count == 0)
+                return;
+            
+            int prioridad = 0;
+            foreach (string result in resultados)
+            {
+                // Si llego al limite de 6 elementos, saca el de menor prioridad
+                if(recomendados.Count >= 6)
+                    recomendados.Dequeue();
+                // Añade el nuevo elemento con la prioridad nueva
+                recomendados.Enqueue(result, prioridad++);
+            }        }
+
+        private void ActualizarTablaRecomendados()
+        {
+            PriorityQueue<string, int> temp = new();
+            TablaRecomendados.Rows.Clear();
+
+            while(recomendados.Count > 0)
+            {
+                var recomendado = recomendados.Dequeue();
+                string[] InfoArt = new GetFireBirdValue().BuscarDatosArticulos(recomendado);
+                TablaRecomendados.Rows.Add(recomendado, InfoArt[1]);
+                temp.Enqueue(recomendado, 0);
+            }
+            recomendados = temp;
+        }
         /// <summary>
         /// Calcula el descuento por cliente y por artículo
         /// descuento por cliente ya debe tener un valor valido a este punto
@@ -194,26 +239,20 @@ namespace PedidoXperto.ChildForms
 
             if (DatosArticulo != null)
             {
-                string CLAVE_ARTICULO = DatosArticulo[0];
-                string articulo_id = DataBridge.GetArticuloId(CLAVE_ARTICULO);
+                string Clave_Principal = DatosArticulo[0];
+                string articulo_id = DataBridge.GetArticuloId(Clave_Principal);
                 Tabla.EndEdit();
-                Tabla.CurrentRow.Cells[0].Value = CLAVE_ARTICULO;
+                Tabla.CurrentRow.Cells[0].Value = Clave_Principal;
                 Tabla.CurrentRow.Cells[1].Value = DatosArticulo[1]; //NOMBRE
                 Tabla.CurrentRow.Cells[3].Value = DatosArticulo[2]; //PRECIO
-                //IA
-                string codigoenviado = Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[0].Value.ToString();
-                //List<string> resultado = await DataBridge.ObtenerRecomendado(codigoenviado);
-                //string[] InfoArt = bridge.BuscarDatosArticulos(resultado[0]);
-                //string[] InfoArt2 = bridge.BuscarDatosArticulos(resultado[1]);
-                //TablaRecomendados.Rows.Add(resultado[0], InfoArt[1]);
-                //TablaRecomendados.Rows.Add(resultado[1], InfoArt2[1]);
-
-
-                CalcularDescuentoArticulo(articulo_id);
-
                 Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Total].Value = 0;
                 Tabla.CurrentCell = Tabla.CurrentRow.Cells[(int)ColTabla.Cantidad];
                 Tabla.BeginEdit(true);
+                
+                await ManejarTablaRecomendado(Clave_Principal);
+                int a = recomendados.Count;
+                CalcularDescuentoArticulo(articulo_id);
+                ActualizarTablaRecomendados();
             }
             else
                 MessageBox.Show("Artículo no encontrado", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -223,11 +262,11 @@ namespace PedidoXperto.ChildForms
         {
             if (Tabla.CurrentCell != null)
             {
-                if (Tabla.CurrentCell.ColumnIndex == 0)//Es cuando llena la celda de clave_articulo
+                if (Tabla.CurrentCell.ColumnIndex == (int)ColTabla.CodigoBarras)//Es cuando llena la celda de clave_articulo
                 {
                     LlenarDatosArticulo();//Llena los datos de un articulo
                 }
-                else if (Tabla.CurrentCell.ColumnIndex == 2 && Tabla.CurrentCell.Value != null)
+                else if (Tabla.CurrentCell.ColumnIndex == (int)ColTabla.Cantidad && Tabla.CurrentCell.Value != null)
                 {
                     //if (e.RowIndex == Tabla.Rows.Count - 1)
                     //{
@@ -241,7 +280,7 @@ namespace PedidoXperto.ChildForms
                     //    Tabla.CurrentCell = Tabla.Rows[siguienteFila].Cells[0];
                     //    Tabla.BeginEdit(true);
                     //}
-                    if (Tabla.CurrentCell.Value.ToString() != string.Empty && decimal.Parse(Tabla.CurrentCell.Value.ToString()) > 0)
+                    if (Tabla.CurrentCell.Value.ToString() != string.Empty && Tabla.CurrentCell.Value.ToString().All(char.IsDigit) && decimal.Parse(Tabla.CurrentCell.Value.ToString()) > 0)
                     {
                         decimal precio = decimal.Parse(Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Precio].Value.ToString());
                         decimal cantidad = decimal.Parse(Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Cantidad].Value.ToString());
@@ -319,6 +358,38 @@ namespace PedidoXperto.ChildForms
                 tb.KeyDown -= Tabla_KeyDown;
                 tb.KeyDown += Tabla_KeyDown;
             }
+        }
+
+        private void TablaRecomendados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            GetFireBirdValue bridge = new();
+
+            string[] DatosArticulo = new string[2];
+
+            DatosArticulo = bridge.BuscarDatosArticulos(TablaRecomendados.CurrentRow.Cells[0].Value.ToString());
+
+            if (DatosArticulo != null)
+            {
+                string Clave_Principal = DatosArticulo[0];
+                string articulo_id = DataBridge.GetArticuloId(Clave_Principal);
+                Tabla.EndEdit();
+                if (Tabla.Rows[Tabla.Rows.Count - 1].Cells[0].Value == null)
+                {
+                    Tabla.Rows.RemoveAt(Tabla.Rows.Count - 1);
+                }
+                else if(Tabla.Rows[Tabla.Rows.Count - 1].Cells[2].Value == null)
+                {
+                    Tabla.Rows[Tabla.Rows.Count - 1].Cells[2].Value = 1;
+                }
+                Tabla.Rows.Add(Clave_Principal, DatosArticulo[1], 1, DatosArticulo[2]);
+                Tabla.Rows[Tabla.Rows.Count - 1].Height = 40;
+                CalcularDescuentoArticulo(articulo_id);
+                Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Total].Value = 0;
+                Tabla.CurrentCell = Tabla.CurrentRow.Cells[(int)ColTabla.Cantidad];
+                Tabla.BeginEdit(true);
+            }
+            else
+                MessageBox.Show("Artículo no encontrado", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

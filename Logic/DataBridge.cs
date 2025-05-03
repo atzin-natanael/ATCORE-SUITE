@@ -17,16 +17,16 @@ namespace PedidoXperto.Logic
             // Devuelve el primer valor o null si no existe
             return rows.FirstOrDefault();
         }
-        static public string? GetClientName(string claveCliente)
+        static public string? GetClientName(string cliente_id)
         {
-            var client_id = SearchClient(claveCliente);
-            if (client_id == null)
-                return null;
+            //var client_id = SearchClient(claveCliente);
+            //if (client_id == null)
+            //    return null;
 
             var sql = "SELECT NOMBRE FROM CLIENTES WHERE CLIENTE_ID = @c;";
             var rows = new FireBirdHelper().ExecuteSingleColumn(sql, new Dictionary<string, object>
             {
-                {"@c", client_id}
+                {"@c", cliente_id}
             });
 
             // Devuelve el primer valor o null si no existe
@@ -85,7 +85,7 @@ namespace PedidoXperto.Logic
         #region Knn
         public static async Task<List<string>> ObtenerRecomendado(string Clave_articulo)
         {
-            List<string> recomendaciones = new List<string>();
+            List<string> rawRecomendaciones = new List<string>();
 
             try
             {
@@ -93,7 +93,7 @@ namespace PedidoXperto.Logic
                 {
                     // URL del endpoint de tu API FastAPI
                     //string url = "http://localhost:8000/recomendar"; // Asegúrate de que el puerto sea el correcto
-                    string url = "https://6d21-2806-2f0-5501-dbb5-621a-ac67-498e-d10.ngrok-free.app/recomendar";
+                    string url = "https://6e22-187-190-202-34.ngrok-free.app/recomendar";
                     // Construcción del cuerpo en JSON
                     var payload = new { clave_articulo = int.Parse(Clave_articulo) };
                     string jsonPayload = System.Text.Json.JsonSerializer.Serialize(payload);
@@ -114,7 +114,7 @@ namespace PedidoXperto.Logic
 
                             foreach (JsonElement item in recomendacionesJson.EnumerateArray())
                             {
-                                recomendaciones.Add(item.ToString());
+                                rawRecomendaciones.Add(item.ToString());
                             }
                         }
                     }
@@ -129,10 +129,12 @@ namespace PedidoXperto.Logic
                 MessageBox.Show("Excepción: " + ex.Message);
             }
 
-            // Devolver solo los primeros dos si hay más
-            return recomendaciones.Count >= 2
-                ? recomendaciones.GetRange(0, 2)
-                : recomendaciones;
+            List<string> recomendaciones = new List<string>();
+            for (int i = 0; i < rawRecomendaciones.Count && i < 2; i++)
+            {
+                recomendaciones.Add(rawRecomendaciones[i].Substring(0, 6));
+            }
+            return recomendaciones;
         }
         #endregion
 

@@ -39,6 +39,12 @@
             panel2 = new Panel();
             panel5 = new Panel();
             Tabla = new DataGridView();
+            CodigoBarras = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            Descuento = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
             panel4 = new Panel();
             label4 = new Label();
             Cb_Vendedor = new ComboBox();
@@ -65,12 +71,6 @@
             panel8 = new Panel();
             panel6 = new Panel();
             label2 = new Label();
-            CodigoBarras = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            Descuento = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -190,7 +190,7 @@
             // 
             Tabla.AllowUserToAddRows = false;
             Tabla.AllowUserToDeleteRows = false;
-            Tabla.BackgroundColor = Color.White;
+            Tabla.BackgroundColor = Color.Beige;
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -225,6 +225,51 @@
             Tabla.CellEndEdit += Tabla_CellEndEdit;
             Tabla.EditingControlShowing += Tabla_EditingControlShowing;
             Tabla.KeyDown += Tabla_KeyDown;
+            // 
+            // CodigoBarras
+            // 
+            CodigoBarras.HeaderText = "Codigo";
+            CodigoBarras.MinimumWidth = 6;
+            CodigoBarras.Name = "CodigoBarras";
+            CodigoBarras.Width = 125;
+            // 
+            // Descripcion
+            // 
+            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.MinimumWidth = 6;
+            Descripcion.Name = "Descripcion";
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 6;
+            Cantidad.Name = "Cantidad";
+            Cantidad.Width = 125;
+            // 
+            // Precio
+            // 
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 6;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            Precio.Width = 125;
+            // 
+            // Descuento
+            // 
+            Descuento.HeaderText = "Descuento";
+            Descuento.MinimumWidth = 6;
+            Descuento.Name = "Descuento";
+            Descuento.ReadOnly = true;
+            Descuento.Width = 125;
+            // 
+            // Total
+            // 
+            Total.HeaderText = "Total";
+            Total.MinimumWidth = 6;
+            Total.Name = "Total";
+            Total.ReadOnly = true;
+            Total.Width = 125;
             // 
             // panel4
             // 
@@ -484,7 +529,7 @@
             // 
             TablaRecomendados.AllowUserToAddRows = false;
             TablaRecomendados.AllowUserToDeleteRows = false;
-            TablaRecomendados.BackgroundColor = Color.White;
+            TablaRecomendados.BackgroundColor = Color.Beige;
             TablaRecomendados.BorderStyle = BorderStyle.None;
             TablaRecomendados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -508,6 +553,7 @@
             TablaRecomendados.RowHeadersWidth = 50;
             TablaRecomendados.Size = new Size(369, 286);
             TablaRecomendados.TabIndex = 25;
+            TablaRecomendados.CellDoubleClick += TablaRecomendados_CellDoubleClick;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -557,51 +603,6 @@
             label2.TabIndex = 20;
             label2.Text = "Recomendaciones:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // CodigoBarras
-            // 
-            CodigoBarras.HeaderText = "Codigo";
-            CodigoBarras.MinimumWidth = 6;
-            CodigoBarras.Name = "CodigoBarras";
-            CodigoBarras.Width = 125;
-            // 
-            // Descripcion
-            // 
-            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.MinimumWidth = 6;
-            Descripcion.Name = "Descripcion";
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 6;
-            Cantidad.Name = "Cantidad";
-            Cantidad.Width = 125;
-            // 
-            // Precio
-            // 
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 6;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            Precio.Width = 125;
-            // 
-            // Descuento
-            // 
-            Descuento.HeaderText = "Descuento";
-            Descuento.MinimumWidth = 6;
-            Descuento.Name = "Descuento";
-            Descuento.ReadOnly = true;
-            Descuento.Width = 125;
-            // 
-            // Total
-            // 
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 6;
-            Total.Name = "Total";
-            Total.ReadOnly = true;
-            Total.Width = 125;
             // 
             // FormCrearPedido
             // 
