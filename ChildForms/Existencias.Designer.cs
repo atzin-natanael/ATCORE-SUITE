@@ -36,6 +36,7 @@
             label2 = new Label();
             label1 = new Label();
             ExistenciaTienda = new Label();
+            Descripcion = new Label();
             panelTop.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,11 +56,11 @@
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(238, 0);
+            label3.Location = new Point(250, 5);
             label3.Name = "label3";
-            label3.Size = new Size(122, 22);
+            label3.Size = new Size(113, 22);
             label3.TabIndex = 0;
-            label3.Text = "EXISTENCIAS";
+            label3.Text = "EXISTENCIA";
             // 
             // Exit
             // 
@@ -85,9 +86,9 @@
             ExistenciaAlmacen.FlatStyle = FlatStyle.Flat;
             ExistenciaAlmacen.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             ExistenciaAlmacen.ForeColor = Color.White;
-            ExistenciaAlmacen.Location = new Point(317, 100);
+            ExistenciaAlmacen.Location = new Point(345, 132);
             ExistenciaAlmacen.Name = "ExistenciaAlmacen";
-            ExistenciaAlmacen.Size = new Size(131, 31);
+            ExistenciaAlmacen.Size = new Size(99, 31);
             ExistenciaAlmacen.TabIndex = 14;
             ExistenciaAlmacen.Text = "0";
             // 
@@ -99,9 +100,9 @@
             Enter.FlatAppearance.BorderSize = 0;
             Enter.FlatStyle = FlatStyle.Flat;
             Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(238, 253);
+            Enter.Location = new Point(222, 277);
             Enter.Name = "Enter";
-            Enter.Size = new Size(141, 50);
+            Enter.Size = new Size(141, 38);
             Enter.TabIndex = 13;
             Enter.Text = "Aceptar";
             Enter.UseVisualStyleBackColor = false;
@@ -112,9 +113,9 @@
             label2.Anchor = AnchorStyles.None;
             label2.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(152, 100);
+            label2.Location = new Point(180, 132);
             label2.Name = "label2";
-            label2.Size = new Size(122, 31);
+            label2.Size = new Size(116, 31);
             label2.TabIndex = 9;
             label2.Text = "ALMACEN";
             // 
@@ -123,9 +124,9 @@
             label1.Anchor = AnchorStyles.None;
             label1.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(167, 178);
+            label1.Location = new Point(207, 174);
             label1.Name = "label1";
-            label1.Size = new Size(85, 31);
+            label1.Size = new Size(89, 31);
             label1.TabIndex = 10;
             label1.Text = "TIENDA";
             // 
@@ -135,11 +136,22 @@
             ExistenciaTienda.FlatStyle = FlatStyle.Flat;
             ExistenciaTienda.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             ExistenciaTienda.ForeColor = Color.White;
-            ExistenciaTienda.Location = new Point(317, 178);
+            ExistenciaTienda.Location = new Point(345, 174);
             ExistenciaTienda.Name = "ExistenciaTienda";
-            ExistenciaTienda.Size = new Size(131, 25);
+            ExistenciaTienda.Size = new Size(99, 25);
             ExistenciaTienda.TabIndex = 16;
             ExistenciaTienda.Text = "0";
+            // 
+            // Descripcion
+            // 
+            Descripcion.Anchor = AnchorStyles.None;
+            Descripcion.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Descripcion.ForeColor = Color.White;
+            Descripcion.Location = new Point(12, 33);
+            Descripcion.Name = "Descripcion";
+            Descripcion.Size = new Size(582, 83);
+            Descripcion.TabIndex = 17;
+            Descripcion.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Existencias
             // 
@@ -147,6 +159,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(60, 60, 60);
             ClientSize = new Size(606, 338);
+            Controls.Add(Descripcion);
             Controls.Add(ExistenciaTienda);
             Controls.Add(panelTop);
             Controls.Add(ExistenciaAlmacen);
@@ -172,5 +185,6 @@
         private Label label1;
         public Label ExistenciaAlmacen;
         public Label ExistenciaTienda;
+        public Label Descripcion;
     }
 }

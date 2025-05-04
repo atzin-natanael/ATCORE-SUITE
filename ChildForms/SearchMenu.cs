@@ -1,5 +1,6 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using PedidoXperto.ChildClases;
+using PedidoXperto.Logic;
 
 namespace PedidoXperto.ChildForms
 {
@@ -43,7 +44,11 @@ namespace PedidoXperto.ChildForms
                     string codigo = reader.GetString(0);
                     string nombre = reader.GetString(1);
                     string precio = reader.GetString(2);
-                    Tabla.Rows.Add(codigo, nombre, precio);
+                    string articuloid = DataBridge.GetArticuloId(codigo);
+                    string Exalmacen = DataBridge.GetExistencia(articuloid, "108401");
+                    string Extienda = DataBridge.GetExistencia(articuloid, "108403");
+                    decimal ExistenciaTotal = decimal.Parse(Exalmacen) + decimal.Parse(Extienda);
+                    Tabla.Rows.Add(codigo, nombre, decimal.Parse(precio), ExistenciaTotal);
 
                 }
                 reader.Close();

@@ -305,6 +305,8 @@
             // 
             Tabla.AllowUserToAddRows = false;
             Tabla.AllowUserToDeleteRows = false;
+            Tabla.AllowUserToResizeColumns = false;
+            Tabla.AllowUserToResizeRows = false;
             Tabla.BackgroundColor = Color.White;
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -329,18 +331,22 @@
             Tabla.RowHeadersWidth = 50;
             Tabla.Size = new Size(1383, 627);
             Tabla.TabIndex = 0;
+            Tabla.KeyDown += Tabla_KeyDown;
             // 
             // Column1
             // 
             Column1.HeaderText = "Id";
             Column1.Name = "Column1";
             Column1.ReadOnly = true;
+            Column1.Resizable = DataGridViewTriState.False;
+            Column1.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Column2
             // 
             Column2.HeaderText = "Codigo";
             Column2.Name = "Column2";
             Column2.ReadOnly = true;
+            Column2.Resizable = DataGridViewTriState.False;
             // 
             // Column3
             // 
@@ -348,30 +354,38 @@
             Column3.HeaderText = "Descripcion";
             Column3.Name = "Column3";
             Column3.ReadOnly = true;
+            Column3.Resizable = DataGridViewTriState.False;
+            Column3.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Column4
             // 
             Column4.HeaderText = "Cantidad Solicitada";
             Column4.Name = "Column4";
             Column4.ReadOnly = true;
+            Column4.Resizable = DataGridViewTriState.False;
+            Column4.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Column5
             // 
             Column5.HeaderText = "Cantidad Revisada";
             Column5.Name = "Column5";
             Column5.ReadOnly = true;
+            Column5.Resizable = DataGridViewTriState.False;
             // 
             // Column6
             // 
             Column6.HeaderText = "Nota";
             Column6.Name = "Column6";
             Column6.ReadOnly = true;
+            Column6.Resizable = DataGridViewTriState.False;
+            Column6.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Column7
             // 
             Column7.HeaderText = "Cantidad Pendiente";
             Column7.Name = "Column7";
             Column7.ReadOnly = true;
+            Column7.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // FormValidarPedido
             // 
@@ -408,6 +422,12 @@
         private Panel panel1;
         private Panel panel2;
         private DataGridView Tabla;
+        private Label Lb_Incompletos;
+        private Label Lb_renglones;
+        private Label label5;
+        private Label label4;
+        private Button Cargar;
+        private TextBox Cancelado;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
@@ -415,11 +435,5 @@
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
-        private Label Lb_Incompletos;
-        private Label Lb_renglones;
-        private Label label5;
-        private Label label4;
-        private Button Cargar;
-        private TextBox Cancelado;
     }
 }

@@ -175,16 +175,16 @@ namespace PedidoXperto.ChildForms
 
             if (resultados == null || resultados.Count == 0)
                 return;
-            
+
             int prioridadExistente = 0, prioridadNueva = 0;
             foreach (string result in resultados)
             {
                 // Si ya existe en la tabla de recomendados, no lo añade
-                if(setRecomendados.Contains(result)) continue;
-            
+                if (setRecomendados.Contains(result)) continue;
+
                 // Si llego al limite de 6 elementos, saca el de menor prioridad
                 recomendados.TryPeek(out _, out prioridadExistente);
-                if(recomendados.Count >= 6 && prioridadNueva < prioridadExistente)//menos es mejor aqui
+                if (recomendados.Count >= 6 && prioridadNueva < prioridadExistente)//menos es mejor aqui
                 {
                     // Elimina el elemento de menor prioridad
                     setRecomendados.Remove(recomendados.Peek());
@@ -193,7 +193,7 @@ namespace PedidoXperto.ChildForms
                 // Añade el nuevo elemento con la prioridad nueva
                 setRecomendados.Add(result);
                 recomendados.Enqueue(result, prioridadNueva++);
-            }        
+            }
         }
 
         private void ActualizarTablaRecomendados()
@@ -202,7 +202,7 @@ namespace PedidoXperto.ChildForms
             TablaRecomendados.Rows.Clear();
             int prioridadExistente = 0;
             string recomendado;
-            while(recomendados.Count > 0)
+            while (recomendados.Count > 0)
             {
                 recomendados.TryDequeue(out recomendado, out prioridadExistente);
                 string[] InfoArt = new GetFireBirdValue().BuscarDatosArticulos(recomendado);
@@ -212,7 +212,7 @@ namespace PedidoXperto.ChildForms
             }
             recomendados = temp;
         }
-        
+
         /// <summary>
         /// Calcula el descuento por cliente y por artículo
         /// descuento por cliente ya debe tener un valor valido a este punto
@@ -236,15 +236,20 @@ namespace PedidoXperto.ChildForms
 
         private async void LlenarDatosArticulo()
         {
-            string codigoBarras = Tabla.CurrentCell.Value.ToString();
+            //string codigoBarras = Tabla.CurrentCell.Value.ToString();
+            string codigoBarras = "";
+
             if (GlobalSettings.Instance.Crear_clave != null)
             {
                 codigoBarras = GlobalSettings.Instance.Crear_clave;
                 GlobalSettings.Instance.Crear_clave = null;
             }
-
-            if (InvalidText(Tabla.CurrentCell.Value.ToString()))
-                return;
+            else
+            {
+                codigoBarras = Tabla.CurrentCell.Value.ToString();
+                if (InvalidText(Tabla.CurrentCell.Value.ToString()))
+                    return;
+            }
 
             GetFireBirdValue bridge = new();
 
@@ -263,7 +268,7 @@ namespace PedidoXperto.ChildForms
                 Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Total].Value = 0;
                 Tabla.CurrentCell = Tabla.CurrentRow.Cells[(int)ColTabla.Cantidad];
                 Tabla.BeginEdit(true);
-                
+
                 await ManejarTablaRecomendado(Clave_Principal);
                 CalcularDescuentoArticulo(articulo_id);
                 ActualizarTablaRecomendados();
@@ -332,6 +337,7 @@ namespace PedidoXperto.ChildForms
 
             //buscar.Tabla.Rows.Clear();
             buscar.Tabla.Focus();
+            buscar.Tabla.Select();
             buscar.ShowDialog();
 
             if (GlobalSettings.Instance.Crear_clave != null)
@@ -364,32 +370,33 @@ namespace PedidoXperto.ChildForms
             }
             else if (e.KeyCode == Keys.F9)
             {
-                if (Tabla.CurrentCell != null && Tabla.CurrentCell.ColumnIndex == 1)
+                if (Tabla.CurrentRow.Cells[0].Value != null && (Tabla.CurrentCell.ColumnIndex == 1 || Tabla.CurrentCell.ColumnIndex == 0))
                 {
                     Existencias existencias = new Existencias();
                     string articuloid = DataBridge.GetArticuloId(Tabla.CurrentRow.Cells[0].Value.ToString());
                     string Exalmacen = DataBridge.GetExistencia(articuloid, "108401");
                     string Extienda = DataBridge.GetExistencia(articuloid, "108403");
+                    existencias.Descripcion.Text = Tabla.CurrentRow.Cells[1].Value.ToString();
                     existencias.ExistenciaAlmacen.Text = Exalmacen;
                     existencias.ExistenciaTienda.Text = Extienda;
                     existencias.ShowDialog();
                     e.Handled = true; // Opcional, previene otros efectos
                 }
             }
-            else if( e.KeyCode == Keys.Down || e.KeyCode == Keys.Enter)
+            else if (e.KeyCode == Keys.Down || e.KeyCode == Keys.Enter)
             {
-                if(Tabla.CurrentRow.Index == Tabla.Rows.Count-1 && Tabla.Rows[Tabla.Rows.Count - 1].Cells[0].Value != null) 
+                if (Tabla.CurrentRow.Index == Tabla.Rows.Count - 1 && Tabla.Rows[Tabla.Rows.Count - 1].Cells[0].Value != null)
                 {
-                    Tabla.Rows.Add(); 
+                    Tabla.Rows.Add();
                     Tabla.Rows[Tabla.CurrentCell.RowIndex + 1].Height = 40;
                     int columnIndex = Tabla.CurrentCell.ColumnIndex;
                     Tabla.CurrentCell = Tabla.Rows[Tabla.Rows.Count - 1].Cells[columnIndex];
                     e.Handled = true; // Opcional, previene otros efectos
                 }
             }
-            else if( e.KeyCode == Keys.Up)
+            else if (e.KeyCode == Keys.Up)
             {
-                if(Tabla.CurrentRow.Index == Tabla.Rows.Count-1 && Tabla.Rows[Tabla.Rows.Count - 1].Cells[0].Value == null) 
+                if (Tabla.CurrentRow.Index == Tabla.Rows.Count - 1 && Tabla.Rows[Tabla.Rows.Count - 1].Cells[0].Value == null)
                 {
                     int columnIndex = Tabla.CurrentCell.ColumnIndex;
 
@@ -419,6 +426,12 @@ namespace PedidoXperto.ChildForms
                 tb.KeyDown -= Tabla_KeyDown;
                 tb.KeyDown += Tabla_KeyDown;
             }
+            if (Tabla.CurrentCell.ColumnIndex == 1 && e.Control is TextBox tb2)
+            {
+                // Remueve cualquier controlador anterior para evitar duplicados
+                tb2.KeyPress -= Tabla_KeyPress;
+                tb2.KeyPress += Tabla_KeyPress;
+            }
         }
 
         private void RemoverRecomendado(string clave_principal)
@@ -427,10 +440,10 @@ namespace PedidoXperto.ChildForms
             PriorityQueue<string, int> temp = new();
             int prioridadExistente = 0;
             string recomendado;
-            while(recomendados.Count > 0)
+            while (recomendados.Count > 0)
             {
                 recomendados.TryDequeue(out recomendado, out prioridadExistente);
-                if(recomendado == clave_principal) continue;
+                if (recomendado == clave_principal) continue;
                 temp.Enqueue(recomendado, prioridadExistente);
             }
             recomendados = temp;
@@ -456,7 +469,7 @@ namespace PedidoXperto.ChildForms
                 {
                     Tabla.Rows.RemoveAt(Tabla.Rows.Count - 1);
                 }
-                else if(Tabla.Rows[Tabla.Rows.Count - 1].Cells[2].Value == null)
+                else if (Tabla.Rows[Tabla.Rows.Count - 1].Cells[2].Value == null)
                 {
                     Tabla.Rows[Tabla.Rows.Count - 1].Cells[2].Value = 1;
                 }
@@ -469,6 +482,11 @@ namespace PedidoXperto.ChildForms
             }
             else
                 MessageBox.Show("Artículo no encontrado", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void Tabla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.ToUpper(e.KeyChar);
         }
     }
 }

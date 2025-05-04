@@ -227,6 +227,7 @@
             Tabla.CellEndEdit += Tabla_CellEndEdit;
             Tabla.EditingControlShowing += Tabla_EditingControlShowing;
             Tabla.KeyDown += Tabla_KeyDown;
+            Tabla.KeyPress += Tabla_KeyPress;
             // 
             // CodigoBarras
             // 
