@@ -8,6 +8,7 @@ namespace PedidoXperto.ChildForms
     {
         private decimal descuentoPorCliente = -1;
         private PriorityQueue<string, int> recomendados;
+        private HashSet<string> setRecomendados;
         public enum ColTabla
         {
             CodigoBarras = 0,
@@ -22,7 +23,8 @@ namespace PedidoXperto.ChildForms
             InitializeComponent();
             CargarVendedores();
             descuentoPorCliente = 0;
-            recomendados = new PriorityQueue<string, int>();
+            recomendados = new();
+            setRecomendados = new();
         }
         public void CargarComboBox(List<List<string>> vendedores)
         {
@@ -174,30 +176,43 @@ namespace PedidoXperto.ChildForms
             if (resultados == null || resultados.Count == 0)
                 return;
             
-            int prioridad = 0;
+            int prioridadExistente = 0, prioridadNueva = 0;
             foreach (string result in resultados)
             {
+                // Si ya existe en la tabla de recomendados, no lo añade
+                if(setRecomendados.Contains(result)) continue;
+            
                 // Si llego al limite de 6 elementos, saca el de menor prioridad
-                if(recomendados.Count >= 6)
+                recomendados.TryPeek(out _, out prioridadExistente);
+                if(recomendados.Count >= 6 && prioridadNueva < prioridadExistente)//menos es mejor aqui
+                {
+                    // Elimina el elemento de menor prioridad
+                    setRecomendados.Remove(recomendados.Peek());
                     recomendados.Dequeue();
+                }
                 // Añade el nuevo elemento con la prioridad nueva
-                recomendados.Enqueue(result, prioridad++);
-            }        }
+                setRecomendados.Add(result);
+                recomendados.Enqueue(result, prioridadNueva++);
+            }        
+        }
 
         private void ActualizarTablaRecomendados()
         {
             PriorityQueue<string, int> temp = new();
             TablaRecomendados.Rows.Clear();
-
+            int prioridadExistente = 0;
+            string recomendado;
             while(recomendados.Count > 0)
             {
-                var recomendado = recomendados.Dequeue();
+                recomendados.TryDequeue(out recomendado, out prioridadExistente);
                 string[] InfoArt = new GetFireBirdValue().BuscarDatosArticulos(recomendado);
                 TablaRecomendados.Rows.Add(recomendado, InfoArt[1]);
-                temp.Enqueue(recomendado, 0);
+                TablaRecomendados.Rows[TablaRecomendados.CurrentCell.RowIndex].Height = 40;
+                temp.Enqueue(recomendado, prioridadExistente);
             }
             recomendados = temp;
         }
+        
         /// <summary>
         /// Calcula el descuento por cliente y por artículo
         /// descuento por cliente ya debe tener un valor valido a este punto
@@ -250,7 +265,6 @@ namespace PedidoXperto.ChildForms
                 Tabla.BeginEdit(true);
                 
                 await ManejarTablaRecomendado(Clave_Principal);
-                int a = recomendados.Count;
                 CalcularDescuentoArticulo(articulo_id);
                 ActualizarTablaRecomendados();
             }
@@ -262,6 +276,7 @@ namespace PedidoXperto.ChildForms
         {
             if (Tabla.CurrentCell != null)
             {
+
                 if (Tabla.CurrentCell.ColumnIndex == (int)ColTabla.CodigoBarras)//Es cuando llena la celda de clave_articulo
                 {
                     LlenarDatosArticulo();//Llena los datos de un articulo
@@ -344,6 +359,52 @@ namespace PedidoXperto.ChildForms
                     // Elimina la fila seleccionada
                     Tabla.Rows.Remove(Tabla.CurrentRow);
                     ActualizarPrecios();
+                    e.Handled = true; // Opcional, previene otros efectos
+                }
+            }
+            else if (e.KeyCode == Keys.F9)
+            {
+                if (Tabla.CurrentCell != null && Tabla.CurrentCell.ColumnIndex == 1)
+                {
+                    Existencias existencias = new Existencias();
+                    string articuloid = DataBridge.GetArticuloId(Tabla.CurrentRow.Cells[0].Value.ToString());
+                    string Exalmacen = DataBridge.GetExistencia(articuloid, "108401");
+                    string Extienda = DataBridge.GetExistencia(articuloid, "108403");
+                    existencias.ExistenciaAlmacen.Text = Exalmacen;
+                    existencias.ExistenciaTienda.Text = Extienda;
+                    existencias.ShowDialog();
+                    e.Handled = true; // Opcional, previene otros efectos
+                }
+            }
+            else if( e.KeyCode == Keys.Down || e.KeyCode == Keys.Enter)
+            {
+                if(Tabla.CurrentRow.Index == Tabla.Rows.Count-1 && Tabla.Rows[Tabla.Rows.Count - 1].Cells[0].Value != null) 
+                {
+                    Tabla.Rows.Add(); 
+                    Tabla.Rows[Tabla.CurrentCell.RowIndex + 1].Height = 40;
+                    int columnIndex = Tabla.CurrentCell.ColumnIndex;
+                    Tabla.CurrentCell = Tabla.Rows[Tabla.Rows.Count - 1].Cells[columnIndex];
+                    e.Handled = true; // Opcional, previene otros efectos
+                }
+            }
+            else if( e.KeyCode == Keys.Up)
+            {
+                if(Tabla.CurrentRow.Index == Tabla.Rows.Count-1 && Tabla.Rows[Tabla.Rows.Count - 1].Cells[0].Value == null) 
+                {
+                    int columnIndex = Tabla.CurrentCell.ColumnIndex;
+
+                    // Eliminar la última fila
+                    Tabla.Rows.RemoveAt(Tabla.Rows.Count - 1);
+
+                    // Calcular nueva fila después de eliminar
+                    int nuevaFila = Tabla.Rows.Count - 1;
+
+                    if (nuevaFila >= 0 && columnIndex < Tabla.ColumnCount)
+                    {
+                        Tabla.CurrentCell = Tabla.Rows[nuevaFila].Cells[columnIndex];
+                    }
+
+                    e.Handled = true; // Opcional, previene otros efectos
                 }
             }
         }
@@ -360,13 +421,31 @@ namespace PedidoXperto.ChildForms
             }
         }
 
+        private void RemoverRecomendado(string clave_principal)
+        {
+            setRecomendados.Remove(clave_principal);
+            PriorityQueue<string, int> temp = new();
+            int prioridadExistente = 0;
+            string recomendado;
+            while(recomendados.Count > 0)
+            {
+                recomendados.TryDequeue(out recomendado, out prioridadExistente);
+                if(recomendado == clave_principal) continue;
+                temp.Enqueue(recomendado, prioridadExistente);
+            }
+            recomendados = temp;
+        }
+
         private void TablaRecomendados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             GetFireBirdValue bridge = new();
 
             string[] DatosArticulo = new string[2];
+            string clave_principal = TablaRecomendados.CurrentRow.Cells[0].Value.ToString();
+            DatosArticulo = bridge.BuscarDatosArticulos(clave_principal);
 
-            DatosArticulo = bridge.BuscarDatosArticulos(TablaRecomendados.CurrentRow.Cells[0].Value.ToString());
+            RemoverRecomendado(clave_principal);
+            ActualizarTablaRecomendados();
 
             if (DatosArticulo != null)
             {
@@ -383,9 +462,9 @@ namespace PedidoXperto.ChildForms
                 }
                 Tabla.Rows.Add(Clave_Principal, DatosArticulo[1], 1, DatosArticulo[2]);
                 Tabla.Rows[Tabla.Rows.Count - 1].Height = 40;
-                CalcularDescuentoArticulo(articulo_id);
+                Tabla.CurrentCell = Tabla.Rows[Tabla.Rows.Count - 1].Cells[(int)ColTabla.Cantidad];
                 Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Total].Value = 0;
-                Tabla.CurrentCell = Tabla.CurrentRow.Cells[(int)ColTabla.Cantidad];
+                CalcularDescuentoArticulo(articulo_id);
                 Tabla.BeginEdit(true);
             }
             else

@@ -190,6 +190,8 @@
             // 
             Tabla.AllowUserToAddRows = false;
             Tabla.AllowUserToDeleteRows = false;
+            Tabla.AllowUserToResizeColumns = false;
+            Tabla.AllowUserToResizeRows = false;
             Tabla.BackgroundColor = Color.Beige;
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -231,6 +233,8 @@
             CodigoBarras.HeaderText = "Codigo";
             CodigoBarras.MinimumWidth = 6;
             CodigoBarras.Name = "CodigoBarras";
+            CodigoBarras.Resizable = DataGridViewTriState.False;
+            CodigoBarras.SortMode = DataGridViewColumnSortMode.NotSortable;
             CodigoBarras.Width = 125;
             // 
             // Descripcion
@@ -239,12 +243,16 @@
             Descripcion.HeaderText = "Descripcion";
             Descripcion.MinimumWidth = 6;
             Descripcion.Name = "Descripcion";
+            Descripcion.Resizable = DataGridViewTriState.False;
+            Descripcion.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Cantidad
             // 
             Cantidad.HeaderText = "Cantidad";
             Cantidad.MinimumWidth = 6;
             Cantidad.Name = "Cantidad";
+            Cantidad.Resizable = DataGridViewTriState.False;
+            Cantidad.SortMode = DataGridViewColumnSortMode.NotSortable;
             Cantidad.Width = 125;
             // 
             // Precio
@@ -253,6 +261,8 @@
             Precio.MinimumWidth = 6;
             Precio.Name = "Precio";
             Precio.ReadOnly = true;
+            Precio.Resizable = DataGridViewTriState.False;
+            Precio.SortMode = DataGridViewColumnSortMode.NotSortable;
             Precio.Width = 125;
             // 
             // Descuento
@@ -261,6 +271,8 @@
             Descuento.MinimumWidth = 6;
             Descuento.Name = "Descuento";
             Descuento.ReadOnly = true;
+            Descuento.Resizable = DataGridViewTriState.False;
+            Descuento.SortMode = DataGridViewColumnSortMode.NotSortable;
             Descuento.Width = 125;
             // 
             // Total
@@ -269,6 +281,8 @@
             Total.MinimumWidth = 6;
             Total.Name = "Total";
             Total.ReadOnly = true;
+            Total.Resizable = DataGridViewTriState.False;
+            Total.SortMode = DataGridViewColumnSortMode.NotSortable;
             Total.Width = 125;
             // 
             // panel4
@@ -551,6 +565,7 @@
             TablaRecomendados.ReadOnly = true;
             TablaRecomendados.RowHeadersVisible = false;
             TablaRecomendados.RowHeadersWidth = 50;
+            TablaRecomendados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             TablaRecomendados.Size = new Size(369, 286);
             TablaRecomendados.TabIndex = 25;
             TablaRecomendados.CellDoubleClick += TablaRecomendados_CellDoubleClick;
@@ -614,6 +629,7 @@
             Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
+            MinimumSize = new Size(1024, 768);
             Name = "FormCrearPedido";
             Text = "FormCrearPedido";
             tableLayoutPanel1.ResumeLayout(false);
