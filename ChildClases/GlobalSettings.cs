@@ -65,7 +65,9 @@ namespace PedidoXperto.ChildClases
         public string Crear_clave { get; set; }
         public string Crear_Nombre { get; set; }
         public int Bd { get; set; }
-        public string PathConfig { get; } = "C:\\ConfigDB\\";
+        public string PathConfig { get; } = "O:\\Project\\DB\\";
+        public string EndPointRecomendacion { get; set; } = "/recomendar";
+        public string NgrokGateWay { get; set; }
         public int Trn { get; set; }
         private GlobalSettings()
         {

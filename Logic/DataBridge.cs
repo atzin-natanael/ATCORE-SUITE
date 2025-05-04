@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using PedidoXperto.ChildClases;
+using System.Text;
 using System.Text.Json;
 
 namespace PedidoXperto.Logic
@@ -93,7 +94,7 @@ namespace PedidoXperto.Logic
                 {
                     // URL del endpoint de tu API FastAPI
                     //string url = "http://localhost:8000/recomendar"; // Asegúrate de que el puerto sea el correcto
-                    string url = "https://6e22-187-190-202-34.ngrok-free.app/recomendar";
+                    string url = GlobalSettings.Instance.NgrokGateWay+GlobalSettings.Instance.EndPointRecomendacion;
                     // Construcción del cuerpo en JSON
                     var payload = new { clave_articulo = int.Parse(Clave_articulo) };
                     string jsonPayload = System.Text.Json.JsonSerializer.Serialize(payload);
