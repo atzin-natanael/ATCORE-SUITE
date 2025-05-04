@@ -25,12 +25,12 @@ namespace PedidoXperto.ChildForms
                     JOIN PRECIOS_ARTICULOS ON PRECIOS_ARTICULOS.ARTICULO_ID = ARTICULOS.ARTICULO_ID
                     WHERE CLAVES_ARTICULOS.ROL_CLAVE_ART_ID = '17'
                     AND PRECIOS_ARTICULOS.PRECIO_EMPRESA_ID = '42'";
-                
+
                 foreach (string parametro in arrayParametros)
                 {
                     query += $@"AND ARTICULOS.NOMBRE LIKE '%{parametro}%' ";
                 }
-                
+
                 query += ";";
 
                 con.Open();
@@ -71,10 +71,12 @@ namespace PedidoXperto.ChildForms
 
         private void Buscar_Click(object sender, EventArgs e)
         {
-            if(Txt_Nombre.Text != string.Empty)
+            if (Txt_Nombre.Text != string.Empty)
             {
-                Tabla.Rows.Clear(); 
+                Tabla.Rows.Clear();
                 CargarQuery(Txt_Nombre.Text);
+                Tabla.Focus();
+                Tabla.Select();
             }
         }
 
@@ -86,6 +88,31 @@ namespace PedidoXperto.ChildForms
                 GlobalSettings.Instance.Crear_clave = row.Cells[0].Value.ToString();//codigo principal
                 this.Close();
             }
+        }
+
+        private void Txt_Nombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            Tabla.ClearSelection();
+            if (e.KeyCode == Keys.Enter)
+            {
+                Buscar.Focus();
+            }
+        }
+
+        private void Tabla_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                if (Tabla.CurrentRow != null)
+                {
+                    if (Tabla.Rows.Count > 0)
+                    {
+                        GlobalSettings.Instance.Crear_clave = Tabla.CurrentRow.Cells[0].Value.ToString();//codigo principal
+                        this.Close();
+                    }
+                }
+            }
+
         }
     }
 }

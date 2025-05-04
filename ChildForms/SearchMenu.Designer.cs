@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             Txt_Nombre = new TextBox();
             panelTop = new Panel();
             label3 = new Label();
@@ -53,6 +54,7 @@
             Txt_Nombre.Name = "Txt_Nombre";
             Txt_Nombre.Size = new Size(365, 23);
             Txt_Nombre.TabIndex = 2;
+            Txt_Nombre.KeyDown += Txt_Nombre_KeyDown;
             // 
             // panelTop
             // 
@@ -128,9 +130,21 @@
             Tabla.AllowUserToAddRows = false;
             Tabla.AllowUserToDeleteRows = false;
             Tabla.BackgroundColor = Color.FromArgb(60, 60, 60);
-            Tabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Tabla.BorderStyle = BorderStyle.None;
+            Tabla.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Gray;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Gray;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            Tabla.ColumnHeadersHeight = 30;
+            Tabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             Tabla.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
             Tabla.Dock = DockStyle.Fill;
+            Tabla.EnableHeadersVisualStyles = false;
             Tabla.Location = new Point(0, 0);
             Tabla.MultiSelect = false;
             Tabla.Name = "Tabla";
@@ -140,6 +154,7 @@
             Tabla.Size = new Size(676, 222);
             Tabla.TabIndex = 1;
             Tabla.CellDoubleClick += Tabla_CellDoubleClick;
+            Tabla.KeyDown += Tabla_KeyDown;
             // 
             // Column1
             // 

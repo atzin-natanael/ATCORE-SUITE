@@ -279,7 +279,7 @@ namespace PedidoXperto.ChildForms
 
         private void Tabla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (Tabla.CurrentCell != null)
+            if (Tabla.CurrentCell != null && Tabla.CurrentRow.Cells[0].Value != string.Empty && Tabla.CurrentRow.Cells[0].Value != null)
             {
 
                 if (Tabla.CurrentCell.ColumnIndex == (int)ColTabla.CodigoBarras)//Es cuando llena la celda de clave_articulo
