@@ -488,5 +488,23 @@ namespace PedidoXperto.ChildForms
         {
             e.KeyChar = char.ToUpper(e.KeyChar);
         }
+
+        private void txtBox_clienteNombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (txtBox_clienteNombre.Text != "Cliente no encontrado")
+            {
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    e.SuppressKeyPress = true;
+                    if(Tabla.Rows.Count == 0)
+                    {
+                        Tabla.Rows.Add();
+                        Tabla.Rows[Tabla.CurrentCell.RowIndex].Height = 40;
+                        Tabla.Focus();
+
+                    }
+                }
+            }
+        }
     }
 }
