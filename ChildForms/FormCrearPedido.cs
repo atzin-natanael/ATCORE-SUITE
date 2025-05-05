@@ -103,6 +103,8 @@ namespace PedidoXperto.ChildForms
                 txtBox_clienteNombre.Text = name;
                 //Obtiene el descuento por cliente una sola vez
                 descuentoPorCliente = decimal.Parse(DataBridge.GetDiscountByClient(cliente_id) ?? "-1");
+                //Actualiza los valores con el nuevo descuento
+                ActualizarPrecios();
             }
         }
 
