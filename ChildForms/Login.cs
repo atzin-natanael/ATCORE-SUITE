@@ -63,6 +63,7 @@ namespace PedidoXperto.ChildForms
             ChangePw changePw = new ChangePw(existUser);
             changePw.ShowDialog();
         }
+
         public string ValidarUsuario()
         {
             if (Txt_Usuario.Text != string.Empty)
@@ -108,10 +109,7 @@ namespace PedidoXperto.ChildForms
         private void TxtPw_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-                Enter.Focus();
-            }
+                Acceder();
         }
 
         private void Txt_Usuario_KeyPress(object sender, KeyPressEventArgs e)
@@ -133,6 +131,11 @@ namespace PedidoXperto.ChildForms
 
         private void Enter_Click(object sender, EventArgs e)
         {
+            Acceder();
+        }
+
+        private void Acceder()
+        {
             if (TxtPw.Text != string.Empty && Txt_Usuario.Text != string.Empty)
             {
                 using (var db = new LiteDatabase(GlobalSettings.Instance.PathConfig + "USUARIOS_TRASPASOS.db"))
@@ -141,7 +144,7 @@ namespace PedidoXperto.ChildForms
                     var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
 
                     // Buscar el usuario que coincida con el nombre de usuario ingresado
-                    var usuario = usuarios.FindOne(x => x.UsuarioName == Txt_Usuario.Text);  // Asegúrate de que el campo sea el nombre de usuario
+                    var usuario = usuarios.FindOne(x => x.UsuarioName == Txt_Usuario.Text);
 
                     if (usuario != null)
                     {
@@ -181,5 +184,6 @@ namespace PedidoXperto.ChildForms
 
             }
         }
+
     }
 }
