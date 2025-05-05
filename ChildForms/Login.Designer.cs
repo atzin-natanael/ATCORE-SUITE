@@ -75,9 +75,11 @@
             Enter.BackColor = SystemColors.ActiveBorder;
             Enter.Cursor = Cursors.Hand;
             Enter.FlatAppearance.BorderSize = 0;
+            Enter.FlatAppearance.MouseDownBackColor = Color.Gray;
+            Enter.FlatAppearance.MouseOverBackColor = Color.Gray;
             Enter.FlatStyle = FlatStyle.Flat;
             Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(238, 260);
+            Enter.Location = new Point(233, 260);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
             Enter.TabIndex = 3;
@@ -91,6 +93,8 @@
             Exit.BackColor = SystemColors.ActiveBorder;
             Exit.Cursor = Cursors.Hand;
             Exit.FlatAppearance.BorderSize = 0;
+            Exit.FlatAppearance.MouseDownBackColor = Color.Gray;
+            Exit.FlatAppearance.MouseOverBackColor = Color.Gray;
             Exit.FlatStyle = FlatStyle.Flat;
             Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Exit.ForeColor = Color.Black;
@@ -107,7 +111,7 @@
             ForgetPw.AutoSize = true;
             ForgetPw.Cursor = Cursors.Hand;
             ForgetPw.ForeColor = Color.White;
-            ForgetPw.Location = new Point(223, 193);
+            ForgetPw.Location = new Point(215, 193);
             ForgetPw.Name = "ForgetPw";
             ForgetPw.Size = new Size(177, 21);
             ForgetPw.TabIndex = 5;
@@ -124,18 +128,18 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(606, 30);
+            panelTop.Size = new Size(606, 63);
             panelTop.TabIndex = 8;
             panelTop.MouseDown += panelTop_MouseDown;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(182, 0);
+            label3.Location = new Point(185, 19);
             label3.Name = "label3";
-            label3.Size = new Size(218, 22);
+            label3.Size = new Size(236, 24);
             label3.TabIndex = 0;
             label3.Text = "LOGIN PEDIDOXPERTO";
             label3.MouseDown += label3_MouseDown;

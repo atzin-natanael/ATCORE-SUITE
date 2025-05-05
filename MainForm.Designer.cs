@@ -179,7 +179,7 @@ namespace ProyectoXperto
             Hide.Dock = DockStyle.Bottom;
             Hide.FlatAppearance.BorderSize = 0;
             Hide.FlatAppearance.MouseDownBackColor = Color.White;
-            Hide.FlatAppearance.MouseOverBackColor = Color.FromArgb(49, 46, 178);
+            Hide.FlatAppearance.MouseOverBackColor = Color.Gray;
             Hide.FlatStyle = FlatStyle.Flat;
             Hide.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Hide.ForeColor = Color.White;
