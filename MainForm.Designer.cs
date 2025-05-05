@@ -31,6 +31,7 @@ namespace ProyectoXperto
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             Toppanel = new Panel();
             LogOut = new Label();
             LbUsuario = new Label();
@@ -319,6 +320,7 @@ namespace ProyectoXperto
             ClientSize = new Size(1350, 729);
             Controls.Add(CompletePanel);
             Controls.Add(Leftpanel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1366, 768);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
