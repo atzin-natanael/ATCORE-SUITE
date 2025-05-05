@@ -1,6 +1,6 @@
 ﻿namespace PedidoXperto.ChildForms
 {
-    partial class ChangeName
+    partial class CambiarRol
     {
         /// <summary>
         /// Required designer variable.
@@ -28,50 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Txt_Usuario = new TextBox();
             panelTop = new Panel();
             label3 = new Label();
             Exit = new Button();
             Enter = new Button();
             label2 = new Label();
             label1 = new Label();
-            Txt_Usuario2 = new TextBox();
+            Txt_Rol = new TextBox();
+            CheckList = new CheckedListBox();
             panelTop.SuspendLayout();
             SuspendLayout();
             // 
-            // Txt_Usuario
-            // 
-            Txt_Usuario.CharacterCasing = CharacterCasing.Upper;
-            Txt_Usuario.Enabled = false;
-            Txt_Usuario.Location = new Point(168, 140);
-            Txt_Usuario.Name = "Txt_Usuario";
-            Txt_Usuario.Size = new Size(295, 23);
-            Txt_Usuario.TabIndex = 0;
-            //Txt_Usuario.TextChanged += this.Txt_Usuario_TextChanged;
-            // 
             // panelTop
             // 
-            panelTop.BackColor = Color.FromArgb(60, 60, 60);
             panelTop.Controls.Add(label3);
             panelTop.Controls.Add(Exit);
             panelTop.Cursor = Cursors.Hand;
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(606, 30);
-            panelTop.TabIndex = 0;
-            //panelTop.Paint += this.panelTop_Paint;
+            panelTop.Size = new Size(606, 63);
+            panelTop.TabIndex = 15;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(213, 0);
+            label3.Location = new Point(233, 9);
             label3.Name = "label3";
-            label3.Size = new Size(205, 22);
+            label3.Size = new Size(176, 24);
             label3.TabIndex = 0;
-            label3.Text = "CAMBIO DE NOMBRE";
+            label3.Text = "CAMBIO DE ROL";
             // 
             // Exit
             // 
@@ -79,13 +67,15 @@
             Exit.BackColor = SystemColors.ActiveBorder;
             Exit.Cursor = Cursors.Hand;
             Exit.FlatAppearance.BorderSize = 0;
+            Exit.FlatAppearance.MouseDownBackColor = Color.Gray;
+            Exit.FlatAppearance.MouseOverBackColor = Color.Gray;
             Exit.FlatStyle = FlatStyle.Flat;
             Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Exit.ForeColor = Color.Black;
             Exit.Location = new Point(542, 0);
             Exit.Name = "Exit";
             Exit.Size = new Size(64, 27);
-            Exit.TabIndex = 3;
+            Exit.TabIndex = 4;
             Exit.Text = "Salir";
             Exit.UseVisualStyleBackColor = false;
             Exit.Click += Exit_Click;
@@ -96,13 +86,15 @@
             Enter.BackColor = SystemColors.ActiveBorder;
             Enter.Cursor = Cursors.Hand;
             Enter.FlatAppearance.BorderSize = 0;
+            Enter.FlatAppearance.MouseDownBackColor = Color.Gray;
+            Enter.FlatAppearance.MouseOverBackColor = Color.Gray;
             Enter.FlatStyle = FlatStyle.Flat;
             Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(244, 253);
+            Enter.Location = new Point(233, 282);
             Enter.Name = "Enter";
-            Enter.Size = new Size(141, 50);
-            Enter.TabIndex = 2;
-            Enter.Text = "Modificar";
+            Enter.Size = new Size(141, 42);
+            Enter.TabIndex = 13;
+            Enter.Text = "Cambiar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Enter_Click;
             // 
@@ -110,50 +102,62 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(55, 140);
+            label2.Location = new Point(55, 105);
             label2.Name = "label2";
-            label2.Size = new Size(47, 15);
-            label2.TabIndex = 17;
-            label2.Text = "Usuario";
-            label2.Click += label2_Click;
+            label2.Size = new Size(33, 21);
+            label2.TabIndex = 9;
+            label2.Text = "Rol";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(36, 202);
+            label1.Location = new Point(36, 167);
             label1.Name = "label1";
-            label1.Size = new Size(87, 15);
-            label1.TabIndex = 18;
-            label1.Text = "Nuevo nombre";
-            label1.Click += label1_Click;
+            label1.Size = new Size(0, 21);
+            label1.TabIndex = 10;
             // 
-            // Txt_Usuario2
+            // Txt_Rol
             // 
-            Txt_Usuario2.CharacterCasing = CharacterCasing.Upper;
-            Txt_Usuario2.Location = new Point(168, 199);
-            Txt_Usuario2.Name = "Txt_Usuario2";
-            Txt_Usuario2.Size = new Size(295, 23);
-            Txt_Usuario2.TabIndex = 1;
-           // Txt_Usuario2.TextChanged += this.Txt_Usuario2_TextChanged;
-            Txt_Usuario2.KeyDown += Txt_Usuario2_KeyDown;
+            Txt_Rol.Enabled = false;
+            Txt_Rol.Location = new Point(168, 105);
+            Txt_Rol.Name = "Txt_Rol";
+            Txt_Rol.Size = new Size(295, 27);
+            Txt_Rol.TabIndex = 11;
+            Txt_Rol.TextAlign = HorizontalAlignment.Center;
             // 
-            // ChangeName
+            // CheckList
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            CheckList.BackColor = Color.FromArgb(60, 60, 60);
+            CheckList.BorderStyle = BorderStyle.None;
+            CheckList.Cursor = Cursors.Hand;
+            CheckList.ForeColor = Color.White;
+            CheckList.FormattingEnabled = true;
+            CheckList.Items.AddRange(new object[] { "Crear Pedido", "Validar Pedido", "Administrador de Usuarios", "Administrador de Roles" });
+            CheckList.Location = new Point(168, 158);
+            CheckList.Name = "CheckList";
+            CheckList.Size = new Size(295, 88);
+            CheckList.TabIndex = 16;
+            // 
+            // CambiarRol
+            // 
+            AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(60, 60, 60);
             ClientSize = new Size(606, 338);
-            Controls.Add(Txt_Usuario2);
-            Controls.Add(Txt_Usuario);
+            Controls.Add(CheckList);
+            Controls.Add(Txt_Rol);
             Controls.Add(panelTop);
             Controls.Add(Enter);
             Controls.Add(label2);
             Controls.Add(label1);
+            Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "ChangeName";
+            Margin = new Padding(4);
+            Name = "CambiarRol";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ChangeName";
+            Tag = "";
+            Text = "CambiarRol";
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();
             ResumeLayout(false);
@@ -161,13 +165,14 @@
         }
 
         #endregion
-        private TextBox Txt_Usuario;
+
         private Panel panelTop;
         private Label label3;
         private Button Exit;
         private Button Enter;
         private Label label2;
         private Label label1;
-        private TextBox Txt_Usuario2;
+        public CheckedListBox CheckList;
+        public TextBox Txt_Rol;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace PedidoXperto.ChildForms
 {
-    partial class ChangeName
+    partial class ChangeNameRol
     {
         /// <summary>
         /// Required designer variable.
@@ -28,26 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Txt_Usuario = new TextBox();
+            Txt_Rol2 = new TextBox();
+            Txt_Rol = new TextBox();
             panelTop = new Panel();
             label3 = new Label();
             Exit = new Button();
             Enter = new Button();
             label2 = new Label();
             label1 = new Label();
-            Txt_Usuario2 = new TextBox();
             panelTop.SuspendLayout();
             SuspendLayout();
             // 
-            // Txt_Usuario
+            // Txt_Rol2
             // 
-            Txt_Usuario.CharacterCasing = CharacterCasing.Upper;
-            Txt_Usuario.Enabled = false;
-            Txt_Usuario.Location = new Point(168, 140);
-            Txt_Usuario.Name = "Txt_Usuario";
-            Txt_Usuario.Size = new Size(295, 23);
-            Txt_Usuario.TabIndex = 0;
-            //Txt_Usuario.TextChanged += this.Txt_Usuario_TextChanged;
+            Txt_Rol2.CharacterCasing = CharacterCasing.Upper;
+            Txt_Rol2.Location = new Point(168, 169);
+            Txt_Rol2.Name = "Txt_Rol2";
+            Txt_Rol2.Size = new Size(295, 27);
+            Txt_Rol2.TabIndex = 21;
+            // 
+            // Txt_Rol
+            // 
+            Txt_Rol.Enabled = false;
+            Txt_Rol.Location = new Point(168, 100);
+            Txt_Rol.Name = "Txt_Rol";
+            Txt_Rol.Size = new Size(295, 27);
+            Txt_Rol.TabIndex = 19;
             // 
             // panelTop
             // 
@@ -59,19 +65,18 @@
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
             panelTop.Size = new Size(606, 30);
-            panelTop.TabIndex = 0;
-            //panelTop.Paint += this.panelTop_Paint;
+            panelTop.TabIndex = 20;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(213, 0);
+            label3.Location = new Point(168, 5);
             label3.Name = "label3";
-            label3.Size = new Size(205, 22);
+            label3.Size = new Size(277, 22);
             label3.TabIndex = 0;
-            label3.Text = "CAMBIO DE NOMBRE";
+            label3.Text = "CAMBIO DE NOMBRE DE ROL";
             // 
             // Exit
             // 
@@ -98,10 +103,10 @@
             Enter.FlatAppearance.BorderSize = 0;
             Enter.FlatStyle = FlatStyle.Flat;
             Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(244, 253);
+            Enter.Location = new Point(244, 271);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
-            Enter.TabIndex = 2;
+            Enter.TabIndex = 22;
             Enter.Text = "Modificar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Enter_Click;
@@ -110,50 +115,39 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(55, 140);
+            label2.Location = new Point(55, 100);
             label2.Name = "label2";
-            label2.Size = new Size(47, 15);
-            label2.TabIndex = 17;
-            label2.Text = "Usuario";
-            label2.Click += label2_Click;
+            label2.Size = new Size(100, 21);
+            label2.TabIndex = 23;
+            label2.Text = "Nombre Rol";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(36, 202);
+            label1.Location = new Point(36, 172);
             label1.Name = "label1";
-            label1.Size = new Size(87, 15);
-            label1.TabIndex = 18;
+            label1.Size = new Size(127, 21);
+            label1.TabIndex = 24;
             label1.Text = "Nuevo nombre";
-            label1.Click += label1_Click;
             // 
-            // Txt_Usuario2
+            // ChangeNameRol
             // 
-            Txt_Usuario2.CharacterCasing = CharacterCasing.Upper;
-            Txt_Usuario2.Location = new Point(168, 199);
-            Txt_Usuario2.Name = "Txt_Usuario2";
-            Txt_Usuario2.Size = new Size(295, 23);
-            Txt_Usuario2.TabIndex = 1;
-           // Txt_Usuario2.TextChanged += this.Txt_Usuario2_TextChanged;
-            Txt_Usuario2.KeyDown += Txt_Usuario2_KeyDown;
-            // 
-            // ChangeName
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(60, 60, 60);
             ClientSize = new Size(606, 338);
-            Controls.Add(Txt_Usuario2);
-            Controls.Add(Txt_Usuario);
+            Controls.Add(Txt_Rol2);
+            Controls.Add(Txt_Rol);
             Controls.Add(panelTop);
             Controls.Add(Enter);
             Controls.Add(label2);
             Controls.Add(label1);
+            Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "ChangeName";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "ChangeName";
+            Margin = new Padding(4);
+            Name = "ChangeNameRol";
+            Text = "ChangeNameRol";
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();
             ResumeLayout(false);
@@ -161,13 +155,14 @@
         }
 
         #endregion
-        private TextBox Txt_Usuario;
+
+        private TextBox Txt_Rol2;
+        private TextBox Txt_Rol;
         private Panel panelTop;
         private Label label3;
         private Button Exit;
         private Button Enter;
         private Label label2;
         private Label label1;
-        private TextBox Txt_Usuario2;
     }
 }

@@ -142,4 +142,10 @@ namespace PedidoXperto.ChildClases
         public string Password { get; set; }
         public string Rol { get; set; }
     }
+    public class AdminRoles
+    {
+        public int Id { get; set; }  // LiteDB genera el ID automáticamente si no se establece
+        public string RolNombre { get; set; }
+        public List<string> Derechos { get; set; }
+    }
 }

@@ -31,13 +31,13 @@ namespace ProyectoXperto
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             Toppanel = new Panel();
             LogOut = new Label();
             LbUsuario = new Label();
             label1 = new Label();
             Leftpanel = new Panel();
             SubPanelMenuAdmin = new Panel();
+            BtnRoles = new Button();
             BtnUsuarios = new Button();
             BtnAdministrador = new Button();
             Hide = new Button();
@@ -49,7 +49,6 @@ namespace ProyectoXperto
             collapseTimer = new System.Windows.Forms.Timer(components);
             CompletePanel = new Panel();
             Primarypanel = new Panel();
-            button1 = new Button();
             Toppanel.SuspendLayout();
             Leftpanel.SuspendLayout();
             SubPanelMenuAdmin.SuspendLayout();
@@ -128,13 +127,31 @@ namespace ProyectoXperto
             // 
             // SubPanelMenuAdmin
             // 
-            SubPanelMenuAdmin.Controls.Add(button1);
+            SubPanelMenuAdmin.Controls.Add(BtnRoles);
             SubPanelMenuAdmin.Controls.Add(BtnUsuarios);
             SubPanelMenuAdmin.Dock = DockStyle.Top;
             SubPanelMenuAdmin.Location = new Point(0, 229);
             SubPanelMenuAdmin.Name = "SubPanelMenuAdmin";
             SubPanelMenuAdmin.Size = new Size(240, 118);
             SubPanelMenuAdmin.TabIndex = 4;
+            // 
+            // BtnRoles
+            // 
+            BtnRoles.BackColor = Color.Silver;
+            BtnRoles.Cursor = Cursors.Hand;
+            BtnRoles.Dock = DockStyle.Top;
+            BtnRoles.FlatAppearance.BorderSize = 0;
+            BtnRoles.FlatAppearance.MouseOverBackColor = Color.Gray;
+            BtnRoles.FlatStyle = FlatStyle.Flat;
+            BtnRoles.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnRoles.ForeColor = Color.Black;
+            BtnRoles.Location = new Point(0, 58);
+            BtnRoles.Name = "BtnRoles";
+            BtnRoles.Size = new Size(240, 58);
+            BtnRoles.TabIndex = 2;
+            BtnRoles.Text = "Roles";
+            BtnRoles.UseVisualStyleBackColor = false;
+            BtnRoles.Click += BtnRoles_Click;
             // 
             // BtnUsuarios
             // 
@@ -296,23 +313,6 @@ namespace ProyectoXperto
             Primarypanel.Size = new Size(1110, 671);
             Primarypanel.TabIndex = 1;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.Silver;
-            button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Top;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseOverBackColor = Color.Gray;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(0, 58);
-            button1.Name = "button1";
-            button1.Size = new Size(240, 58);
-            button1.TabIndex = 2;
-            button1.Text = "Roles";
-            button1.UseVisualStyleBackColor = false;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -320,7 +320,6 @@ namespace ProyectoXperto
             ClientSize = new Size(1350, 729);
             Controls.Add(CompletePanel);
             Controls.Add(Leftpanel);
-            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1366, 768);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -356,6 +355,6 @@ namespace ProyectoXperto
         public Label LogOut;
         private Panel CompletePanel;
         private Panel Primarypanel;
-        private Button button1;
+        private Button BtnRoles;
     }
 }

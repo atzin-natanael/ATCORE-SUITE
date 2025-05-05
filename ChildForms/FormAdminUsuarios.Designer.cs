@@ -36,8 +36,8 @@
             panelTop = new Panel();
             panel2 = new Panel();
             SubpanelMenu = new Panel();
-            BtnChangePassword = new Button();
             BtnChangeName = new Button();
+            BtnChangePassword = new Button();
             BtnEditRol = new Button();
             BtnAddUser = new Button();
             BtnDeleteUser = new Button();
@@ -119,25 +119,8 @@
             SubpanelMenu.Name = "SubpanelMenu";
             SubpanelMenu.Size = new Size(1268, 46);
             SubpanelMenu.TabIndex = 7;
+            SubpanelMenu.Paint += SubpanelMenu_Paint;
             SubpanelMenu.Resize += SubpanelMenu_Resize;
-            // 
-            // BtnChangePassword
-            // 
-            BtnChangePassword.BackColor = Color.Silver;
-            BtnChangePassword.Cursor = Cursors.Hand;
-            BtnChangePassword.Dock = DockStyle.Left;
-            BtnChangePassword.FlatAppearance.BorderSize = 0;
-            BtnChangePassword.FlatAppearance.MouseOverBackColor = Color.Gray;
-            BtnChangePassword.FlatStyle = FlatStyle.Flat;
-            BtnChangePassword.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnChangePassword.ForeColor = Color.Black;
-            BtnChangePassword.Location = new Point(604, 0);
-            BtnChangePassword.Name = "BtnChangePassword";
-            BtnChangePassword.Size = new Size(255, 46);
-            BtnChangePassword.TabIndex = 12;
-            BtnChangePassword.Text = "Cambiar Contraseña";
-            BtnChangePassword.UseVisualStyleBackColor = false;
-            BtnChangePassword.Click += BtnChangePassword_Click;
             // 
             // BtnChangeName
             // 
@@ -156,6 +139,24 @@
             BtnChangeName.Text = "Cambiar Nombre";
             BtnChangeName.UseVisualStyleBackColor = false;
             BtnChangeName.Click += BtnChangeName_Click;
+            // 
+            // BtnChangePassword
+            // 
+            BtnChangePassword.BackColor = Color.Silver;
+            BtnChangePassword.Cursor = Cursors.Hand;
+            BtnChangePassword.Dock = DockStyle.Left;
+            BtnChangePassword.FlatAppearance.BorderSize = 0;
+            BtnChangePassword.FlatAppearance.MouseOverBackColor = Color.Gray;
+            BtnChangePassword.FlatStyle = FlatStyle.Flat;
+            BtnChangePassword.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnChangePassword.ForeColor = Color.Black;
+            BtnChangePassword.Location = new Point(604, 0);
+            BtnChangePassword.Name = "BtnChangePassword";
+            BtnChangePassword.Size = new Size(255, 46);
+            BtnChangePassword.TabIndex = 12;
+            BtnChangePassword.Text = "Cambiar Contraseña";
+            BtnChangePassword.UseVisualStyleBackColor = false;
+            BtnChangePassword.Click += BtnChangePassword_Click;
             // 
             // BtnEditRol
             // 
@@ -267,7 +268,7 @@
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Gray;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             TablaUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
