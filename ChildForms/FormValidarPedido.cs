@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DocumentFormat.OpenXml.Drawing.Charts;
 using FirebirdSql.Data.FirebirdClient;
 using PedidoXperto.ChildClases;
+using PedidoXperto.Logic;
 using SpreadsheetLight;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -930,6 +931,25 @@ namespace PedidoXperto.ChildForms
         private void Cb_Surtidor_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = char.ToUpper(e.KeyChar);
+        }
+
+        private void Tabla_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F9)
+            {
+                if (Tabla.CurrentCell != null && Tabla.CurrentCell.ColumnIndex == 2)
+                {
+                    Existencias existencias = new Existencias();
+                    string articuloid = DataBridge.GetArticuloId(Tabla.CurrentRow.Cells[1].Value.ToString());
+                    existencias.Descripcion.Text = Tabla.CurrentRow.Cells[2].Value.ToString();
+                    string Exalmacen = DataBridge.GetExistencia(articuloid, "108401");
+                    string Extienda = DataBridge.GetExistencia(articuloid, "108403");
+                    existencias.ExistenciaAlmacen.Text = Exalmacen;
+                    existencias.ExistenciaTienda.Text = Extienda;
+                    existencias.ShowDialog();
+                    e.Handled = true; // Opcional, previene otros efectos
+                }
+            }
         }
     }
 }

@@ -252,16 +252,23 @@ namespace ProyectoXperto
             childForm.BringToFront();
             childForm.Show();
         }
+        private FormValidarPedido formValidarPedido;
         private void BtnValidarPedido_Click(object sender, EventArgs e)
         {
-            openChild(new FormValidarPedido());
+            if (formValidarPedido == null || formValidarPedido.IsDisposed)
+                formValidarPedido = new FormValidarPedido();
+
+            openChild(formValidarPedido);
             HideSubmenu();
             Ocultar();
         }
-
+        private FormCrearPedido formCrearPedido;
         private void BtnNuevoPedido_Click(object sender, EventArgs e)
         {
-            openChild(new FormCrearPedido());
+            if (formCrearPedido == null || formCrearPedido.IsDisposed)
+                formCrearPedido = new FormCrearPedido();
+
+            openChild(formCrearPedido);
             HideSubmenu();
             Ocultar();
         }

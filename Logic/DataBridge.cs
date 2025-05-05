@@ -1,6 +1,9 @@
-﻿using PedidoXperto.ChildClases;
+﻿using FirebirdSql.Data.FirebirdClient;
+using PedidoXperto.ChildClases;
+using System.Data;
 using System.Text;
 using System.Text.Json;
+using System.Windows.Forms;
 
 namespace PedidoXperto.Logic
 {
@@ -138,7 +141,48 @@ namespace PedidoXperto.Logic
             return recomendaciones;
         }
         #endregion
+        //Compa Borquez barcazo
+        static public string? GetExistencia(string articulo_id, string almacenid)
+        {
+            FbConnection con = new FbConnection(GlobalSettings.Instance.StringConnection);
+            try
+            {
+                con.Open();
+                FbCommand command = new FbCommand("EXIVAL_ART", con);
+                command.CommandType = CommandType.StoredProcedure;
 
+                // Parámetros de entrada
+                command.Parameters.Add("V_ARTICULO_ID", FbDbType.Integer).Value = articulo_id;
+                command.Parameters.Add("V_ALMACEN_ID", FbDbType.Integer).Value = almacenid; //peri
+                //command.Parameters.Add("V_ALMACEN_ID", FbDbType.Integer).Value = 108405; culiacan
+                command.Parameters.Add("V_FECHA", FbDbType.Date).Value = DateTime.Today;
+                command.Parameters.Add("V_ES_ULTIMO_COSTO", FbDbType.Char).Value = 'S';
+                command.Parameters.Add("V_SUCURSAL_ID", FbDbType.Integer).Value = 0;
+
+                // Parámetro de salida
+                FbParameter paramARTICULO = new FbParameter("ARTICULO_ID", FbDbType.Numeric);
+                paramARTICULO.Direction = ParameterDirection.Output;
+                command.Parameters.Add(paramARTICULO);
+                FbParameter paramEXISTENCIA = new FbParameter("EXISTENCIAS", FbDbType.Numeric);
+                paramEXISTENCIA.Direction = ParameterDirection.Output;
+                command.Parameters.Add(paramEXISTENCIA);
+                // Ejecutar el procedimiento almacenado
+                command.ExecuteNonQuery();
+                return Convert.ToInt32(command.Parameters[6].Value).ToString();
+
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Se perdió la conexión :( , contacta a 06 o intenta de nuevo", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 
 }
