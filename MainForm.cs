@@ -35,6 +35,7 @@ namespace ProyectoXperto
                 GlobalSettings.Instance.Direccion = GlobalSettings.Instance.Config[2];
                 GlobalSettings.Instance.User = GlobalSettings.Instance.Config[3];
                 GlobalSettings.Instance.Pw = GlobalSettings.Instance.Config[4];
+                GlobalSettings.Instance.NgrokGateWay = GlobalSettings.Instance.Config[5];
 
                 GlobalSettings.Instance.StringConnection =
                     "User=" + GlobalSettings.Instance.User + ";" +
@@ -47,7 +48,7 @@ namespace ProyectoXperto
             }
             else
             {
-                MessageBox.Show("Credenciales para base de datos no encontradas", "DB.txt", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Archivo de Configuracion no encontrado", "DB.txt", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

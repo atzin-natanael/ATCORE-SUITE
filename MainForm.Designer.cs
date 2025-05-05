@@ -111,7 +111,7 @@ namespace ProyectoXperto
             // 
             // Leftpanel
             // 
-            Leftpanel.BackColor = Color.White;
+            Leftpanel.BackColor = Color.FromArgb(60, 60, 60);
             Leftpanel.Controls.Add(SubPanelMenuAdmin);
             Leftpanel.Controls.Add(BtnAdministrador);
             Leftpanel.Controls.Add(Hide);
