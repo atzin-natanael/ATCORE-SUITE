@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Titulo = new Label();
             Exit = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -39,12 +39,6 @@
             panel2 = new Panel();
             panel5 = new Panel();
             Tabla = new DataGridView();
-            CodigoBarras = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            Descuento = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
             panel4 = new Panel();
             label4 = new Label();
             Cb_Vendedor = new ComboBox();
@@ -71,6 +65,13 @@
             panel8 = new Panel();
             panel6 = new Panel();
             label2 = new Label();
+            CodigoBarras = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            Descuento = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -195,25 +196,25 @@
             Tabla.BackgroundColor = Color.Beige;
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle7.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             Tabla.ColumnHeadersHeight = 50;
             Tabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            Tabla.Columns.AddRange(new DataGridViewColumn[] { CodigoBarras, Descripcion, Cantidad, Precio, Descuento, Total });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            Tabla.DefaultCellStyle = dataGridViewCellStyle8;
+            Tabla.Columns.AddRange(new DataGridViewColumn[] { CodigoBarras, Descripcion, Cantidad, Precio, Descuento, Column1, Total });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            Tabla.DefaultCellStyle = dataGridViewCellStyle2;
             Tabla.Dock = DockStyle.Fill;
             Tabla.EnableHeadersVisualStyles = false;
             Tabla.GridColor = Color.Black;
@@ -222,69 +223,13 @@
             Tabla.Name = "Tabla";
             Tabla.RowHeadersVisible = false;
             Tabla.RowHeadersWidth = 50;
+            Tabla.RowTemplate.Height = 40;
             Tabla.Size = new Size(968, 594);
             Tabla.TabIndex = 24;
             Tabla.CellEndEdit += Tabla_CellEndEdit;
             Tabla.EditingControlShowing += Tabla_EditingControlShowing;
             Tabla.KeyDown += Tabla_KeyDown;
             Tabla.KeyPress += Tabla_KeyPress;
-            // 
-            // CodigoBarras
-            // 
-            CodigoBarras.HeaderText = "Codigo";
-            CodigoBarras.MinimumWidth = 6;
-            CodigoBarras.Name = "CodigoBarras";
-            CodigoBarras.Resizable = DataGridViewTriState.False;
-            CodigoBarras.SortMode = DataGridViewColumnSortMode.NotSortable;
-            CodigoBarras.Width = 125;
-            // 
-            // Descripcion
-            // 
-            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.MinimumWidth = 6;
-            Descripcion.Name = "Descripcion";
-            Descripcion.Resizable = DataGridViewTriState.False;
-            Descripcion.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 6;
-            Cantidad.Name = "Cantidad";
-            Cantidad.Resizable = DataGridViewTriState.False;
-            Cantidad.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Cantidad.Width = 125;
-            // 
-            // Precio
-            // 
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 6;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            Precio.Resizable = DataGridViewTriState.False;
-            Precio.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Precio.Width = 125;
-            // 
-            // Descuento
-            // 
-            Descuento.HeaderText = "Descuento";
-            Descuento.MinimumWidth = 6;
-            Descuento.Name = "Descuento";
-            Descuento.ReadOnly = true;
-            Descuento.Resizable = DataGridViewTriState.False;
-            Descuento.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Descuento.Width = 125;
-            // 
-            // Total
-            // 
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 6;
-            Total.Name = "Total";
-            Total.ReadOnly = true;
-            Total.Resizable = DataGridViewTriState.False;
-            Total.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Total.Width = 125;
             // 
             // panel4
             // 
@@ -549,14 +494,14 @@
             TablaRecomendados.BackgroundColor = Color.Beige;
             TablaRecomendados.BorderStyle = BorderStyle.None;
             TablaRecomendados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle9.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle9.ForeColor = Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            TablaRecomendados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle3.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            TablaRecomendados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             TablaRecomendados.ColumnHeadersHeight = 50;
             TablaRecomendados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             TablaRecomendados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
@@ -621,6 +566,71 @@
             label2.TabIndex = 20;
             label2.Text = "Recomendaciones:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // CodigoBarras
+            // 
+            CodigoBarras.HeaderText = "Codigo";
+            CodigoBarras.MinimumWidth = 6;
+            CodigoBarras.Name = "CodigoBarras";
+            CodigoBarras.Resizable = DataGridViewTriState.False;
+            CodigoBarras.SortMode = DataGridViewColumnSortMode.NotSortable;
+            CodigoBarras.Width = 125;
+            // 
+            // Descripcion
+            // 
+            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.MinimumWidth = 6;
+            Descripcion.Name = "Descripcion";
+            Descripcion.Resizable = DataGridViewTriState.False;
+            Descripcion.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 6;
+            Cantidad.Name = "Cantidad";
+            Cantidad.Resizable = DataGridViewTriState.False;
+            Cantidad.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Cantidad.Width = 125;
+            // 
+            // Precio
+            // 
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 6;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            Precio.Resizable = DataGridViewTriState.False;
+            Precio.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Precio.Width = 125;
+            // 
+            // Descuento
+            // 
+            Descuento.HeaderText = "Descuento";
+            Descuento.MinimumWidth = 6;
+            Descuento.Name = "Descuento";
+            Descuento.ReadOnly = true;
+            Descuento.Resizable = DataGridViewTriState.False;
+            Descuento.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Descuento.Width = 125;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "IVA";
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Resizable = DataGridViewTriState.False;
+            Column1.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Total
+            // 
+            Total.HeaderText = "Total";
+            Total.MinimumWidth = 6;
+            Total.Name = "Total";
+            Total.ReadOnly = true;
+            Total.Resizable = DataGridViewTriState.False;
+            Total.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Total.Width = 125;
             // 
             // FormCrearPedido
             // 
@@ -694,6 +704,7 @@
         private DataGridViewTextBoxColumn Cantidad;
         private DataGridViewTextBoxColumn Precio;
         private DataGridViewTextBoxColumn Descuento;
+        private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Total;
     }
 }

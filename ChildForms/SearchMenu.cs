@@ -93,9 +93,9 @@ namespace PedidoXperto.ChildForms
         private void Txt_Nombre_KeyDown(object sender, KeyEventArgs e)
         {
             Tabla.ClearSelection();
-            if (e.KeyCode == Keys.Enter)
+            if(e.KeyCode == Keys.Enter)
             {
-                Buscar.Focus();
+                Buscar_Click(sender, e);
             }
         }
 
