@@ -1,6 +1,6 @@
 ﻿namespace PedidoXperto.ChildForms
 {
-    partial class ChangeRol
+    partial class ChangeUserRol
     {
         /// <summary>
         /// Required designer variable.
@@ -128,14 +128,13 @@
             // 
             Cb_Rol.DropDownStyle = ComboBoxStyle.DropDownList;
             Cb_Rol.FormattingEnabled = true;
-            Cb_Rol.Items.AddRange(new object[] { "Seleccionar Rol:", "Administrador", "Inventarios", "JefeFacturista", "Facturista" });
             Cb_Rol.Location = new Point(168, 159);
             Cb_Rol.Name = "Cb_Rol";
             Cb_Rol.Size = new Size(295, 23);
             Cb_Rol.TabIndex = 1;
             Cb_Rol.KeyDown += Cb_Rol_KeyDown;
             // 
-            // ChangeRol
+            // ChangeUserRol
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -148,7 +147,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "ChangeRol";
+            Name = "ChangeUserRol";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ChangeRol";
             panelTop.ResumeLayout(false);

@@ -14,9 +14,9 @@ using PedidoXperto.ChildClases;
 
 namespace PedidoXperto.ChildForms
 {
-    public partial class CambiarRol : Form
+    public partial class CambiarDerechosRol : Form
     {
-        public CambiarRol(string Rol)
+        public CambiarDerechosRol(string Rol)
         {
             InitializeComponent();
             Txt_Rol.Text = Rol;

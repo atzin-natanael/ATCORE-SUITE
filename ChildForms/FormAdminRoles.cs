@@ -71,7 +71,7 @@ namespace PedidoXperto.ChildForms
 
         private void ChangeDerechos_Click(object sender, EventArgs e)
         {
-            CambiarRol cambiarRol = new CambiarRol(TablaRoles.CurrentRow.Cells[1].Value.ToString());
+            CambiarDerechosRol cambiarRol = new CambiarDerechosRol(TablaRoles.CurrentRow.Cells[1].Value.ToString());
             cambiarRol.ShowDialog();
         }
 
@@ -111,6 +111,14 @@ namespace PedidoXperto.ChildForms
                     MessageBox.Show("No se pudo eliminar el rol (¿ya fue eliminado?).");
                 }
             }
+            TablaRoles.Rows.Clear();
+            CargarRoles();
+        }
+
+        private void BtnAddRol_Click(object sender, EventArgs e)
+        {
+            AddRol agregarRol = new AddRol();
+            agregarRol.ShowDialog();
             TablaRoles.Rows.Clear();
             CargarRoles();
         }

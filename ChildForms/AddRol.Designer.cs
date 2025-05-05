@@ -1,6 +1,6 @@
 ﻿namespace PedidoXperto.ChildForms
 {
-    partial class CambiarRol
+    partial class AddRol
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            CheckList = new CheckedListBox();
+            Txt_Rol = new TextBox();
             panelTop = new Panel();
             label3 = new Label();
             Exit = new Button();
             Enter = new Button();
             label2 = new Label();
-            label1 = new Label();
-            Txt_Rol = new TextBox();
-            CheckList = new CheckedListBox();
             panelTop.SuspendLayout();
             SuspendLayout();
+            // 
+            // CheckList
+            // 
+            CheckList.BackColor = Color.FromArgb(60, 60, 60);
+            CheckList.BorderStyle = BorderStyle.None;
+            CheckList.Cursor = Cursors.Hand;
+            CheckList.ForeColor = Color.White;
+            CheckList.FormattingEnabled = true;
+            CheckList.Items.AddRange(new object[] { "Crear Pedido", "Validar Pedido", "Administrador de Usuarios", "Administrador de Roles" });
+            CheckList.Location = new Point(168, 165);
+            CheckList.Name = "CheckList";
+            CheckList.Size = new Size(295, 72);
+            CheckList.TabIndex = 21;
+            // 
+            // Txt_Rol
+            // 
+            Txt_Rol.CharacterCasing = CharacterCasing.Upper;
+            Txt_Rol.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Txt_Rol.Location = new Point(168, 112);
+            Txt_Rol.Name = "Txt_Rol";
+            Txt_Rol.Size = new Size(295, 26);
+            Txt_Rol.TabIndex = 18;
+            Txt_Rol.TextAlign = HorizontalAlignment.Center;
             // 
             // panelTop
             // 
@@ -48,7 +70,7 @@
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
             panelTop.Size = new Size(606, 63);
-            panelTop.TabIndex = 15;
+            panelTop.TabIndex = 20;
             // 
             // label3
             // 
@@ -57,9 +79,9 @@
             label3.ForeColor = Color.White;
             label3.Location = new Point(233, 9);
             label3.Name = "label3";
-            label3.Size = new Size(176, 24);
+            label3.Size = new Size(160, 24);
             label3.TabIndex = 0;
-            label3.Text = "CAMBIO DE ROL";
+            label3.Text = "AGREGAR ROL";
             // 
             // Exit
             // 
@@ -90,11 +112,11 @@
             Enter.FlatAppearance.MouseOverBackColor = Color.Gray;
             Enter.FlatStyle = FlatStyle.Flat;
             Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(233, 282);
+            Enter.Location = new Point(233, 273);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 42);
-            Enter.TabIndex = 13;
-            Enter.Text = "Cambiar";
+            Enter.TabIndex = 19;
+            Enter.Text = "Agregar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Enter_Click;
             // 
@@ -102,46 +124,15 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(55, 105);
+            label2.Location = new Point(111, 119);
             label2.Name = "label2";
-            label2.Size = new Size(33, 21);
-            label2.TabIndex = 9;
+            label2.Size = new Size(24, 15);
+            label2.TabIndex = 17;
             label2.Text = "Rol";
             // 
-            // label1
+            // AddRol
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(36, 167);
-            label1.Name = "label1";
-            label1.Size = new Size(0, 21);
-            label1.TabIndex = 10;
-            // 
-            // Txt_Rol
-            // 
-            Txt_Rol.Enabled = false;
-            Txt_Rol.Location = new Point(168, 105);
-            Txt_Rol.Name = "Txt_Rol";
-            Txt_Rol.Size = new Size(295, 27);
-            Txt_Rol.TabIndex = 11;
-            Txt_Rol.TextAlign = HorizontalAlignment.Center;
-            // 
-            // CheckList
-            // 
-            CheckList.BackColor = Color.FromArgb(60, 60, 60);
-            CheckList.BorderStyle = BorderStyle.None;
-            CheckList.Cursor = Cursors.Hand;
-            CheckList.ForeColor = Color.White;
-            CheckList.FormattingEnabled = true;
-            CheckList.Items.AddRange(new object[] { "Crear Pedido", "Validar Pedido", "Administrador de Usuarios", "Administrador de Roles" });
-            CheckList.Location = new Point(168, 158);
-            CheckList.Name = "CheckList";
-            CheckList.Size = new Size(295, 88);
-            CheckList.TabIndex = 16;
-            // 
-            // CambiarRol
-            // 
-            AutoScaleDimensions = new SizeF(10F, 21F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(60, 60, 60);
             ClientSize = new Size(606, 338);
@@ -150,14 +141,9 @@
             Controls.Add(panelTop);
             Controls.Add(Enter);
             Controls.Add(label2);
-            Controls.Add(label1);
-            Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4);
-            Name = "CambiarRol";
-            StartPosition = FormStartPosition.CenterScreen;
-            Tag = "";
-            Text = "CambiarRol";
+            Name = "AddRol";
+            Text = "AddRol";
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();
             ResumeLayout(false);
@@ -166,13 +152,12 @@
 
         #endregion
 
+        public CheckedListBox CheckList;
+        public TextBox Txt_Rol;
         private Panel panelTop;
         private Label label3;
         private Button Exit;
         private Button Enter;
         private Label label2;
-        private Label label1;
-        public CheckedListBox CheckList;
-        public TextBox Txt_Rol;
     }
 }

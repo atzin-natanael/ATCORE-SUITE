@@ -140,7 +140,7 @@ namespace PedidoXperto.ChildForms
 
         private void BtnEditRol_Click(object sender, EventArgs e)
         {
-            ChangeRol editarRol = new ChangeRol(TablaUsuarios.CurrentRow.Cells[1].Value.ToString());
+            ChangeUserRol editarRol = new ChangeUserRol(TablaUsuarios.CurrentRow.Cells[1].Value.ToString());
             editarRol.ShowDialog();
             TablaUsuarios.Rows.Clear();
             CargarUsers();

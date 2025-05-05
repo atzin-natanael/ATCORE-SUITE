@@ -7,16 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DocumentFormat.OpenXml.Wordprocessing;
 using LiteDB;
 using PedidoXperto.ChildClases;
 
 namespace PedidoXperto.ChildForms
 {
-    public partial class ChangeRol : Form
+    public partial class ChangeUserRol : Form
     {
-        public ChangeRol(string Usuario)
+        public ChangeUserRol(string Usuario)
         {
             InitializeComponent();
+            Cargar();
             Txt_Usuario.Text = Usuario;
             Cb_Rol.SelectedIndex = 0; // Inicialmente no se selecciona ningún rol
         }
@@ -25,7 +27,17 @@ namespace PedidoXperto.ChildForms
         {
             this.Close();
         }
+        public void Cargar()
+        {
+            using (var db = new LiteDatabase(@"C:\ConfigDB\USUARIOS_TRASPASOS.db"))
+            {
+                var coleccion = db.GetCollection<AdminRoles>("ROLES");
+                var listaRoles = coleccion.FindAll().Select(r => r.RolNombre).ToList();
 
+                Cb_Rol.Items.Clear(); // Limpia primero
+                Cb_Rol.Items.AddRange(listaRoles.ToArray());
+            }
+        }
         private void Enter_Click(object sender, EventArgs e)
         {
             if (Cb_Rol.SelectedIndex != 0)

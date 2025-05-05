@@ -176,6 +176,7 @@
             BtnAddRol.TabIndex = 11;
             BtnAddRol.Text = "Agregar Rol";
             BtnAddRol.UseVisualStyleBackColor = false;
+            BtnAddRol.Click += BtnAddRol_Click;
             // 
             // BtnMen
             // 
