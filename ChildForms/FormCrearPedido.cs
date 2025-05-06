@@ -189,7 +189,7 @@ namespace PedidoXperto.ChildForms
                 txtBox_clienteNombre.Text = string.Empty;
                 Tabla.Rows.Clear();
                 Cb_Vendedor.Focus();
-                precioTotal.Text = "$ 0.00";
+                //precioTotal.Text = "$ 0.00";
                 valorDescuento.Text = "$ 0.00";
             }
         }
@@ -272,7 +272,7 @@ namespace PedidoXperto.ChildForms
         public void ActualizarPrecios()
         {
             Tuple<decimal, decimal, decimal> totales = CalcularTotalesTabla();
-            precioTotal.Text = "$ " + Math.Round(totales.Item1, 2);
+            //precioTotal.Text = "$ " + Math.Round(totales.Item1, 2);
             valorDescuento.Text = "$ " + Math.Round(totales.Item2, 2);
             precioConDescuento.Text = "$ " + Math.Round(totales.Item1 - totales.Item2 + totales.Item3, 2);
         }

@@ -62,9 +62,7 @@
             precioConDescuento = new Label();
             label9 = new Label();
             valorDescuento = new Label();
-            precioTotal = new Label();
             label6 = new Label();
-            label5 = new Label();
             panel9 = new Panel();
             TablaRecomendados = new DataGridView();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
@@ -457,9 +455,7 @@
             panel10.Controls.Add(precioConDescuento);
             panel10.Controls.Add(label9);
             panel10.Controls.Add(valorDescuento);
-            panel10.Controls.Add(precioTotal);
             panel10.Controls.Add(label6);
-            panel10.Controls.Add(label5);
             panel10.Dock = DockStyle.Fill;
             panel10.Location = new Point(46, 286);
             panel10.Name = "panel10";
@@ -470,11 +466,11 @@
             // 
             precioConDescuento.Anchor = AnchorStyles.Bottom;
             precioConDescuento.FlatStyle = FlatStyle.Flat;
-            precioConDescuento.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            precioConDescuento.Font = new Font("Arial Rounded MT Bold", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             precioConDescuento.ForeColor = Color.Black;
-            precioConDescuento.Location = new Point(17, 227);
+            precioConDescuento.Location = new Point(0, 239);
             precioConDescuento.Name = "precioConDescuento";
-            precioConDescuento.Size = new Size(332, 46);
+            precioConDescuento.Size = new Size(363, 69);
             precioConDescuento.TabIndex = 5;
             precioConDescuento.Text = "$ 0";
             precioConDescuento.TextAlign = ContentAlignment.MiddleCenter;
@@ -483,66 +479,40 @@
             // 
             label9.Anchor = AnchorStyles.Bottom;
             label9.FlatStyle = FlatStyle.Flat;
-            label9.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.Red;
-            label9.Location = new Point(17, 171);
+            label9.Font = new Font("Arial Rounded MT Bold", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.Blue;
+            label9.Location = new Point(3, 187);
             label9.Name = "label9";
-            label9.Size = new Size(332, 47);
+            label9.Size = new Size(363, 52);
             label9.TabIndex = 4;
             label9.Text = "TOTAL";
             label9.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // valorDescuento
             // 
-            valorDescuento.Anchor = AnchorStyles.None;
+            valorDescuento.Anchor = AnchorStyles.Bottom;
             valorDescuento.FlatStyle = FlatStyle.Flat;
-            valorDescuento.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
+            valorDescuento.Font = new Font("Arial Rounded MT Bold", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             valorDescuento.ForeColor = Color.Black;
-            valorDescuento.Location = new Point(17, 126);
+            valorDescuento.Location = new Point(0, 122);
             valorDescuento.Name = "valorDescuento";
-            valorDescuento.Size = new Size(332, 34);
+            valorDescuento.Size = new Size(366, 65);
             valorDescuento.TabIndex = 3;
             valorDescuento.Text = "$ 0";
             valorDescuento.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // precioTotal
-            // 
-            precioTotal.Anchor = AnchorStyles.None;
-            precioTotal.FlatStyle = FlatStyle.Flat;
-            precioTotal.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            precioTotal.ForeColor = Color.Black;
-            precioTotal.Location = new Point(18, 48);
-            precioTotal.Name = "precioTotal";
-            precioTotal.Size = new Size(332, 34);
-            precioTotal.TabIndex = 2;
-            precioTotal.Text = "$ 0";
-            precioTotal.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.None;
+            label6.Anchor = AnchorStyles.Bottom;
             label6.FlatStyle = FlatStyle.Flat;
-            label6.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            label6.ForeColor = Color.Red;
-            label6.Location = new Point(17, 82);
+            label6.Font = new Font("Arial Rounded MT Bold", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.Gray;
+            label6.Location = new Point(6, 63);
             label6.Name = "label6";
-            label6.Size = new Size(332, 34);
+            label6.Size = new Size(363, 70);
             label6.TabIndex = 1;
-            label6.Text = "DESCUENTO";
+            label6.Text = "AHORRO";
             label6.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            label5.Anchor = AnchorStyles.None;
-            label5.FlatStyle = FlatStyle.Flat;
-            label5.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
-            label5.ForeColor = Color.Red;
-            label5.Location = new Point(18, 14);
-            label5.Name = "label5";
-            label5.Size = new Size(332, 34);
-            label5.TabIndex = 0;
-            label5.Text = "SUBTOTAL";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel9
             // 
@@ -582,22 +552,22 @@
             TablaRecomendados.RowTemplate.Height = 40;
             TablaRecomendados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             TablaRecomendados.Size = new Size(369, 286);
-            TablaRecomendados.TabIndex = 25;
+            TablaRecomendados.TabIndex = 20;
             TablaRecomendados.CellDoubleClick += TablaRecomendados_CellDoubleClick;
             // 
             // dataGridViewTextBoxColumn2
             // 
             dataGridViewTextBoxColumn2.HeaderText = "Codigo";
-            dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            dataGridViewTextBoxColumn2.MinimumWidth = 80;
             dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             dataGridViewTextBoxColumn2.ReadOnly = true;
-            dataGridViewTextBoxColumn2.Width = 125;
+            dataGridViewTextBoxColumn2.Width = 80;
             // 
             // dataGridViewTextBoxColumn3
             // 
             dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn3.HeaderText = "Descripcion";
-            dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            dataGridViewTextBoxColumn3.MinimumWidth = 200;
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
@@ -686,17 +656,13 @@
         private Panel panel7;
         private Panel panel6;
         private DataGridView TablaRecomendados;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private Panel panel8;
         private Panel panel10;
-        private Label label5;
         private Panel panel9;
         private TextBox txtBox_clienteNombre;
         private Label label4;
         private ComboBox Cb_Vendedor;
         private Label valorDescuento;
-        private Label precioTotal;
         private Label label6;
         private Label precioConDescuento;
         private Label label9;
@@ -708,5 +674,7 @@
         private DataGridViewTextBoxColumn Descuento;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Total;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }
