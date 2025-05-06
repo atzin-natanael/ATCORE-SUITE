@@ -20,6 +20,7 @@ using PedidoXperto.Logic;
 using SpreadsheetLight;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Reflection.Emit;
+using DocumentFormat.OpenXml.Bibliography;
 
 namespace PedidoXperto.ChildForms
 {
@@ -428,7 +429,176 @@ namespace PedidoXperto.ChildForms
                 con.Close();
             }
         }
+        public void ejecutar(decimal cantidad, int id)
+        {
+            if (GlobalSettings.Instance.Editar == true)
+            {
+                DialogResult result = MessageBox.Show("¿Estás seguro que deseas editar este artículo?\n ¿Deseas continuar?", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.Cancel)
+                {
+                    GlobalSettings.Instance.Editar = false;
+                    TxtCodigo.Focus();
+                    TxtCodigo.Select(0, TxtCodigo.Text.Length);
+                    return;
+                }
 
+            }
+            else
+            {
+                if (cantidad + Articulos[id].Recibido > Articulos[id].Solicitado)
+                {
+                    DialogResult result = MessageBox.Show("Te estás pasando la cantidad solicitada \n ¿Deseas continuar?", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                    if (result == DialogResult.Cancel)
+                    {
+                        TxtCodigo.Focus();
+                        TxtCodigo.Select(0, TxtCodigo.Text.Length);
+                        return;
+                    }
+                }
+            }
+            bool banderaincompleto = false;
+            bool temporal = false;
+            bool temporal2 = false;
+            decimal prueba;
+            bool bandera = false;
+            bool regresar = false;
+            if (GlobalSettings.Instance.Editar == true)
+            {
+                prueba = Articulos[id].Solicitado - cantidad;
+                if (Articulos[id].Pendiente == 0 && prueba != 0)
+                    temporal2 = true;
+                if (prueba == 0 && Articulos[id].Recibido > 0)
+                    temporal = true;
+                if (prueba == 0)
+                    bandera = true;
+                if ((prueba) >= 1 && Articulos[id].Recibido == 0)
+                    banderaincompleto = true;
+                if (Articulos[id].Recibido > 0 && cantidad == 0)
+                    temporal = true;
+                if (prueba < 0 && Articulos[id].Recibido > 0)
+                    regresar = true;
+                if (prueba < 0 && Articulos[id].Recibido == Articulos[id].Solicitado)
+                    bandera = true;
+                if (prueba < 0 && Articulos[id].Recibido == 0)
+                    bandera = true;
+                if (prueba == 0 && Articulos[id].Recibido > Articulos[id].Solicitado)
+                {
+                    bandera = false;
+                    temporal = false;
+                }
+                if (prueba < 0 && Articulos[id].Recibido == Articulos[id].Solicitado)
+                {
+                    temporal = false;
+                    bandera = false;
+                    temporal2 = false;
+                    regresar = false;
+                }
+                Articulos[id].Recibido = cantidad;
+                Articulos[id].Pendiente = Articulos[id].Solicitado - cantidad;
+                GlobalSettings.Instance.Editar = false;
+
+            }
+            else
+            {
+                prueba = Articulos[id].Pendiente - cantidad;
+                if (prueba == 0 && Articulos[id].Recibido > 0)
+                    temporal = true;
+                if (prueba == 0)
+                    bandera = true;
+                if ((prueba) >= 1 && Articulos[id].Recibido == 0)
+                    banderaincompleto = true;
+                Articulos[id].Recibido += cantidad;
+                Articulos[id].Pendiente -= cantidad;
+            }
+            if (Articulos[id].Pendiente < 0)
+                Articulos[id].Pendiente = 0;
+            List<int> ListaTabla = new List<int>();
+            if (bandera == true)
+            {
+                GlobalSettings.Instance.Renglones--;
+                Lb_renglones.Text = GlobalSettings.Instance.Renglones.ToString();
+                bandera = false;
+            }
+            if (temporal == true)
+            {
+                GlobalSettings.Instance.Incompletos--;
+                Lb_Incompletos.Text = GlobalSettings.Instance.Incompletos.ToString();
+                GlobalSettings.Instance.Renglones++;
+                Lb_renglones.Text = GlobalSettings.Instance.Renglones.ToString();
+                bandera = false;
+            }
+            if (regresar == true)
+            {
+                GlobalSettings.Instance.Incompletos--;
+                Lb_Incompletos.Text = GlobalSettings.Instance.Incompletos.ToString();
+                regresar = false;
+            }
+            if (temporal2 == true)
+            {
+                GlobalSettings.Instance.Incompletos++;
+                Lb_Incompletos.Text = GlobalSettings.Instance.Incompletos.ToString();
+            }
+
+            //ORDENAR
+            for (int i = 0; i < Articulos.Count; ++i)
+            {
+                ListaTabla.Add(int.Parse(Tabla.Rows[i].Cells[0].Value.ToString()));
+            }
+            Tabla.Rows.Clear();
+            DataGridViewRowCollection rows = Tabla.Rows;
+            string comentario;
+            for (int i = 0; i < Articulos.Count; ++i)
+            {
+                int a = 1;
+                if (ListaTabla[i] != i + 1)
+                {
+                    a = ListaTabla[i] - i;
+                }
+                if (Articulos[ListaTabla[i] - a].Nota != "")
+                {
+                    comentario = "Ver";
+                }
+                else
+                {
+                    comentario = string.Empty;
+                }
+                rows.Add(Articulos[ListaTabla[i] - a].Id, Articulos[ListaTabla[i] - a].Codigo, Articulos[ListaTabla[i] - a].Descripcion, Articulos[ListaTabla[i] - a].Solicitado, Articulos[ListaTabla[i] - a].Recibido, comentario, Articulos[ListaTabla[i] - a].Pendiente);
+                DataGridViewRow row = Tabla.Rows[i];
+                if (Articulos[ListaTabla[i] - a].Solicitado - Articulos[ListaTabla[i] - a].Recibido > 0 && Articulos[ListaTabla[i] - a].Recibido != 0)
+                {
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
+                    if (banderaincompleto == true && temporal == false)
+                    {
+                        GlobalSettings.Instance.Incompletos++;
+                        Lb_Incompletos.Text = GlobalSettings.Instance.Incompletos.ToString();
+                        banderaincompleto = false;
+                        GlobalSettings.Instance.Renglones--;
+                        Lb_renglones.Text = GlobalSettings.Instance.Renglones.ToString();
+                        bandera = false;
+                    }
+                }
+                else if (Articulos[ListaTabla[i] - a].Solicitado - Articulos[ListaTabla[i] - a].Recibido == 0)
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
+                else if (Articulos[ListaTabla[i] - a].Solicitado - Articulos[ListaTabla[i] - a].Recibido < 0)
+                {
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                    row.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+                }
+            }
+            //if (bandera == true)
+            //{
+            //    GlobalSettings.Instance.Renglones--;
+            //    Lb_renglones.Text = GlobalSettings.Instance.Renglones.ToString();
+            //    bandera = false;
+            //}
+            Tabla.FirstDisplayedScrollingRowIndex = GlobalSettings.Instance.Current;
+            Tabla.ClearSelection();
+            Tabla.Rows[GlobalSettings.Instance.Current].Cells[0].Selected = true;
+            Tabla.Rows[GlobalSettings.Instance.Current].Cells[1].Selected = true;
+            TxtCodigo.Text = string.Empty;
+            ListaTabla.Clear();
+            TxtCodigo.Focus();
+        }
         private void BtnCodigo_Click(object sender, EventArgs e)
         {
             if (Tabla.RowCount > 0)
@@ -671,6 +841,7 @@ namespace PedidoXperto.ChildForms
                 }
             }
         }
+
         public void ejecutar(decimal cantidad, int id)
         {
             if (GlobalSettings.Instance.Editar == true)
@@ -977,7 +1148,7 @@ namespace PedidoXperto.ChildForms
                 label5.ForeColor = System.Drawing.Color.Black;
                 Lb_Incompletos.ForeColor = System.Drawing.Color.Black;
                 Lb_renglones.ForeColor = System.Drawing.Color.Black;
-                BtnCodigo.BackColor = System.Drawing.Color.FromArgb(60,60,60);
+                BtnCodigo.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
                 BtnCodigo.ForeColor = System.Drawing.Color.White;
                 Exit.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
                 Exit.ForeColor = System.Drawing.Color.White;
@@ -985,7 +1156,7 @@ namespace PedidoXperto.ChildForms
                 BtnPedido.ForeColor = System.Drawing.Color.White;
                 Save.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
                 Save.ForeColor = System.Drawing.Color.White;
-                Tabla.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(60,60,60);
+                Tabla.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
                 Tabla.BackgroundColor = System.Drawing.Color.White;
                 Tabla.Refresh();
 
@@ -2407,7 +2578,142 @@ namespace PedidoXperto.ChildForms
 
         private void FormValidarPedido_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
+        }
+
+        private void Tabla_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex == 2)
+            {
+                Tabla.ClearSelection();
+                Tabla.Rows[e.RowIndex].Selected = true;
+                int codigo = int.Parse(Tabla.Rows[e.RowIndex].Cells[0].Value.ToString());
+                string clave = (Tabla.Rows[e.RowIndex].Cells[1].Value.ToString());
+                ContextMenuStrip menu = new ContextMenuStrip();
+
+                // Agregar opciones al menú
+                ToolStripMenuItem verUbicacionMenuItem = new ToolStripMenuItem("Ver Ubicación");
+                ToolStripMenuItem verNotaMenuItem = new ToolStripMenuItem("Ver Nota");
+                ToolStripMenuItem verExistenciaMenuItem = new ToolStripMenuItem("Ver Existencia");
+                menu.Items.Add(verUbicacionMenuItem);
+                menu.Items.Add(verNotaMenuItem);
+                menu.Items.Add(verExistenciaMenuItem);
+                // Manejar el evento ItemClicked del menú contextual
+                    Existencias existencias = new Existencias();
+                    string articuloid = "";
+                menu.ItemClicked += (s, args) =>
+                {
+                    // Verificar la opción seleccionada
+
+                    if (args.ClickedItem == verUbicacionMenuItem)
+                    {
+                        // Lógica para la opción "Ver Ubicación"
+                        // Aquí puedes ejecutar la acción correspondiente
+                        menu.Close();
+                        for (int i = 0; i < Articulos.Count; ++i)
+                        {
+                            if (Articulos[i].Id == codigo)
+                            {
+                                if (Articulos[i].Ubicacion == "No tiene registrada una ubicación")
+                                {
+                                    var customMessageBox = new Mensaje();
+                                    customMessageBox.SetMensaje("Artículo sin ubicacion", "ubicacion2");
+                                    customMessageBox.ShowDialog();
+                                }
+                                else
+                                {
+                                    var customMessageBox = new Mensaje();
+                                    customMessageBox.SetMensaje(Articulos[i].Ubicacion + "\n", "ubicacion");
+                                    customMessageBox.ShowDialog();
+                                }
+                            }
+                        }
+                    }
+                    else if (args.ClickedItem == verNotaMenuItem)
+                    {
+                        // Lógica para la opción "Ver Ubicación"
+                        // Aquí puedes ejecutar la acción correspondiente
+                        menu.Close();
+                        for (int i = 0; i < Articulos.Count; ++i)
+                        {
+                            if (Articulos[i].Id == codigo)
+                            {
+                                if (Articulos[i].Nota == "")
+                                {
+                                    var customMessageBox = new Mensaje();
+                                    customMessageBox.SetMensaje("Artículo sin nota", "nota2");
+                                    customMessageBox.ShowDialog();
+                                }
+                                else
+                                {
+                                    var customMessageBox = new Mensaje();
+                                    customMessageBox.SetMensaje(Articulos[i].Nota + "\n", "nota");
+                                    customMessageBox.ShowDialog();
+                                }
+                            }
+
+
+                        }
+                    }
+                    else if (args.ClickedItem == verExistenciaMenuItem)
+                    {
+                        // Lógica para la opción "Ver Ubicación"
+                        // Aquí puedes ejecutar la acción correspondiente
+                        menu.Close();
+                        for (int i = 0; i < Articulos.Count; ++i)
+                        {
+                            if (Articulos[i].Id == codigo)
+                            {
+                                articuloid = DataBridge.GetArticuloId(Articulos[i].ArticuloId));
+                                existencias.Descripcion.Text = Tabla.CurrentRow.Cells[2].Value.ToString();
+                                string Exalmacen = DataBridge.GetExistencia(articuloid, "108401");
+                                string Extienda = DataBridge.GetExistencia(articuloid, "108403");
+                                existencias.ExistenciaAlmacen.Text = Exalmacen;
+                                existencias.ExistenciaTienda.Text = Extienda;
+                                existencias.ShowDialog();
+                            }
+                        }
+                    }
+                };
+
+                menu.Show(Cursor.Position);
+
+            }
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex == 4)
+            {
+                Tabla.ClearSelection();
+                Tabla.Rows[e.RowIndex].Selected = true;
+                int codigo = int.Parse(Tabla.Rows[e.RowIndex].Cells[0].Value.ToString());
+                ContextMenuStrip menu2 = new ContextMenuStrip();
+
+                // Agregar opciones al menú
+                ToolStripMenuItem ModificarMenuItem = new ToolStripMenuItem("Modificar");
+                menu2.Items.Add(ModificarMenuItem);
+
+                // Manejar el evento ItemClicked del menú contextual
+                menu2.ItemClicked += (s, args) =>
+                {
+                    // Verificar la opción seleccionada
+                    if (args.ClickedItem == ModificarMenuItem)
+                    {
+                        // Lógica para la opción "Ver Ubicación"
+                        // Aquí puedes ejecutar la acción correspondiente
+                        menu2.Close();
+                        for (int i = 0; i < Articulos.Count; ++i)
+                        {
+                            if (Articulos[i].Id == codigo)
+                            {
+                                Editar Control2 = new Editar();
+                                Control2.FuncionEditar(TxtCodigo.Text, Articulos[i].Descripcion, Articulos[i].Solicitado, Articulos[i].Recibido, i);
+                                Control2.EnviarVariableEvent2 += new Editar.EnviarVariableDelegate2(ejecutar);
+                                Control2.ShowDialog();
+                                TxtCodigo.Focus();
+                            }
+                        }
+                    }
+                }; menu2.Show(Cursor.Position);
+            }
         }
     }
 }

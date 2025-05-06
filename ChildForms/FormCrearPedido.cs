@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Drawing.Drawing2D;
+using System.Text;
 using ApisMicrosip;
 using FirebirdSql.Data.FirebirdClient;
 using PedidoXperto.ChildClases;
@@ -377,6 +378,7 @@ namespace PedidoXperto.ChildForms
             {
                 codigoBarras = GlobalSettings.Instance.Crear_clave;
                 GlobalSettings.Instance.Crear_clave = null;
+                Tabla.CurrentCell.Value = codigoBarras;
             }
             else
             {
@@ -393,6 +395,7 @@ namespace PedidoXperto.ChildForms
 
             if (DatosArticulo != null)
             {
+
                 string Clave_Principal = DatosArticulo[0];
                 string articulo_id = DataBridge.GetArticuloId(Clave_Principal);
                 Tabla.EndEdit();
@@ -416,12 +419,23 @@ namespace PedidoXperto.ChildForms
 
         private void Tabla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            if (Tabla.CurrentRow == null)
+                return;
 
+            // Verifica que la celda en la columna 0 no sea nula ni vacía
+            var celda0 = Tabla.CurrentRow.Cells[0].Value;
+            if (celda0 == null || string.IsNullOrWhiteSpace(celda0.ToString()))
+                return;
             if (Tabla.CurrentCell.ColumnIndex == (int)ColTabla.CodigoBarras)//Es cuando llena la celda de clave_articulo
             {
                 if (Tabla.CurrentCell.Value == null || Tabla.CurrentCell.Value.ToString() == string.Empty)
                 {
                     Tabla.CurrentRow.Cells[1].ReadOnly = false;
+                    return;
+                }
+                if(GlobalSettings.Instance.editandoclave == true)
+                {
+                    GlobalSettings.Instance.editandoclave = false;
                     return;
                 }
                 LlenarDatosArticulo();//Llena los datos de un articulo
@@ -469,10 +483,11 @@ namespace PedidoXperto.ChildForms
         private void DesplegarSearchmenu()
         {
             string parametros = Tabla.CurrentCell.EditedFormattedValue?.ToString() ?? "";
+            int ColumnIndex = Tabla.CurrentCell.ColumnIndex;
             if (parametros == string.Empty)//Si esta vacio no disparamos nada
                 return;
 
-            SearchMenu buscar = new SearchMenu(parametros);
+            SearchMenu buscar = new SearchMenu(parametros,ColumnIndex);
 
             //buscar.Tabla.Rows.Clear();
             buscar.Tabla.Focus();
@@ -492,6 +507,11 @@ namespace PedidoXperto.ChildForms
             if (e.KeyCode == Keys.F4)
             {
                 if (Tabla.CurrentCell != null && Tabla.CurrentCell.ColumnIndex == 1)
+                {
+                    DesplegarSearchmenu();
+                    e.Handled = true; // Opcional, previene otros efectos
+                }
+                else if(Tabla.CurrentCell != null && Tabla.CurrentCell.ColumnIndex == 0)
                 {
                     DesplegarSearchmenu();
                     e.Handled = true; // Opcional, previene otros efectos
@@ -655,5 +675,7 @@ namespace PedidoXperto.ChildForms
                 txtBox_clienteId.Focus();
             }
         }
+       
+        
     }
 }

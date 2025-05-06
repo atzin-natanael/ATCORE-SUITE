@@ -19,6 +19,7 @@ namespace PedidoXperto.ChildClases
         public string Name { get; set; }
         public decimal Contenido { get; set; }
         public string filepath { get; set; }
+        public bool editandoclave { get; set; }
         public string Vendedor { get; set; }
         public string FolioId { get; set; }
         public string status { get; set; }

@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             Txt_Nombre = new TextBox();
             panelTop = new Panel();
             label3 = new Label();
             Exit = new Button();
             Buscar = new Button();
-            label2 = new Label();
+            Concepto = new Label();
             Tabla = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
@@ -115,17 +115,17 @@
             Buscar.UseVisualStyleBackColor = false;
             Buscar.Click += Buscar_Click;
             // 
-            // label2
+            // Concepto
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.FromArgb(60, 60, 60);
-            label2.Font = new Font("Century Gothic", 9.75F);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(45, 57);
-            label2.Name = "label2";
-            label2.Size = new Size(61, 17);
-            label2.TabIndex = 0;
-            label2.Text = "Nombre";
+            Concepto.AutoSize = true;
+            Concepto.BackColor = Color.FromArgb(60, 60, 60);
+            Concepto.Font = new Font("Century Gothic", 9.75F);
+            Concepto.ForeColor = Color.White;
+            Concepto.Location = new Point(45, 57);
+            Concepto.Name = "Concepto";
+            Concepto.Size = new Size(61, 17);
+            Concepto.TabIndex = 0;
+            Concepto.Text = "Nombre";
             // 
             // Tabla
             // 
@@ -134,14 +134,14 @@
             Tabla.BackgroundColor = Color.FromArgb(60, 60, 60);
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.Gray;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Gray;
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Gray;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Gray;
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             Tabla.ColumnHeadersHeight = 30;
             Tabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             Tabla.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
@@ -207,7 +207,7 @@
             Controls.Add(Txt_Nombre);
             Controls.Add(panelTop);
             Controls.Add(Buscar);
-            Controls.Add(label2);
+            Controls.Add(Concepto);
             FormBorderStyle = FormBorderStyle.None;
             Name = "SearchMenu";
             StartPosition = FormStartPosition.CenterScreen;
@@ -225,7 +225,7 @@
         private Label label3;
         private Button Exit;
         private Button Buscar;
-        private Label label2;
+        private Label Concepto;
         private Panel panel1;
         public TextBox Txt_Nombre;
         public DataGridView Tabla;
