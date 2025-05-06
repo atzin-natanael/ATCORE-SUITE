@@ -122,5 +122,14 @@ namespace PedidoXperto.ChildForms
             TablaRoles.Rows.Clear();
             CargarRoles();
         }
+
+        private void SubpanelMenu_Resize(object sender, EventArgs e)
+        {
+            BtnAddRol.Width = SubpanelMenu.Width / 4;
+            BtnDeleteRol.Width = SubpanelMenu.Width / 4;
+            BtnEditNameRol.Width = SubpanelMenu.Width / 4;
+            ChangeDerechos.Width = SubpanelMenu.Width / 4;
+
+        }
     }
 }

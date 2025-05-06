@@ -130,7 +130,7 @@
             BtnChangeName.FlatAppearance.BorderSize = 0;
             BtnChangeName.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnChangeName.FlatStyle = FlatStyle.Flat;
-            BtnChangeName.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnChangeName.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             BtnChangeName.ForeColor = Color.Black;
             BtnChangeName.Location = new Point(859, 0);
             BtnChangeName.Name = "BtnChangeName";
@@ -148,7 +148,7 @@
             BtnChangePassword.FlatAppearance.BorderSize = 0;
             BtnChangePassword.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnChangePassword.FlatStyle = FlatStyle.Flat;
-            BtnChangePassword.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnChangePassword.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             BtnChangePassword.ForeColor = Color.Black;
             BtnChangePassword.Location = new Point(604, 0);
             BtnChangePassword.Name = "BtnChangePassword";
@@ -166,7 +166,7 @@
             BtnEditRol.FlatAppearance.BorderSize = 0;
             BtnEditRol.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnEditRol.FlatStyle = FlatStyle.Flat;
-            BtnEditRol.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnEditRol.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             BtnEditRol.ForeColor = Color.Black;
             BtnEditRol.Location = new Point(391, 0);
             BtnEditRol.Name = "BtnEditRol";
@@ -184,7 +184,7 @@
             BtnAddUser.FlatAppearance.BorderSize = 0;
             BtnAddUser.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnAddUser.FlatStyle = FlatStyle.Flat;
-            BtnAddUser.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnAddUser.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             BtnAddUser.ForeColor = Color.Black;
             BtnAddUser.Location = new Point(196, 0);
             BtnAddUser.Name = "BtnAddUser";
@@ -202,7 +202,7 @@
             BtnDeleteUser.FlatAppearance.BorderSize = 0;
             BtnDeleteUser.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnDeleteUser.FlatStyle = FlatStyle.Flat;
-            BtnDeleteUser.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnDeleteUser.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             BtnDeleteUser.ForeColor = Color.Black;
             BtnDeleteUser.Location = new Point(0, 0);
             BtnDeleteUser.Name = "BtnDeleteUser";
@@ -221,7 +221,7 @@
             BtnMen.FlatAppearance.BorderSize = 0;
             BtnMen.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnMen.FlatStyle = FlatStyle.Flat;
-            BtnMen.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnMen.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             BtnMen.ForeColor = Color.Black;
             BtnMen.Image = (Image)resources.GetObject("BtnMen.Image");
             BtnMen.ImageAlign = ContentAlignment.MiddleLeft;
@@ -254,7 +254,7 @@
             TablaUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(60, 60, 60);
             dataGridViewCellStyle1.SelectionForeColor = Color.White;

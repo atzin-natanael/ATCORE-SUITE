@@ -105,6 +105,7 @@
             SubpanelMenu.Name = "SubpanelMenu";
             SubpanelMenu.Size = new Size(1246, 58);
             SubpanelMenu.TabIndex = 9;
+            SubpanelMenu.Resize += SubpanelMenu_Resize;
             // 
             // ChangeDerechos
             // 
@@ -114,7 +115,7 @@
             ChangeDerechos.FlatAppearance.BorderSize = 0;
             ChangeDerechos.FlatAppearance.MouseOverBackColor = Color.Gray;
             ChangeDerechos.FlatStyle = FlatStyle.Flat;
-            ChangeDerechos.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ChangeDerechos.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             ChangeDerechos.ForeColor = Color.Black;
             ChangeDerechos.Location = new Point(546, 0);
             ChangeDerechos.Name = "ChangeDerechos";
@@ -132,7 +133,7 @@
             BtnEditNameRol.FlatAppearance.BorderSize = 0;
             BtnEditNameRol.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnEditNameRol.FlatStyle = FlatStyle.Flat;
-            BtnEditNameRol.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnEditNameRol.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             BtnEditNameRol.ForeColor = Color.Black;
             BtnEditNameRol.Location = new Point(364, 0);
             BtnEditNameRol.Name = "BtnEditNameRol";
@@ -150,7 +151,7 @@
             BtnDeleteRol.FlatAppearance.BorderSize = 0;
             BtnDeleteRol.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnDeleteRol.FlatStyle = FlatStyle.Flat;
-            BtnDeleteRol.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnDeleteRol.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             BtnDeleteRol.ForeColor = Color.Black;
             BtnDeleteRol.Location = new Point(182, 0);
             BtnDeleteRol.Name = "BtnDeleteRol";
@@ -168,7 +169,7 @@
             BtnAddRol.FlatAppearance.BorderSize = 0;
             BtnAddRol.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnAddRol.FlatStyle = FlatStyle.Flat;
-            BtnAddRol.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnAddRol.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             BtnAddRol.ForeColor = Color.Black;
             BtnAddRol.Location = new Point(0, 0);
             BtnAddRol.Name = "BtnAddRol";
@@ -186,7 +187,7 @@
             BtnMen.FlatAppearance.BorderSize = 0;
             BtnMen.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnMen.FlatStyle = FlatStyle.Flat;
-            BtnMen.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnMen.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             BtnMen.ForeColor = Color.Black;
             BtnMen.Image = (Image)resources.GetObject("BtnMen.Image");
             BtnMen.ImageAlign = ContentAlignment.MiddleLeft;
@@ -229,7 +230,7 @@
             TablaRoles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(60, 60, 60);
             dataGridViewCellStyle1.SelectionForeColor = Color.White;
@@ -241,7 +242,7 @@
             TablaRoles.Cursor = Cursors.Hand;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
