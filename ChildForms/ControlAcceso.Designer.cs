@@ -58,6 +58,7 @@
             panelTop.Name = "panelTop";
             panelTop.Size = new Size(606, 63);
             panelTop.TabIndex = 15;
+            panelTop.MouseDown += panelTop_MouseDown;
             // 
             // label3
             // 
@@ -69,6 +70,7 @@
             label3.Size = new Size(120, 24);
             label3.TabIndex = 0;
             label3.Text = "AUTORIZAR";
+            label3.MouseDown += label3_MouseDown;
             // 
             // Exit
             // 
@@ -81,12 +83,13 @@
             Exit.FlatStyle = FlatStyle.Flat;
             Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Exit.ForeColor = Color.Black;
-            Exit.Location = new Point(745, 0);
+            Exit.Location = new Point(542, 0);
             Exit.Name = "Exit";
             Exit.Size = new Size(64, 27);
             Exit.TabIndex = 4;
             Exit.Text = "Salir";
             Exit.UseVisualStyleBackColor = false;
+            Exit.Click += Exit_Click;
             // 
             // ForgetPw
             // 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             Exit = new Button();
             Titulo = new Label();
             label1 = new Label();
@@ -40,6 +40,7 @@
             TxtCodigo = new TextBox();
             Cb_Surtidor = new ComboBox();
             panel1 = new Panel();
+            Save = new Button();
             Lb_Incompletos = new Label();
             Lb_renglones = new Label();
             label5 = new Label();
@@ -53,7 +54,6 @@
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
-            Save = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Tabla).BeginInit();
@@ -214,6 +214,23 @@
             panel1.Size = new Size(1383, 195);
             panel1.TabIndex = 10;
             // 
+            // Save
+            // 
+            Save.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Save.BackColor = Color.FromArgb(60, 60, 60);
+            Save.Cursor = Cursors.Hand;
+            Save.FlatAppearance.BorderSize = 0;
+            Save.FlatAppearance.MouseOverBackColor = Color.Gray;
+            Save.FlatStyle = FlatStyle.Flat;
+            Save.ForeColor = Color.White;
+            Save.Location = new Point(1242, 67);
+            Save.Name = "Save";
+            Save.Size = new Size(141, 54);
+            Save.TabIndex = 6;
+            Save.Text = "Guardar";
+            Save.UseVisualStyleBackColor = false;
+            Save.Click += Save_Click;
+            // 
             // Lb_Incompletos
             // 
             Lb_Incompletos.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -284,14 +301,14 @@
             Tabla.BackgroundColor = Color.White;
             Tabla.BorderStyle = BorderStyle.None;
             Tabla.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(60, 60, 60);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(60, 60, 60);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            Tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             Tabla.ColumnHeadersHeight = 50;
             Tabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             Tabla.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 });
@@ -361,23 +378,6 @@
             Column7.ReadOnly = true;
             Column7.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
-            // Save
-            // 
-            Save.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            Save.BackColor = Color.FromArgb(60, 60, 60);
-            Save.Cursor = Cursors.Hand;
-            Save.FlatAppearance.BorderSize = 0;
-            Save.FlatAppearance.MouseOverBackColor = Color.Gray;
-            Save.FlatStyle = FlatStyle.Flat;
-            Save.ForeColor = Color.White;
-            Save.Location = new Point(1242, 67);
-            Save.Name = "Save";
-            Save.Size = new Size(141, 54);
-            Save.TabIndex = 6;
-            Save.Text = "Guardar";
-            Save.UseVisualStyleBackColor = false;
-            Save.Click += Save_Click;
-            // 
             // FormValidarPedido
             // 
             AutoScaleDimensions = new SizeF(10F, 21F);
@@ -391,6 +391,7 @@
             Margin = new Padding(4);
             Name = "FormValidarPedido";
             Text = "FormValidarPedido";
+            KeyDown += FormValidarPedido_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

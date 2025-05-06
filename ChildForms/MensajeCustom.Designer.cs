@@ -62,11 +62,11 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(323, 9);
+            label3.Location = new Point(320, 9);
             label3.Name = "label3";
-            label3.Size = new Size(370, 24);
+            label3.Size = new Size(375, 25);
             label3.TabIndex = 0;
             label3.Text = "Estos articulos aun tienen existencia";
             label3.MouseDown += label3_MouseDown;
@@ -80,9 +80,9 @@
             Exit.FlatStyle = FlatStyle.Flat;
             Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Exit.ForeColor = Color.Black;
-            Exit.Location = new Point(930, 1);
+            Exit.Location = new Point(908, 1);
             Exit.Name = "Exit";
-            Exit.Size = new Size(87, 30);
+            Exit.Size = new Size(109, 39);
             Exit.TabIndex = 4;
             Exit.Text = "Salir";
             Exit.UseVisualStyleBackColor = false;
@@ -97,13 +97,13 @@
             GridEx.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.Gray;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = Color.Gray;
             dataGridViewCellStyle1.SelectionForeColor = Color.White;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             GridEx.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            GridEx.ColumnHeadersHeight = 30;
+            GridEx.ColumnHeadersHeight = 45;
             GridEx.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             GridEx.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;

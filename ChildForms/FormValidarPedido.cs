@@ -19,6 +19,7 @@ using PedidoXperto.ChildClases;
 using PedidoXperto.Logic;
 using SpreadsheetLight;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Reflection.Emit;
 
 namespace PedidoXperto.ChildForms
 {
@@ -937,6 +938,58 @@ namespace PedidoXperto.ChildForms
 
         private void Tabla_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Control && e.KeyCode == Keys.R)
+            {
+                Titulo.ForeColor = System.Drawing.Color.White;
+                panel1.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                BtnCodigo.BackColor = System.Drawing.Color.White;
+                BtnPedido.BackColor = System.Drawing.Color.White;
+                label1.ForeColor = System.Drawing.Color.White;
+                label2.ForeColor = System.Drawing.Color.White;
+                label3.ForeColor = System.Drawing.Color.White;
+                label4.ForeColor = System.Drawing.Color.White;
+                label5.ForeColor = System.Drawing.Color.White;
+                Lb_Incompletos.ForeColor = System.Drawing.Color.White;
+                Lb_renglones.ForeColor = System.Drawing.Color.White;
+                Tabla.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                Tabla.BackgroundColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                BtnCodigo.BackColor = System.Drawing.Color.White;
+                BtnCodigo.ForeColor = System.Drawing.Color.Black;
+                BtnPedido.BackColor = System.Drawing.Color.White;
+                BtnPedido.ForeColor = System.Drawing.Color.Black;
+                Exit.BackColor = System.Drawing.Color.White;
+                Exit.ForeColor = System.Drawing.Color.Black;
+                Save.BackColor = System.Drawing.Color.White;
+                Save.ForeColor = System.Drawing.Color.Black;
+                Tabla.Refresh();
+
+            }
+            if (e.Control && e.KeyCode == Keys.N)
+            {
+                panel1.BackColor = System.Drawing.Color.Beige;
+                BtnCodigo.BackColor = System.Drawing.Color.Black;
+                BtnPedido.BackColor = System.Drawing.Color.Black;
+                Titulo.ForeColor = System.Drawing.Color.Black;
+                label1.ForeColor = System.Drawing.Color.Black;
+                label2.ForeColor = System.Drawing.Color.Black;
+                label3.ForeColor = System.Drawing.Color.Black;
+                label4.ForeColor = System.Drawing.Color.Black;
+                label5.ForeColor = System.Drawing.Color.Black;
+                Lb_Incompletos.ForeColor = System.Drawing.Color.Black;
+                Lb_renglones.ForeColor = System.Drawing.Color.Black;
+                BtnCodigo.BackColor = System.Drawing.Color.FromArgb(60,60,60);
+                BtnCodigo.ForeColor = System.Drawing.Color.White;
+                Exit.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                Exit.ForeColor = System.Drawing.Color.White;
+                BtnPedido.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                BtnPedido.ForeColor = System.Drawing.Color.White;
+                Save.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                Save.ForeColor = System.Drawing.Color.White;
+                Tabla.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(60,60,60);
+                Tabla.BackgroundColor = System.Drawing.Color.White;
+                Tabla.Refresh();
+
+            }
             if (e.KeyCode == Keys.F9)
             {
                 if (Tabla.CurrentCell != null && Tabla.CurrentCell.ColumnIndex == 2)
@@ -2350,6 +2403,11 @@ namespace PedidoXperto.ChildForms
             {
                 con9.Close();
             }
+        }
+
+        private void FormValidarPedido_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }
