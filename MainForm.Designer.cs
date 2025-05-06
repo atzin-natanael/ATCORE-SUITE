@@ -140,7 +140,6 @@ namespace ProyectoXperto
             BtnRoles.BackColor = Color.Silver;
             BtnRoles.Cursor = Cursors.Hand;
             BtnRoles.Dock = DockStyle.Top;
-            BtnRoles.Enabled = false;
             BtnRoles.FlatAppearance.BorderSize = 0;
             BtnRoles.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnRoles.FlatStyle = FlatStyle.Flat;
@@ -159,7 +158,6 @@ namespace ProyectoXperto
             BtnUsuarios.BackColor = Color.Silver;
             BtnUsuarios.Cursor = Cursors.Hand;
             BtnUsuarios.Dock = DockStyle.Top;
-            BtnUsuarios.Enabled = false;
             BtnUsuarios.FlatAppearance.BorderSize = 0;
             BtnUsuarios.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnUsuarios.FlatStyle = FlatStyle.Flat;
@@ -226,7 +224,6 @@ namespace ProyectoXperto
             BtnValidarPedido.BackColor = Color.Silver;
             BtnValidarPedido.Cursor = Cursors.Hand;
             BtnValidarPedido.Dock = DockStyle.Top;
-            BtnValidarPedido.Enabled = false;
             BtnValidarPedido.FlatAppearance.BorderSize = 0;
             BtnValidarPedido.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnValidarPedido.FlatStyle = FlatStyle.Flat;
@@ -245,7 +242,6 @@ namespace ProyectoXperto
             BtnNuevoPedido.BackColor = Color.Silver;
             BtnNuevoPedido.Cursor = Cursors.Hand;
             BtnNuevoPedido.Dock = DockStyle.Top;
-            BtnNuevoPedido.Enabled = false;
             BtnNuevoPedido.FlatAppearance.BorderSize = 0;
             BtnNuevoPedido.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnNuevoPedido.FlatStyle = FlatStyle.Flat;

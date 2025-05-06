@@ -39,6 +39,13 @@
             panel2 = new Panel();
             panel5 = new Panel();
             Tabla = new DataGridView();
+            CodigoBarras = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            Descuento = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
+            Total = new DataGridViewTextBoxColumn();
             panel4 = new Panel();
             label4 = new Label();
             Cb_Vendedor = new ComboBox();
@@ -65,13 +72,6 @@
             panel8 = new Panel();
             panel6 = new Panel();
             label2 = new Label();
-            CodigoBarras = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            Descuento = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
-            Total = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -231,6 +231,71 @@
             Tabla.KeyDown += Tabla_KeyDown;
             Tabla.KeyPress += Tabla_KeyPress;
             // 
+            // CodigoBarras
+            // 
+            CodigoBarras.HeaderText = "Codigo";
+            CodigoBarras.MinimumWidth = 6;
+            CodigoBarras.Name = "CodigoBarras";
+            CodigoBarras.Resizable = DataGridViewTriState.False;
+            CodigoBarras.SortMode = DataGridViewColumnSortMode.NotSortable;
+            CodigoBarras.Width = 125;
+            // 
+            // Descripcion
+            // 
+            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.MinimumWidth = 6;
+            Descripcion.Name = "Descripcion";
+            Descripcion.Resizable = DataGridViewTriState.False;
+            Descripcion.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 6;
+            Cantidad.Name = "Cantidad";
+            Cantidad.Resizable = DataGridViewTriState.False;
+            Cantidad.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Cantidad.Width = 125;
+            // 
+            // Precio
+            // 
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 6;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            Precio.Resizable = DataGridViewTriState.False;
+            Precio.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Precio.Width = 125;
+            // 
+            // Descuento
+            // 
+            Descuento.HeaderText = "Descuento";
+            Descuento.MinimumWidth = 6;
+            Descuento.Name = "Descuento";
+            Descuento.ReadOnly = true;
+            Descuento.Resizable = DataGridViewTriState.False;
+            Descuento.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Descuento.Width = 125;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "IVA";
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Resizable = DataGridViewTriState.False;
+            Column1.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Total
+            // 
+            Total.HeaderText = "Total";
+            Total.MinimumWidth = 6;
+            Total.Name = "Total";
+            Total.ReadOnly = true;
+            Total.Resizable = DataGridViewTriState.False;
+            Total.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Total.Width = 125;
+            // 
             // panel4
             // 
             panel4.BackColor = Color.Beige;
@@ -270,6 +335,7 @@
             Cb_Vendedor.Name = "Cb_Vendedor";
             Cb_Vendedor.Size = new Size(276, 27);
             Cb_Vendedor.TabIndex = 1;
+            Cb_Vendedor.KeyDown += Cb_Vendedor_KeyDown;
             Cb_Vendedor.KeyPress += Cb_Vendedor_KeyPress;
             // 
             // txtBox_clienteNombre
@@ -513,6 +579,7 @@
             TablaRecomendados.ReadOnly = true;
             TablaRecomendados.RowHeadersVisible = false;
             TablaRecomendados.RowHeadersWidth = 50;
+            TablaRecomendados.RowTemplate.Height = 40;
             TablaRecomendados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             TablaRecomendados.Size = new Size(369, 286);
             TablaRecomendados.TabIndex = 25;
@@ -566,71 +633,6 @@
             label2.TabIndex = 20;
             label2.Text = "Recomendaciones:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // CodigoBarras
-            // 
-            CodigoBarras.HeaderText = "Codigo";
-            CodigoBarras.MinimumWidth = 6;
-            CodigoBarras.Name = "CodigoBarras";
-            CodigoBarras.Resizable = DataGridViewTriState.False;
-            CodigoBarras.SortMode = DataGridViewColumnSortMode.NotSortable;
-            CodigoBarras.Width = 125;
-            // 
-            // Descripcion
-            // 
-            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.MinimumWidth = 6;
-            Descripcion.Name = "Descripcion";
-            Descripcion.Resizable = DataGridViewTriState.False;
-            Descripcion.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 6;
-            Cantidad.Name = "Cantidad";
-            Cantidad.Resizable = DataGridViewTriState.False;
-            Cantidad.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Cantidad.Width = 125;
-            // 
-            // Precio
-            // 
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 6;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            Precio.Resizable = DataGridViewTriState.False;
-            Precio.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Precio.Width = 125;
-            // 
-            // Descuento
-            // 
-            Descuento.HeaderText = "Descuento";
-            Descuento.MinimumWidth = 6;
-            Descuento.Name = "Descuento";
-            Descuento.ReadOnly = true;
-            Descuento.Resizable = DataGridViewTriState.False;
-            Descuento.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Descuento.Width = 125;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "IVA";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            Column1.Resizable = DataGridViewTriState.False;
-            Column1.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Total
-            // 
-            Total.HeaderText = "Total";
-            Total.MinimumWidth = 6;
-            Total.Name = "Total";
-            Total.ReadOnly = true;
-            Total.Resizable = DataGridViewTriState.False;
-            Total.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Total.Width = 125;
             // 
             // FormCrearPedido
             // 
