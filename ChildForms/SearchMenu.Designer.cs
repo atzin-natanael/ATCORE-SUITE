@@ -65,8 +65,9 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(676, 30);
+            panelTop.Size = new Size(676, 44);
             panelTop.TabIndex = 15;
+            panelTop.MouseDown += panelTop_MouseDown;
             // 
             // label3
             // 
@@ -78,6 +79,7 @@
             label3.Size = new Size(182, 22);
             label3.TabIndex = 0;
             label3.Text = "BUSCAR ARTICULO";
+            label3.MouseDown += label3_MouseDown;
             // 
             // Exit
             // 

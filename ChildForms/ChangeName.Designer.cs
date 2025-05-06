@@ -47,7 +47,6 @@
             Txt_Usuario.Name = "Txt_Usuario";
             Txt_Usuario.Size = new Size(295, 23);
             Txt_Usuario.TabIndex = 0;
-            //Txt_Usuario.TextChanged += this.Txt_Usuario_TextChanged;
             // 
             // panelTop
             // 
@@ -58,9 +57,9 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(606, 30);
+            panelTop.Size = new Size(606, 61);
             panelTop.TabIndex = 0;
-            //panelTop.Paint += this.panelTop_Paint;
+            panelTop.MouseDown += panelTop_MouseDown;
             // 
             // label3
             // 
@@ -72,6 +71,7 @@
             label3.Size = new Size(205, 22);
             label3.TabIndex = 0;
             label3.Text = "CAMBIO DE NOMBRE";
+            label3.MouseDown += label3_MouseDown;
             // 
             // Exit
             // 
@@ -135,7 +135,6 @@
             Txt_Usuario2.Name = "Txt_Usuario2";
             Txt_Usuario2.Size = new Size(295, 23);
             Txt_Usuario2.TabIndex = 1;
-           // Txt_Usuario2.TextChanged += this.Txt_Usuario2_TextChanged;
             Txt_Usuario2.KeyDown += Txt_Usuario2_KeyDown;
             // 
             // ChangeName

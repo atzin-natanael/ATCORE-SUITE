@@ -64,8 +64,9 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(606, 30);
+            panelTop.Size = new Size(606, 71);
             panelTop.TabIndex = 20;
+            panelTop.MouseDown += panelTop_MouseDown;
             // 
             // label3
             // 
@@ -77,6 +78,7 @@
             label3.Size = new Size(277, 22);
             label3.TabIndex = 0;
             label3.Text = "CAMBIO DE NOMBRE DE ROL";
+            label3.MouseDown += label3_MouseDown;
             // 
             // Exit
             // 

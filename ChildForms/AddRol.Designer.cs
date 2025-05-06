@@ -71,6 +71,7 @@
             panelTop.Name = "panelTop";
             panelTop.Size = new Size(606, 63);
             panelTop.TabIndex = 20;
+            panelTop.MouseDown += panelTop_MouseDown;
             // 
             // label3
             // 
@@ -82,6 +83,7 @@
             label3.Size = new Size(160, 24);
             label3.TabIndex = 0;
             label3.Text = "AGREGAR ROL";
+            label3.MouseDown += label3_MouseDown;
             // 
             // Exit
             // 

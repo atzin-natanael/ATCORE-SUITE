@@ -1,4 +1,5 @@
-﻿using FirebirdSql.Data.FirebirdClient;
+﻿using System.Runtime.InteropServices;
+using FirebirdSql.Data.FirebirdClient;
 using PedidoXperto.ChildClases;
 using PedidoXperto.Logic;
 
@@ -93,7 +94,7 @@ namespace PedidoXperto.ChildForms
         private void Txt_Nombre_KeyDown(object sender, KeyEventArgs e)
         {
             Tabla.ClearSelection();
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 Buscar_Click(sender, e);
             }
@@ -101,7 +102,7 @@ namespace PedidoXperto.ChildForms
 
         private void Tabla_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 if (Tabla.CurrentRow != null)
                 {
@@ -113,6 +114,23 @@ namespace PedidoXperto.ChildForms
                 }
             }
 
+        }
+
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+        private void panelTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void label3_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

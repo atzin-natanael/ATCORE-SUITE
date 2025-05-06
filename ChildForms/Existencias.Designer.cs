@@ -48,8 +48,9 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(606, 30);
+            panelTop.Size = new Size(606, 88);
             panelTop.TabIndex = 15;
+            panelTop.MouseDown += panelTop_MouseDown;
             // 
             // label3
             // 
@@ -61,6 +62,7 @@
             label3.Size = new Size(113, 22);
             label3.TabIndex = 0;
             label3.Text = "EXISTENCIA";
+            label3.MouseDown += label3_MouseDown;
             // 
             // Exit
             // 
@@ -152,6 +154,7 @@
             Descripcion.Size = new Size(582, 83);
             Descripcion.TabIndex = 17;
             Descripcion.TextAlign = ContentAlignment.MiddleCenter;
+            Descripcion.MouseDown += Descripcion_MouseDown;
             // 
             // Existencias
             // 
