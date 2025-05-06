@@ -342,6 +342,7 @@ namespace PedidoXperto.ChildForms
                 string[] InfoArt = new GetFireBirdValue().BuscarDatosArticulos(recomendado);
                 TablaRecomendados.Rows.Add(recomendado, InfoArt[1]);
                 TablaRecomendados.Rows[TablaRecomendados.CurrentCell.RowIndex].Height = 40;
+                TablaRecomendados.ClearSelection();
                 temp.Enqueue(recomendado, prioridadExistente);
             }
             recomendados = temp;
