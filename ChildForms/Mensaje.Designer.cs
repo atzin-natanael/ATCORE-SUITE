@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             panelTop = new Panel();
-            lbltitulo = new Label();
+            LblTitulo = new Label();
             Exit = new Button();
             Btn_Aceptar = new Button();
             richTextBox1 = new RichTextBox();
@@ -38,7 +38,7 @@
             // 
             // panelTop
             // 
-            panelTop.Controls.Add(lbltitulo);
+            panelTop.Controls.Add(LblTitulo);
             panelTop.Controls.Add(Exit);
             panelTop.Cursor = Cursors.Hand;
             panelTop.Dock = DockStyle.Top;
@@ -46,18 +46,20 @@
             panelTop.Name = "panelTop";
             panelTop.Size = new Size(444, 63);
             panelTop.TabIndex = 15;
+            panelTop.MouseDown += panelTop_MouseDown;
             // 
-            // lbltitulo
+            // LblTitulo
             // 
-            lbltitulo.FlatStyle = FlatStyle.Flat;
-            lbltitulo.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbltitulo.ForeColor = Color.White;
-            lbltitulo.Location = new Point(149, 9);
-            lbltitulo.Name = "lbltitulo";
-            lbltitulo.Size = new Size(144, 42);
-            lbltitulo.TabIndex = 5;
-            lbltitulo.Text = "label4";
-            lbltitulo.TextAlign = ContentAlignment.MiddleCenter;
+            LblTitulo.FlatStyle = FlatStyle.Flat;
+            LblTitulo.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblTitulo.ForeColor = Color.White;
+            LblTitulo.Location = new Point(149, 9);
+            LblTitulo.Name = "LblTitulo";
+            LblTitulo.Size = new Size(144, 42);
+            LblTitulo.TabIndex = 5;
+            LblTitulo.Text = "label4";
+            LblTitulo.TextAlign = ContentAlignment.MiddleCenter;
+            LblTitulo.MouseDown += LblTitulo_MouseDown;
             // 
             // Exit
             // 
@@ -99,6 +101,7 @@
             // 
             richTextBox1.BackColor = Color.FromArgb(60, 60, 60);
             richTextBox1.Dock = DockStyle.Top;
+            richTextBox1.ForeColor = Color.White;
             richTextBox1.Location = new Point(0, 63);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(444, 114);
@@ -136,6 +139,6 @@
         private TextBox TxtPw;
         private Label label2;
         private Label label1;
-        private Label lbltitulo;
+        public Label LblTitulo;
     }
 }

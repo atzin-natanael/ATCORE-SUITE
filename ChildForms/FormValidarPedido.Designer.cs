@@ -322,6 +322,7 @@
             Tabla.RowHeadersWidth = 50;
             Tabla.Size = new Size(1383, 627);
             Tabla.TabIndex = 0;
+            Tabla.RowTemplate.Height = 40;
             Tabla.CellMouseDown += Tabla_CellMouseDown;
             Tabla.KeyDown += Tabla_KeyDown;
             // 
