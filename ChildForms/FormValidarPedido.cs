@@ -875,7 +875,6 @@ namespace PedidoXperto.ChildForms
                         }
                         unicos.Add(Articulos[i].Codigo);
                         bandera = true;
-                        candado.Height += 25;
                         candado.GridEx.Rows.Add(Articulos[i].Codigo, Articulos[i].Descripcion, contador, Extienda, Exalmacen, existenciatotal);
                         //Articulo.Add(new Art_Ex { codigo = Articulos[i].Codigo, cantidad = existenciatotal });
                         //string mensajepred = Articulos[i].Codigo + " ------- " + "Existencia Tienda: " + existencia+ "\n\t       Existencia Almacén: " + GlobalSettings.Instance.ExistenciaAl+ "\n\n";

@@ -113,17 +113,15 @@
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             GridEx.DefaultCellStyle = dataGridViewCellStyle2;
             GridEx.Dock = DockStyle.Fill;
-            GridEx.Enabled = false;
             GridEx.EnableHeadersVisualStyles = false;
             GridEx.Location = new Point(0, 81);
             GridEx.MultiSelect = false;
             GridEx.Name = "GridEx";
-            GridEx.ReadOnly = true;
             GridEx.RowHeadersVisible = false;
             GridEx.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             GridEx.RowTemplate.Height = 40;
@@ -134,7 +132,6 @@
             // 
             Column1.HeaderText = "Código";
             Column1.Name = "Column1";
-            Column1.ReadOnly = true;
             Column1.Resizable = DataGridViewTriState.False;
             Column1.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
@@ -143,7 +140,6 @@
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Column2.HeaderText = "Nombre";
             Column2.Name = "Column2";
-            Column2.ReadOnly = true;
             Column2.Resizable = DataGridViewTriState.False;
             Column2.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
@@ -151,7 +147,6 @@
             // 
             Column3.HeaderText = "Precio Lista";
             Column3.Name = "Column3";
-            Column3.ReadOnly = true;
             Column3.Resizable = DataGridViewTriState.False;
             Column3.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
@@ -159,7 +154,6 @@
             // 
             Column4.HeaderText = "Existencia";
             Column4.Name = "Column4";
-            Column4.ReadOnly = true;
             Column4.Resizable = DataGridViewTriState.False;
             Column4.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
