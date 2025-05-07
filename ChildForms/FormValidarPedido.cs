@@ -2240,7 +2240,8 @@ namespace PedidoXperto.ChildForms
 
         private void FormValidarPedido_KeyDown(object sender, KeyEventArgs e)
         {
-            Colorear(sender,e);
+            if (e.Control && e.KeyCode == Keys.R || e.Control && e.KeyCode == Keys.N)
+                Colorear(sender,e);
         }
 
         private void Tabla_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
