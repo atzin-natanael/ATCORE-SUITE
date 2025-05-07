@@ -510,7 +510,7 @@ namespace PedidoXperto.ChildForms
                                 Tabla.Rows[GlobalSettings.Instance.Current].Cells[1].Selected = true;
                                 encontrado = true;
                                 //red mode
-                                if (BtnPedido.BackColor == System.Drawing.Color.Red || BtnPedido.BackColor == System.Drawing.Color.Fuchsia || BtnPedido.BackColor == System.Drawing.Color.HotPink)
+                                if (Tabla.ColumnHeadersDefaultCellStyle.BackColor == System.Drawing.Color.Red)
                                 {
                                     ejecutar(GlobalSettings.Instance.Contenido, GlobalSettings.Instance.Current);
                                     return;
@@ -636,7 +636,7 @@ namespace PedidoXperto.ChildForms
                                     Tabla.Rows[GlobalSettings.Instance.Current].Cells[0].Selected = true;
                                     Tabla.Rows[GlobalSettings.Instance.Current].Cells[1].Selected = true;
                                     //red mode
-                                    if (BtnPedido.BackColor == System.Drawing.Color.Red || BtnPedido.BackColor == System.Drawing.Color.Fuchsia || BtnPedido.BackColor == System.Drawing.Color.HotPink)
+                                    if (Tabla.ColumnHeadersDefaultCellStyle.BackColor == System.Drawing.Color.Red)
                                     {
                                         ejecutar(GlobalSettings.Instance.Contenido, GlobalSettings.Instance.Current);
                                         return;
@@ -863,7 +863,7 @@ namespace PedidoXperto.ChildForms
                     string Extienda = DataBridge.GetExistencia(Articulos[i].ArticuloId.ToString(), "108403");
                     decimal existenciatotal = decimal.Parse(Exalmacen) + decimal.Parse(Extienda);
                     decimal minimo_existencia = Articulos[i].Importe_neto_articulo;
-                    if (((existenciatotal >= Articulos[i].Pendiente && existenciatotal > 48) || (minimo_existencia > 70) && existenciatotal >= 1) && !unicos.Contains(Articulos[i].Codigo) && !GlobalSettings.Instance.Excluidos.Contains(Articulos[i].Codigo) && Articulos[i].Codigo.Substring(0, 3) != "232" && Articulos[i].Codigo.Substring(0, 3) != "214" && Articulos[i].Codigo.Substring(0, 3) != "243")
+                    if (((existenciatotal >= Articulos[i].Pendiente && existenciatotal > 48) || (minimo_existencia > 70) && existenciatotal >= 1) && !unicos.Contains(Articulos[i].Codigo) && !GlobalSettings.Instance.Excluidos.Contains(Articulos[i].Codigo))
                     {
                         decimal contador = 0;
                         foreach (var ar in Articulos)
@@ -877,7 +877,6 @@ namespace PedidoXperto.ChildForms
                         bandera = true;
                         candado.Height += 25;
                         candado.GridEx.Rows.Add(Articulos[i].Codigo, Articulos[i].Descripcion, contador, Extienda, Exalmacen, existenciatotal);
-                        candado.GridEx.ClearSelection();
                         //Articulo.Add(new Art_Ex { codigo = Articulos[i].Codigo, cantidad = existenciatotal });
                         //string mensajepred = Articulos[i].Codigo + " ------- " + "Existencia Tienda: " + existencia+ "\n\t       Existencia Almacén: " + GlobalSettings.Instance.ExistenciaAl+ "\n\n";
                         //mensajemax += mensajepred;
@@ -888,6 +887,8 @@ namespace PedidoXperto.ChildForms
             {
                 candado.GridEx.ClearSelection();
                 candado.ShowDialog();
+                candado.Solicitar.Focus();
+                candado.Solicitar.Select();
                 if (!GlobalSettings.Instance.aceptado)
                 {
                     return;

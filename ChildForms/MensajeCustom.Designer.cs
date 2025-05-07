@@ -92,6 +92,8 @@
             // 
             GridEx.AllowUserToAddRows = false;
             GridEx.AllowUserToDeleteRows = false;
+            GridEx.AllowUserToResizeColumns = false;
+            GridEx.AllowUserToResizeRows = false;
             GridEx.BackgroundColor = Color.FromArgb(60, 60, 60);
             GridEx.BorderStyle = BorderStyle.None;
             GridEx.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
@@ -106,6 +108,7 @@
             GridEx.ColumnHeadersHeight = 45;
             GridEx.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             GridEx.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
+            GridEx.Cursor = Cursors.Hand;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -115,15 +118,17 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             GridEx.DefaultCellStyle = dataGridViewCellStyle2;
             GridEx.Dock = DockStyle.Fill;
+            GridEx.Enabled = false;
             GridEx.EnableHeadersVisualStyles = false;
             GridEx.Location = new Point(0, 81);
             GridEx.MultiSelect = false;
             GridEx.Name = "GridEx";
             GridEx.ReadOnly = true;
             GridEx.RowHeadersVisible = false;
-            GridEx.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            GridEx.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            GridEx.RowTemplate.Height = 40;
             GridEx.Size = new Size(1017, 338);
-            GridEx.TabIndex = 18;
+            GridEx.TabIndex = 0;
             // 
             // Column1
             // 
@@ -148,12 +153,15 @@
             Column3.Name = "Column3";
             Column3.ReadOnly = true;
             Column3.Resizable = DataGridViewTriState.False;
+            Column3.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Column4
             // 
             Column4.HeaderText = "Existencia";
             Column4.Name = "Column4";
             Column4.ReadOnly = true;
+            Column4.Resizable = DataGridViewTriState.False;
+            Column4.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Solicitar
             // 
@@ -224,12 +232,12 @@
         private Label label3;
         private Button Exit;
         public DataGridView GridEx;
+        private Panel panel1;
+        private Button Back;
+        public Button Solicitar;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
-        private Button Solicitar;
-        private Panel panel1;
-        private Button Back;
     }
 }

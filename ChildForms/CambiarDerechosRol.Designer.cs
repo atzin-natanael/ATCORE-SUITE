@@ -122,12 +122,14 @@
             // 
             CheckList.BackColor = Color.FromArgb(60, 60, 60);
             CheckList.BorderStyle = BorderStyle.None;
+            CheckList.CheckOnClick = true;
             CheckList.Cursor = Cursors.Hand;
             CheckList.ForeColor = Color.White;
             CheckList.FormattingEnabled = true;
             CheckList.Items.AddRange(new object[] { "Crear Pedido", "Validar Pedido", "Administrador de Usuarios", "Administrador de Roles" });
             CheckList.Location = new Point(168, 158);
             CheckList.Name = "CheckList";
+            CheckList.SelectionMode = SelectionMode.None;
             CheckList.Size = new Size(295, 88);
             CheckList.TabIndex = 16;
             // 
