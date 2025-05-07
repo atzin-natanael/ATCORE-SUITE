@@ -22,6 +22,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Reflection.Emit;
 using DocumentFormat.OpenXml.Bibliography;
 using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using Org.BouncyCastle.Tls;
 
 namespace PedidoXperto.ChildForms
 {
@@ -430,7 +431,7 @@ namespace PedidoXperto.ChildForms
                 con.Close();
             }
         }
-       
+
         private void BtnCodigo_Click(object sender, EventArgs e)
         {
             if (Tabla.RowCount > 0)
@@ -2239,9 +2240,9 @@ namespace PedidoXperto.ChildForms
 
         private void FormValidarPedido_KeyDown(object sender, KeyEventArgs e)
         {
-
+            Colorear(sender,e);
         }
-        
+
         private void Tabla_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
 
@@ -2261,8 +2262,8 @@ namespace PedidoXperto.ChildForms
                 menu.Items.Add(verNotaMenuItem);
                 menu.Items.Add(verExistenciaMenuItem);
                 // Manejar el evento ItemClicked del menú contextual
-                    Existencias existencias = new Existencias();
-                    string articuloid = "";
+                Existencias existencias = new Existencias();
+                string articuloid = "";
                 menu.ItemClicked += (s, args) =>
                 {
                     // Verificar la opción seleccionada
@@ -2547,5 +2548,69 @@ namespace PedidoXperto.ChildForms
             ListaTabla.Clear();
             TxtCodigo.Focus();
         }
+
+        private void FormValidarPedido_Load(object sender, EventArgs e)
+        {
+            this.KeyPreview = true;
+            this.KeyDown += FormValidarPedido_KeyDown;
+
+        }
+        public void Colorear(object sender, KeyEventArgs e) {
+            if (e.Control && e.KeyCode == Keys.R)
+            {
+                Titulo.ForeColor = System.Drawing.Color.White;
+                panel1.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                BtnCodigo.BackColor = System.Drawing.Color.White;
+                BtnPedido.BackColor = System.Drawing.Color.White;
+                label1.ForeColor = System.Drawing.Color.White;
+                label2.ForeColor = System.Drawing.Color.White;
+                label3.ForeColor = System.Drawing.Color.White;
+                label4.ForeColor = System.Drawing.Color.White;
+                label5.ForeColor = System.Drawing.Color.White;
+                Lb_Incompletos.ForeColor = System.Drawing.Color.White;
+                Lb_renglones.ForeColor = System.Drawing.Color.White;
+                Tabla.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                Tabla.BackgroundColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                BtnCodigo.BackColor = System.Drawing.Color.White;
+                BtnCodigo.ForeColor = System.Drawing.Color.Black;
+                BtnPedido.BackColor = System.Drawing.Color.White;
+                BtnPedido.ForeColor = System.Drawing.Color.Black;
+                Exit.BackColor = System.Drawing.Color.White;
+                Exit.ForeColor = System.Drawing.Color.Black;
+                Save.BackColor = System.Drawing.Color.White;
+                Save.ForeColor = System.Drawing.Color.Black;
+                Tabla.Refresh();
+
+            }
+            if (e.Control && e.KeyCode == Keys.N)
+            {
+                panel1.BackColor = System.Drawing.Color.Beige;
+                BtnCodigo.BackColor = System.Drawing.Color.Black;
+                BtnPedido.BackColor = System.Drawing.Color.Black;
+                Titulo.ForeColor = System.Drawing.Color.Black;
+                label1.ForeColor = System.Drawing.Color.Black;
+                label2.ForeColor = System.Drawing.Color.Black;
+                label3.ForeColor = System.Drawing.Color.Black;
+                label4.ForeColor = System.Drawing.Color.Black;
+                label5.ForeColor = System.Drawing.Color.Black;
+                Lb_Incompletos.ForeColor = System.Drawing.Color.Black;
+                Lb_renglones.ForeColor = System.Drawing.Color.Black;
+                BtnCodigo.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                BtnCodigo.ForeColor = System.Drawing.Color.White;
+                Exit.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                Exit.ForeColor = System.Drawing.Color.White;
+                BtnPedido.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                BtnPedido.ForeColor = System.Drawing.Color.White;
+                Save.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                Save.ForeColor = System.Drawing.Color.White;
+                Tabla.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                Tabla.BackgroundColor = System.Drawing.Color.White;
+                Tabla.Refresh();
+
+            }
+            e.SuppressKeyPress = true; 
+            e.Handled = true;
+        }
+       
     }
 }

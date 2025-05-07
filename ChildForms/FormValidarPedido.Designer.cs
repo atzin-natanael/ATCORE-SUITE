@@ -320,9 +320,9 @@
             Tabla.ReadOnly = true;
             Tabla.RowHeadersVisible = false;
             Tabla.RowHeadersWidth = 50;
+            Tabla.RowTemplate.Height = 40;
             Tabla.Size = new Size(1383, 627);
             Tabla.TabIndex = 0;
-            Tabla.RowTemplate.Height = 40;
             Tabla.CellMouseDown += Tabla_CellMouseDown;
             Tabla.KeyDown += Tabla_KeyDown;
             // 
@@ -393,6 +393,7 @@
             Margin = new Padding(4);
             Name = "FormValidarPedido";
             Text = "FormValidarPedido";
+            Load += FormValidarPedido_Load;
             KeyDown += FormValidarPedido_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
