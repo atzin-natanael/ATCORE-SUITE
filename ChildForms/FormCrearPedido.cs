@@ -224,7 +224,11 @@ namespace PedidoXperto.ChildForms
                 }
             }
         }
-
+        
+        /// <summary>
+        /// Calcula los totales de la tabla de artículos, incluyendo precio total, descuento total e IVA total.
+        /// </summary>
+        /// <returns>Un objeto Tuple que contiene el precio total, descuento total e IVA total. Item1 = PrecioTotal | Item2 = PrecioTotal </returns>
         public Tuple<decimal, decimal, decimal> CalcularTotalesTabla()
         {
             // Verifica si la tabla tiene filas/articulos
@@ -238,7 +242,7 @@ namespace PedidoXperto.ChildForms
 
             for (int i = 0; i < Tabla.Rows.Count; i++)//Por cada articulo
             {
-                if (Tabla.Rows[i].Cells[(int)ColTabla.Total].Value == null ||
+                if (Tabla.Rows[i].Cells[(int)ColTabla.Total].Value == null || 
                 Tabla.Rows[i].Cells[(int)ColTabla.Cantidad].Value == null ||
                 Tabla.Rows[i].Cells[(int)ColTabla.Precio].Value == null
                 ) continue; //Valor nulo? no deberia ser posible
@@ -314,7 +318,7 @@ namespace PedidoXperto.ChildForms
             if (resultados == null || resultados.Count == 0)
                 return;
 
-            int prioridadExistente = 0, prioridadNueva = 0;
+            int prioridadExistente = 0, prioridadNueva = 1;
             foreach (string result in resultados)
             {
                 // Si ya existe en la tabla de recomendados, no lo añade
@@ -322,7 +326,7 @@ namespace PedidoXperto.ChildForms
 
                 // Si llego al limite de 6 elementos, saca el de menor prioridad
                 recomendados.TryPeek(out _, out prioridadExistente);
-                if (recomendados.Count >= 6 && prioridadNueva < prioridadExistente)//menos es mejor aqui
+                if (recomendados.Count >= 6 && prioridadNueva >= prioridadExistente)//menos es mejor aqui
                 {
                     // Elimina el elemento de menor prioridad
                     setRecomendados.Remove(recomendados.Peek());
@@ -330,7 +334,7 @@ namespace PedidoXperto.ChildForms
                 }
                 // Añade el nuevo elemento con la prioridad nueva
                 setRecomendados.Add(result);
-                recomendados.Enqueue(result, prioridadNueva++);
+                recomendados.Enqueue(result, prioridadNueva--);
             }
         }
 
@@ -448,7 +452,7 @@ namespace PedidoXperto.ChildForms
             }
             else if (Tabla.CurrentCell.ColumnIndex == (int)ColTabla.Cantidad)
             {
-                if (Tabla.CurrentCell.Value == null || Tabla.CurrentRow.Cells[(int)ColTabla.Cantidad].Value == string.Empty || Tabla.CurrentCell.Value.ToString() == "0")
+                if (Tabla.CurrentCell.Value == null || Tabla.CurrentRow.Cells[(int)ColTabla.Cantidad].Value == string.Empty || Tabla.CurrentCell.Value.ToString() == "0" || !Tabla.CurrentCell.Value.ToString().All(char.IsDigit))
                 {
                     Tabla.Rows[Tabla.Rows.Count - 1].Cells[(int)ColTabla.Cantidad].Value = 1;
                 }
@@ -568,6 +572,18 @@ namespace PedidoXperto.ChildForms
 
                     e.Handled = true; // Opcional, previene otros efectos
                 }
+            }
+            else if (e.KeyCode == Keys.F8)  // Verifica que Ctrl + Supr se presionen
+            {
+                // Elimina la fila seleccionada
+                Totales totales = new Totales();
+                Tuple<decimal, decimal, decimal> retorno = CalcularTotalesTabla();
+                totales.SubTotal.Text = Math.Round(retorno.Item1 - retorno.Item2, 2).ToString();
+                totales.Descuento.Text = Math.Round(retorno.Item2, 2).ToString();
+                totales.Iva.Text = Math.Round(retorno.Item3, 2).ToString();
+                totales.Total.Text = Math.Round(retorno.Item1 - retorno.Item2 + retorno.Item3, 2).ToString();
+                totales.ShowDialog();
+
             }
         }
 
