@@ -57,7 +57,7 @@ namespace PedidoXperto.Logic
             return rows.FirstOrDefault();
         }
 
-        static public string? GetDiscountByArticulo(string articulo_id)
+        static public string? GetDiscountByArticle(string articulo_id)
         {
             var sql = "SELECT dpl.DESCUENTO, " +
           "       pdp.FECHA_INI_VIGENCIA, " +
@@ -93,15 +93,15 @@ namespace PedidoXperto.Logic
         /// </summary>
         /// <param name="cliente_id"></param>
         /// <returns>Descuento de un articulo_id </returns>
-        static public string? GetDiscountByArticle(string articulo_id)
-        {
-            var sql = "SELECT DESCUENTO FROM DSCTOS_PROMO_ARTS WHERE ARTICULO_ID = @c;";
-            var rows = new FireBirdHelper().ExecuteSingleColumn(sql, new Dictionary<string, object>
-            {
-                {"@c", articulo_id}
-            });
-            return rows.FirstOrDefault();
-        }
+        //static public string? GetDiscountByArticle(string articulo_id)
+        //{
+        //    var sql = "SELECT DESCUENTO FROM DSCTOS_PROMO_ARTS WHERE ARTICULO_ID = @c;";
+        //    var rows = new FireBirdHelper().ExecuteSingleColumn(sql, new Dictionary<string, object>
+        //    {
+        //        {"@c", articulo_id}
+        //    });
+        //    return rows.FirstOrDefault();
+        //}
 
         #endregion
         #region Knn

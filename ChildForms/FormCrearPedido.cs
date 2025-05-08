@@ -250,7 +250,7 @@ namespace PedidoXperto.ChildForms
                 // 1) Extraer y convertir una sola vez
                 decimal porcentajeIva = decimal.Parse( //40
                     Tabla.Rows[i].Cells[(int)ColTabla.Iva].Value.ToString()) / 100m;
-                decimal porcentajeDescuento = CalcularDescuentoArticulo(Tabla.Rows[i].Cells[(int)ColTabla.CodigoBarras].Value.ToString()) / 100m;
+                decimal porcentajeDescuento = CalcularDescuentoClave(Tabla.Rows[i].Cells[(int)ColTabla.CodigoBarras].Value.ToString()) / 100m;
                 Tabla.Rows[i].Cells[(int)ColTabla.Descuento].Value = porcentajeDescuento * 100; //Lo guardamos como porcentaje
                 cantidad = decimal.Parse(Tabla.Rows[i].Cells[(int)ColTabla.Cantidad].Value.ToString());
                 precio = decimal.Parse(Tabla.Rows[i].Cells[(int)ColTabla.Precio].Value.ToString());
@@ -361,19 +361,49 @@ namespace PedidoXperto.ChildForms
         /// descuento por cliente ya debe tener un valor valido a este punto
         /// </summary>
         /// <param name="_articulo_id"></param>
+        private decimal CalcularDescuentoClave(string clavearticulo)
+        {
+            GetFireBirdValue bridge = new();
+            string _articulo_id = bridge.GetValue("SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + clavearticulo + "'");
+            decimal _descuentoPorArticulo = decimal.Parse(DataBridge.GetDiscountByArticle(_articulo_id) ?? "-1");
+
+            // Calcular el descuento total efectivo usando la fórmula
+            //decimal _descuentoTotal =
+            //1 - (
+            //    (1 - (descuentoPorCliente != decimal.MinusOne ? descuentoPorCliente / 100m : 0m))//Si hay descuento por cliente, se aplica
+            //    *
+            //    (1 - (_descuentoPorArticulo != decimal.MinusOne ? _descuentoPorArticulo : 0m))//Si hay descuento por articulo, se aplica
+            //    );
+            ////Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Descuento].Value = _descuentoTotal;
+            //return _descuentoTotal *= 100; // Convertir a porcentaje y mostrar el resultado
+            decimal cliente = (descuentoPorCliente != decimal.MinusOne) ? descuentoPorCliente / 100m : 0m;
+            decimal articulo = (_descuentoPorArticulo != decimal.MinusOne) ? _descuentoPorArticulo / 100m : 0m;
+
+            decimal _descuentoTotal = 1 - ((1 - cliente) * (1 - articulo));
+            return _descuentoTotal * 100m; // Devuelve en porcentaje
+
+
+        }
         private decimal CalcularDescuentoArticulo(string _articulo_id)
         {
             decimal _descuentoPorArticulo = decimal.Parse(DataBridge.GetDiscountByArticle(_articulo_id) ?? "-1");
 
             // Calcular el descuento total efectivo usando la fórmula
-            decimal _descuentoTotal =
-            1 - (
-                (1 - (descuentoPorCliente != decimal.MinusOne ? descuentoPorCliente / 100m : 0m))//Si hay descuento por cliente, se aplica
-                *
-                (1 - (_descuentoPorArticulo != decimal.MinusOne ? _descuentoPorArticulo : 0m))//Si hay descuento por articulo, se aplica
-                );
-            //Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Descuento].Value = _descuentoTotal;
-            return _descuentoTotal *= 100; // Convertir a porcentaje y mostrar el resultado
+            //decimal _descuentoTotal =
+            //1 - (
+            //    (1 - (descuentoPorCliente != decimal.MinusOne ? descuentoPorCliente / 100m : 0m))//Si hay descuento por cliente, se aplica
+            //    *
+            //    (1 - (_descuentoPorArticulo != decimal.MinusOne ? _descuentoPorArticulo : 0m))//Si hay descuento por articulo, se aplica
+            //    );
+            ////Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Descuento].Value = _descuentoTotal;
+            //return _descuentoTotal *= 100; // Convertir a porcentaje y mostrar el resultado
+            decimal cliente = (descuentoPorCliente != decimal.MinusOne) ? descuentoPorCliente / 100m : 0m;
+            decimal articulo = (_descuentoPorArticulo != decimal.MinusOne) ? _descuentoPorArticulo / 100m : 0m;
+
+            decimal _descuentoTotal = 1 - ((1 - cliente) * (1 - articulo));
+            return _descuentoTotal * 100m; // Devuelve en porcentaje
+
+
         }
 
         private async void LlenarDatosArticulo()
