@@ -43,9 +43,10 @@
             // 
             Txt_Usuario.CharacterCasing = CharacterCasing.Upper;
             Txt_Usuario.Enabled = false;
+            Txt_Usuario.Font = new Font("Century Gothic", 12F);
             Txt_Usuario.Location = new Point(168, 105);
             Txt_Usuario.Name = "Txt_Usuario";
-            Txt_Usuario.Size = new Size(295, 23);
+            Txt_Usuario.Size = new Size(295, 27);
             Txt_Usuario.TabIndex = 0;
             // 
             // panelTop
@@ -97,8 +98,9 @@
             Enter.Cursor = Cursors.Hand;
             Enter.FlatAppearance.BorderSize = 0;
             Enter.FlatStyle = FlatStyle.Flat;
+            Enter.Font = new Font("Century Gothic", 12F);
             Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(244, 218);
+            Enter.Location = new Point(244, 231);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
             Enter.TabIndex = 2;
@@ -109,30 +111,33 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 12F);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(55, 105);
+            label2.Location = new Point(55, 108);
             label2.Name = "label2";
-            label2.Size = new Size(47, 15);
+            label2.Size = new Size(66, 21);
             label2.TabIndex = 9;
             label2.Text = "Usuario";
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Century Gothic", 12F);
             label1.ForeColor = Color.White;
             label1.Location = new Point(55, 167);
             label1.Name = "label1";
-            label1.Size = new Size(24, 15);
+            label1.Size = new Size(33, 21);
             label1.TabIndex = 10;
             label1.Text = "Rol";
             // 
             // Cb_Rol
             // 
             Cb_Rol.DropDownStyle = ComboBoxStyle.DropDownList;
+            Cb_Rol.Font = new Font("Century Gothic", 12F);
             Cb_Rol.FormattingEnabled = true;
             Cb_Rol.Location = new Point(168, 159);
             Cb_Rol.Name = "Cb_Rol";
-            Cb_Rol.Size = new Size(295, 23);
+            Cb_Rol.Size = new Size(295, 29);
             Cb_Rol.TabIndex = 1;
             Cb_Rol.KeyDown += Cb_Rol_KeyDown;
             // 

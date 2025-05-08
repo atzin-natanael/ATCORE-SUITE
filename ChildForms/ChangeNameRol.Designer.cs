@@ -149,6 +149,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "ChangeNameRol";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ChangeNameRol";
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();

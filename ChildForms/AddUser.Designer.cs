@@ -46,9 +46,10 @@
             // Txt_Usuario
             // 
             Txt_Usuario.CharacterCasing = CharacterCasing.Upper;
-            Txt_Usuario.Location = new Point(168, 60);
+            Txt_Usuario.Font = new Font("Century Gothic", 11.25F);
+            Txt_Usuario.Location = new Point(163, 51);
             Txt_Usuario.Name = "Txt_Usuario";
-            Txt_Usuario.Size = new Size(295, 23);
+            Txt_Usuario.Size = new Size(295, 26);
             Txt_Usuario.TabIndex = 1;
             Txt_Usuario.KeyDown += Txt_Usuario_KeyDown;
             // 
@@ -101,8 +102,9 @@
             Enter.Cursor = Cursors.Hand;
             Enter.FlatAppearance.BorderSize = 0;
             Enter.FlatStyle = FlatStyle.Flat;
+            Enter.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(232, 246);
+            Enter.Location = new Point(233, 246);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
             Enter.TabIndex = 5;
@@ -112,9 +114,10 @@
             // 
             // TxtPw
             // 
-            TxtPw.Location = new Point(168, 107);
+            TxtPw.Font = new Font("Century Gothic", 11.25F);
+            TxtPw.Location = new Point(163, 98);
             TxtPw.Name = "TxtPw";
-            TxtPw.Size = new Size(295, 23);
+            TxtPw.Size = new Size(295, 26);
             TxtPw.TabIndex = 2;
             TxtPw.UseSystemPasswordChar = true;
             TxtPw.KeyDown += TxtPw_KeyDown;
@@ -122,49 +125,53 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 11.25F);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(56, 63);
+            label2.Location = new Point(51, 54);
             label2.Name = "label2";
-            label2.Size = new Size(47, 15);
+            label2.Size = new Size(63, 20);
             label2.TabIndex = 0;
             label2.Text = "Usuario";
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Century Gothic", 11.25F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(56, 110);
+            label1.Location = new Point(51, 101);
             label1.Name = "label1";
-            label1.Size = new Size(67, 15);
+            label1.Size = new Size(95, 20);
             label1.TabIndex = 0;
             label1.Text = "Contraseña";
             // 
             // Rol
             // 
             Rol.AutoSize = true;
+            Rol.Font = new Font("Century Gothic", 11.25F);
             Rol.ForeColor = Color.White;
-            Rol.Location = new Point(56, 213);
+            Rol.Location = new Point(51, 204);
             Rol.Name = "Rol";
-            Rol.Size = new Size(24, 15);
+            Rol.Size = new Size(31, 20);
             Rol.TabIndex = 0;
             Rol.Text = "Rol";
             // 
             // Cb_Rol
             // 
             Cb_Rol.DropDownStyle = ComboBoxStyle.DropDownList;
+            Cb_Rol.Font = new Font("Century Gothic", 11.25F);
             Cb_Rol.FormattingEnabled = true;
-            Cb_Rol.Items.AddRange(new object[] { "Seleccionar Rol:", "Administrador", "Inventarios", "JefeFacturista", "Facturista" });
-            Cb_Rol.Location = new Point(168, 205);
+            Cb_Rol.Location = new Point(163, 196);
             Cb_Rol.Name = "Cb_Rol";
-            Cb_Rol.Size = new Size(295, 23);
+            Cb_Rol.Size = new Size(295, 28);
             Cb_Rol.TabIndex = 4;
             Cb_Rol.KeyDown += Cb_Rol_KeyDown;
             // 
             // TxtPw2
             // 
-            TxtPw2.Location = new Point(168, 157);
+            TxtPw2.Font = new Font("Century Gothic", 11.25F);
+            TxtPw2.Location = new Point(163, 148);
             TxtPw2.Name = "TxtPw2";
-            TxtPw2.Size = new Size(295, 23);
+            TxtPw2.Size = new Size(295, 26);
             TxtPw2.TabIndex = 3;
             TxtPw2.UseSystemPasswordChar = true;
             TxtPw2.KeyDown += TxtPw2_KeyDown;
@@ -172,10 +179,11 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 11.25F);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(56, 160);
+            label4.Location = new Point(51, 151);
             label4.Name = "label4";
-            label4.Size = new Size(61, 15);
+            label4.Size = new Size(81, 20);
             label4.TabIndex = 0;
             label4.Text = "Confirmar";
             // 

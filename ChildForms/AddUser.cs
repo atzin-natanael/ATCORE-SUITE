@@ -23,6 +23,7 @@ namespace PedidoXperto.ChildForms
         public AddUser()
         {
             InitializeComponent();
+            Cargar();
             Cb_Rol.SelectedIndex = 0; // Inicialmente no se selecciona ningún rol
         }
 
@@ -30,10 +31,20 @@ namespace PedidoXperto.ChildForms
         {
             this.Close();
         }
+        public void Cargar()
+        {
+            using (var db = new LiteDatabase(@"C:\ConfigDB\USUARIOS_TRASPASOS.db"))
+            {
+                var coleccion = db.GetCollection<AdminRoles>("ROLES");
+                var listaRoles = coleccion.FindAll().Select(r => r.RolNombre).ToList();
 
+                Cb_Rol.Items.Clear(); // Limpia primero
+                Cb_Rol.Items.AddRange(listaRoles.ToArray());
+            }
+        }
         private void Enter_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Txt_Usuario.Text) && !string.IsNullOrEmpty(TxtPw.Text) && !string.IsNullOrEmpty(TxtPw2.Text) && Cb_Rol.SelectedIndex != 0)
+            if (!string.IsNullOrEmpty(Txt_Usuario.Text) && !string.IsNullOrEmpty(TxtPw.Text) && !string.IsNullOrEmpty(TxtPw2.Text))
             {
                 // Verificar que las contraseñas coincidan
                 if (TxtPw.Text == TxtPw2.Text)

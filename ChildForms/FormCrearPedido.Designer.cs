@@ -30,11 +30,12 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCrearPedido));
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Titulo = new Label();
-            Exit = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
+            Exit = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel2 = new Panel();
             panel5 = new Panel();
@@ -47,26 +48,26 @@
             Column1 = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
             panel4 = new Panel();
+            label5 = new Label();
             label4 = new Label();
             Cb_Vendedor = new ComboBox();
             txtBox_clienteNombre = new TextBox();
             txtBox_clienteId = new TextBox();
-            Save = new Button();
             lblNombreCliente = new Label();
             label3 = new Label();
             label1 = new Label();
             button2 = new Button();
             panel3 = new Panel();
             panel7 = new Panel();
+            TablaRecomendados = new DataGridView();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            Save = new Button();
             panel10 = new Panel();
             precioConDescuento = new Label();
             label9 = new Label();
             valorDescuento = new Label();
             label6 = new Label();
-            panel9 = new Panel();
-            TablaRecomendados = new DataGridView();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             panel8 = new Panel();
             panel6 = new Panel();
             label2 = new Label();
@@ -79,9 +80,8 @@
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             panel7.SuspendLayout();
-            panel10.SuspendLayout();
-            panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TablaRecomendados).BeginInit();
+            panel10.SuspendLayout();
             panel6.SuspendLayout();
             SuspendLayout();
             // 
@@ -90,33 +90,15 @@
             Titulo.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             Titulo.BackColor = Color.Beige;
             Titulo.FlatStyle = FlatStyle.Flat;
-            Titulo.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Titulo.Font = new Font("Century Gothic", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Titulo.ForeColor = Color.Black;
             Titulo.Location = new Point(0, 0);
             Titulo.Margin = new Padding(0);
             Titulo.Name = "Titulo";
-            Titulo.Size = new Size(1242, 50);
+            Titulo.Size = new Size(1383, 50);
             Titulo.TabIndex = 0;
             Titulo.Text = "CREACIÓN DE PEDIDO";
             Titulo.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // Exit
-            // 
-            Exit.Anchor = AnchorStyles.Right;
-            Exit.BackColor = Color.FromArgb(60, 60, 60);
-            Exit.Cursor = Cursors.Hand;
-            Exit.FlatAppearance.BorderSize = 0;
-            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
-            Exit.FlatStyle = FlatStyle.Flat;
-            Exit.ForeColor = Color.White;
-            Exit.Location = new Point(1242, 0);
-            Exit.Margin = new Padding(0);
-            Exit.Name = "Exit";
-            Exit.Size = new Size(141, 50);
-            Exit.TabIndex = 2;
-            Exit.Text = "Salir";
-            Exit.UseVisualStyleBackColor = false;
-            Exit.Click += Exit_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -138,14 +120,33 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
-            panel1.Controls.Add(Titulo);
             panel1.Controls.Add(Exit);
+            panel1.Controls.Add(Titulo);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1383, 50);
             panel1.TabIndex = 0;
+            // 
+            // Exit
+            // 
+            Exit.Anchor = AnchorStyles.Right;
+            Exit.BackColor = Color.Red;
+            Exit.Cursor = Cursors.Hand;
+            Exit.FlatAppearance.BorderSize = 0;
+            Exit.FlatAppearance.MouseOverBackColor = Color.DarkRed;
+            Exit.FlatStyle = FlatStyle.Flat;
+            Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Exit.ForeColor = Color.White;
+            Exit.Location = new Point(1242, 0);
+            Exit.Margin = new Padding(0);
+            Exit.Name = "Exit";
+            Exit.Size = new Size(141, 50);
+            Exit.TabIndex = 23;
+            Exit.Text = "Salir";
+            Exit.UseVisualStyleBackColor = false;
+            Exit.Click += Exit_Click;
             // 
             // tableLayoutPanel2
             // 
@@ -180,9 +181,9 @@
             // 
             panel5.Controls.Add(Tabla);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(0, 178);
+            panel5.Location = new Point(0, 214);
             panel5.Name = "panel5";
-            panel5.Size = new Size(968, 594);
+            panel5.Size = new Size(968, 558);
             panel5.TabIndex = 25;
             // 
             // Tabla
@@ -222,7 +223,7 @@
             Tabla.RowHeadersVisible = false;
             Tabla.RowHeadersWidth = 50;
             Tabla.RowTemplate.Height = 40;
-            Tabla.Size = new Size(968, 594);
+            Tabla.Size = new Size(968, 558);
             Tabla.TabIndex = 24;
             Tabla.CellEndEdit += Tabla_CellEndEdit;
             Tabla.EditingControlShowing += Tabla_EditingControlShowing;
@@ -297,28 +298,37 @@
             // panel4
             // 
             panel4.BackColor = Color.Beige;
+            panel4.Controls.Add(label5);
             panel4.Controls.Add(label4);
             panel4.Controls.Add(Cb_Vendedor);
             panel4.Controls.Add(txtBox_clienteNombre);
             panel4.Controls.Add(txtBox_clienteId);
-            panel4.Controls.Add(Save);
             panel4.Controls.Add(lblNombreCliente);
             panel4.Controls.Add(label3);
             panel4.Controls.Add(label1);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(968, 178);
+            panel4.Size = new Size(968, 214);
             panel4.TabIndex = 24;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label5.Location = new Point(6, 133);
+            label5.Name = "label5";
+            label5.Size = new Size(954, 21);
+            label5.TabIndex = 23;
+            label5.Text = resources.GetString("label5.Text");
             // 
             // label4
             // 
             label4.FlatStyle = FlatStyle.Flat;
             label4.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(21, 1);
+            label4.Location = new Point(12, 9);
             label4.Name = "label4";
-            label4.Size = new Size(136, 32);
+            label4.Size = new Size(138, 32);
             label4.TabIndex = 0;
             label4.Text = "Vendedor";
             label4.TextAlign = ContentAlignment.MiddleCenter;
@@ -329,9 +339,9 @@
             Cb_Vendedor.FlatStyle = FlatStyle.Flat;
             Cb_Vendedor.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Cb_Vendedor.FormattingEnabled = true;
-            Cb_Vendedor.Location = new Point(173, 7);
+            Cb_Vendedor.Location = new Point(156, 14);
             Cb_Vendedor.Name = "Cb_Vendedor";
-            Cb_Vendedor.Size = new Size(276, 27);
+            Cb_Vendedor.Size = new Size(283, 27);
             Cb_Vendedor.TabIndex = 1;
             Cb_Vendedor.KeyDown += Cb_Vendedor_KeyDown;
             Cb_Vendedor.KeyPress += Cb_Vendedor_KeyPress;
@@ -340,7 +350,7 @@
             // 
             txtBox_clienteNombre.CharacterCasing = CharacterCasing.Upper;
             txtBox_clienteNombre.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            txtBox_clienteNombre.Location = new Point(201, 79);
+            txtBox_clienteNombre.Location = new Point(573, 76);
             txtBox_clienteNombre.Name = "txtBox_clienteNombre";
             txtBox_clienteNombre.Size = new Size(370, 27);
             txtBox_clienteNombre.TabIndex = 3;
@@ -350,38 +360,21 @@
             // 
             txtBox_clienteId.CharacterCasing = CharacterCasing.Upper;
             txtBox_clienteId.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            txtBox_clienteId.Location = new Point(12, 79);
+            txtBox_clienteId.Location = new Point(156, 76);
             txtBox_clienteId.Name = "txtBox_clienteId";
             txtBox_clienteId.Size = new Size(154, 27);
             txtBox_clienteId.TabIndex = 2;
             txtBox_clienteId.TextChanged += txtBox_clienteId_TextChanged;
             txtBox_clienteId.KeyDown += txtBox_clienteId_KeyDown;
             // 
-            // Save
-            // 
-            Save.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Save.BackColor = Color.FromArgb(60, 60, 60);
-            Save.Cursor = Cursors.Hand;
-            Save.FlatAppearance.BorderSize = 0;
-            Save.FlatAppearance.MouseOverBackColor = Color.Gray;
-            Save.FlatStyle = FlatStyle.Flat;
-            Save.ForeColor = Color.White;
-            Save.Location = new Point(801, 0);
-            Save.Name = "Save";
-            Save.Size = new Size(167, 64);
-            Save.TabIndex = 0;
-            Save.Text = "Guardar Pedido";
-            Save.UseVisualStyleBackColor = false;
-            Save.Click += Save_Click;
-            // 
             // lblNombreCliente
             // 
             lblNombreCliente.FlatStyle = FlatStyle.Flat;
             lblNombreCliente.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNombreCliente.ForeColor = Color.Black;
-            lblNombreCliente.Location = new Point(12, 44);
+            lblNombreCliente.Location = new Point(12, 73);
             lblNombreCliente.Name = "lblNombreCliente";
-            lblNombreCliente.Size = new Size(154, 32);
+            lblNombreCliente.Size = new Size(119, 27);
             lblNombreCliente.TabIndex = 22;
             lblNombreCliente.Text = "Clave Cliente";
             lblNombreCliente.TextAlign = ContentAlignment.MiddleCenter;
@@ -391,9 +384,9 @@
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(237, 44);
+            label3.Location = new Point(326, 73);
             label3.Name = "label3";
-            label3.Size = new Size(264, 32);
+            label3.Size = new Size(241, 27);
             label3.TabIndex = 20;
             label3.Text = "Nombre del cliente";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -405,11 +398,11 @@
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Century Gothic", 18F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(346, 133);
+            label1.Location = new Point(353, 169);
             label1.Name = "label1";
-            label1.Size = new Size(271, 28);
+            label1.Size = new Size(264, 28);
             label1.TabIndex = 19;
-            label1.Text = "Articulos en el Pedido:";
+            label1.Text = "Articulos en el Pedido";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // button2
@@ -442,88 +435,15 @@
             // panel7
             // 
             panel7.BackColor = Color.Beige;
+            panel7.Controls.Add(TablaRecomendados);
+            panel7.Controls.Add(Save);
             panel7.Controls.Add(panel10);
-            panel7.Controls.Add(panel9);
             panel7.Controls.Add(panel8);
             panel7.Dock = DockStyle.Fill;
-            panel7.Location = new Point(0, 178);
+            panel7.Location = new Point(0, 214);
             panel7.Name = "panel7";
-            panel7.Size = new Size(415, 594);
+            panel7.Size = new Size(415, 558);
             panel7.TabIndex = 22;
-            // 
-            // panel10
-            // 
-            panel10.BackColor = Color.Beige;
-            panel10.Controls.Add(precioConDescuento);
-            panel10.Controls.Add(label9);
-            panel10.Controls.Add(valorDescuento);
-            panel10.Controls.Add(label6);
-            panel10.Dock = DockStyle.Fill;
-            panel10.Location = new Point(46, 286);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(369, 308);
-            panel10.TabIndex = 24;
-            // 
-            // precioConDescuento
-            // 
-            precioConDescuento.Anchor = AnchorStyles.Bottom;
-            precioConDescuento.FlatStyle = FlatStyle.Flat;
-            precioConDescuento.Font = new Font("Arial Rounded MT Bold", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            precioConDescuento.ForeColor = Color.Black;
-            precioConDescuento.Location = new Point(0, 239);
-            precioConDescuento.Name = "precioConDescuento";
-            precioConDescuento.Size = new Size(363, 69);
-            precioConDescuento.TabIndex = 5;
-            precioConDescuento.Text = "$ 0";
-            precioConDescuento.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            label9.Anchor = AnchorStyles.Bottom;
-            label9.FlatStyle = FlatStyle.Flat;
-            label9.Font = new Font("Arial Rounded MT Bold", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.Blue;
-            label9.Location = new Point(3, 187);
-            label9.Name = "label9";
-            label9.Size = new Size(363, 52);
-            label9.TabIndex = 4;
-            label9.Text = "TOTAL";
-            label9.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // valorDescuento
-            // 
-            valorDescuento.Anchor = AnchorStyles.Bottom;
-            valorDescuento.FlatStyle = FlatStyle.Flat;
-            valorDescuento.Font = new Font("Arial Rounded MT Bold", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            valorDescuento.ForeColor = Color.Black;
-            valorDescuento.Location = new Point(0, 122);
-            valorDescuento.Name = "valorDescuento";
-            valorDescuento.Size = new Size(366, 65);
-            valorDescuento.TabIndex = 3;
-            valorDescuento.Text = "$ 0";
-            valorDescuento.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            label6.Anchor = AnchorStyles.Bottom;
-            label6.FlatStyle = FlatStyle.Flat;
-            label6.Font = new Font("Arial Rounded MT Bold", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.Gray;
-            label6.Location = new Point(6, 63);
-            label6.Name = "label6";
-            label6.Size = new Size(363, 70);
-            label6.TabIndex = 1;
-            label6.Text = "AHORRO";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // panel9
-            // 
-            panel9.Controls.Add(TablaRecomendados);
-            panel9.Dock = DockStyle.Top;
-            panel9.Location = new Point(46, 0);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(369, 286);
-            panel9.TabIndex = 23;
             // 
             // TablaRecomendados
             // 
@@ -546,14 +466,14 @@
             TablaRecomendados.Dock = DockStyle.Fill;
             TablaRecomendados.EnableHeadersVisualStyles = false;
             TablaRecomendados.GridColor = Color.Black;
-            TablaRecomendados.Location = new Point(0, 0);
+            TablaRecomendados.Location = new Point(46, 0);
             TablaRecomendados.Name = "TablaRecomendados";
             TablaRecomendados.ReadOnly = true;
             TablaRecomendados.RowHeadersVisible = false;
             TablaRecomendados.RowHeadersWidth = 50;
             TablaRecomendados.RowTemplate.Height = 40;
             TablaRecomendados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            TablaRecomendados.Size = new Size(369, 286);
+            TablaRecomendados.Size = new Size(369, 249);
             TablaRecomendados.TabIndex = 20;
             TablaRecomendados.CellDoubleClick += TablaRecomendados_CellDoubleClick;
             // 
@@ -573,13 +493,96 @@
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
+            // Save
+            // 
+            Save.BackColor = Color.LightSkyBlue;
+            Save.Cursor = Cursors.Hand;
+            Save.Dock = DockStyle.Bottom;
+            Save.FlatAppearance.BorderSize = 0;
+            Save.FlatAppearance.MouseOverBackColor = Color.SteelBlue;
+            Save.FlatStyle = FlatStyle.Flat;
+            Save.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Save.ForeColor = Color.Black;
+            Save.Location = new Point(46, 249);
+            Save.Name = "Save";
+            Save.Size = new Size(369, 75);
+            Save.TabIndex = 23;
+            Save.Text = "Guardar Pedido";
+            Save.UseVisualStyleBackColor = false;
+            Save.Click += Save_Click;
+            // 
+            // panel10
+            // 
+            panel10.BackColor = Color.Beige;
+            panel10.Controls.Add(precioConDescuento);
+            panel10.Controls.Add(label9);
+            panel10.Controls.Add(valorDescuento);
+            panel10.Controls.Add(label6);
+            panel10.Dock = DockStyle.Bottom;
+            panel10.Location = new Point(46, 324);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(369, 234);
+            panel10.TabIndex = 24;
+            // 
+            // precioConDescuento
+            // 
+            precioConDescuento.Anchor = AnchorStyles.Bottom;
+            precioConDescuento.FlatStyle = FlatStyle.Flat;
+            precioConDescuento.Font = new Font("Arial Rounded MT Bold", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            precioConDescuento.ForeColor = Color.Black;
+            precioConDescuento.Location = new Point(0, 165);
+            precioConDescuento.Name = "precioConDescuento";
+            precioConDescuento.Size = new Size(363, 69);
+            precioConDescuento.TabIndex = 5;
+            precioConDescuento.Text = "$ 0";
+            precioConDescuento.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            label9.Anchor = AnchorStyles.Bottom;
+            label9.FlatStyle = FlatStyle.Flat;
+            label9.Font = new Font("Arial Rounded MT Bold", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.Blue;
+            label9.Location = new Point(3, 113);
+            label9.Name = "label9";
+            label9.Size = new Size(363, 52);
+            label9.TabIndex = 4;
+            label9.Text = "TOTAL";
+            label9.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // valorDescuento
+            // 
+            valorDescuento.Anchor = AnchorStyles.Bottom;
+            valorDescuento.FlatStyle = FlatStyle.Flat;
+            valorDescuento.Font = new Font("Arial Rounded MT Bold", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            valorDescuento.ForeColor = Color.Black;
+            valorDescuento.Location = new Point(0, 48);
+            valorDescuento.Name = "valorDescuento";
+            valorDescuento.Size = new Size(366, 65);
+            valorDescuento.TabIndex = 3;
+            valorDescuento.Text = "$ 0";
+            valorDescuento.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Bottom;
+            label6.FlatStyle = FlatStyle.Flat;
+            label6.Font = new Font("Arial Rounded MT Bold", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.Gray;
+            label6.Location = new Point(6, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(363, 59);
+            label6.TabIndex = 1;
+            label6.Text = "AHORRO";
+            label6.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // panel8
             // 
             panel8.BackColor = Color.Beige;
             panel8.Dock = DockStyle.Left;
             panel8.Location = new Point(0, 0);
             panel8.Name = "panel8";
-            panel8.Size = new Size(46, 594);
+            panel8.Size = new Size(46, 558);
             panel8.TabIndex = 22;
             // 
             // panel6
@@ -589,7 +592,7 @@
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(415, 178);
+            panel6.Size = new Size(415, 214);
             panel6.TabIndex = 21;
             // 
             // label2
@@ -599,11 +602,11 @@
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(136, 133);
+            label2.Location = new Point(117, 169);
             label2.Name = "label2";
-            label2.Size = new Size(238, 28);
+            label2.Size = new Size(231, 28);
             label2.TabIndex = 20;
-            label2.Text = "Recomendaciones:";
+            label2.Text = "Recomendaciones";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FormCrearPedido
@@ -629,9 +632,8 @@
             panel4.PerformLayout();
             panel3.ResumeLayout(false);
             panel7.ResumeLayout(false);
-            panel10.ResumeLayout(false);
-            panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)TablaRecomendados).EndInit();
+            panel10.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             ResumeLayout(false);
@@ -640,11 +642,9 @@
         #endregion
 
         private Label Titulo;
-        private Button Exit;
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel1;
         private Panel panel2;
-        private Button Save;
         private Label label1;
         private TableLayoutPanel tableLayoutPanel2;
         private Panel panel3;
@@ -660,7 +660,6 @@
         private DataGridView TablaRecomendados;
         private Panel panel8;
         private Panel panel10;
-        private Panel panel9;
         private TextBox txtBox_clienteNombre;
         private Label label4;
         private ComboBox Cb_Vendedor;
@@ -678,5 +677,8 @@
         private DataGridViewTextBoxColumn Total;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private Button Save;
+        private Button Exit;
+        private Label label5;
     }
 }

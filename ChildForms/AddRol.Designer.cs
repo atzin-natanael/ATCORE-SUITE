@@ -147,6 +147,7 @@
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "AddRol";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AddRol";
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();

@@ -55,11 +55,11 @@
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(233, 9);
+            label3.Location = new Point(185, 9);
             label3.Name = "label3";
-            label3.Size = new Size(176, 24);
+            label3.Size = new Size(245, 24);
             label3.TabIndex = 0;
-            label3.Text = "CAMBIO DE ROL";
+            label3.Text = "CAMBIO DE DERECHOS";
             label3.MouseDown += label3_MouseDown;
             // 
             // Exit
@@ -129,7 +129,6 @@
             CheckList.Items.AddRange(new object[] { "Crear Pedido", "Validar Pedido", "Administrador de Usuarios", "Administrador de Roles" });
             CheckList.Location = new Point(168, 158);
             CheckList.Name = "CheckList";
-            CheckList.SelectionMode = SelectionMode.None;
             CheckList.Size = new Size(295, 88);
             CheckList.TabIndex = 16;
             // 

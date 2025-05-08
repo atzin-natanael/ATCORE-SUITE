@@ -41,6 +41,7 @@
             BtnAddRol = new Button();
             BtnMen = new Button();
             panel1 = new Panel();
+            panel3 = new Panel();
             panel2 = new Panel();
             TablaRoles = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
@@ -65,12 +66,13 @@
             // 
             // Exit
             // 
-            Exit.BackColor = Color.FromArgb(60, 60, 60);
+            Exit.BackColor = Color.Red;
             Exit.Cursor = Cursors.Hand;
             Exit.Dock = DockStyle.Right;
             Exit.FlatAppearance.BorderSize = 0;
-            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
+            Exit.FlatAppearance.MouseOverBackColor = Color.DarkRed;
             Exit.FlatStyle = FlatStyle.Flat;
+            Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Exit.ForeColor = Color.White;
             Exit.Location = new Point(1242, 0);
             Exit.Name = "Exit";
@@ -103,7 +105,7 @@
             SubpanelMenu.Dock = DockStyle.Fill;
             SubpanelMenu.Location = new Point(137, 0);
             SubpanelMenu.Name = "SubpanelMenu";
-            SubpanelMenu.Size = new Size(1246, 58);
+            SubpanelMenu.Size = new Size(1246, 62);
             SubpanelMenu.TabIndex = 9;
             SubpanelMenu.Resize += SubpanelMenu_Resize;
             // 
@@ -119,7 +121,7 @@
             ChangeDerechos.ForeColor = Color.Black;
             ChangeDerechos.Location = new Point(546, 0);
             ChangeDerechos.Name = "ChangeDerechos";
-            ChangeDerechos.Size = new Size(182, 58);
+            ChangeDerechos.Size = new Size(182, 62);
             ChangeDerechos.TabIndex = 14;
             ChangeDerechos.Text = "Cambiar Derechos";
             ChangeDerechos.UseVisualStyleBackColor = false;
@@ -137,7 +139,7 @@
             BtnEditNameRol.ForeColor = Color.Black;
             BtnEditNameRol.Location = new Point(364, 0);
             BtnEditNameRol.Name = "BtnEditNameRol";
-            BtnEditNameRol.Size = new Size(182, 58);
+            BtnEditNameRol.Size = new Size(182, 62);
             BtnEditNameRol.TabIndex = 13;
             BtnEditNameRol.Text = "Editar Nombre Rol";
             BtnEditNameRol.UseVisualStyleBackColor = false;
@@ -155,7 +157,7 @@
             BtnDeleteRol.ForeColor = Color.Black;
             BtnDeleteRol.Location = new Point(182, 0);
             BtnDeleteRol.Name = "BtnDeleteRol";
-            BtnDeleteRol.Size = new Size(182, 58);
+            BtnDeleteRol.Size = new Size(182, 62);
             BtnDeleteRol.TabIndex = 12;
             BtnDeleteRol.Text = "Eliminar Rol";
             BtnDeleteRol.UseVisualStyleBackColor = false;
@@ -173,7 +175,7 @@
             BtnAddRol.ForeColor = Color.Black;
             BtnAddRol.Location = new Point(0, 0);
             BtnAddRol.Name = "BtnAddRol";
-            BtnAddRol.Size = new Size(182, 58);
+            BtnAddRol.Size = new Size(182, 62);
             BtnAddRol.TabIndex = 11;
             BtnAddRol.Text = "Agregar Rol";
             BtnAddRol.UseVisualStyleBackColor = false;
@@ -193,7 +195,7 @@
             BtnMen.ImageAlign = ContentAlignment.MiddleLeft;
             BtnMen.Location = new Point(0, 0);
             BtnMen.Name = "BtnMen";
-            BtnMen.Size = new Size(137, 58);
+            BtnMen.Size = new Size(137, 62);
             BtnMen.TabIndex = 8;
             BtnMen.Text = "Menú";
             BtnMen.TextAlign = ContentAlignment.MiddleRight;
@@ -207,17 +209,25 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 53);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1383, 58);
+            panel1.Size = new Size(1383, 62);
             panel1.TabIndex = 11;
+            // 
+            // panel3
+            // 
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 115);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1383, 42);
+            panel3.TabIndex = 13;
             // 
             // panel2
             // 
             panel2.Controls.Add(TablaRoles);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 111);
+            panel2.Location = new Point(0, 157);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1383, 711);
-            panel2.TabIndex = 12;
+            panel2.Size = new Size(1383, 665);
+            panel2.TabIndex = 14;
             // 
             // TablaRoles
             // 
@@ -259,7 +269,7 @@
             TablaRoles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             TablaRoles.RowTemplate.Height = 40;
             TablaRoles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            TablaRoles.Size = new Size(1383, 711);
+            TablaRoles.Size = new Size(1383, 665);
             TablaRoles.TabIndex = 11;
             // 
             // Id
@@ -282,6 +292,7 @@
             BackColor = Color.White;
             ClientSize = new Size(1383, 822);
             Controls.Add(panel2);
+            Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panelTop);
             FormBorderStyle = FormBorderStyle.None;
@@ -307,6 +318,7 @@
         private Button BtnEditNameRol;
         private Button BtnDeleteRol;
         private Panel panel1;
+        private Panel panel3;
         private Panel panel2;
         public DataGridView TablaRoles;
         private DataGridViewTextBoxColumn Id;

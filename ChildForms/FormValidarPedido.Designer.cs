@@ -62,11 +62,12 @@
             // Exit
             // 
             Exit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Exit.BackColor = Color.FromArgb(60, 60, 60);
+            Exit.BackColor = Color.Red;
             Exit.Cursor = Cursors.Hand;
             Exit.FlatAppearance.BorderSize = 0;
-            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
+            Exit.FlatAppearance.MouseOverBackColor = Color.DarkRed;
             Exit.FlatStyle = FlatStyle.Flat;
+            Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Exit.ForeColor = Color.White;
             Exit.Location = new Point(1242, 0);
             Exit.Name = "Exit";
@@ -80,11 +81,11 @@
             // 
             Titulo.Anchor = AnchorStyles.Top;
             Titulo.FlatStyle = FlatStyle.Flat;
-            Titulo.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Titulo.Font = new Font("Century Gothic", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Titulo.ForeColor = Color.Black;
-            Titulo.Location = new Point(568, 0);
+            Titulo.Location = new Point(502, 0);
             Titulo.Name = "Titulo";
-            Titulo.Size = new Size(305, 28);
+            Titulo.Size = new Size(465, 40);
             Titulo.TabIndex = 0;
             Titulo.Text = "VALIDACION DE PEDIDOS";
             Titulo.TextAlign = ContentAlignment.MiddleCenter;
@@ -94,7 +95,7 @@
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(10, 93);
+            label1.Location = new Point(17, 121);
             label1.Name = "label1";
             label1.Size = new Size(144, 28);
             label1.TabIndex = 0;
@@ -107,9 +108,9 @@
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(10, 153);
+            label2.Location = new Point(12, 165);
             label2.Name = "label2";
-            label2.Size = new Size(259, 28);
+            label2.Size = new Size(150, 72);
             label2.TabIndex = 0;
             label2.Text = "CÓDIGO DE BARRAS:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -119,7 +120,7 @@
             label3.FlatStyle = FlatStyle.Flat;
             label3.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(16, 22);
+            label3.Location = new Point(21, 58);
             label3.Name = "label3";
             label3.Size = new Size(150, 28);
             label3.TabIndex = 0;
@@ -130,9 +131,9 @@
             // 
             TxtPedido.CharacterCasing = CharacterCasing.Upper;
             TxtPedido.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            TxtPedido.Location = new Point(172, 26);
+            TxtPedido.Location = new Point(177, 59);
             TxtPedido.Name = "TxtPedido";
-            TxtPedido.Size = new Size(204, 27);
+            TxtPedido.Size = new Size(290, 27);
             TxtPedido.TabIndex = 1;
             TxtPedido.KeyDown += TxtPedido_KeyDown;
             // 
@@ -144,7 +145,7 @@
             BtnPedido.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnPedido.FlatStyle = FlatStyle.Flat;
             BtnPedido.ForeColor = Color.White;
-            BtnPedido.Location = new Point(408, 23);
+            BtnPedido.Location = new Point(502, 57);
             BtnPedido.Name = "BtnPedido";
             BtnPedido.Size = new Size(129, 31);
             BtnPedido.TabIndex = 2;
@@ -162,7 +163,7 @@
             BtnCodigo.FlatAppearance.MouseOverBackColor = Color.Gray;
             BtnCodigo.FlatStyle = FlatStyle.Flat;
             BtnCodigo.ForeColor = Color.White;
-            BtnCodigo.Location = new Point(592, 148);
+            BtnCodigo.Location = new Point(502, 183);
             BtnCodigo.Name = "BtnCodigo";
             BtnCodigo.Size = new Size(125, 36);
             BtnCodigo.TabIndex = 5;
@@ -173,7 +174,7 @@
             // TxtCodigo
             // 
             TxtCodigo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            TxtCodigo.Location = new Point(277, 153);
+            TxtCodigo.Location = new Point(177, 188);
             TxtCodigo.Name = "TxtCodigo";
             TxtCodigo.Size = new Size(290, 27);
             TxtCodigo.TabIndex = 4;
@@ -183,9 +184,9 @@
             // 
             Cb_Surtidor.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Cb_Surtidor.FormattingEnabled = true;
-            Cb_Surtidor.Location = new Point(172, 93);
+            Cb_Surtidor.Location = new Point(177, 122);
             Cb_Surtidor.Name = "Cb_Surtidor";
-            Cb_Surtidor.Size = new Size(348, 27);
+            Cb_Surtidor.Size = new Size(290, 27);
             Cb_Surtidor.TabIndex = 3;
             Cb_Surtidor.KeyDown += Cb_Surtidor_KeyDown;
             Cb_Surtidor.KeyPress += Cb_Surtidor_KeyPress;
@@ -211,21 +212,22 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1383, 195);
+            panel1.Size = new Size(1383, 245);
             panel1.TabIndex = 10;
             // 
             // Save
             // 
             Save.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Save.BackColor = Color.FromArgb(60, 60, 60);
+            Save.BackColor = Color.LightSkyBlue;
             Save.Cursor = Cursors.Hand;
             Save.FlatAppearance.BorderSize = 0;
-            Save.FlatAppearance.MouseOverBackColor = Color.Gray;
+            Save.FlatAppearance.MouseOverBackColor = Color.SteelBlue;
             Save.FlatStyle = FlatStyle.Flat;
-            Save.ForeColor = Color.White;
-            Save.Location = new Point(1242, 67);
+            Save.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Save.ForeColor = Color.Black;
+            Save.Location = new Point(1151, 174);
             Save.Name = "Save";
-            Save.Size = new Size(141, 54);
+            Save.Size = new Size(232, 54);
             Save.TabIndex = 6;
             Save.Text = "Guardar";
             Save.UseVisualStyleBackColor = false;
@@ -237,7 +239,7 @@
             Lb_Incompletos.FlatStyle = FlatStyle.Flat;
             Lb_Incompletos.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
             Lb_Incompletos.ForeColor = Color.Black;
-            Lb_Incompletos.Location = new Point(1293, 164);
+            Lb_Incompletos.Location = new Point(1286, 108);
             Lb_Incompletos.Name = "Lb_Incompletos";
             Lb_Incompletos.Size = new Size(78, 28);
             Lb_Incompletos.TabIndex = 0;
@@ -250,7 +252,7 @@
             Lb_renglones.FlatStyle = FlatStyle.Flat;
             Lb_renglones.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
             Lb_renglones.ForeColor = Color.Black;
-            Lb_renglones.Location = new Point(1293, 136);
+            Lb_renglones.Location = new Point(1286, 80);
             Lb_renglones.Name = "Lb_renglones";
             Lb_renglones.Size = new Size(78, 28);
             Lb_renglones.TabIndex = 0;
@@ -263,7 +265,7 @@
             label5.FlatStyle = FlatStyle.Flat;
             label5.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(1035, 164);
+            label5.Location = new Point(1028, 108);
             label5.Name = "label5";
             label5.Size = new Size(262, 28);
             label5.TabIndex = 0;
@@ -276,7 +278,7 @@
             label4.FlatStyle = FlatStyle.Flat;
             label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(1059, 136);
+            label4.Location = new Point(1052, 80);
             label4.Name = "label4";
             label4.Size = new Size(238, 28);
             label4.TabIndex = 0;
@@ -287,9 +289,9 @@
             // 
             panel2.Controls.Add(Tabla);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 195);
+            panel2.Location = new Point(0, 245);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1383, 627);
+            panel2.Size = new Size(1383, 577);
             panel2.TabIndex = 11;
             // 
             // Tabla
@@ -321,7 +323,7 @@
             Tabla.RowHeadersVisible = false;
             Tabla.RowHeadersWidth = 50;
             Tabla.RowTemplate.Height = 40;
-            Tabla.Size = new Size(1383, 627);
+            Tabla.Size = new Size(1383, 577);
             Tabla.TabIndex = 0;
             Tabla.CellMouseDown += Tabla_CellMouseDown;
             Tabla.KeyDown += Tabla_KeyDown;

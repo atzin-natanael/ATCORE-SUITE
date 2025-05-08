@@ -191,7 +191,7 @@ namespace PedidoXperto.ChildForms
                 txtBox_clienteNombre.Text = string.Empty;
                 Tabla.Rows.Clear();
                 Cb_Vendedor.Focus();
-                //precioTotal.Text = "$ 0.00";
+                precioConDescuento.Text = "$ 0.00";
                 valorDescuento.Text = "$ 0.00";
             }
         }
@@ -398,7 +398,8 @@ namespace PedidoXperto.ChildForms
 
             if (DatosArticulo != null)
             {
-
+                string codigodebarras = Tabla.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value.ToString();
+                string cantidadcodigobarras = bridge.GetValue("SELECT CONTENIDO_EMPAQUE FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + codigodebarras + "'");
                 string Clave_Principal = DatosArticulo[0];
                 string articulo_id = DataBridge.GetArticuloId(Clave_Principal);
                 Tabla.EndEdit();
@@ -407,7 +408,7 @@ namespace PedidoXperto.ChildForms
                 Tabla.CurrentRow.Cells[1].ReadOnly = true;
                 Tabla.CurrentRow.Cells[(int)ColTabla.Precio].Value = DatosArticulo[2];
                 Tabla.CurrentRow.Cells[(int)ColTabla.Iva].Value = bridge.GetImpuestoArticulo(Clave_Principal)[0];
-                Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Cantidad].Value = 1;
+                Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Cantidad].Value = cantidadcodigobarras;
                 Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Descuento].Value = CalcularDescuentoArticulo(articulo_id);//nos lo devuelve directo 16
                 Tabla.Rows[Tabla.CurrentCell.RowIndex].Cells[(int)ColTabla.Total].Value = 0;
                 Tabla.CurrentCell = Tabla.CurrentRow.Cells[(int)ColTabla.Cantidad];
@@ -438,7 +439,7 @@ namespace PedidoXperto.ChildForms
                     Tabla.CurrentRow.Cells[1].ReadOnly = false;
                     return;
                 }
-                if(GlobalSettings.Instance.editandoclave == true)
+                if (GlobalSettings.Instance.editandoclave == true)
                 {
                     GlobalSettings.Instance.editandoclave = false;
                     return;
@@ -447,10 +448,11 @@ namespace PedidoXperto.ChildForms
             }
             else if (Tabla.CurrentCell.ColumnIndex == (int)ColTabla.Cantidad)
             {
-                if( Tabla.CurrentCell.Value == null || Tabla.CurrentRow.Cells[(int)ColTabla.Cantidad].Value == string.Empty || Tabla.CurrentCell.Value.ToString() == "0"){
+                if (Tabla.CurrentCell.Value == null || Tabla.CurrentRow.Cells[(int)ColTabla.Cantidad].Value == string.Empty || Tabla.CurrentCell.Value.ToString() == "0")
+                {
                     Tabla.Rows[Tabla.Rows.Count - 1].Cells[(int)ColTabla.Cantidad].Value = 1;
                 }
-                else if ( Tabla.CurrentCell.Value.ToString().All(char.IsDigit) && decimal.Parse(Tabla.CurrentCell.Value.ToString()) > 0)
+                else if (Tabla.CurrentCell.Value.ToString().All(char.IsDigit) && decimal.Parse(Tabla.CurrentCell.Value.ToString()) > 0)
                 {
 
                     if ((Tabla.CurrentCell.RowIndex) + 1 == Tabla.Rows.Count)//Si estamos en la ultima, agrega una fila nueva
@@ -465,7 +467,7 @@ namespace PedidoXperto.ChildForms
                     }
                 }
                 ActualizarPrecios();
-            }        
+            }
         }
 
         private void Cb_Vendedor_KeyPress(object sender, KeyPressEventArgs e)
@@ -480,7 +482,7 @@ namespace PedidoXperto.ChildForms
             if (parametros == string.Empty)//Si esta vacio no disparamos nada
                 return;
 
-            SearchMenu buscar = new SearchMenu(parametros,ColumnIndex);
+            SearchMenu buscar = new SearchMenu(parametros, ColumnIndex);
 
             //buscar.Tabla.Rows.Clear();
             buscar.Tabla.Focus();
@@ -504,7 +506,7 @@ namespace PedidoXperto.ChildForms
                     DesplegarSearchmenu();
                     e.Handled = true; // Opcional, previene otros efectos
                 }
-                else if(Tabla.CurrentCell != null && Tabla.CurrentCell.ColumnIndex == 0)
+                else if (Tabla.CurrentCell != null && Tabla.CurrentCell.ColumnIndex == 0)
                 {
                     DesplegarSearchmenu();
                     e.Handled = true; // Opcional, previene otros efectos
@@ -605,10 +607,10 @@ namespace PedidoXperto.ChildForms
         private void TablaRecomendados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             LlenarDatosArticulo();//Del articulo anterior a el anadido, por recomendar
-            if(Tabla.Rows[Tabla.Rows.Count-1].Cells[(int)ColTabla.CodigoBarras].Value == null)
+            if (Tabla.Rows[Tabla.Rows.Count - 1].Cells[(int)ColTabla.CodigoBarras].Value == null)
             {
-                Tabla.Rows[Tabla.Rows.Count-1].Cells[(int)ColTabla.CodigoBarras].Value = TablaRecomendados.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value.ToString();
-                Tabla.Rows[Tabla.Rows.Count-1].Cells[(int)ColTabla.Descripcion].Value = TablaRecomendados.CurrentRow.Cells[(int)ColTabla.Descripcion].Value.ToString();
+                Tabla.Rows[Tabla.Rows.Count - 1].Cells[(int)ColTabla.CodigoBarras].Value = TablaRecomendados.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value.ToString();
+                Tabla.Rows[Tabla.Rows.Count - 1].Cells[(int)ColTabla.Descripcion].Value = TablaRecomendados.CurrentRow.Cells[(int)ColTabla.Descripcion].Value.ToString();
             }
             else
                 Tabla.Rows.Add(TablaRecomendados.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value.ToString(), TablaRecomendados.CurrentRow.Cells[(int)ColTabla.Descripcion].ToString());
@@ -617,7 +619,7 @@ namespace PedidoXperto.ChildForms
 
             RemoverRecomendado(TablaRecomendados.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value.ToString());
             ActualizarTablaRecomendados();
-            
+
         }
 
         private void Tabla_KeyPress(object sender, KeyPressEventArgs e)
@@ -669,7 +671,5 @@ namespace PedidoXperto.ChildForms
                 txtBox_clienteId.Focus();
             }
         }
-       
-        
     }
 }
