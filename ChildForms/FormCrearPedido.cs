@@ -432,8 +432,14 @@ namespace PedidoXperto.ChildForms
 
             if (DatosArticulo != null)
             {
-                string codigodebarras = Tabla.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value.ToString();
-                string cantidadcodigobarras = bridge.GetValue("SELECT CONTENIDO_EMPAQUE FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + codigodebarras + "'");
+                string codigodebarras = string.Empty;
+                string cantidadcodigobarras = "1";
+                if (Tabla.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value != null)
+                {
+                    codigodebarras = Tabla.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value.ToString();
+                    cantidadcodigobarras = bridge.GetValue("SELECT CONTENIDO_EMPAQUE FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + codigodebarras + "'");
+
+                }
                 string Clave_Principal = DatosArticulo[0];
                 string articulo_id = DataBridge.GetArticuloId(Clave_Principal);
                 Tabla.EndEdit();
