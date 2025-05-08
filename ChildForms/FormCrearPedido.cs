@@ -642,8 +642,19 @@ namespace PedidoXperto.ChildForms
                 }
                 if (e.KeyCode == Keys.F4)
                 {
-                        SearchCliente buscarCliente = new SearchCliente();
+                    if (txtBox_clienteNombre.Text != string.Empty)
+                    {
+                        SearchCliente buscarCliente = new SearchCliente(txtBox_clienteNombre.Text);
+                        buscarCliente.TablaClientes.Focus();
+                        buscarCliente.TablaClientes.Select();
                         buscarCliente.ShowDialog();
+
+                        if (GlobalSettings.Instance.ClaveCliente != null)
+                        {
+                            txtBox_clienteId.Text = GlobalSettings.Instance.ClaveCliente;
+                            GlobalSettings.Instance.ClaveCliente = null;
+                        }
+                    }
 
                 }
             }

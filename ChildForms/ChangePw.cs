@@ -54,7 +54,7 @@ namespace PedidoXperto.ChildForms
                         // Comprobar si la contraseña ingresada coincide con el hash almacenado
                         bool isMatch = BCrypt.Net.BCrypt.Verify(TxtPw.Text, usuarioAdmin.Password);
 
-                        if (isMatch && usuario.Rol == "Administrador")
+                        if (isMatch && usuarioAdmin.Rol == "ADMINISTRADOR")
                         {
                             TxtPw.Text = string.Empty;
                             Txt_Usuario.Text = string.Empty;
@@ -97,7 +97,7 @@ namespace PedidoXperto.ChildForms
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
-                Enter.Focus();
+                Enter_Click(sender, e);
             }
         }
 

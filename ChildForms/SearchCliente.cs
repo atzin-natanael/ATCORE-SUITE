@@ -15,9 +15,11 @@ namespace PedidoXperto.ChildForms
 {
     public partial class SearchCliente : Form
     {
-        public SearchCliente()
+        public SearchCliente(string ClienteName)
         {
             InitializeComponent();
+            TxtNombre.Text = ClienteName;
+            Buscar_Click(null, EventArgs.Empty);
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -105,6 +107,7 @@ namespace PedidoXperto.ChildForms
                 // Assuming you want to select the row that is currently focused/selected
                 if (TablaClientes.CurrentRow != null)
                 {
+                    GlobalSettings.Instance.ClaveCliente = TablaClientes.CurrentRow.Cells[0].Value.ToString();
                     DataGridViewRow row = TablaClientes.CurrentRow;
                     CrearCliente nuevocliente = new CrearCliente(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString());
 

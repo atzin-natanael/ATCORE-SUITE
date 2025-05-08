@@ -17,6 +17,8 @@ namespace PedidoXperto.ChildClases
         public string Pw { get; set; }
         public List<string> Config { get; set; }
         public string Name { get; set; }
+        public string ClaveCliente { get; set; }
+
         public decimal Contenido { get; set; }
         public string filepath { get; set; }
         public bool editandoclave { get; set; }
