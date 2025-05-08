@@ -152,7 +152,7 @@ namespace PedidoXperto.ChildForms
                     {
                         // Comprobar si la contraseña ingresada coincide con el hash almacenado
                         bool isMatch = BCrypt.Net.BCrypt.Verify(TxtPw.Text, usuario.Password);
-                        
+
                         if (isMatch)
                         {
                             var rolActual = roles.FindOne(r => r.RolNombre == usuario.Rol);
@@ -203,5 +203,13 @@ namespace PedidoXperto.ChildForms
             }
         }
 
+        private void Txt_Usuario_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                TxtPw.Focus();
+            }
+        }
     }
 }

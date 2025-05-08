@@ -137,5 +137,22 @@ namespace PedidoXperto.ChildForms
         {
             this.Close();
         }
+
+        private void Txt_Usuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                TxtPw.Focus();
+                TxtPw.Select(0, TxtPw.TextLength);
+            }
+        }
+
+        private void TxtPw_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Enter_Click(sender, e);
+            }
+        }
     }
 }

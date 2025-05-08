@@ -151,6 +151,7 @@
             Txt_Usuario.Name = "Txt_Usuario";
             Txt_Usuario.Size = new Size(295, 27);
             Txt_Usuario.TabIndex = 1;
+            Txt_Usuario.KeyDown += Txt_Usuario_KeyDown_1;
             // 
             // Login
             // 

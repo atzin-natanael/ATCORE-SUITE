@@ -48,6 +48,7 @@
             Txt_Usuario.Name = "Txt_Usuario";
             Txt_Usuario.Size = new Size(295, 26);
             Txt_Usuario.TabIndex = 11;
+            Txt_Usuario.KeyDown += Txt_Usuario_KeyDown;
             // 
             // panelTop
             // 
@@ -132,6 +133,7 @@
             TxtPw.Size = new Size(295, 26);
             TxtPw.TabIndex = 12;
             TxtPw.UseSystemPasswordChar = true;
+            TxtPw.KeyDown += TxtPw_KeyDown;
             // 
             // label2
             // 
