@@ -35,7 +35,7 @@ namespace ProyectoXperto
                 GlobalSettings.Instance.Direccion = GlobalSettings.Instance.Config[2];
                 GlobalSettings.Instance.User = GlobalSettings.Instance.Config[3];
                 GlobalSettings.Instance.Pw = GlobalSettings.Instance.Config[4];
-                GlobalSettings.Instance.NgrokGateWay = GlobalSettings.Instance.Config[5];
+                //GlobalSettings.Instance.NgrokGateWay = GlobalSettings.Instance.Config[5];
 
                 GlobalSettings.Instance.StringConnection =
                     "User=" + GlobalSettings.Instance.User + ";" +
@@ -270,6 +270,8 @@ namespace ProyectoXperto
 
             openChild(formCrearPedido);
             HideSubmenu();
+            Title1.Visible = true;
+            Title2.Visible = true;
             Ocultar();
         }
 
@@ -330,5 +332,9 @@ namespace ProyectoXperto
             Ocultar();
         }
 
+        private void ImageMain_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

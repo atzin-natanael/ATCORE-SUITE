@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             label1 = new Label();
             label2 = new Label();
             TxtPw = new TextBox();
@@ -37,7 +38,9 @@
             panelTop = new Panel();
             label3 = new Label();
             Txt_Usuario = new TextBox();
+            pictureBox1 = new PictureBox();
             panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -122,6 +125,7 @@
             // 
             // panelTop
             // 
+            panelTop.Controls.Add(pictureBox1);
             panelTop.Controls.Add(label3);
             panelTop.Controls.Add(Exit);
             panelTop.Cursor = Cursors.Hand;
@@ -137,11 +141,11 @@
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(185, 19);
+            label3.Location = new Point(273, 19);
             label3.Name = "label3";
-            label3.Size = new Size(236, 24);
+            label3.Size = new Size(77, 24);
             label3.TabIndex = 0;
-            label3.Text = "LOGIN PEDIDOXPERTO";
+            label3.Text = "LOGIN";
             label3.MouseDown += label3_MouseDown;
             // 
             // Txt_Usuario
@@ -152,6 +156,16 @@
             Txt_Usuario.Size = new Size(295, 27);
             Txt_Usuario.TabIndex = 1;
             Txt_Usuario.KeyDown += Txt_Usuario_KeyDown_1;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(3, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(97, 57);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
             // 
             // Login
             // 
@@ -174,6 +188,7 @@
             Text = "Login";
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -189,5 +204,6 @@
         private Panel panelTop;
         private Label label3;
         private TextBox Txt_Usuario;
+        private PictureBox pictureBox1;
     }
 }

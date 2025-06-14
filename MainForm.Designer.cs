@@ -31,11 +31,15 @@ namespace ProyectoXperto
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             Toppanel = new Panel();
+            Title2 = new Label();
             LogOut = new Label();
             LbUsuario = new Label();
-            label1 = new Label();
+            Title1 = new Label();
+            pictureBox1 = new PictureBox();
             Leftpanel = new Panel();
+            pictureBox2 = new PictureBox();
             SubPanelMenuAdmin = new Panel();
             BtnRoles = new Button();
             BtnUsuarios = new Button();
@@ -50,7 +54,9 @@ namespace ProyectoXperto
             CompletePanel = new Panel();
             Primarypanel = new Panel();
             Toppanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             Leftpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SubPanelMenuAdmin.SuspendLayout();
             SubpanelMenuPedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ImageMain).BeginInit();
@@ -60,15 +66,29 @@ namespace ProyectoXperto
             // 
             // Toppanel
             // 
-            Toppanel.BackColor = Color.FromArgb(60, 60, 60);
+            Toppanel.BackColor = Color.FromArgb(15, 15, 15);
+            Toppanel.Controls.Add(Title2);
             Toppanel.Controls.Add(LogOut);
             Toppanel.Controls.Add(LbUsuario);
-            Toppanel.Controls.Add(label1);
+            Toppanel.Controls.Add(Title1);
             Toppanel.Dock = DockStyle.Top;
             Toppanel.Location = new Point(0, 0);
             Toppanel.Name = "Toppanel";
             Toppanel.Size = new Size(1344, 58);
             Toppanel.TabIndex = 0;
+            // 
+            // Title2
+            // 
+            Title2.Anchor = AnchorStyles.None;
+            Title2.AutoSize = true;
+            Title2.Font = new Font("Century Schoolbook", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Title2.ForeColor = Color.Red;
+            Title2.Location = new Point(716, 12);
+            Title2.Name = "Title2";
+            Title2.Size = new Size(95, 30);
+            Title2.TabIndex = 3;
+            Title2.Text = "SUITE";
+            Title2.Visible = false;
             // 
             // LogOut
             // 
@@ -97,21 +117,36 @@ namespace ProyectoXperto
             LbUsuario.TabIndex = 1;
             LbUsuario.TextAlign = ContentAlignment.TopRight;
             // 
-            // label1
+            // Title1
             // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(606, 3);
-            label1.Name = "label1";
-            label1.Size = new Size(170, 28);
-            label1.TabIndex = 0;
-            label1.Text = "PedidoXperto";
+            Title1.Anchor = AnchorStyles.None;
+            Title1.AutoSize = true;
+            Title1.Font = new Font("Century Schoolbook", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Title1.ForeColor = Color.White;
+            Title1.Location = new Point(588, 12);
+            Title1.Name = "Title1";
+            Title1.Size = new Size(133, 30);
+            Title1.TabIndex = 0;
+            Title1.Text = "AT-CORE";
+            Title1.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Bottom;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 773);
+            pictureBox1.MaximumSize = new Size(466, 366);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(240, 46);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // Leftpanel
             // 
-            Leftpanel.BackColor = Color.FromArgb(60, 60, 60);
+            Leftpanel.BackColor = Color.FromArgb(50, 50, 50);
+            Leftpanel.Controls.Add(pictureBox2);
+            Leftpanel.Controls.Add(pictureBox1);
             Leftpanel.Controls.Add(SubPanelMenuAdmin);
             Leftpanel.Controls.Add(BtnAdministrador);
             Leftpanel.Controls.Add(Hide);
@@ -124,6 +159,18 @@ namespace ProyectoXperto
             Leftpanel.TabIndex = 1;
             Leftpanel.MouseEnter += Leftpanel_MouseEnter;
             Leftpanel.MouseLeave += Leftpanel_MouseLeave;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Dock = DockStyle.Bottom;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(0, 607);
+            pictureBox2.MaximumSize = new Size(466, 366);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(240, 166);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 3;
+            pictureBox2.TabStop = false;
             // 
             // SubPanelMenuAdmin
             // 
@@ -173,7 +220,7 @@ namespace ProyectoXperto
             // 
             // BtnAdministrador
             // 
-            BtnAdministrador.BackColor = Color.FromArgb(60, 60, 60);
+            BtnAdministrador.BackColor = Color.FromArgb(50, 50, 50);
             BtnAdministrador.Cursor = Cursors.Hand;
             BtnAdministrador.Dock = DockStyle.Top;
             BtnAdministrador.FlatAppearance.BorderSize = 0;
@@ -257,7 +304,7 @@ namespace ProyectoXperto
             // 
             // Btnpedido
             // 
-            Btnpedido.BackColor = Color.FromArgb(60, 60, 60);
+            Btnpedido.BackColor = Color.FromArgb(50, 50, 50);
             Btnpedido.Cursor = Cursors.Hand;
             Btnpedido.Dock = DockStyle.Top;
             Btnpedido.FlatAppearance.BorderSize = 0;
@@ -279,14 +326,15 @@ namespace ProyectoXperto
             // ImageMain
             // 
             ImageMain.Anchor = AnchorStyles.None;
-            ImageMain.Image = ResourcesXperto.Logo;
-            ImageMain.Location = new Point(466, 243);
+            ImageMain.Image = (Image)resources.GetObject("ImageMain.Image");
+            ImageMain.Location = new Point(472, 244);
             ImageMain.MaximumSize = new Size(466, 366);
             ImageMain.Name = "ImageMain";
             ImageMain.Size = new Size(466, 366);
-            ImageMain.SizeMode = PictureBoxSizeMode.StretchImage;
+            ImageMain.SizeMode = PictureBoxSizeMode.Zoom;
             ImageMain.TabIndex = 0;
             ImageMain.TabStop = false;
+            ImageMain.Click += ImageMain_Click;
             // 
             // collapseTimer
             // 
@@ -305,7 +353,7 @@ namespace ProyectoXperto
             // 
             // Primarypanel
             // 
-            Primarypanel.BackColor = Color.Beige;
+            Primarypanel.BackColor = Color.FromArgb(15, 15, 15);
             Primarypanel.Controls.Add(ImageMain);
             Primarypanel.Dock = DockStyle.Fill;
             Primarypanel.Location = new Point(0, 58);
@@ -320,6 +368,7 @@ namespace ProyectoXperto
             ClientSize = new Size(1584, 861);
             Controls.Add(CompletePanel);
             Controls.Add(Leftpanel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1600, 900);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -327,7 +376,9 @@ namespace ProyectoXperto
             WindowState = FormWindowState.Maximized;
             Toppanel.ResumeLayout(false);
             Toppanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             Leftpanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             SubPanelMenuAdmin.ResumeLayout(false);
             SubpanelMenuPedido.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ImageMain).EndInit();
@@ -339,7 +390,7 @@ namespace ProyectoXperto
         #endregion
 
         private Panel Toppanel;
-        private Label label1;
+        private Label Title1;
         private Panel Leftpanel;
         private PictureBox ImageMain;
         private Button Btnpedido;
@@ -356,5 +407,8 @@ namespace ProyectoXperto
         public Button BtnNuevoPedido;
         public Button BtnUsuarios;
         public Button BtnRoles;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private Label Title2;
     }
 }
