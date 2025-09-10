@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PedidoXperto.ChildForms
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class Mensaje : Form
     {
@@ -32,13 +32,14 @@ namespace PedidoXperto.ChildForms
                 LblTitulo.Text = "Nota";
             }
             else if (valor == "nota2")
+
             {
                 LblTitulo.Text = "Nota";
                 //label1.location = new point(83, 54);
             }
             else if (valor == "existencia")
                 LblTitulo.Text = "Existencia";
-            richTextBox1.Text = mensaje;
+            Texto.Text = mensaje;
         }
 
         private void Btn_Aceptar_Click(object sender, EventArgs e)

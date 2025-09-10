@@ -1,9 +1,9 @@
 ﻿using System.Runtime.InteropServices;
 using FirebirdSql.Data.FirebirdClient;
-using PedidoXperto.ChildClases;
-using PedidoXperto.Logic;
+using ATCORE_SUITE.ChildClases;
+using ATCORE_SUITE.Logic;
 
-namespace PedidoXperto.ChildForms
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class SearchMenu : Form
     {

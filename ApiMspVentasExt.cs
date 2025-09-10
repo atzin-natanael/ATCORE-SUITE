@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace ApisMicrosip
+namespace ATCORE_SUITE
 {
     public class ApiMspVentasExt
     {
@@ -55,21 +55,21 @@ namespace ApisMicrosip
 
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
         public static extern int NuevoPedido(string Fecha, string Folio, int ClienteId, int DirConsigId, int AlmacenId,
-          string FechaEntrega, string TipoDscto, Double  Descuento, string OrdenCompra, string  Descripcion,
+          string FechaEntrega, string TipoDscto, double  Descuento, string OrdenCompra, string  Descripcion,
           int VendedorId, int ImptoSustituidoId, int ImptoSustitutoId, int MonedaId);
         
         //  function RenglonPedido(ArticuloId: Integer; Unidades, PrecioUnitario,
         //    PctjeDscto: Double ; Notas: Pchar): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
-        public static extern int RenglonPedido(int ArticuloId, Double  Unidades, 
-          Double  PrecioUnitario, Double  PctjeDscto, String Notas);
+        public static extern int RenglonPedido(int ArticuloId, double  Unidades, 
+          double  PrecioUnitario, double  PctjeDscto, string Notas);
 
 
         // function RenglonPedidoDesctos(ArticuloId: Integer; Unidades, PrecioUnitario,
         //  PctjeDsctoCli, PctjeDsctoVol, PctjeDsctoPromo: Double; Notas: Pchar): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
-        public static extern int RenglonPedidoDesctos(int ArticuloId, Double Unidades,
-          Double PrecioUnitario, Double PctjeDsctoCli, Double PctjeDsctoVol, Double PctjeDsctoPromo, String Notas);    
+        public static extern int RenglonPedidoDesctos(int ArticuloId, double Unidades,
+          double PrecioUnitario, double PctjeDsctoCli, double PctjeDsctoVol, double PctjeDsctoPromo, string Notas);    
         
         //  function AplicaPedido: Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
@@ -90,11 +90,11 @@ namespace ApisMicrosip
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
         public static extern int NuevaFactura(string Fecha, string Folio,
                                 int ClienteId, int DirConsigId, int AlmacenId,
-                                string TipoDscto, Double Descuento,
+                                string TipoDscto, double Descuento,
                                 string OrdenCompra, string Descripcion,
-                                Double Fletes, Double OtrosCargos, Double PctjeComis,
+                                double Fletes, double OtrosCargos, double PctjeComis,
                                 int CondPagoId, int VendedorId, int ImptoSustituidoId, int ImptoSustitutoId,
-								Double ImporteCobro, string DescripcionCobro, int PLHandle);
+								double ImporteCobro, string DescripcionCobro, int PLHandle);
 
 		//  function DirClienteFactura(DirCliId: Integer): Integer; stdcall;
 		[DllImport("ApiMicrosip.dll", SetLastError = true)]
@@ -107,8 +107,8 @@ namespace ApisMicrosip
 		//  function RenglonFactura(ArticuloId: Integer; Unidades, PrecioUnitario,
         //                          PctjeDscto: Double ; Notas: Pchar): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
-        public static extern int RenglonFactura(int ArticuloId, Double Unidades, Double PrecioUnitario,
-                                 Double PctjeDscto, string Notas);
+        public static extern int RenglonFactura(int ArticuloId, double Unidades, double PrecioUnitario,
+                                 double PctjeDscto, string Notas);
 
         //  function RenglonFacturaSeries(ClaveSerie: PChar): Integer; stdcall;
 		[DllImport("ApiMicrosip.dll", SetLastError = true)]
@@ -116,7 +116,7 @@ namespace ApisMicrosip
 
         //  function RenglonFacturaLotes(ClaveLote: PChar; Unidades: Double ): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
-        public static extern int RenglonFacturaLotes(string ClaveLote, Double Unidades);
+        public static extern int RenglonFacturaLotes(string ClaveLote, double Unidades);
 
         //  function RenglonFacturaTercero(TerceroId: Integer): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]

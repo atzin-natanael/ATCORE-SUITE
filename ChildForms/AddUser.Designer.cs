@@ -1,4 +1,4 @@
-﻿namespace PedidoXperto.ChildForms
+﻿namespace ATCORE_SUITE.ChildForms
 {
     partial class AddUser
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUser));
             Txt_Usuario = new TextBox();
             panelTop = new Panel();
             label3 = new Label();
@@ -45,8 +46,10 @@
             // 
             // Txt_Usuario
             // 
+            Txt_Usuario.BorderStyle = BorderStyle.FixedSingle;
             Txt_Usuario.CharacterCasing = CharacterCasing.Upper;
-            Txt_Usuario.Font = new Font("Century Gothic", 11.25F);
+            Txt_Usuario.Font = new Font("Microsoft Sans Serif", 12F);
+            Txt_Usuario.ForeColor = Color.Black;
             Txt_Usuario.Location = new Point(163, 51);
             Txt_Usuario.Name = "Txt_Usuario";
             Txt_Usuario.Size = new Size(295, 26);
@@ -55,7 +58,7 @@
             // 
             // panelTop
             // 
-            panelTop.BackColor = Color.FromArgb(60, 60, 60);
+            panelTop.BackColor = Color.FromArgb(50, 50, 50);
             panelTop.Controls.Add(label3);
             panelTop.Controls.Add(Exit);
             panelTop.Cursor = Cursors.Hand;
@@ -69,52 +72,56 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(218, 2);
+            label3.Location = new Point(197, 10);
             label3.Name = "label3";
-            label3.Size = new Size(197, 22);
+            label3.Size = new Size(222, 24);
             label3.TabIndex = 0;
             label3.Text = "REGISTRAR USUARIO";
             label3.MouseDown += label3_MouseDown;
             // 
             // Exit
             // 
-            Exit.Anchor = AnchorStyles.Top;
-            Exit.BackColor = SystemColors.ActiveBorder;
+            Exit.BackColor = Color.FromArgb(50, 50, 50);
             Exit.Cursor = Cursors.Hand;
+            Exit.Dock = DockStyle.Right;
             Exit.FlatAppearance.BorderSize = 0;
+            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
             Exit.FlatStyle = FlatStyle.Flat;
             Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Exit.ForeColor = Color.Black;
+            Exit.Image = (Image)resources.GetObject("Exit.Image");
             Exit.Location = new Point(542, 0);
             Exit.Name = "Exit";
-            Exit.Size = new Size(64, 27);
+            Exit.Size = new Size(64, 44);
             Exit.TabIndex = 6;
-            Exit.Text = "Salir";
             Exit.UseVisualStyleBackColor = false;
             Exit.Click += Exit_Click;
             // 
             // Enter
             // 
             Enter.Anchor = AnchorStyles.Top;
-            Enter.BackColor = SystemColors.ActiveBorder;
+            Enter.BackColor = Color.FromArgb(50, 50, 50);
             Enter.Cursor = Cursors.Hand;
             Enter.FlatAppearance.BorderSize = 0;
             Enter.FlatStyle = FlatStyle.Flat;
-            Enter.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(233, 246);
+            Enter.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Enter.ForeColor = Color.White;
+            Enter.Location = new Point(236, 246);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
             Enter.TabIndex = 5;
             Enter.Text = "Ingresar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Enter_Click;
+            Enter.MouseEnter += Enter_MouseEnter;
+            Enter.MouseLeave += Enter_MouseLeave;
             // 
             // TxtPw
             // 
-            TxtPw.Font = new Font("Century Gothic", 11.25F);
+            TxtPw.BorderStyle = BorderStyle.FixedSingle;
+            TxtPw.Font = new Font("Microsoft Sans Serif", 12F);
             TxtPw.Location = new Point(163, 98);
             TxtPw.Name = "TxtPw";
             TxtPw.Size = new Size(295, 26);
@@ -125,40 +132,41 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 11.25F);
+            label2.Font = new Font("Microsoft Sans Serif", 12F);
             label2.ForeColor = Color.White;
             label2.Location = new Point(51, 54);
             label2.Name = "label2";
-            label2.Size = new Size(63, 20);
+            label2.Size = new Size(64, 20);
             label2.TabIndex = 0;
             label2.Text = "Usuario";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 11.25F);
+            label1.Font = new Font("Microsoft Sans Serif", 12F);
             label1.ForeColor = Color.White;
             label1.Location = new Point(51, 101);
             label1.Name = "label1";
-            label1.Size = new Size(95, 20);
+            label1.Size = new Size(92, 20);
             label1.TabIndex = 0;
             label1.Text = "Contraseña";
             // 
             // Rol
             // 
             Rol.AutoSize = true;
-            Rol.Font = new Font("Century Gothic", 11.25F);
+            Rol.Font = new Font("Microsoft Sans Serif", 12F);
             Rol.ForeColor = Color.White;
             Rol.Location = new Point(51, 204);
             Rol.Name = "Rol";
-            Rol.Size = new Size(31, 20);
+            Rol.Size = new Size(33, 20);
             Rol.TabIndex = 0;
             Rol.Text = "Rol";
             // 
             // Cb_Rol
             // 
             Cb_Rol.DropDownStyle = ComboBoxStyle.DropDownList;
-            Cb_Rol.Font = new Font("Century Gothic", 11.25F);
+            Cb_Rol.FlatStyle = FlatStyle.Flat;
+            Cb_Rol.Font = new Font("Microsoft Sans Serif", 12F);
             Cb_Rol.FormattingEnabled = true;
             Cb_Rol.Location = new Point(163, 196);
             Cb_Rol.Name = "Cb_Rol";
@@ -168,7 +176,8 @@
             // 
             // TxtPw2
             // 
-            TxtPw2.Font = new Font("Century Gothic", 11.25F);
+            TxtPw2.BorderStyle = BorderStyle.FixedSingle;
+            TxtPw2.Font = new Font("Microsoft Sans Serif", 12F);
             TxtPw2.Location = new Point(163, 148);
             TxtPw2.Name = "TxtPw2";
             TxtPw2.Size = new Size(295, 26);
@@ -179,11 +188,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 11.25F);
+            label4.Font = new Font("Microsoft Sans Serif", 12F);
             label4.ForeColor = Color.White;
             label4.Location = new Point(51, 151);
             label4.Name = "label4";
-            label4.Size = new Size(81, 20);
+            label4.Size = new Size(78, 20);
             label4.TabIndex = 0;
             label4.Text = "Confirmar";
             // 
@@ -191,7 +200,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(60, 60, 60);
+            BackColor = Color.FromArgb(120, 120, 120);
             ClientSize = new Size(606, 308);
             Controls.Add(TxtPw2);
             Controls.Add(label4);
@@ -214,8 +223,6 @@
         }
 
         #endregion
-
-        private TextBox Txt_Usuario;
         private Panel panelTop;
         private Label label3;
         private Button Exit;
@@ -227,5 +234,6 @@
         private ComboBox Cb_Rol;
         private TextBox TxtPw2;
         private Label label4;
+        public TextBox Txt_Usuario;
     }
 }

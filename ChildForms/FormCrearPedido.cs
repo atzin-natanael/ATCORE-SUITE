@@ -1,13 +1,12 @@
 ﻿using System.Drawing.Drawing2D;
 using System.Text;
-using ApisMicrosip;
 using FirebirdSql.Data.FirebirdClient;
-using PedidoXperto.ChildClases;
-using PedidoXperto.Logic;
-using static PedidoXperto.ChildForms.SearchCliente;
-using ApiBas = ApisMicrosip.ApiMspBasicaExt;
-using ApiVen = ApisMicrosip.ApiMspVentasExt;
-namespace PedidoXperto.ChildForms
+using ATCORE_SUITE.ChildClases;
+using ATCORE_SUITE.Logic;
+using static ATCORE_SUITE.ChildForms.SearchCliente;
+using ApiBas = ATCORE_SUITE.ApiMspBasicaExt;
+using ApiVen = ATCORE_SUITE.ApiMspVentasExt;
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class FormCrearPedido : Form
     {
@@ -113,37 +112,14 @@ namespace PedidoXperto.ChildForms
                 ActualizarPrecios();
             }
         }
-        private int ConectaBD()
-        {
-
-            ApiBas.SetErrorHandling(0, 0);
-            if (GlobalSettings.Instance.Bd == 0)
-                GlobalSettings.Instance.Bd = ApiBas.NewDB();
-            //Objeto transaccion
-            GlobalSettings.Instance.Trn = ApiBas.NewTrn(GlobalSettings.Instance.Bd, 3);
-            string path = GlobalSettings.Instance.Ip + ":" + GlobalSettings.Instance.Direccion;
-            int conecta = ApiBas.DBConnect(GlobalSettings.Instance.Bd, path, GlobalSettings.Instance.User, GlobalSettings.Instance.Pw);
-            StringBuilder obtieneError = new StringBuilder(1000);
-            int codigoError = ApiBas.GetLastErrorMessage(obtieneError);
-            String mensajeError = codigoError.ToString();
-            if (codigoError > 0)
-            {
-                MessageBox.Show(obtieneError.ToString());
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-
-        }
+       
         private bool InvalidText(string codigo, int minLength = 3)
         {
             return string.IsNullOrWhiteSpace(codigo) || codigo.Length < minLength;
         }
         private void Save_Click(object sender, EventArgs e)
         {
-            int conectar = ConectaBD();
+            int conectar = GetFireBirdValue.ConectaBD();
             if (conectar != 1)
             {
                 MessageBox.Show("Error al conectar a la base de datos", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -152,11 +128,10 @@ namespace PedidoXperto.ChildForms
             ApiMspBasicaExt.DBConnected(GlobalSettings.Instance.Bd);
             ApiMspVentasExt.SetDBVentas(GlobalSettings.Instance.Bd);
             string cliente_id = "";
-            GetFireBirdValue getFireBirdValue = new GetFireBirdValue();
             if (txtBox_clienteId.Text != string.Empty)
             {
                 string query = "SELECT CLIENTE_ID FROM CLAVES_CLIENTES WHERE CLAVE_CLIENTE = '" + txtBox_clienteId.Text + "'";
-                cliente_id = getFireBirdValue.GetValue(query);
+                cliente_id = GetFireBirdValue.GetValue(query);
             }
             string vendedor_id = "";
 
@@ -174,7 +149,7 @@ namespace PedidoXperto.ChildForms
                     break;
                 }
                 string query = "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + Tabla.Rows[k].Cells[0].Value.ToString() + "'";
-                string articulo_id = getFireBirdValue.GetValue(query);
+                string articulo_id = GetFireBirdValue.GetValue(query);
                 ApiMspVentasExt.RenglonPedido(int.Parse(articulo_id), double.Parse(Tabla.Rows[k].Cells[2].Value.ToString()), double.Parse(Tabla.Rows[k].Cells[3].Value.ToString()), double.Parse(Tabla.Rows[k].Cells[4].Value.ToString()), "");
             }
             if (ApiMspVentasExt.AplicaPedido() != 0)
@@ -224,7 +199,7 @@ namespace PedidoXperto.ChildForms
                 }
             }
         }
-        
+
         /// <summary>
         /// Calcula los totales de la tabla de artículos, incluyendo precio total, descuento total e IVA total.
         /// </summary>
@@ -242,7 +217,7 @@ namespace PedidoXperto.ChildForms
 
             for (int i = 0; i < Tabla.Rows.Count; i++)//Por cada articulo
             {
-                if (Tabla.Rows[i].Cells[(int)ColTabla.Total].Value == null || 
+                if (Tabla.Rows[i].Cells[(int)ColTabla.Total].Value == null ||
                 Tabla.Rows[i].Cells[(int)ColTabla.Cantidad].Value == null ||
                 Tabla.Rows[i].Cells[(int)ColTabla.Precio].Value == null
                 ) continue; //Valor nulo? no deberia ser posible
@@ -363,8 +338,7 @@ namespace PedidoXperto.ChildForms
         /// <param name="_articulo_id"></param>
         private decimal CalcularDescuentoClave(string clavearticulo)
         {
-            GetFireBirdValue bridge = new();
-            string _articulo_id = bridge.GetValue("SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + clavearticulo + "'");
+            string _articulo_id = GetFireBirdValue.GetValue("SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + clavearticulo + "'");
             decimal _descuentoPorArticulo = decimal.Parse(DataBridge.GetDiscountByArticle(_articulo_id) ?? "-1");
 
             // Calcular el descuento total efectivo usando la fórmula
@@ -437,7 +411,7 @@ namespace PedidoXperto.ChildForms
                 if (Tabla.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value != null)
                 {
                     codigodebarras = Tabla.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value.ToString();
-                    cantidadcodigobarras = bridge.GetValue("SELECT CONTENIDO_EMPAQUE FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + codigodebarras + "'");
+                    cantidadcodigobarras = GetFireBirdValue.GetValue("SELECT CONTENIDO_EMPAQUE FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + codigodebarras + "'");
 
                 }
                 string Clave_Principal = DatosArticulo[0];
@@ -722,6 +696,11 @@ namespace PedidoXperto.ChildForms
                 e.SuppressKeyPress = true;
                 txtBox_clienteId.Focus();
             }
+        }
+
+        private void FormCrearPedido_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }

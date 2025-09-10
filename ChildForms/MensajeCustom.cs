@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PedidoXperto.ChildClases;
+using ATCORE_SUITE.ChildClases;
 
-namespace PedidoXperto.ChildForms
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class MensajeCustom : Form
     {
@@ -55,6 +55,27 @@ namespace PedidoXperto.ChildForms
             ControlAcceso control = new ControlAcceso();
             control.EnviarVariableEvent3 += new ControlAcceso.EnviarVariableDelegate3(ejecutar);
             control.ShowDialog();
+        }
+
+        private void Solicitar_MouseEnter(object sender, EventArgs e)
+        {
+            Solicitar.ForeColor = System.Drawing.Color.Yellow;
+        }
+
+        private void Solicitar_MouseLeave(object sender, EventArgs e)
+        {
+            Solicitar.ForeColor = System.Drawing.Color.White;
+        }
+
+        private void Back_MouseEnter(object sender, EventArgs e)
+        {
+            Back.ForeColor = System.Drawing.Color.Yellow;
+
+        }
+
+        private void Back_MouseLeave(object sender, EventArgs e)
+        {
+            Back.ForeColor = System.Drawing.Color.White;
         }
     }
 }

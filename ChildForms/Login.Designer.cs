@@ -1,4 +1,4 @@
-﻿namespace PedidoXperto.ChildForms
+﻿namespace ATCORE_SUITE.ChildForms
 {
     partial class Login
     {
@@ -36,9 +36,10 @@
             Exit = new Button();
             ForgetPw = new Label();
             panelTop = new Panel();
-            label3 = new Label();
-            Txt_Usuario = new TextBox();
+            label4 = new Label();
             pictureBox1 = new PictureBox();
+            label3 = new Label();
+            Cb_Usuario = new ComboBox();
             panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -75,37 +76,37 @@
             // Enter
             // 
             Enter.Anchor = AnchorStyles.Top;
-            Enter.BackColor = SystemColors.ActiveBorder;
+            Enter.BackColor = Color.FromArgb(50, 50, 50);
             Enter.Cursor = Cursors.Hand;
             Enter.FlatAppearance.BorderSize = 0;
-            Enter.FlatAppearance.MouseDownBackColor = Color.Gray;
-            Enter.FlatAppearance.MouseOverBackColor = Color.Gray;
             Enter.FlatStyle = FlatStyle.Flat;
-            Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(233, 260);
+            Enter.ForeColor = Color.White;
+            Enter.Location = new Point(215, 248);
             Enter.Name = "Enter";
-            Enter.Size = new Size(141, 50);
+            Enter.Size = new Size(177, 60);
             Enter.TabIndex = 3;
             Enter.Text = "Ingresar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Enter_Click;
+            Enter.MouseEnter += Enter_MouseEnter;
+            Enter.MouseLeave += Enter_MouseLeave;
             // 
             // Exit
             // 
-            Exit.Anchor = AnchorStyles.Top;
-            Exit.BackColor = SystemColors.ActiveBorder;
+            Exit.BackColor = Color.FromArgb(50, 50, 50);
             Exit.Cursor = Cursors.Hand;
+            Exit.Dock = DockStyle.Right;
             Exit.FlatAppearance.BorderSize = 0;
             Exit.FlatAppearance.MouseDownBackColor = Color.Gray;
-            Exit.FlatAppearance.MouseOverBackColor = Color.Gray;
+            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
             Exit.FlatStyle = FlatStyle.Flat;
             Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Exit.ForeColor = Color.Black;
-            Exit.Location = new Point(542, 0);
+            Exit.Image = (Image)resources.GetObject("Exit.Image");
+            Exit.Location = new Point(531, 0);
             Exit.Name = "Exit";
-            Exit.Size = new Size(64, 27);
+            Exit.Size = new Size(75, 63);
             Exit.TabIndex = 4;
-            Exit.Text = "Salir";
             Exit.UseVisualStyleBackColor = false;
             Exit.Click += Exit_Click;
             // 
@@ -125,6 +126,8 @@
             // 
             // panelTop
             // 
+            panelTop.BackColor = Color.FromArgb(50, 50, 50);
+            panelTop.Controls.Add(label4);
             panelTop.Controls.Add(pictureBox1);
             panelTop.Controls.Add(label3);
             panelTop.Controls.Add(Exit);
@@ -135,6 +138,27 @@
             panelTop.Size = new Size(606, 63);
             panelTop.TabIndex = 8;
             panelTop.MouseDown += panelTop_MouseDown;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(145, 19);
+            label4.Name = "label4";
+            label4.Size = new Size(54, 24);
+            label4.TabIndex = 6;
+            label4.Text = "V1.3";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(3, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(136, 57);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
             // 
             // label3
             // 
@@ -148,32 +172,26 @@
             label3.Text = "LOGIN";
             label3.MouseDown += label3_MouseDown;
             // 
-            // Txt_Usuario
+            // Cb_Usuario
             // 
-            Txt_Usuario.CharacterCasing = CharacterCasing.Upper;
-            Txt_Usuario.Location = new Point(168, 91);
-            Txt_Usuario.Name = "Txt_Usuario";
-            Txt_Usuario.Size = new Size(295, 27);
-            Txt_Usuario.TabIndex = 1;
-            Txt_Usuario.KeyDown += Txt_Usuario_KeyDown_1;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(3, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(97, 57);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
+            Cb_Usuario.Anchor = AnchorStyles.None;
+            Cb_Usuario.FlatStyle = FlatStyle.Flat;
+            Cb_Usuario.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Cb_Usuario.FormattingEnabled = true;
+            Cb_Usuario.Location = new Point(168, 91);
+            Cb_Usuario.Name = "Cb_Usuario";
+            Cb_Usuario.Size = new Size(295, 27);
+            Cb_Usuario.TabIndex = 17;
+            Cb_Usuario.KeyDown += Cb_Usuario_KeyDown;
+            Cb_Usuario.KeyPress += Cb_Usuario_KeyPress;
             // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(60, 60, 60);
+            BackColor = Color.FromArgb(120, 120, 120);
             ClientSize = new Size(606, 338);
-            Controls.Add(Txt_Usuario);
+            Controls.Add(Cb_Usuario);
             Controls.Add(panelTop);
             Controls.Add(ForgetPw);
             Controls.Add(Enter);
@@ -203,7 +221,8 @@
         private Label ForgetPw;
         private Panel panelTop;
         private Label label3;
-        private TextBox Txt_Usuario;
         private PictureBox pictureBox1;
+        private ComboBox Cb_Usuario;
+        private Label label4;
     }
 }

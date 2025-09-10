@@ -1,4 +1,4 @@
-﻿namespace PedidoXperto.ChildForms
+﻿namespace ATCORE_SUITE.ChildForms
 {
     partial class EditarCodigo
     {
@@ -131,6 +131,7 @@
             // 
             Cantidad.Anchor = AnchorStyles.None;
             Cantidad.Location = new Point(256, 255);
+            Cantidad.Maximum = new decimal(new int[] { 30000, 0, 0, 0 });
             Cantidad.Name = "Cantidad";
             Cantidad.Size = new Size(159, 27);
             Cantidad.TabIndex = 8;
@@ -152,7 +153,7 @@
             LbCodigo.ForeColor = Color.White;
             LbCodigo.Location = new Point(3, 0);
             LbCodigo.Name = "LbCodigo";
-            LbCodigo.Size = new Size(194, 25);
+            LbCodigo.Size = new Size(565, 97);
             LbCodigo.TabIndex = 3;
             LbCodigo.Text = "CANTIDAD DESEADA";
             LbCodigo.TextAlign = ContentAlignment.MiddleCenter;
@@ -174,7 +175,7 @@
             Controls.Add(label1);
             Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "EditarCodigo";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EditarCodigo";

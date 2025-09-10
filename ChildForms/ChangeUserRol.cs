@@ -1,4 +1,8 @@
-﻿using System;
+﻿using ATCORE_SUITE.ChildClases;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using DocumentFormat.OpenXml.Wordprocessing;
+using LiteDB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +12,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DocumentFormat.OpenXml.Wordprocessing;
-using LiteDB;
-using PedidoXperto.ChildClases;
 
-namespace PedidoXperto.ChildForms
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class ChangeUserRol : Form
     {
@@ -30,7 +31,7 @@ namespace PedidoXperto.ChildForms
         }
         public void Cargar()
         {
-            using (var db = new LiteDatabase(@"C:\ConfigDB\USUARIOS_TRASPASOS.db"))
+            using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
             {
                 var coleccion = db.GetCollection<AdminRoles>("ROLES");
                 var listaRoles = coleccion.FindAll().Select(r => r.RolNombre).ToList();
@@ -42,7 +43,7 @@ namespace PedidoXperto.ChildForms
         private void Enter_Click(object sender, EventArgs e)
         {
 
-            using (var db = new LiteDatabase("C:\\ConfigDB\\USUARIOS_TRASPASOS.db"))
+            using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
             {
                 var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
 
@@ -61,6 +62,7 @@ namespace PedidoXperto.ChildForms
                 else
                 {
                     MessageBox.Show("No se encontró el usuario en la base de datos.");
+                    db.Dispose();
                 }
             }
 
@@ -89,6 +91,33 @@ namespace PedidoXperto.ChildForms
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void panelTop_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void label3_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void Exit_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Enter_MouseEnter(object sender, EventArgs e)
+        {
+            Enter.ForeColor = System.Drawing.Color.Yellow;
+        }
+
+        private void Enter_MouseLeave(object sender, EventArgs e)
+        {
+            Enter.ForeColor = System.Drawing.Color.White;
         }
     }
 }

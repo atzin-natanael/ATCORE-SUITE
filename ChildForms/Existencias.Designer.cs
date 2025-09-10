@@ -1,4 +1,4 @@
-﻿namespace PedidoXperto.ChildForms
+﻿namespace ATCORE_SUITE.ChildForms
 {
     partial class Existencias
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Existencias));
             panelTop = new Panel();
             label3 = new Label();
             Exit = new Button();
@@ -42,42 +43,44 @@
             // 
             // panelTop
             // 
+            panelTop.BackColor = Color.FromArgb(50, 50, 50);
             panelTop.Controls.Add(label3);
             panelTop.Controls.Add(Exit);
             panelTop.Cursor = Cursors.Hand;
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(606, 88);
+            panelTop.Size = new Size(606, 59);
             panelTop.TabIndex = 15;
             panelTop.MouseDown += panelTop_MouseDown;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(250, 5);
+            label3.Location = new Point(222, 18);
             label3.Name = "label3";
-            label3.Size = new Size(113, 22);
+            label3.Size = new Size(145, 25);
             label3.TabIndex = 0;
             label3.Text = "EXISTENCIA";
             label3.MouseDown += label3_MouseDown;
             // 
             // Exit
             // 
-            Exit.Anchor = AnchorStyles.Top;
-            Exit.BackColor = SystemColors.ActiveBorder;
+            Exit.BackColor = Color.FromArgb(50, 50, 50);
             Exit.Cursor = Cursors.Hand;
+            Exit.Dock = DockStyle.Right;
             Exit.FlatAppearance.BorderSize = 0;
+            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
             Exit.FlatStyle = FlatStyle.Flat;
             Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Exit.ForeColor = Color.Black;
-            Exit.Location = new Point(542, 0);
+            Exit.Image = (Image)resources.GetObject("Exit.Image");
+            Exit.Location = new Point(511, 0);
             Exit.Name = "Exit";
-            Exit.Size = new Size(64, 27);
+            Exit.Size = new Size(95, 59);
             Exit.TabIndex = 4;
-            Exit.Text = "Salir";
             Exit.UseVisualStyleBackColor = false;
             Exit.Click += Exit_Click;
             // 
@@ -88,7 +91,7 @@
             ExistenciaAlmacen.FlatStyle = FlatStyle.Flat;
             ExistenciaAlmacen.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             ExistenciaAlmacen.ForeColor = Color.White;
-            ExistenciaAlmacen.Location = new Point(345, 132);
+            ExistenciaAlmacen.Location = new Point(335, 169);
             ExistenciaAlmacen.Name = "ExistenciaAlmacen";
             ExistenciaAlmacen.Size = new Size(99, 31);
             ExistenciaAlmacen.TabIndex = 14;
@@ -97,14 +100,15 @@
             // Enter
             // 
             Enter.Anchor = AnchorStyles.Top;
-            Enter.BackColor = SystemColors.ActiveBorder;
+            Enter.BackColor = Color.FromArgb(50, 50, 50);
             Enter.Cursor = Cursors.Hand;
             Enter.FlatAppearance.BorderSize = 0;
             Enter.FlatStyle = FlatStyle.Flat;
-            Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(222, 277);
+            Enter.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Enter.ForeColor = Color.White;
+            Enter.Location = new Point(179, 259);
             Enter.Name = "Enter";
-            Enter.Size = new Size(141, 38);
+            Enter.Size = new Size(210, 47);
             Enter.TabIndex = 13;
             Enter.Text = "Aceptar";
             Enter.UseVisualStyleBackColor = false;
@@ -115,7 +119,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(180, 132);
+            label2.Location = new Point(170, 169);
             label2.Name = "label2";
             label2.Size = new Size(116, 31);
             label2.TabIndex = 9;
@@ -126,7 +130,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(207, 174);
+            label1.Location = new Point(197, 211);
             label1.Name = "label1";
             label1.Size = new Size(89, 31);
             label1.TabIndex = 10;
@@ -138,7 +142,7 @@
             ExistenciaTienda.FlatStyle = FlatStyle.Flat;
             ExistenciaTienda.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold);
             ExistenciaTienda.ForeColor = Color.White;
-            ExistenciaTienda.Location = new Point(345, 174);
+            ExistenciaTienda.Location = new Point(335, 211);
             ExistenciaTienda.Name = "ExistenciaTienda";
             ExistenciaTienda.Size = new Size(99, 25);
             ExistenciaTienda.TabIndex = 16;
@@ -147,11 +151,11 @@
             // Descripcion
             // 
             Descripcion.Anchor = AnchorStyles.None;
-            Descripcion.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Descripcion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Descripcion.ForeColor = Color.White;
-            Descripcion.Location = new Point(12, 33);
+            Descripcion.Location = new Point(0, 62);
             Descripcion.Name = "Descripcion";
-            Descripcion.Size = new Size(582, 83);
+            Descripcion.Size = new Size(606, 94);
             Descripcion.TabIndex = 17;
             Descripcion.TextAlign = ContentAlignment.MiddleCenter;
             Descripcion.MouseDown += Descripcion_MouseDown;
@@ -160,7 +164,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(60, 60, 60);
+            BackColor = Color.FromArgb(120, 120, 120);
             ClientSize = new Size(606, 338);
             Controls.Add(Descripcion);
             Controls.Add(ExistenciaTienda);

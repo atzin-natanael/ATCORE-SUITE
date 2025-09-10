@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LiteDB;
-using PedidoXperto.ChildClases;
+using ATCORE_SUITE.ChildClases;
 
-namespace PedidoXperto.ChildForms
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class AddRol : Form
     {
@@ -22,7 +22,7 @@ namespace PedidoXperto.ChildForms
 
         private void Enter_Click(object sender, EventArgs e)
         {
-            using (var db = new LiteDatabase(@"C:\ConfigDB\USUARIOS_TRASPASOS.db"))
+            using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
             {
                 var coleccion = db.GetCollection<AdminRoles>("ROLES");
 
@@ -30,6 +30,7 @@ namespace PedidoXperto.ChildForms
                 if (string.IsNullOrWhiteSpace(Txt_Rol.Text))
                 {
                     MessageBox.Show("Por favor ingrese un nombre para el nuevo rol.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    db.Dispose();
                     return;
                 }
 
@@ -38,6 +39,7 @@ namespace PedidoXperto.ChildForms
                 if (rolExistente != null)
                 {
                     MessageBox.Show("Ya existe un rol con ese nombre.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Dispose();
                     return;
                 }
 
@@ -56,6 +58,7 @@ namespace PedidoXperto.ChildForms
                 };
 
                 coleccion.Insert(nuevoRol);
+                db.Dispose();
                 MessageBox.Show("Rol agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -80,6 +83,33 @@ namespace PedidoXperto.ChildForms
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void Exit_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void panelTop_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void label3_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void Enter_MouseEnter(object sender, EventArgs e)
+        {
+            Enter.ForeColor = System.Drawing.Color.Yellow;
+        }
+
+        private void Enter_MouseLeave(object sender, EventArgs e)
+        {
+            Enter.ForeColor = System.Drawing.Color.White;
         }
     }
 }

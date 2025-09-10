@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LiteDB;
-using PedidoXperto.ChildClases;
+using ATCORE_SUITE.ChildClases;
 
-namespace PedidoXperto.ChildForms
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class ChangeName : Form
     {
@@ -25,7 +25,7 @@ namespace PedidoXperto.ChildForms
         {
             if (Txt_Usuario2.Text != string.Empty)
             {
-                using (var db = new LiteDatabase("C:\\ConfigDB\\USUARIOS_TRASPASOS.db"))
+                using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
                 {
                     var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
 
@@ -44,6 +44,7 @@ namespace PedidoXperto.ChildForms
                     else
                     {
                         MessageBox.Show("No se encontró el usuario en la base de datos.");
+                        db.Dispose();
                     }
                 }
             }
@@ -90,6 +91,33 @@ namespace PedidoXperto.ChildForms
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void Exit_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void panelTop_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void label3_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void Enter_MouseEnter(object sender, EventArgs e)
+        {
+            Enter.ForeColor = System.Drawing.Color.Yellow;
+        }
+
+        private void Enter_MouseLeave(object sender, EventArgs e)
+        {
+            Enter.ForeColor = System.Drawing.Color.White;
         }
     }
 }

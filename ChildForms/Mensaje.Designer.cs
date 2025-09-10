@@ -1,4 +1,4 @@
-﻿namespace PedidoXperto.ChildForms
+﻿namespace ATCORE_SUITE.ChildForms
 {
     partial class Mensaje
     {
@@ -32,12 +32,13 @@
             LblTitulo = new Label();
             Exit = new Button();
             Btn_Aceptar = new Button();
-            richTextBox1 = new RichTextBox();
+            Texto = new RichTextBox();
             panelTop.SuspendLayout();
             SuspendLayout();
             // 
             // panelTop
             // 
+            panelTop.BackColor = Color.FromArgb(50, 50, 50);
             panelTop.Controls.Add(LblTitulo);
             panelTop.Controls.Add(Exit);
             panelTop.Cursor = Cursors.Hand;
@@ -50,12 +51,13 @@
             // 
             // LblTitulo
             // 
+            LblTitulo.Anchor = AnchorStyles.None;
             LblTitulo.FlatStyle = FlatStyle.Flat;
-            LblTitulo.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LblTitulo.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LblTitulo.ForeColor = Color.White;
-            LblTitulo.Location = new Point(149, 9);
+            LblTitulo.Location = new Point(48, 9);
             LblTitulo.Name = "LblTitulo";
-            LblTitulo.Size = new Size(144, 42);
+            LblTitulo.Size = new Size(349, 42);
             LblTitulo.TabIndex = 5;
             LblTitulo.Text = "label4";
             LblTitulo.TextAlign = ContentAlignment.MiddleCenter;
@@ -82,14 +84,14 @@
             // Btn_Aceptar
             // 
             Btn_Aceptar.Anchor = AnchorStyles.Top;
-            Btn_Aceptar.BackColor = SystemColors.ActiveBorder;
+            Btn_Aceptar.BackColor = Color.FromArgb(50, 50, 50);
             Btn_Aceptar.Cursor = Cursors.Hand;
             Btn_Aceptar.FlatAppearance.BorderSize = 0;
             Btn_Aceptar.FlatAppearance.MouseDownBackColor = Color.Gray;
-            Btn_Aceptar.FlatAppearance.MouseOverBackColor = Color.Gray;
+            Btn_Aceptar.FlatAppearance.MouseOverBackColor = Color.SteelBlue;
             Btn_Aceptar.FlatStyle = FlatStyle.Flat;
-            Btn_Aceptar.ForeColor = Color.Black;
-            Btn_Aceptar.Location = new Point(152, 202);
+            Btn_Aceptar.ForeColor = Color.White;
+            Btn_Aceptar.Location = new Point(155, 189);
             Btn_Aceptar.Name = "Btn_Aceptar";
             Btn_Aceptar.Size = new Size(141, 50);
             Btn_Aceptar.TabIndex = 13;
@@ -97,24 +99,26 @@
             Btn_Aceptar.UseVisualStyleBackColor = false;
             Btn_Aceptar.Click += Btn_Aceptar_Click;
             // 
-            // richTextBox1
+            // Texto
             // 
-            richTextBox1.BackColor = Color.FromArgb(60, 60, 60);
-            richTextBox1.Dock = DockStyle.Top;
-            richTextBox1.ForeColor = Color.White;
-            richTextBox1.Location = new Point(0, 63);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(444, 114);
-            richTextBox1.TabIndex = 16;
-            richTextBox1.Text = "";
+            Texto.Anchor = AnchorStyles.None;
+            Texto.BackColor = Color.FromArgb(120, 120, 120);
+            Texto.BorderStyle = BorderStyle.None;
+            Texto.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Texto.ForeColor = Color.White;
+            Texto.Location = new Point(0, 88);
+            Texto.Name = "Texto";
+            Texto.Size = new Size(444, 95);
+            Texto.TabIndex = 16;
+            Texto.Text = "";
             // 
             // Mensaje
             // 
             AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(60, 60, 60);
-            ClientSize = new Size(444, 274);
-            Controls.Add(richTextBox1);
+            BackColor = Color.FromArgb(120, 120, 120);
+            ClientSize = new Size(444, 251);
+            Controls.Add(Texto);
             Controls.Add(panelTop);
             Controls.Add(Btn_Aceptar);
             Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -134,11 +138,12 @@
         private Label label3;
         private Button Exit;
         private Label ForgetPw;
-        private Button Btn_Aceptar;
         private RichTextBox richTextBox1;
         private TextBox TxtPw;
         private Label label2;
         private Label label1;
         public Label LblTitulo;
+        public Button Btn_Aceptar;
+        public RichTextBox Texto;
     }
 }

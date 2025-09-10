@@ -9,10 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LiteDB;
-using PedidoXperto.ChildClases;
+using ATCORE_SUITE.ChildClases;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace PedidoXperto.ChildForms
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class AddUser : Form
     {
@@ -25,6 +25,7 @@ namespace PedidoXperto.ChildForms
             InitializeComponent();
             Cargar();
             Cb_Rol.SelectedIndex = 0; // Inicialmente no se selecciona ningún rol
+
         }
 
         private void Exit_Click(object sender, EventArgs e)
@@ -33,14 +34,16 @@ namespace PedidoXperto.ChildForms
         }
         public void Cargar()
         {
-            using (var db = new LiteDatabase(@"C:\ConfigDB\USUARIOS_TRASPASOS.db"))
+            using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
             {
                 var coleccion = db.GetCollection<AdminRoles>("ROLES");
                 var listaRoles = coleccion.FindAll().Select(r => r.RolNombre).ToList();
 
                 Cb_Rol.Items.Clear(); // Limpia primero
                 Cb_Rol.Items.AddRange(listaRoles.ToArray());
+                db.Dispose();
             }
+            
         }
         private void Enter_Click(object sender, EventArgs e)
         {
@@ -53,7 +56,7 @@ namespace PedidoXperto.ChildForms
                     string hashedPassword = BCrypt.Net.BCrypt.HashPassword(TxtPw.Text);
 
                     // Abrir la base de datos
-                    using (var db = new LiteDatabase("C:\\ConfigDB\\USUARIOS_TRASPASOS.db"))
+                    using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
                     {
                         var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
 
@@ -64,11 +67,12 @@ namespace PedidoXperto.ChildForms
                         {
                             // Contar el número de usuarios existentes para determinar el próximo ID
                             int nextUserId = usuarios.Count() + 1;  // El próximo ID será el total de usuarios + 1
-
+                            var lastIdUser = usuarios.FindOne(x => x.Id == nextUserId);
+                            int siguiente = int.Parse(lastIdUser.Id.ToString()) + 1;
                             // Crear un nuevo usuario con el ID calculado
                             AdminUsuario nuevoUsuario = new AdminUsuario
                             {
-                                Id = nextUserId,  // Asignar el próximo ID
+                                Id = siguiente,  // Asignar el próximo ID
                                 UsuarioName = Txt_Usuario.Text,
                                 Password = hashedPassword,
                                 Rol = Cb_Rol.Text // Asignamos el rol seleccionado
@@ -78,12 +82,14 @@ namespace PedidoXperto.ChildForms
                             usuarios.Insert(nuevoUsuario);
 
                             MessageBox.Show("Usuario agregado exitosamente");
+                            db.Dispose();
                             this.Close();
                         }
                         else
                         {
                             // Si el usuario ya existe
                             MessageBox.Show("El nombre de usuario ya está registrado.");
+                            db.Dispose();
                         }
                     }
                 }
@@ -149,6 +155,16 @@ namespace PedidoXperto.ChildForms
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void Enter_MouseEnter(object sender, EventArgs e)
+        {
+            Enter.ForeColor = System.Drawing.Color.Yellow;
+        }
+
+        private void Enter_MouseLeave(object sender, EventArgs e)
+        {
+            Enter.ForeColor = System.Drawing.Color.White;
         }
     }
 }

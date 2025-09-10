@@ -1,11 +1,11 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
-using PedidoXperto.ChildClases;
+using ATCORE_SUITE.ChildClases;
 using System.Data;
 using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
 
-namespace PedidoXperto.Logic
+namespace ATCORE_SUITE.Logic
 {
     public class DataBridge
     {

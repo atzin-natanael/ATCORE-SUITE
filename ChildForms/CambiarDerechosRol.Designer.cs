@@ -1,4 +1,4 @@
-﻿namespace PedidoXperto.ChildForms
+﻿namespace ATCORE_SUITE.ChildForms
 {
     partial class CambiarDerechosRol
     {
@@ -28,119 +28,124 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panelTop = new Panel();
-            label3 = new Label();
-            Exit = new Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CambiarDerechosRol));
             Enter = new Button();
             label2 = new Label();
             Txt_Rol = new TextBox();
             CheckList = new CheckedListBox();
+            panelTop = new Panel();
+            label3 = new Label();
+            Exit = new Button();
             panelTop.SuspendLayout();
             SuspendLayout();
-            // 
-            // panelTop
-            // 
-            panelTop.Controls.Add(label3);
-            panelTop.Controls.Add(Exit);
-            panelTop.Cursor = Cursors.Hand;
-            panelTop.Dock = DockStyle.Top;
-            panelTop.Location = new Point(0, 0);
-            panelTop.Name = "panelTop";
-            panelTop.Size = new Size(606, 63);
-            panelTop.TabIndex = 15;
-            panelTop.MouseDown += panelTop_MouseDown;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(185, 9);
-            label3.Name = "label3";
-            label3.Size = new Size(245, 24);
-            label3.TabIndex = 0;
-            label3.Text = "CAMBIO DE DERECHOS";
-            label3.MouseDown += label3_MouseDown;
-            // 
-            // Exit
-            // 
-            Exit.Anchor = AnchorStyles.Top;
-            Exit.BackColor = SystemColors.ActiveBorder;
-            Exit.Cursor = Cursors.Hand;
-            Exit.FlatAppearance.BorderSize = 0;
-            Exit.FlatAppearance.MouseDownBackColor = Color.Gray;
-            Exit.FlatAppearance.MouseOverBackColor = Color.Gray;
-            Exit.FlatStyle = FlatStyle.Flat;
-            Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Exit.ForeColor = Color.Black;
-            Exit.Location = new Point(542, 0);
-            Exit.Name = "Exit";
-            Exit.Size = new Size(64, 27);
-            Exit.TabIndex = 4;
-            Exit.Text = "Salir";
-            Exit.UseVisualStyleBackColor = false;
-            Exit.Click += Exit_Click;
             // 
             // Enter
             // 
             Enter.Anchor = AnchorStyles.Top;
-            Enter.BackColor = SystemColors.ActiveBorder;
+            Enter.BackColor = Color.FromArgb(50, 50, 50);
             Enter.Cursor = Cursors.Hand;
             Enter.FlatAppearance.BorderSize = 0;
-            Enter.FlatAppearance.MouseDownBackColor = Color.Gray;
-            Enter.FlatAppearance.MouseOverBackColor = Color.Gray;
             Enter.FlatStyle = FlatStyle.Flat;
-            Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(233, 282);
+            Enter.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Enter.ForeColor = Color.White;
+            Enter.Location = new Point(230, 292);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 42);
             Enter.TabIndex = 13;
             Enter.Text = "Cambiar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Enter_Click;
+            Enter.MouseEnter += Enter_MouseEnter;
+            Enter.MouseLeave += Enter_MouseLeave;
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 12F);
             label2.ForeColor = Color.White;
             label2.Location = new Point(55, 105);
             label2.Name = "label2";
-            label2.Size = new Size(33, 21);
+            label2.Size = new Size(33, 20);
             label2.TabIndex = 9;
             label2.Text = "Rol";
             // 
             // Txt_Rol
             // 
+            Txt_Rol.BorderStyle = BorderStyle.FixedSingle;
             Txt_Rol.Enabled = false;
+            Txt_Rol.Font = new Font("Microsoft Sans Serif", 12F);
             Txt_Rol.Location = new Point(168, 105);
             Txt_Rol.Name = "Txt_Rol";
-            Txt_Rol.Size = new Size(295, 27);
+            Txt_Rol.Size = new Size(295, 26);
             Txt_Rol.TabIndex = 11;
-            Txt_Rol.TextAlign = HorizontalAlignment.Center;
             // 
             // CheckList
             // 
-            CheckList.BackColor = Color.FromArgb(60, 60, 60);
+            CheckList.BackColor = Color.FromArgb(120, 120, 120);
             CheckList.BorderStyle = BorderStyle.None;
             CheckList.CheckOnClick = true;
             CheckList.Cursor = Cursors.Hand;
+            CheckList.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CheckList.ForeColor = Color.White;
             CheckList.FormattingEnabled = true;
-            CheckList.Items.AddRange(new object[] { "Crear Pedido", "Validar Pedido", "Administrador de Usuarios", "Administrador de Roles" });
+            CheckList.Items.AddRange(new object[] { "Enviar Ticket", "Validar Pedido", "Inventario", "Administrador de Usuarios", "Administrador de Roles" });
             CheckList.Location = new Point(168, 158);
             CheckList.Name = "CheckList";
-            CheckList.Size = new Size(295, 88);
+            CheckList.Size = new Size(295, 105);
             CheckList.TabIndex = 16;
+            // 
+            // panelTop
+            // 
+            panelTop.BackColor = Color.FromArgb(50, 50, 50);
+            panelTop.Controls.Add(label3);
+            panelTop.Controls.Add(Exit);
+            panelTop.Cursor = Cursors.Hand;
+            panelTop.Dock = DockStyle.Top;
+            panelTop.Location = new Point(0, 0);
+            panelTop.Name = "panelTop";
+            panelTop.Size = new Size(606, 55);
+            panelTop.TabIndex = 23;
+            panelTop.MouseDown += panelTop_MouseDown_1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(200, 15);
+            label3.Name = "label3";
+            label3.Size = new Size(221, 24);
+            label3.TabIndex = 0;
+            label3.Text = "CAMBIAR DERECHOS";
+            label3.MouseDown += label3_MouseDown_1;
+            // 
+            // Exit
+            // 
+            Exit.BackColor = Color.FromArgb(50, 50, 50);
+            Exit.Cursor = Cursors.Hand;
+            Exit.Dock = DockStyle.Right;
+            Exit.FlatAppearance.BorderSize = 0;
+            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
+            Exit.FlatStyle = FlatStyle.Flat;
+            Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Exit.ForeColor = Color.Black;
+            Exit.Image = (Image)resources.GetObject("Exit.Image");
+            Exit.Location = new Point(542, 0);
+            Exit.Name = "Exit";
+            Exit.Size = new Size(64, 55);
+            Exit.TabIndex = 6;
+            Exit.UseVisualStyleBackColor = false;
+            Exit.Click += Exit_Click_1;
             // 
             // CambiarDerechosRol
             // 
             AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(60, 60, 60);
-            ClientSize = new Size(606, 338);
+            BackColor = Color.FromArgb(120, 120, 120);
+            ClientSize = new Size(606, 363);
+            Controls.Add(panelTop);
             Controls.Add(CheckList);
             Controls.Add(Txt_Rol);
-            Controls.Add(panelTop);
             Controls.Add(Enter);
             Controls.Add(label2);
             Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -157,13 +162,12 @@
         }
 
         #endregion
-
-        private Panel panelTop;
-        private Label label3;
-        private Button Exit;
         private Button Enter;
         private Label label2;
         public CheckedListBox CheckList;
         public TextBox Txt_Rol;
+        private Panel panelTop;
+        private Label label3;
+        private Button Exit;
     }
 }

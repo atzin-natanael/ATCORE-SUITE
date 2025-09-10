@@ -1,4 +1,4 @@
-﻿namespace PedidoXperto.ChildForms
+﻿namespace ATCORE_SUITE.ChildForms
 {
     partial class FormAdminUsuarios
     {
@@ -58,59 +58,60 @@
             // Exit
             // 
             Exit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Exit.BackColor = Color.Red;
+            Exit.BackColor = Color.FromArgb(50, 50, 50);
             Exit.Cursor = Cursors.Hand;
             Exit.FlatAppearance.BorderSize = 0;
-            Exit.FlatAppearance.MouseOverBackColor = Color.DarkRed;
+            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
             Exit.FlatStyle = FlatStyle.Flat;
             Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Exit.ForeColor = Color.White;
-            Exit.Location = new Point(1242, 0);
+            Exit.Image = (Image)resources.GetObject("Exit.Image");
+            Exit.Location = new Point(1119, 0);
             Exit.Name = "Exit";
-            Exit.Size = new Size(141, 50);
+            Exit.Size = new Size(61, 50);
             Exit.TabIndex = 3;
-            Exit.Text = "Salir";
             Exit.UseVisualStyleBackColor = false;
             Exit.Click += Exit_Click;
             // 
             // Titulo
             // 
             Titulo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            Titulo.BackColor = Color.FromArgb(50, 50, 50);
             Titulo.FlatStyle = FlatStyle.Flat;
             Titulo.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Titulo.ForeColor = Color.Black;
+            Titulo.ForeColor = Color.White;
             Titulo.Location = new Point(139, 0);
             Titulo.Name = "Titulo";
-            Titulo.Size = new Size(1097, 53);
+            Titulo.Size = new Size(894, 53);
             Titulo.TabIndex = 4;
             Titulo.Text = "ADMINISTRADOR DE USUARIOS";
             Titulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panelTop
             // 
-            panelTop.BackColor = Color.White;
+            panelTop.BackColor = Color.FromArgb(50, 50, 50);
             panelTop.Controls.Add(Exit);
             panelTop.Controls.Add(Titulo);
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(1383, 53);
+            panelTop.Size = new Size(1180, 53);
             panelTop.TabIndex = 5;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.White;
+            panel2.BackColor = Color.Beige;
             panel2.Controls.Add(SubpanelMenu);
             panel2.Controls.Add(BtnMen);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 53);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1383, 65);
+            panel2.Size = new Size(1180, 65);
             panel2.TabIndex = 5;
             // 
             // SubpanelMenu
             // 
-            SubpanelMenu.BackColor = Color.White;
+            SubpanelMenu.BackColor = Color.Beige;
             SubpanelMenu.Controls.Add(BtnChangeName);
             SubpanelMenu.Controls.Add(BtnChangePassword);
             SubpanelMenu.Controls.Add(BtnEditRol);
@@ -119,7 +120,7 @@
             SubpanelMenu.Dock = DockStyle.Fill;
             SubpanelMenu.Location = new Point(133, 0);
             SubpanelMenu.Name = "SubpanelMenu";
-            SubpanelMenu.Size = new Size(1250, 65);
+            SubpanelMenu.Size = new Size(1047, 65);
             SubpanelMenu.TabIndex = 7;
             SubpanelMenu.Paint += SubpanelMenu_Paint;
             SubpanelMenu.Resize += SubpanelMenu_Resize;
@@ -276,7 +277,7 @@
             TablaUsuarios.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             TablaUsuarios.RowTemplate.Height = 40;
             TablaUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            TablaUsuarios.Size = new Size(1383, 657);
+            TablaUsuarios.Size = new Size(1180, 536);
             TablaUsuarios.TabIndex = 0;
             // 
             // Id
@@ -301,11 +302,11 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.White;
+            panel1.BackColor = Color.Beige;
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 118);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1383, 47);
+            panel1.Size = new Size(1180, 47);
             panel1.TabIndex = 6;
             // 
             // panel3
@@ -314,14 +315,14 @@
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 165);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1383, 657);
+            panel3.Size = new Size(1180, 536);
             panel3.TabIndex = 7;
             // 
             // FormAdminUsuarios
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1383, 822);
+            AutoScaleMode = AutoScaleMode.None;
+            BackColor = Color.Beige;
+            ClientSize = new Size(1180, 701);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel2);

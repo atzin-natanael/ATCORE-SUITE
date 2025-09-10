@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LiteDB;
-using PedidoXperto.ChildClases;
+using ATCORE_SUITE.ChildClases;
 
-namespace PedidoXperto.ChildForms
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class ControlAcceso : Form
     {
@@ -20,12 +20,33 @@ namespace PedidoXperto.ChildForms
         public ControlAcceso()
         {
             InitializeComponent();
+            LeerUsuarios();
         }
-
+        public void LeerUsuarios()
+        {
+            using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
+            {
+                var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
+                var listaUsuarios = usuarios.FindAll().ToList();
+                if (listaUsuarios.Count > 0)
+                {
+                    Cb_Usuario.DataSource = listaUsuarios;
+                    Cb_Usuario.DisplayMember = "UsuarioName"; // Asegúrate de que este campo exista en tu clase AdminUsuario
+                    Cb_Usuario.ValueMember = "Id"; // Asegúrate de que este campo exista en tu clase AdminUsuario
+                    Cb_Usuario.AutoCompleteMode = AutoCompleteMode.Append;
+                    Cb_Usuario.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    Cb_Usuario.AutoCompleteCustomSource.AddRange(listaUsuarios.Select(u => u.UsuarioName).ToArray());
+                }
+                else
+                {
+                    MessageBox.Show("No hay usuarios registrados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
         private void ForgetPw_Click(object sender, EventArgs e)
         {
             string existUser = null;
-            if (Txt_Usuario.Text != string.Empty)
+            if (Cb_Usuario.Text != string.Empty)
                 existUser = ValidarUsuario();
             else
             {
@@ -42,22 +63,24 @@ namespace PedidoXperto.ChildForms
         }
         public string ValidarUsuario()
         {
-            if (Txt_Usuario.Text != string.Empty)
+            if (Cb_Usuario.Text != string.Empty)
             {
-                using (var db = new LiteDatabase(GlobalSettings.Instance.PathConfig + "USUARIOS_TRASPASOS.db"))
+                using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
                 {
 
                     var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
 
                     // Buscar el usuario que coincida con el nombre de usuario ingresado
-                    var usuario = usuarios.FindOne(x => x.UsuarioName == Txt_Usuario.Text);  // Asegúrate de que el campo sea el nombre de usuario
+                    var usuario = usuarios.FindOne(x => x.UsuarioName == Cb_Usuario.Text);  // Asegúrate de que el campo sea el nombre de usuario
 
                     if (usuario != null)
                     {
+                        db.Dispose();
                         return usuario.UsuarioName;
                     }
                     else
                     {
+                        db.Dispose();
                         return null;
                     }
                 }
@@ -71,12 +94,12 @@ namespace PedidoXperto.ChildForms
 
         private void Enter_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(Txt_Usuario.Text) && !string.IsNullOrWhiteSpace(TxtPw.Text))
+            if (!string.IsNullOrWhiteSpace(Cb_Usuario.Text) && !string.IsNullOrWhiteSpace(TxtPw.Text))
             {
-                using (var db = new LiteDatabase(@"C:\ConfigDB\USUARIOS_TRASPASOS.db"))
+                using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
                 {
                     var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
-                    var usuario = usuarios.FindOne(x => x.UsuarioName == Txt_Usuario.Text);
+                    var usuario = usuarios.FindOne(x => x.UsuarioName == Cb_Usuario.Text);
 
                     if (usuario != null)
                     {
@@ -93,22 +116,26 @@ namespace PedidoXperto.ChildForms
                                 GlobalSettings.Instance.aceptado = true;
                                 GlobalSettings.Instance.Usuario = usuario.UsuarioName;
                                 EnviarVariableEvent3();
+                                db.Dispose();
                                 this.Close();
                             }
                             else
                             {
                                 MessageBox.Show("No tiene permisos suficientes.", "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                db.Dispose();
                                 this.Close();
                             }
                         }
                         else
                         {
                             MessageBox.Show("Contraseña incorrecta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            db.Dispose();
                         }
                     }
                     else
                     {
                         MessageBox.Show("Usuario no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        db.Dispose();
                     }
                 }
             }
@@ -153,6 +180,33 @@ namespace PedidoXperto.ChildForms
             {
                 Enter_Click(sender, e);
             }
+        }
+
+        private void Cb_Usuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.ToUpper(e.KeyChar);
+        }
+
+        private void panelTop_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void label3_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void Enter_MouseEnter(object sender, EventArgs e)
+        {
+            Enter.ForeColor = Color.Yellow;
+        }
+
+        private void Enter_MouseLeave(object sender, EventArgs e)
+        {
+            Enter.ForeColor = Color.White;
         }
     }
 }

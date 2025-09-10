@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LiteDB;
-using PedidoXperto.ChildClases;
+using ATCORE_SUITE.ChildClases;
 
-namespace PedidoXperto.ChildForms
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class FormAdminRoles : Form
     {
@@ -22,7 +22,7 @@ namespace PedidoXperto.ChildForms
         }
         public void CargarRoles()
         {
-            using (var db = new LiteDatabase(GlobalSettings.Instance.PathConfig + "USUARIOS_TRASPASOS.db"))
+            using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
             {
                 var roles = db.GetCollection<AdminRoles>("ROLES");
                 // Obtener todos los usuarios de la base de datos
@@ -35,7 +35,7 @@ namespace PedidoXperto.ChildForms
                     //nombresArray.Add(usuario.UsuarioName);
                     TablaRoles.Rows.Add(rol.Id, rol.RolNombre);
                 }
-
+                db.Dispose();
             }
         }
         public void Design()
@@ -51,6 +51,14 @@ namespace PedidoXperto.ChildForms
         }
         private void Exit_Click(object sender, EventArgs e)
         {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is MainForm form2)
+                {
+                    form2.ExitMain.Visible = true;
+                    break;
+                }
+            }
             this.Close();
         }
         public void mostrarSubmenu(Panel subMenu)
@@ -87,7 +95,7 @@ namespace PedidoXperto.ChildForms
         {
             string rolSeleccionado = TablaRoles.CurrentRow.Cells[1].Value.ToString();
 
-            using (var db = new LiteDatabase(@"C:\ConfigDB\USUARIOS_TRASPASOS.db"))
+            using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
             {
                 var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
                 var existe = usuarios.Exists(u => u.Rol == rolSeleccionado);
@@ -95,6 +103,7 @@ namespace PedidoXperto.ChildForms
                 if (existe)
                 {
                     MessageBox.Show("No se puede eliminar el rol porque está asignado a uno o más usuarios.", "Rol en uso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    db.Dispose();
                     return;
                 }
 
@@ -104,11 +113,13 @@ namespace PedidoXperto.ChildForms
                 if (eliminado)
                 {
                     MessageBox.Show("Rol eliminado correctamente.");
+                    db.Dispose();
                     // Aquí podrías recargar la tabla si es necesario
                 }
                 else
                 {
                     MessageBox.Show("No se pudo eliminar el rol (¿ya fue eliminado?).");
+                    db.Dispose();
                 }
             }
             TablaRoles.Rows.Clear();

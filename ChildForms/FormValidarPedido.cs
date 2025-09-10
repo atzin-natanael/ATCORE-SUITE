@@ -1,4 +1,14 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.Drawing.Charts;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using FirebirdSql.Data.FirebirdClient;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Org.BouncyCastle.Tls;
+using ATCORE_SUITE.ChildClases;
+using ATCORE_SUITE.Logic;
+using SpreadsheetLight;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,31 +16,24 @@ using System.Data.Common;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DocumentFormat.OpenXml.Drawing.Charts;
-using FirebirdSql.Data.FirebirdClient;
-using iTextSharp.text.pdf;
-using iTextSharp.text;
-using PedidoXperto.ChildClases;
-using PedidoXperto.Logic;
-using SpreadsheetLight;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Reflection.Emit;
-using DocumentFormat.OpenXml.Bibliography;
-using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
-using Org.BouncyCastle.Tls;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
-namespace PedidoXperto.ChildForms
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class FormValidarPedido : Form
     {
         List<string> nombresArray = new();
         private List<string> nombresValor = new() { };
         List<Articulo> Articulos = new();
+        string path = "";
+
         public FormValidarPedido()
         {
             InitializeComponent();
@@ -48,8 +51,8 @@ namespace PedidoXperto.ChildForms
 
         public void CargarExcel()
         {
-            string filePath = "C:\\clavesSurtido\\Claves.xlsx";
             //string filePath = "C:\\clavesSurtido\\Claves.xlsx";
+            string filePath = "\\\\SRVPRINCIPAL\\clavesSurtido\\Claves.xlsx";
             using (SLDocument documento = new SLDocument(filePath))
             {
                 int filas = documento.GetWorksheetStatistics().NumberOfRows;
@@ -68,8 +71,8 @@ namespace PedidoXperto.ChildForms
             nombresValor.Clear();
             //string filePath = "\\\\192.168.0.2\\C$\\clavesSurtido\\Claves.xlsx";
 
-            //string filePath = "\\\\SRVPRINCIPAL\\clavesSurtido\\Claves.xlsx";
-            string filePath = "C:\\clavesSurtido\\Claves.xlsx";
+            string filePath = "\\\\SRVPRINCIPAL\\clavesSurtido\\Claves.xlsx";
+            //string filePath = "C:\\clavesSurtido\\Claves.xlsx";
             using (SLDocument documento = new SLDocument(filePath))
             {
                 int filas = documento.GetWorksheetStatistics().NumberOfRows;
@@ -97,6 +100,22 @@ namespace PedidoXperto.ChildForms
         }
         private void Exit_Click(object sender, EventArgs e)
         {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is MainForm form2)
+                {
+                    form2.ExitMain.Visible = true;
+                    break;
+                }
+            }
+            GlobalSettings.Instance.Renglones = 0;
+            GlobalSettings.Instance.Incompletos = 0;
+            GlobalSettings.Instance.Importe_real = 0;
+            GlobalSettings.Instance.Articuloid = "";
+            GlobalSettings.Instance.Importe_Total = 0;
+            GlobalSettings.Instance.Docto_Ve_Id = "";
+            GlobalSettings.Instance.Impuesto_real = 0;
+            GlobalSettings.Instance.FolioId = "";
             this.Close();
         }
         public decimal Impuesto(string Articulo_Id)
@@ -163,7 +182,7 @@ namespace PedidoXperto.ChildForms
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             GlobalSettings.Instance.filepath = desktopPath + "\\" + TxtPedido.Text + ".txt";
             string Folio_Mod = TxtPedido.Text;
-            if (Folio_Mod[1] == 'O' || Folio_Mod[1] == 'E' || Folio_Mod[1] == 'P' || Folio_Mod[1] == 'M' || Folio_Mod[1] == 'A')
+            if (Folio_Mod[1] == 'O' || Folio_Mod[1] == 'E' || Folio_Mod[1] == 'P' || Folio_Mod[1] == 'M' || Folio_Mod[1] == 'A' || Folio_Mod[1] == 'T')
             {
                 int cont = 9 - Folio_Mod.Length;
                 string prefix = Folio_Mod.Substring(0, 2);
@@ -246,8 +265,8 @@ namespace PedidoXperto.ChildForms
                         Descuento_extra_individual = reader1.GetDecimal(12),
                         Importe_total_articuloeliminado = reader1.GetDecimal(15),
                         Recibido = 0,
-                        Nota = reader1.GetString(18),
-                        Id = reader1.GetInt32(20),
+                        Nota = reader1.GetString(19),
+                        Id = reader1.GetInt32(21),
                         Pendiente = reader1.GetDecimal(4)
                     };
                     Articulos.Add(variables);
@@ -374,7 +393,12 @@ namespace PedidoXperto.ChildForms
                             }
                             else
                             {
-                                MessageBox.Show("Código no encontrado", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MensajeError mensajeError = new MensajeError();
+                                mensajeError.Titulo.Text = "!ARTICULO NO ENCONTRADO!";
+                                mensajeError.BackColor = System.Drawing.Color.Yellow;
+                                mensajeError.Titulo.ForeColor = System.Drawing.Color.Black;
+                                mensajeError.ShowDialog();
+                                //MessageBox.Show("Código no encontrado", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 TxtCodigo.Focus();
                                 TxtCodigo.Select(0, TxtCodigo.Text.Length);
                                 return;
@@ -417,6 +441,10 @@ namespace PedidoXperto.ChildForms
                 Tabla.Columns[1].DefaultCellStyle.Font = new System.Drawing.Font("Arial", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
                 Tabla.Columns[0].DefaultCellStyle.Font = new System.Drawing.Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
                 GlobalSettings.Instance.OficialCodigo.Clear();
+                TxtPedido.Enabled = false;
+                TxtPedido.Size = new System.Drawing.Size(140, 27);
+                Cancelado.Visible = true;
+                Lbcancelado.Visible = true;
             }
             catch (Exception ex)
             {
@@ -552,7 +580,11 @@ namespace PedidoXperto.ChildForms
                             }
                             else
                             {
-                                MessageBox.Show("Código no encontrado", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MensajeError mensajeError = new MensajeError();
+                                mensajeError.Titulo.Text = "!ARTICULO NO ENCONTRADO!";
+                                mensajeError.BackColor = System.Drawing.Color.Yellow;
+                                mensajeError.Titulo.ForeColor = System.Drawing.Color.Black;
+                                mensajeError.ShowDialog();
                                 TxtCodigo.Focus();
                                 TxtCodigo.Select(0, TxtCodigo.Text.Length);
                                 return;
@@ -616,7 +648,11 @@ namespace PedidoXperto.ChildForms
                             }
                             else if (GlobalSettings.Instance.Contador_Codigos == 0)
                             {
-                                MessageBox.Show("Código no relacionado al pedido", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MensajeError mensajeError = new MensajeError();
+                                mensajeError.Titulo.Text = "!Este Producto No Es!";
+                                mensajeError.BackColor = System.Drawing.Color.Red;
+                                mensajeError.Titulo.ForeColor = System.Drawing.Color.White;
+                                mensajeError.ShowDialog();
                                 TxtCodigo.Focus();
                                 TxtCodigo.Select(0, TxtCodigo.Text.Length);
                                 return;
@@ -756,6 +792,10 @@ namespace PedidoXperto.ChildForms
 
         private void TxtCodigo_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Control && e.KeyCode == Keys.G)
+            {
+                Save_Click(sender, e);
+            }
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true;
@@ -786,6 +826,7 @@ namespace PedidoXperto.ChildForms
                 Lb_renglones.ForeColor = System.Drawing.Color.White;
                 Tabla.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 Tabla.BackgroundColor = System.Drawing.Color.FromArgb(60, 60, 60);
+                Cb_Descuentos.ForeColor = System.Drawing.Color.White;
                 BtnCodigo.BackColor = System.Drawing.Color.White;
                 BtnCodigo.ForeColor = System.Drawing.Color.Black;
                 BtnPedido.BackColor = System.Drawing.Color.White;
@@ -808,6 +849,7 @@ namespace PedidoXperto.ChildForms
                 label3.ForeColor = System.Drawing.Color.Black;
                 label4.ForeColor = System.Drawing.Color.Black;
                 label5.ForeColor = System.Drawing.Color.Black;
+                Cb_Descuentos.ForeColor = System.Drawing.Color.Black;
                 Lb_Incompletos.ForeColor = System.Drawing.Color.Black;
                 Lb_renglones.ForeColor = System.Drawing.Color.Black;
                 BtnCodigo.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
@@ -838,6 +880,10 @@ namespace PedidoXperto.ChildForms
                     e.Handled = true; // Opcional, previene otros efectos
                 }
             }
+            else if (e.Control && e.KeyCode == Keys.G)
+            {
+                Save_Click(sender, e);
+            }
         }
 
         private void Save_Click(object sender, EventArgs e)
@@ -851,6 +897,15 @@ namespace PedidoXperto.ChildForms
             {
                 MessageBox.Show("Te falta asignar un surtidor", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+            if (Lb_Incompletos.Text != "0" || Lb_renglones.Text != "0")
+            {
+                DialogResult result = MessageBox.Show("¿Estás seguro que deseas terminar este pedido?\n Los artículos del pedido se van a modificar \n ¿Deseas continuar?", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+
             }
             bool bandera = false;
             string mensajemax = "";
@@ -885,7 +940,6 @@ namespace PedidoXperto.ChildForms
             }
             if (bandera == true)
             {
-                candado.GridEx.ClearSelection();
                 candado.ShowDialog();
                 candado.Solicitar.Focus();
                 candado.Solicitar.Select();
@@ -894,10 +948,15 @@ namespace PedidoXperto.ChildForms
                     return;
                 }
             }
+            TxtPedido.Size = new System.Drawing.Size(290, 27);
+            Cancelado.Visible = false;
+            Lbcancelado.Visible = false;
+            TxtPedido.Enabled = true;
             Validar();
             string Hoy = DateTime.Now.ToString("d-M-yy");
-            string filePath = "C:\\incompletosPedidos\\\\ArticulosIncompletos " + Hoy + ".xlsx"; //PERI
-            //string filePath = "C:\\incompletosPedidos\\ArticulosIncompletos " + Hoy + ".xlsx"; culiacan
+            //string filePath = "C:\\incompletosPedidos\\\\ArticulosIncompletos " + Hoy + ".xlsx"; //PERI
+            string filePath = "\\\\SRVPRINCIPAL\\incompletosPedidos\\ArticulosIncompletos " + Hoy + ".xlsx"; //PERI
+
             bool fileExist = File.Exists(filePath);
             Document doc = new Document();
             try
@@ -999,6 +1058,7 @@ namespace PedidoXperto.ChildForms
             GlobalSettings.Instance.ExistenciaQuery = false;
 
             sl.SaveAs(filePath);
+            CrearExcelLunesADomingo();
             doc.SetMargins(0, 0, 20, 20);
             string fileName = "C:\\DatosPedidos\\" + TxtPedido.Text + ".pdf";
             //string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -1287,7 +1347,8 @@ namespace PedidoXperto.ChildForms
                 MessageBox.Show("Error al guardar el archivo Txt: " + ex.Message);
             }
             //FIN TXT
-            ValidarC(GlobalSettings.Instance.Docto_Ve_Id);
+            if (Cb_Descuentos.Checked == true)
+                ValidarC(GlobalSettings.Instance.Docto_Ve_Id);
             if (faltantes == true)
             {
                 try
@@ -1335,9 +1396,41 @@ namespace PedidoXperto.ChildForms
             GlobalSettings.Instance.Desc_extra_importe = 0;
             GlobalSettings.Instance.Desc_extra_ind = 0;
             Articulos.Clear();
+            Cb_Descuentos.Checked = true;
             Tabla.Rows.Clear();
             Tabla.Refresh();
             TxtPedido.Focus();
+        }
+        public void CrearExcelLunesADomingo()
+        {
+            DateTime actual = DateTime.Now;
+            DateTime fechaActual = DateTime.Now;
+
+            // Calcular el día de la semana en formato numérico (lunes = 1, domingo = 7)
+            int valor_dia = (int)actual.DayOfWeek;
+            if (valor_dia == 0) valor_dia = 7; // Para que domingo sea 7
+
+            // Calcular cuántos días hay que restar para llegar al lunes
+            int diasRestar = valor_dia - 1;  // Restamos el día actual (lunes es 1)
+
+            // Si hoy es lunes, empezamos la semana con la fecha de hoy
+            DateTime inicioSemana = fechaActual.AddDays(-diasRestar);
+
+            // El final de la semana es el domingo de esa semana (7 días después del lunes)
+            DateTime finSemana = inicioSemana.AddDays(6);
+
+            // Crear el nombre del archivo Excel con el rango de fechas (lunes a domingo)
+            path = "\\\\SRVPRINCIPAL\\incompletosPedidos\\ArticulosIncompletos " +
+                          inicioSemana.ToString("yyyy-MM-dd") +
+                          " a " +
+                          finSemana.ToString("yyyy-MM-dd") +
+                          ".xlsx";
+            //path = "C:\\incompletosPedidos\\ArticulosIncompletos " +
+            //             inicioSemana.ToString("yyyy-MM-dd") +
+            //             " a " +
+            //             finSemana.ToString("yyyy-MM-dd") +
+            //             ".xlsx";
+            // Aquí puedes agregar el código para crear el archivo Excel si es necesario
         }
         public void Validar()
         {
@@ -1421,6 +1514,7 @@ namespace PedidoXperto.ChildForms
                             Descuento = reader0.GetDecimal(9);
                             Precio_total_neto = reader0.GetDecimal(15);
                             //impuesto = Impuesto(Articulo_Id);
+                            Update(Docto_Ve_Det_Id, Precio_neto, Piezas, impuesto, Precio_total_neto, Descuento);
                             writer.WriteLine(Codigo + "," + Piezas);
                         }
                     }
@@ -1442,6 +1536,110 @@ namespace PedidoXperto.ChildForms
             finally
             {
                 con5a.Close();
+            }
+        }
+        public void Update(string Docto_Ve_Det_Id, decimal Precio_neto, decimal Piezas, decimal impuesto, decimal Precio_Total_Neto, decimal Descuento)
+        {
+            FbConnection con4a = new FbConnection("User=" + GlobalSettings.Instance.User + ";" + "Password=" + GlobalSettings.Instance.Pw + ";" + "Database=" + GlobalSettings.Instance.Direccion + ";" + "DataSource=" + GlobalSettings.Instance.Ip + ";" + "Port=" + GlobalSettings.Instance.Puerto + ";" + "Dialect=3;" + "Charset=UTF8;");
+            try
+            {
+                con4a.Open();
+                string query8 = "UPDATE DOCTOS_VE_DET SET PCTJE_DSCTO = @Porcentaje_descuento,PCTJE_DSCTO_CLI = @Porcentaje_descuento_cli, DSCTO_ART = @Desc_art, DSCTO_EXTRA = @Desc_extra, PRECIO_UNITARIO = @NuevoPrecio WHERE DOCTO_VE_DET_ID = @Docto_Det";
+                FbCommand command8 = new FbCommand(query8, con4a);
+                //VALOR DE UNIDADES A ACTUALIZAR
+                //MessageBox.Show(Precio_Total_Neto.ToString());
+                decimal nuevoPrecio = (Precio_Total_Neto / Piezas);
+                decimal descuento_decimal = Descuento / 100;
+                //Descuento 40/100 = 0.4
+                //Precio_neto *= 10000;
+                //decimal Nprice = Precio_neto * 100;
+                //decimal nuevoImpuesto = Nprice - (Precio_neto * Descuento);
+                //decimal chido = nuevoImpuesto / 1000000;
+                decimal chido = Precio_Total_Neto / Piezas;
+                decimal chido2 = 0;
+                //if (GlobalSettings.Instance.Desc_extra != 0)
+                //{
+                //    chido *= 10000;
+                //    decimal Nprice2 = chido * 100;
+                //    decimal nuevoImpuesto2 = Nprice2 - (chido * GlobalSettings.Instance.Desc_extra);
+                //    chido2 = nuevoImpuesto2 / 1000000;
+                //}
+                //decimal truncado = Math.Truncate(chido * 1000) / 1000;
+                //decimal round = Decimal.Round(importeImpuesto, 4);
+                //decimal round2 = Decimal.Round(nuevoPrecio, 4);
+                command8.Parameters.AddWithValue("@Porcentaje_descuento", 0);
+                command8.Parameters.AddWithValue("@Porcentaje_descuento_cli", 0);
+                if (GlobalSettings.Instance.Desc_extra != 0)
+                {
+                    command8.Parameters.AddWithValue("@NuevoPrecio", chido);
+                    UpdateIndividual();
+                }
+                else
+                {
+                    command8.Parameters.AddWithValue("@NuevoPrecio", chido);
+
+                }
+                //command8.Parameters.AddWithValue("@ImporteImpuesto", Math.Round(chido, 2));
+                command8.Parameters.AddWithValue("@Desc_art", 0);
+                command8.Parameters.AddWithValue("@Desc_extra", 0);
+                //VALOR DE FOLIO ID A EDITAR EN DOCTOS_VE_DET
+                command8.Parameters.AddWithValue("@Docto_Det", Docto_Ve_Det_Id);
+                // Ejecuta la consulta de actualización
+                int rowsAffected = command8.ExecuteNonQuery();
+
+                if (rowsAffected == 0)
+                {
+                    MessageBox.Show("No se pudo actualizar el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Se perdió la conexión :( , contacta a 06 o intenta de nuevo", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.ToString());
+                return;
+            }
+            finally
+            {
+                con4a.Close();
+            }
+        }
+        public void UpdateIndividual()
+        {
+            FbConnection con3a = new FbConnection("User=" + GlobalSettings.Instance.User + ";" + "Password=" + GlobalSettings.Instance.Pw + ";" + "Database=" + GlobalSettings.Instance.Direccion + ";" + "DataSource=" + GlobalSettings.Instance.Ip + ";" + "Port=" + GlobalSettings.Instance.Puerto + ";" + "Dialect=3;" + "Charset=UTF8;");
+            try
+            {
+
+                con3a.Open();
+                string query8 = "UPDATE DOCTOS_VE SET DSCTO_PCTJE = @Desc, DSCTO_IMPORTE = @Descimp  WHERE DOCTO_VE_ID = @Docto_Det";
+                FbCommand command8 = new FbCommand(query8, con3a);
+
+                //decimal round = Decimal.Round(importeImpuesto, 4);
+                //decimal round2 = Decimal.Round(nuevoPrecio, 4);
+                command8.Parameters.AddWithValue("@Descimp", 0);
+                command8.Parameters.AddWithValue("@Desc", 0);
+                //VALOR DE FOLIO ID A EDITAR EN DOCTOS_VE_DET
+                command8.Parameters.AddWithValue("@Docto_Det", GlobalSettings.Instance.Docto_Ve_Id);
+                // Ejecuta la consulta de actualización
+                int rowsAffected = command8.ExecuteNonQuery();
+
+                if (rowsAffected == 0)
+                {
+                    MessageBox.Show("No se pudo actualizar el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Se perdió la conexión :( , contacta a 06 o intenta de nuevo", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.ToString());
+                return;
+            }
+            finally
+            {
+                con3a.Close();
             }
         }
         public void EliminarQuery()
@@ -2025,7 +2223,7 @@ namespace PedidoXperto.ChildForms
         }
         public string RevisarVendedor(string Vendedor)
         {
-            string archivo = "C:\\Vendedores\\VENDEDORES.xlsx";
+            string archivo = "\\\\SRVPRINCIPAL\\Vendedores\\VENDEDORES.xlsx";
             using (SLDocument documento3 = new SLDocument(archivo))
             {
                 int filas = documento3.GetWorksheetStatistics().NumberOfRows;
@@ -2241,7 +2439,7 @@ namespace PedidoXperto.ChildForms
         private void FormValidarPedido_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.R || e.Control && e.KeyCode == Keys.N)
-                Colorear(sender,e);
+                Colorear(sender, e);
         }
 
         private void Tabla_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -2421,7 +2619,7 @@ namespace PedidoXperto.ChildForms
                     temporal = true;
                 if (prueba == 0)
                     bandera = true;
-                if ((prueba) >= 1 && Articulos[id].Recibido == 0)
+                if ((prueba) >= 1 && Articulos[id].Recibido == 0 && cantidad != 0)
                     banderaincompleto = true;
                 if (Articulos[id].Recibido > 0 && cantidad == 0)
                     temporal = true;
@@ -2520,10 +2718,10 @@ namespace PedidoXperto.ChildForms
                     if (banderaincompleto == true && temporal == false)
                     {
                         GlobalSettings.Instance.Incompletos++;
-                        Lb_Incompletos.Text = GlobalSettings.Instance.Incompletos.ToString();
-                        banderaincompleto = false;
                         GlobalSettings.Instance.Renglones--;
+                        Lb_Incompletos.Text = GlobalSettings.Instance.Incompletos.ToString();
                         Lb_renglones.Text = GlobalSettings.Instance.Renglones.ToString();
+                        banderaincompleto = false;
                         bandera = false;
                     }
                 }
@@ -2556,10 +2754,12 @@ namespace PedidoXperto.ChildForms
             this.KeyDown += FormValidarPedido_KeyDown;
 
         }
-        public void Colorear(object sender, KeyEventArgs e) {
+        public void Colorear(object sender, KeyEventArgs e)
+        {
             if (e.Control && e.KeyCode == Keys.R)
             {
                 Titulo.ForeColor = System.Drawing.Color.White;
+                panel4.BackColor = System.Drawing.Color.FromArgb(50, 50, 50);
                 panel1.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
                 BtnCodigo.BackColor = System.Drawing.Color.White;
                 BtnPedido.BackColor = System.Drawing.Color.White;
@@ -2568,6 +2768,7 @@ namespace PedidoXperto.ChildForms
                 label3.ForeColor = System.Drawing.Color.White;
                 label4.ForeColor = System.Drawing.Color.White;
                 label5.ForeColor = System.Drawing.Color.White;
+                Cb_Descuentos.ForeColor = System.Drawing.Color.White;
                 Lb_Incompletos.ForeColor = System.Drawing.Color.White;
                 Lb_renglones.ForeColor = System.Drawing.Color.White;
                 Tabla.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.Red;
@@ -2576,7 +2777,7 @@ namespace PedidoXperto.ChildForms
                 BtnCodigo.ForeColor = System.Drawing.Color.Black;
                 BtnPedido.BackColor = System.Drawing.Color.White;
                 BtnPedido.ForeColor = System.Drawing.Color.Black;
-                Exit.BackColor = System.Drawing.Color.White;
+                Exit.BackColor = System.Drawing.Color.FromArgb(50, 50, 50);
                 Exit.ForeColor = System.Drawing.Color.Black;
                 Save.BackColor = System.Drawing.Color.White;
                 Save.ForeColor = System.Drawing.Color.Black;
@@ -2585,12 +2786,13 @@ namespace PedidoXperto.ChildForms
             }
             if (e.Control && e.KeyCode == Keys.N)
             {
+                Titulo.ForeColor = System.Drawing.Color.White;
                 panel1.BackColor = System.Drawing.Color.Beige;
                 BtnCodigo.BackColor = System.Drawing.Color.Black;
                 BtnPedido.BackColor = System.Drawing.Color.Black;
-                Titulo.ForeColor = System.Drawing.Color.Black;
                 label1.ForeColor = System.Drawing.Color.Black;
                 label2.ForeColor = System.Drawing.Color.Black;
+                Cb_Descuentos.ForeColor = System.Drawing.Color.Black;
                 label3.ForeColor = System.Drawing.Color.Black;
                 label4.ForeColor = System.Drawing.Color.Black;
                 label5.ForeColor = System.Drawing.Color.Black;
@@ -2598,7 +2800,6 @@ namespace PedidoXperto.ChildForms
                 Lb_renglones.ForeColor = System.Drawing.Color.Black;
                 BtnCodigo.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
                 BtnCodigo.ForeColor = System.Drawing.Color.White;
-                Exit.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
                 Exit.ForeColor = System.Drawing.Color.White;
                 BtnPedido.BackColor = System.Drawing.Color.FromArgb(60, 60, 60);
                 BtnPedido.ForeColor = System.Drawing.Color.White;
@@ -2609,9 +2810,227 @@ namespace PedidoXperto.ChildForms
                 Tabla.Refresh();
 
             }
-            e.SuppressKeyPress = true; 
+            e.SuppressKeyPress = true;
             e.Handled = true;
         }
-       
+
+        private void Tabla_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+            {
+                Tabla.ClearSelection();
+                Tabla.Rows[e.RowIndex].Selected = true;
+            }
+            if (e.ColumnIndex == 5 && e.RowIndex >= 0)
+            {
+                if (Tabla.Rows[e.RowIndex].Cells[5].Value.ToString() == "Ver")
+                {
+                    // Accede a la nota directamente desde la propiedad Nota del objeto Articulo asociado a la fila
+                    int valorPrimeraColumna = int.Parse(Tabla.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    int indice = 0;
+                    //for (int i = 0; i < Articulos.Count; i++)
+                    //{
+                    //    if (Articulos[i].Id == valorPrimeraColumna)
+                    //    {
+                    //        indice = i; break;
+                    //    }
+                    //}
+                    //string nota = Articulos[indice].Nota;
+
+                    //if (!string.IsNullOrEmpty(nota))
+                    //{
+                    //    MessageBox.Show(Articulos[indice].Nota, "Nota del artículo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("No hay nota disponible para este artículo.", "Sin nota", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                    for (int i = 0; i < Articulos.Count; ++i)
+                    {
+                        if (Articulos[i].Id == valorPrimeraColumna)
+                        {
+                            if (Articulos[i].Nota == "")
+                            {
+                                var customMessageBox = new Mensaje();
+                                customMessageBox.SetMensaje("Artículo sin nota", "nota2");
+                                customMessageBox.ShowDialog();
+                            }
+                            else
+                            {
+                                var customMessageBox = new Mensaje();
+                                customMessageBox.SetMensaje(Articulos[i].Nota + "\n", "nota");
+                                customMessageBox.ShowDialog();
+                            }
+                        }
+
+
+                    }
+                }
+
+            }
+        }
+
+        private void Tabla_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (e.Control is System.Windows.Forms.TextBox tb)
+            {
+                // Evita suscripciones múltiples
+                tb.KeyDown -= Tabla_KeyDown;
+                tb.KeyDown += Tabla_KeyDown;
+            }
+            //if (Tabla.CurrentCell.ColumnIndex == 1 && e.Control is System.Windows.Forms.TextBox tb2)
+            //{
+            //    // Remueve cualquier controlador anterior para evitar duplicados
+            //    tb2.KeyPress -= Tabla_KeyPress;
+            //    tb2.KeyPress += Tabla_KeyPress;
+            //}
+        }
+
+        private void Save_MouseEnter(object sender, EventArgs e)
+        {
+            Save.ForeColor = System.Drawing.Color.Yellow;
+        }
+
+        private void Save_MouseLeave(object sender, EventArgs e)
+        {
+            Save.ForeColor = System.Drawing.Color.White;
+        }
+
+        private void Cancelado_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                Cargar();
+            }
+        }
+        private void Cargar()
+        {
+            if (Cancelado.Text == string.Empty)
+            {
+                MessageBox.Show("Ingresa un folio correcto", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string carpeta = @"C:\DatosPedidos";
+            string rutaArchivo = Path.Combine(carpeta, Cancelado.Text + ".txt");
+            if (File.Exists(rutaArchivo))
+            {
+                using (StreamReader reader = new StreamReader(rutaArchivo))
+                {
+                    string line;
+
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        // Dividir la línea por un separador (por ejemplo, una coma)
+                        string[] parts = line.Split(',');
+                        int id = int.Parse(parts[0]);
+                        decimal cantidad = decimal.Parse(parts[1]);
+                        for (int i = 0; i < Articulos.Count; ++i)
+                        {
+                            if (Articulos[i].Id == id)
+                            {
+                                //Articulos[i].Recibido = recibido;
+                                //ejecutar(recibido, id);
+                                bool banderaincompleto = false;
+                                bool temporal = false;
+                                bool temporal2 = false;
+                                decimal prueba;
+                                bool bandera = false;
+                                bool regresar = false;
+                                prueba = Articulos[i].Pendiente - cantidad;
+                                if (prueba == 0 && Articulos[i].Recibido > 0)
+                                    temporal = true;
+                                if (prueba == 0)
+                                    bandera = true;
+                                if ((prueba) >= 1 && Articulos[i].Recibido == 0)
+                                    banderaincompleto = true;
+                                Articulos[i].Recibido += cantidad;
+                                Articulos[i].Pendiente -= cantidad;
+
+                                if (Articulos[i].Pendiente < 0)
+                                    Articulos[i].Pendiente = 0;
+                                List<int> ListaTabla = new List<int>();
+                                if (bandera == true)
+                                {
+                                    GlobalSettings.Instance.Renglones--;
+                                    Lb_renglones.Text = GlobalSettings.Instance.Renglones.ToString();
+                                    bandera = false;
+                                }
+                                if (temporal == true)
+                                {
+                                    GlobalSettings.Instance.Incompletos--;
+                                    Lb_Incompletos.Text = GlobalSettings.Instance.Incompletos.ToString();
+                                    GlobalSettings.Instance.Renglones++;
+                                    Lb_renglones.Text = GlobalSettings.Instance.Renglones.ToString();
+                                    bandera = false;
+                                }
+                                if (regresar == true)
+                                {
+                                    GlobalSettings.Instance.Incompletos--;
+                                    Lb_Incompletos.Text = GlobalSettings.Instance.Incompletos.ToString();
+                                    regresar = false;
+                                }
+                                if (temporal2 == true)
+                                {
+                                    GlobalSettings.Instance.Incompletos++;
+                                    Lb_Incompletos.Text = GlobalSettings.Instance.Incompletos.ToString();
+                                }
+
+                                //ORDENAR
+                                for (int j = 0; j < Articulos.Count; ++j)
+                                {
+                                    ListaTabla.Add(int.Parse(Tabla.Rows[j].Cells[0].Value.ToString()));
+                                }
+                                Tabla.Rows.Clear();
+                                DataGridViewRowCollection rows = Tabla.Rows;
+                                string comentario;
+                                for (int k = 0; k < Articulos.Count; ++k)
+                                {
+                                    int a = 1;
+                                    if (ListaTabla[k] != k + 1)
+                                    {
+                                        a = ListaTabla[k] - k;
+                                    }
+                                    if (Articulos[ListaTabla[k] - a].Nota != "")
+                                    {
+                                        comentario = "Ver";
+                                    }
+                                    else
+                                    {
+                                        comentario = string.Empty;
+                                    }
+                                    rows.Add(Articulos[ListaTabla[k] - a].Id, Articulos[ListaTabla[k] - a].Codigo, Articulos[ListaTabla[k] - a].Descripcion, Articulos[ListaTabla[k] - a].Solicitado, Articulos[ListaTabla[k] - a].Recibido, comentario, Articulos[ListaTabla[k] - a].Pendiente);
+                                    DataGridViewRow row = Tabla.Rows[k];
+                                    if (Articulos[ListaTabla[k] - a].Solicitado - Articulos[ListaTabla[k] - a].Recibido > 0 && Articulos[ListaTabla[k] - a].Recibido != 0)
+                                    {
+                                        row.DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
+                                        if (banderaincompleto == true && temporal == false)
+                                        {
+                                            GlobalSettings.Instance.Incompletos++;
+                                            Lb_Incompletos.Text = GlobalSettings.Instance.Incompletos.ToString();
+                                            banderaincompleto = false;
+                                            GlobalSettings.Instance.Renglones--;
+                                            Lb_renglones.Text = GlobalSettings.Instance.Renglones.ToString();
+                                            bandera = false;
+                                        }
+                                    }
+                                    else if (Articulos[ListaTabla[k] - a].Solicitado - Articulos[ListaTabla[k] - a].Recibido == 0)
+                                        row.DefaultCellStyle.BackColor = System.Drawing.Color.LightGreen;
+                                    else if (Articulos[ListaTabla[k] - a].Solicitado - Articulos[ListaTabla[k] - a].Recibido < 0)
+                                    {
+                                        row.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                                        row.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
+            else
+                MessageBox.Show("No existe un archivo con ese folio", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+        }
     }
 }

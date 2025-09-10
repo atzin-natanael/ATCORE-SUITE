@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PedidoXperto.ChildClases
+namespace ATCORE_SUITE.ChildClases
 {
     public class GlobalSettings
     {
         private static GlobalSettings instance;
-        public string StringConnection { get; set; }
+        public string StringConnectionCloud  { get ; set;}
+        public string StringConnection  { get; set; }
+        //public string StringConnection { get; set; }
         public string Ip { get; set; }
         public string Puerto { get; set; }
         public string Direccion { get; set; }
@@ -67,11 +69,16 @@ namespace PedidoXperto.ChildClases
         public string Docto_Ve_Id { get; set; }
         public string Crear_clave { get; set; }
         public string Crear_Nombre { get; set; }
+        public string LastUser { get; set; }
+
         public int Bd { get; set; }
+        public string UsuariosDB { get; set; } = "\\\\SRVPRINCIPAL\\ConfigDB\\USUARIOS.db";
         public string PathConfig { get; } = "C:\\ConfigDB\\";
         public string EndPointRecomendacion { get; set; } = "/recomendar";
         public string NgrokGateWay { get; set; }
         public int Trn { get; set; }
+        public bool VistaPrevia { get; set; }
+        public int Largo { get; set; }
         private GlobalSettings()
         {
             OficialCodigo = new List<string>();

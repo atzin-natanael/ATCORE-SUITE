@@ -1,4 +1,4 @@
-﻿namespace PedidoXperto.ChildForms
+﻿namespace ATCORE_SUITE.ChildForms
 {
     partial class FormCrearPedido
     {
@@ -622,6 +622,7 @@
             MinimumSize = new Size(1024, 768);
             Name = "FormCrearPedido";
             Text = "FormCrearPedido";
+            KeyDown += FormCrearPedido_KeyDown;
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);

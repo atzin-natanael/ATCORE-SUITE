@@ -1,8 +1,8 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
-using PedidoXperto.ChildClases;
+using ATCORE_SUITE.ChildClases;
 using System.Data;
 
-namespace PedidoXperto.Logic
+namespace ATCORE_SUITE.Logic
 {
     public class FireBirdHelper
     {

@@ -1,6 +1,6 @@
 ﻿using LiteDB;
-using PedidoXperto.ChildClases;
-using ProyectoXperto;
+using ATCORE_SUITE.ChildClases;
+using ATCORE_SUITE;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PedidoXperto.ChildForms
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class ChangePw : Form
     {
@@ -32,7 +32,7 @@ namespace PedidoXperto.ChildForms
         {
             if (TxtPw.Text != string.Empty && Txt_Usuario.Text != string.Empty)
             {
-                using (var db = new LiteDatabase(GlobalSettings.Instance.PathConfig + "USUARIOS_TRASPASOS.db"))
+                using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
                 {
 
                     var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
@@ -45,6 +45,7 @@ namespace PedidoXperto.ChildForms
                         usuario.Password = hashedPassword;
                         usuarios.Update(usuario);
                         MessageBox.Show("Contraseña cambiada con éxito");
+                        db.Dispose();
                         this.Close();
                         return;
                     }
@@ -69,6 +70,7 @@ namespace PedidoXperto.ChildForms
                         else if (!isMatch)
                         {
                             MessageBox.Show("Contrasena Incorrecta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            db.Dispose();
                             this.Close();
                         }
                     }
@@ -77,6 +79,7 @@ namespace PedidoXperto.ChildForms
                         MessageBox.Show("Usuario no encontrado");
                         TxtPw.Focus();
                         TxtPw.Select(0, TxtPw.TextLength);
+                        db.Dispose();
                     }
                 }
 
@@ -117,5 +120,23 @@ namespace PedidoXperto.ChildForms
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void panelTop_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void label3_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void Exit_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
+

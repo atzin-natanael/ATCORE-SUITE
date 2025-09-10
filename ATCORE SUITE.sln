@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PedidoXperto", "PedidoXperto.csproj", "{4B943407-A424-4D74-8704-BBEE6563DD92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATCORE SUITE", "ATCORE SUITE.csproj", "{4B943407-A424-4D74-8704-BBEE6563DD92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EFF0F7DA-DA26-430D-883D-DDA03C924C24}
 	EndGlobalSection
 EndGlobal

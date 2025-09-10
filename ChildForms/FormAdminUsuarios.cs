@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LiteDB;
-using PedidoXperto.ChildClases;
+using ATCORE_SUITE.ChildClases;
 
-namespace PedidoXperto.ChildForms
+namespace ATCORE_SUITE.ChildForms
 {
     public partial class FormAdminUsuarios : Form
     {
@@ -22,7 +22,7 @@ namespace PedidoXperto.ChildForms
         }
         public void CargarUsers()
         {
-            using (var db = new LiteDatabase(GlobalSettings.Instance.PathConfig + "USUARIOS_TRASPASOS.db"))
+            using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
             {
                 var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
                 // Obtener todos los usuarios de la base de datos
@@ -34,11 +34,19 @@ namespace PedidoXperto.ChildForms
                     //nombresArray.Add(usuario.UsuarioName);
                     TablaUsuarios.Rows.Add(usuario.Id, usuario.UsuarioName, usuario.Rol);
                 }
-
+                db.Dispose();
             }
         }
         private void Exit_Click(object sender, EventArgs e)
         {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is MainForm form2)
+                {
+                    form2.ExitMain.Visible = true;
+                    break;
+                }
+            }
             this.Close();
         }
 
@@ -99,7 +107,7 @@ namespace PedidoXperto.ChildForms
                 if (dialogResult == DialogResult.Yes)
                 {
                     // Conectar a la base de datos y eliminar el usuario
-                    using (var db = new LiteDatabase("C:\\ConfigDB\\USUARIOS_TRASPASOS.db"))
+                    using (var db = new LiteDatabase(GlobalSettings.Instance.UsuariosDB.ToString()))
                     {
                         var usuarios = db.GetCollection<AdminUsuario>("USUARIOS");
 
@@ -111,12 +119,13 @@ namespace PedidoXperto.ChildForms
                             // Eliminar el usuario de la base de datos
                             usuarios.Delete(usuarioAEliminar.Id);
                             MessageBox.Show("Usuario eliminado exitosamente.");
-
+                            db.Dispose();
                             // Eliminar la fila del DataGridView
                             TablaUsuarios.Rows.RemoveAt(TablaUsuarios.SelectedRows[0].Index);
                         }
                         else
                         {
+                            db.Dispose();
                             MessageBox.Show("No se encontró el usuario en la base de datos.");
                         }
                     }
@@ -133,6 +142,8 @@ namespace PedidoXperto.ChildForms
         private void BtnAddUser_Click(object sender, EventArgs e)
         {
             AddUser agregarUsuario = new AddUser();
+            agregarUsuario.Txt_Usuario.Select();
+            agregarUsuario.Txt_Usuario.Focus();
             agregarUsuario.ShowDialog();
             TablaUsuarios.Rows.Clear();
             CargarUsers();

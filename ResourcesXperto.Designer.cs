@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PedidoXperto {
+namespace ATCORE_SUITE {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace PedidoXperto {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PedidoXperto.ResourcesXperto", typeof(ResourcesXperto).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ATCORE_SUITE.ResourcesXperto", typeof(ResourcesXperto).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

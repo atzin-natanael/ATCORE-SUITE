@@ -1,4 +1,4 @@
-﻿namespace PedidoXperto.ChildForms
+﻿namespace ATCORE_SUITE.ChildForms
 {
     partial class FormAdminRoles
     {
@@ -55,49 +55,50 @@
             // 
             // panelTop
             // 
-            panelTop.BackColor = Color.White;
+            panelTop.BackColor = Color.Beige;
             panelTop.Controls.Add(Exit);
             panelTop.Controls.Add(Titulo);
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(1383, 53);
+            panelTop.Size = new Size(1180, 53);
             panelTop.TabIndex = 6;
             // 
             // Exit
             // 
-            Exit.BackColor = Color.Red;
+            Exit.BackColor = Color.FromArgb(50, 50, 50);
             Exit.Cursor = Cursors.Hand;
             Exit.Dock = DockStyle.Right;
             Exit.FlatAppearance.BorderSize = 0;
-            Exit.FlatAppearance.MouseOverBackColor = Color.DarkRed;
+            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
             Exit.FlatStyle = FlatStyle.Flat;
             Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Exit.ForeColor = Color.White;
-            Exit.Location = new Point(1242, 0);
+            Exit.ForeColor = Color.Beige;
+            Exit.Image = (Image)resources.GetObject("Exit.Image");
+            Exit.Location = new Point(1119, 0);
             Exit.Name = "Exit";
-            Exit.Size = new Size(141, 53);
+            Exit.Size = new Size(61, 53);
             Exit.TabIndex = 3;
-            Exit.Text = "Salir";
             Exit.UseVisualStyleBackColor = false;
             Exit.Click += Exit_Click;
             // 
             // Titulo
             // 
+            Titulo.BackColor = Color.FromArgb(50, 50, 50);
             Titulo.Dock = DockStyle.Fill;
             Titulo.FlatStyle = FlatStyle.Flat;
             Titulo.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Titulo.ForeColor = Color.Black;
+            Titulo.ForeColor = Color.White;
             Titulo.Location = new Point(0, 0);
             Titulo.Name = "Titulo";
-            Titulo.Size = new Size(1383, 53);
+            Titulo.Size = new Size(1180, 53);
             Titulo.TabIndex = 4;
             Titulo.Text = "ADMINISTRADOR DE ROLES";
             Titulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // SubpanelMenu
             // 
-            SubpanelMenu.BackColor = Color.White;
+            SubpanelMenu.BackColor = Color.Beige;
             SubpanelMenu.Controls.Add(ChangeDerechos);
             SubpanelMenu.Controls.Add(BtnEditNameRol);
             SubpanelMenu.Controls.Add(BtnDeleteRol);
@@ -105,7 +106,7 @@
             SubpanelMenu.Dock = DockStyle.Fill;
             SubpanelMenu.Location = new Point(137, 0);
             SubpanelMenu.Name = "SubpanelMenu";
-            SubpanelMenu.Size = new Size(1246, 62);
+            SubpanelMenu.Size = new Size(1043, 62);
             SubpanelMenu.TabIndex = 9;
             SubpanelMenu.Resize += SubpanelMenu_Resize;
             // 
@@ -209,15 +210,16 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 53);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1383, 62);
+            panel1.Size = new Size(1180, 62);
             panel1.TabIndex = 11;
             // 
             // panel3
             // 
+            panel3.BackColor = Color.Beige;
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 115);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1383, 42);
+            panel3.Size = new Size(1180, 42);
             panel3.TabIndex = 13;
             // 
             // panel2
@@ -226,7 +228,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 157);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1383, 665);
+            panel2.Size = new Size(1180, 544);
             panel2.TabIndex = 14;
             // 
             // TablaRoles
@@ -269,7 +271,7 @@
             TablaRoles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             TablaRoles.RowTemplate.Height = 40;
             TablaRoles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            TablaRoles.Size = new Size(1383, 665);
+            TablaRoles.Size = new Size(1180, 544);
             TablaRoles.TabIndex = 11;
             // 
             // Id
@@ -287,10 +289,9 @@
             // 
             // FormAdminRoles
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
-            ClientSize = new Size(1383, 822);
+            AutoScaleMode = AutoScaleMode.None;
+            BackColor = Color.Beige;
+            ClientSize = new Size(1180, 701);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);

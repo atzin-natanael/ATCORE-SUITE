@@ -1,4 +1,4 @@
-﻿namespace PedidoXperto.ChildForms
+﻿namespace ATCORE_SUITE.ChildForms
 {
     partial class ChangeName
     {
@@ -28,91 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeName));
             Txt_Usuario = new TextBox();
-            panelTop = new Panel();
-            label3 = new Label();
-            Exit = new Button();
             Enter = new Button();
             label2 = new Label();
             label1 = new Label();
             Txt_Usuario2 = new TextBox();
+            panelTop = new Panel();
+            label3 = new Label();
+            Exit = new Button();
             panelTop.SuspendLayout();
             SuspendLayout();
             // 
             // Txt_Usuario
             // 
+            Txt_Usuario.BorderStyle = BorderStyle.FixedSingle;
             Txt_Usuario.CharacterCasing = CharacterCasing.Upper;
             Txt_Usuario.Enabled = false;
-            Txt_Usuario.Location = new Point(168, 140);
+            Txt_Usuario.Font = new Font("Microsoft Sans Serif", 12F);
+            Txt_Usuario.Location = new Point(191, 105);
             Txt_Usuario.Name = "Txt_Usuario";
-            Txt_Usuario.Size = new Size(295, 23);
+            Txt_Usuario.Size = new Size(295, 26);
             Txt_Usuario.TabIndex = 0;
-            // 
-            // panelTop
-            // 
-            panelTop.BackColor = Color.FromArgb(60, 60, 60);
-            panelTop.Controls.Add(label3);
-            panelTop.Controls.Add(Exit);
-            panelTop.Cursor = Cursors.Hand;
-            panelTop.Dock = DockStyle.Top;
-            panelTop.Location = new Point(0, 0);
-            panelTop.Name = "panelTop";
-            panelTop.Size = new Size(606, 61);
-            panelTop.TabIndex = 0;
-            panelTop.MouseDown += panelTop_MouseDown;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(213, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(205, 22);
-            label3.TabIndex = 0;
-            label3.Text = "CAMBIO DE NOMBRE";
-            label3.MouseDown += label3_MouseDown;
-            // 
-            // Exit
-            // 
-            Exit.Anchor = AnchorStyles.Top;
-            Exit.BackColor = SystemColors.ActiveBorder;
-            Exit.Cursor = Cursors.Hand;
-            Exit.FlatAppearance.BorderSize = 0;
-            Exit.FlatStyle = FlatStyle.Flat;
-            Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Exit.ForeColor = Color.Black;
-            Exit.Location = new Point(542, 0);
-            Exit.Name = "Exit";
-            Exit.Size = new Size(64, 27);
-            Exit.TabIndex = 3;
-            Exit.Text = "Salir";
-            Exit.UseVisualStyleBackColor = false;
-            Exit.Click += Exit_Click;
             // 
             // Enter
             // 
             Enter.Anchor = AnchorStyles.Top;
-            Enter.BackColor = SystemColors.ActiveBorder;
+            Enter.BackColor = Color.FromArgb(50, 50, 50);
             Enter.Cursor = Cursors.Hand;
             Enter.FlatAppearance.BorderSize = 0;
             Enter.FlatStyle = FlatStyle.Flat;
-            Enter.ForeColor = Color.Black;
-            Enter.Location = new Point(244, 253);
+            Enter.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Enter.ForeColor = Color.White;
+            Enter.Location = new Point(243, 236);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
             Enter.TabIndex = 2;
             Enter.Text = "Modificar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Enter_Click;
+            Enter.MouseEnter += Enter_MouseEnter;
+            Enter.MouseLeave += Enter_MouseLeave;
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 12F);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(55, 140);
+            label2.Location = new Point(78, 105);
             label2.Name = "label2";
-            label2.Size = new Size(47, 15);
+            label2.Size = new Size(64, 20);
             label2.TabIndex = 17;
             label2.Text = "Usuario";
             label2.Click += label2_Click;
@@ -120,32 +85,78 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 12F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(36, 202);
+            label1.Location = new Point(59, 167);
             label1.Name = "label1";
-            label1.Size = new Size(87, 15);
+            label1.Size = new Size(112, 20);
             label1.TabIndex = 18;
             label1.Text = "Nuevo nombre";
             label1.Click += label1_Click;
             // 
             // Txt_Usuario2
             // 
+            Txt_Usuario2.BorderStyle = BorderStyle.FixedSingle;
             Txt_Usuario2.CharacterCasing = CharacterCasing.Upper;
-            Txt_Usuario2.Location = new Point(168, 199);
+            Txt_Usuario2.Font = new Font("Microsoft Sans Serif", 12F);
+            Txt_Usuario2.Location = new Point(191, 164);
             Txt_Usuario2.Name = "Txt_Usuario2";
-            Txt_Usuario2.Size = new Size(295, 23);
+            Txt_Usuario2.Size = new Size(295, 26);
             Txt_Usuario2.TabIndex = 1;
             Txt_Usuario2.KeyDown += Txt_Usuario2_KeyDown;
+            // 
+            // panelTop
+            // 
+            panelTop.BackColor = Color.FromArgb(50, 50, 50);
+            panelTop.Controls.Add(label3);
+            panelTop.Controls.Add(Exit);
+            panelTop.Cursor = Cursors.Hand;
+            panelTop.Dock = DockStyle.Top;
+            panelTop.Location = new Point(0, 0);
+            panelTop.Name = "panelTop";
+            panelTop.Size = new Size(606, 55);
+            panelTop.TabIndex = 24;
+            panelTop.MouseDown += panelTop_MouseDown_1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(229, 15);
+            label3.Name = "label3";
+            label3.Size = new Size(165, 24);
+            label3.TabIndex = 0;
+            label3.Text = "Cambiar nombre";
+            label3.MouseDown += label3_MouseDown_1;
+            // 
+            // Exit
+            // 
+            Exit.BackColor = Color.FromArgb(50, 50, 50);
+            Exit.Cursor = Cursors.Hand;
+            Exit.Dock = DockStyle.Right;
+            Exit.FlatAppearance.BorderSize = 0;
+            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
+            Exit.FlatStyle = FlatStyle.Flat;
+            Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Exit.ForeColor = Color.Black;
+            Exit.Image = (Image)resources.GetObject("Exit.Image");
+            Exit.Location = new Point(542, 0);
+            Exit.Name = "Exit";
+            Exit.Size = new Size(64, 55);
+            Exit.TabIndex = 6;
+            Exit.UseVisualStyleBackColor = false;
+            Exit.Click += Exit_Click_1;
             // 
             // ChangeName
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(60, 60, 60);
+            BackColor = Color.FromArgb(120, 120, 120);
             ClientSize = new Size(606, 338);
+            Controls.Add(panelTop);
             Controls.Add(Txt_Usuario2);
             Controls.Add(Txt_Usuario);
-            Controls.Add(panelTop);
             Controls.Add(Enter);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -161,12 +172,12 @@
 
         #endregion
         private TextBox Txt_Usuario;
-        private Panel panelTop;
-        private Label label3;
-        private Button Exit;
         private Button Enter;
         private Label label2;
         private Label label1;
         private TextBox Txt_Usuario2;
+        private Panel panelTop;
+        private Label label3;
+        private Button Exit;
     }
 }
