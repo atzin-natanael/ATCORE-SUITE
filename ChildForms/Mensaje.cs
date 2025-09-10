@@ -61,5 +61,15 @@ namespace ATCORE_SUITE.ChildForms
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void Btn_Aceptar_MouseEnter(object sender, EventArgs e)
+        {
+            Btn_Aceptar.ForeColor = System.Drawing.Color.Yellow;
+        }
+
+        private void Btn_Aceptar_MouseLeave(object sender, EventArgs e)
+        {
+            Btn_Aceptar.ForeColor = System.Drawing.Color.White;
+        }
     }
 }

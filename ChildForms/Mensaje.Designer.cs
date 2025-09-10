@@ -98,6 +98,8 @@
             Btn_Aceptar.Text = "Aceptar";
             Btn_Aceptar.UseVisualStyleBackColor = false;
             Btn_Aceptar.Click += Btn_Aceptar_Click;
+            Btn_Aceptar.MouseEnter += Btn_Aceptar_MouseEnter;
+            Btn_Aceptar.MouseLeave += Btn_Aceptar_MouseLeave;
             // 
             // Texto
             // 

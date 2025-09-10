@@ -113,6 +113,8 @@
             Enter.Text = "Aceptar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Enter_Click;
+            Enter.MouseEnter += Enter_MouseEnter;
+            Enter.MouseLeave += Enter_MouseLeave;
             // 
             // label2
             // 

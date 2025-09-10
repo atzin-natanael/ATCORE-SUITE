@@ -114,9 +114,9 @@
             label3.ForeColor = Color.White;
             label3.Location = new Point(200, 15);
             label3.Name = "label3";
-            label3.Size = new Size(221, 24);
+            label3.Size = new Size(183, 24);
             label3.TabIndex = 0;
-            label3.Text = "CAMBIAR DERECHOS";
+            label3.Text = "Cambiar Derechos";
             label3.MouseDown += label3_MouseDown_1;
             // 
             // Exit

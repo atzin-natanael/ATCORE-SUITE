@@ -54,6 +54,7 @@ namespace ATCORE_SUITE.ChildForms
         {
             ControlAcceso control = new ControlAcceso();
             control.EnviarVariableEvent3 += new ControlAcceso.EnviarVariableDelegate3(ejecutar);
+            control.Cb_Usuario.Focus();
             control.ShowDialog();
         }
 

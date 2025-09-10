@@ -50,5 +50,15 @@ namespace ATCORE_SUITE.ChildForms
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void Enter_MouseEnter(object sender, EventArgs e)
+        {
+            Enter.ForeColor = System.Drawing.Color.Yellow;
+        }
+
+        private void Enter_MouseLeave(object sender, EventArgs e)
+        {
+            Enter.ForeColor = System.Drawing.Color.White;
+        }
     }
 }

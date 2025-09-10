@@ -208,5 +208,10 @@ namespace ATCORE_SUITE.ChildForms
         {
             Enter.ForeColor = Color.White;
         }
+
+        private void Exit_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

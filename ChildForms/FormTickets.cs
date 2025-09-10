@@ -515,5 +515,25 @@ namespace ATCORE_SUITE.ChildForms
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void BtnImprimirArte_MouseEnter(object sender, EventArgs e)
+        {
+            BtnImprimirArte.ForeColor = System.Drawing.Color.Yellow;
+        }
+
+        private void BtnImprimirArte_MouseLeave(object sender, EventArgs e)
+        {
+            BtnImprimirArte.ForeColor = System.Drawing.Color.White;
+        }
+
+        private void BtnImprimirIsla_MouseEnter(object sender, EventArgs e)
+        {
+            BtnImprimirIsla.ForeColor = System.Drawing.Color.Yellow;
+        }
+
+        private void BtnImprimirIsla_MouseLeave(object sender, EventArgs e)
+        {
+            BtnImprimirIsla.ForeColor = System.Drawing.Color.White;
+        }
     }
 }

@@ -50,7 +50,7 @@
             ForgetPw.Location = new Point(230, 210);
             ForgetPw.Name = "ForgetPw";
             ForgetPw.Size = new Size(156, 20);
-            ForgetPw.TabIndex = 14;
+            ForgetPw.TabIndex = 0;
             ForgetPw.Text = "Olvidé mi contraseña";
             ForgetPw.Click += ForgetPw_Click;
             // 
@@ -60,15 +60,13 @@
             Enter.BackColor = Color.FromArgb(50, 50, 50);
             Enter.Cursor = Cursors.Hand;
             Enter.FlatAppearance.BorderSize = 0;
-            Enter.FlatAppearance.MouseDownBackColor = Color.Gray;
-            Enter.FlatAppearance.MouseOverBackColor = Color.Gray;
             Enter.FlatStyle = FlatStyle.Flat;
             Enter.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Enter.ForeColor = Color.White;
             Enter.Location = new Point(244, 276);
             Enter.Name = "Enter";
             Enter.Size = new Size(141, 50);
-            Enter.TabIndex = 13;
+            Enter.TabIndex = 3;
             Enter.Text = "Autorizar";
             Enter.UseVisualStyleBackColor = false;
             Enter.Click += Enter_Click;
@@ -81,7 +79,7 @@
             TxtPw.Location = new Point(168, 167);
             TxtPw.Name = "TxtPw";
             TxtPw.Size = new Size(295, 26);
-            TxtPw.TabIndex = 12;
+            TxtPw.TabIndex = 2;
             TxtPw.UseSystemPasswordChar = true;
             TxtPw.KeyDown += TxtPw_KeyDown;
             // 
@@ -116,7 +114,7 @@
             Cb_Usuario.Location = new Point(168, 105);
             Cb_Usuario.Name = "Cb_Usuario";
             Cb_Usuario.Size = new Size(295, 28);
-            Cb_Usuario.TabIndex = 16;
+            Cb_Usuario.TabIndex = 1;
             Cb_Usuario.KeyPress += Cb_Usuario_KeyPress;
             // 
             // panelTop
@@ -158,8 +156,9 @@
             Exit.Location = new Point(542, 0);
             Exit.Name = "Exit";
             Exit.Size = new Size(64, 55);
-            Exit.TabIndex = 6;
+            Exit.TabIndex = 0;
             Exit.UseVisualStyleBackColor = false;
+            Exit.Click += Exit_Click_1;
             // 
             // ControlAcceso
             // 
@@ -190,9 +189,9 @@
         private TextBox TxtPw;
         private Label label2;
         private Label label1;
-        private ComboBox Cb_Usuario;
         private Panel panelTop;
         private Label label3;
         private Button Exit;
+        public ComboBox Cb_Usuario;
     }
 }

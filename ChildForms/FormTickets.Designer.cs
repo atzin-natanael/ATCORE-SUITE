@@ -93,13 +93,13 @@
             // BtnImprimirIsla
             // 
             BtnImprimirIsla.Anchor = AnchorStyles.None;
-            BtnImprimirIsla.BackColor = Color.Silver;
+            BtnImprimirIsla.BackColor = Color.FromArgb(50, 50, 50);
             BtnImprimirIsla.Cursor = Cursors.Hand;
             BtnImprimirIsla.FlatAppearance.BorderSize = 0;
             BtnImprimirIsla.FlatAppearance.MouseOverBackColor = Color.White;
             BtnImprimirIsla.FlatStyle = FlatStyle.Flat;
             BtnImprimirIsla.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnImprimirIsla.ForeColor = Color.Black;
+            BtnImprimirIsla.ForeColor = Color.White;
             BtnImprimirIsla.Location = new Point(219, 570);
             BtnImprimirIsla.Name = "BtnImprimirIsla";
             BtnImprimirIsla.Size = new Size(184, 58);
@@ -107,6 +107,8 @@
             BtnImprimirIsla.Text = "Imprimir";
             BtnImprimirIsla.UseVisualStyleBackColor = false;
             BtnImprimirIsla.Click += BtnImprimirIsla_Click;
+            BtnImprimirIsla.MouseEnter += BtnImprimirIsla_MouseEnter;
+            BtnImprimirIsla.MouseLeave += BtnImprimirIsla_MouseLeave;
             // 
             // Txt_Pedido
             // 
@@ -160,13 +162,13 @@
             // BtnImprimirArte
             // 
             BtnImprimirArte.Anchor = AnchorStyles.None;
-            BtnImprimirArte.BackColor = Color.Silver;
+            BtnImprimirArte.BackColor = Color.FromArgb(50, 50, 50);
             BtnImprimirArte.Cursor = Cursors.Hand;
             BtnImprimirArte.FlatAppearance.BorderSize = 0;
             BtnImprimirArte.FlatAppearance.MouseOverBackColor = Color.White;
             BtnImprimirArte.FlatStyle = FlatStyle.Flat;
             BtnImprimirArte.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnImprimirArte.ForeColor = Color.Black;
+            BtnImprimirArte.ForeColor = Color.White;
             BtnImprimirArte.Location = new Point(774, 570);
             BtnImprimirArte.Name = "BtnImprimirArte";
             BtnImprimirArte.Size = new Size(184, 58);
@@ -174,6 +176,8 @@
             BtnImprimirArte.Text = "Imprimir";
             BtnImprimirArte.UseVisualStyleBackColor = false;
             BtnImprimirArte.Click += BtnImprimirArte_Click;
+            BtnImprimirArte.MouseEnter += BtnImprimirArte_MouseEnter;
+            BtnImprimirArte.MouseLeave += BtnImprimirArte_MouseLeave;
             // 
             // printDocument1
             // 

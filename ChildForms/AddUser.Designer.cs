@@ -74,11 +74,11 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(197, 10);
+            label3.Location = new Point(225, 10);
             label3.Name = "label3";
-            label3.Size = new Size(222, 24);
+            label3.Size = new Size(170, 24);
             label3.TabIndex = 0;
-            label3.Text = "REGISTRAR USUARIO";
+            label3.Text = "Registrar Usuario";
             label3.MouseDown += label3_MouseDown;
             // 
             // Exit

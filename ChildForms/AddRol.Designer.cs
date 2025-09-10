@@ -51,7 +51,7 @@
             CheckList.Items.AddRange(new object[] { "Enviar Ticket", "Validar Pedido", "Inventario", "Administrador de Usuarios", "Administrador de Roles" });
             CheckList.Location = new Point(168, 143);
             CheckList.Name = "CheckList";
-            CheckList.Size = new Size(295, 110);
+            CheckList.Size = new Size(295, 105);
             CheckList.TabIndex = 21;
             // 
             // Txt_Rol
@@ -112,11 +112,11 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(233, 15);
+            label3.Location = new Point(258, 15);
             label3.Name = "label3";
-            label3.Size = new Size(157, 24);
+            label3.Size = new Size(122, 24);
             label3.TabIndex = 0;
-            label3.Text = "AGREGAR ROL";
+            label3.Text = "Agregar Rol";
             label3.MouseDown += label3_MouseDown_1;
             // 
             // Exit
