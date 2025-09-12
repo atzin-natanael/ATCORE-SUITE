@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace ATCORE_SUITE
+namespace ApisMicrosip
 {
     public class ApiMspInventExt
     {
@@ -32,14 +32,14 @@ namespace ATCORE_SUITE
         //function RenglonEntrada(ArticuloId: Integer; Unidades, CostoUnitario,
         //    CostoTotal: Double): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
-        public static extern int RenglonEntrada(int ArticuloId, double Unidades, double CostoUnitario,
-          double CostoTotal);
+        public static extern int RenglonEntrada(int ArticuloId, Double Unidades, Double CostoUnitario,
+          Double CostoTotal);
 
         //function RenglonEntradaLotes(ClaveLote, FechaCaducidad: PChar;
         //    Unidades: Double): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
         public static extern int RenglonEntradaLotes(string ClaveLote, string  FechaCaducidad,
-          double Unidades);
+          Double Unidades);
 
         //function RenglonEntradaSeries(ClaveSerie: PChar; NumConsecutivos:
         //    Integer): Integer; stdcall;
@@ -84,8 +84,8 @@ namespace ATCORE_SUITE
         // function RenglonSalida(ArticuloId: Integer; Unidades, CostoUnitario,
         //    CostoTotal: Double): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
-        public static extern int RenglonSalida(int ArticuloId, double Unidades, double CostoUnitario,
-          double CostoTotal);
+        public static extern int RenglonSalida(int ArticuloId, Double Unidades, Double CostoUnitario,
+          Double CostoTotal);
 
         // function RenglonSalidaSeries(ClaveSerie: PChar): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
@@ -93,7 +93,7 @@ namespace ATCORE_SUITE
 
         // function RenglonSalidaLotes(ClaveLote: PChar; Unidades: Double ): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
-        public static extern int RenglonSalidaLotes(string ClaveLote, double Unidades);
+        public static extern int RenglonSalidaLotes(string ClaveLote, Double Unidades);
 
         //function AplicaSalida: Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]

@@ -7,17 +7,17 @@ using FirebirdSql.Data.FirebirdClient;
 using ATCORE_SUITE.ChildClases;
 using MySql.Data.MySqlClient;
 using MySqlConnector;
-using ApiBas = ATCORE_SUITE.ApiMspBasicaExt;
-using ApiInv = ATCORE_SUITE.ApiMspInventExt;
+using ApiBas = ApisMicrosip.ApiMspBasicaExt;
+using ApiInv = ApisMicrosip.ApiMspInventExt;
 using System.Data;
 
 namespace ATCORE_SUITE.Logic
 {
     public class GetFireBirdValue
     {
-        public static string GetValue(string query) 
+        public static string GetValue(string conection, string query) 
         {
-            FbConnection con = new FbConnection(GlobalSettings.Instance.StringConnection);
+            FbConnection con = new FbConnection(conection);
             try
             {
                 con.Open();
@@ -76,15 +76,26 @@ namespace ATCORE_SUITE.Logic
                 conn.Close();
             }
         }
-        public static int ConectaBD()
+        public static int ConectaBD(string conection)
         {
+            //path = "192.168.0.239:C:\\Microsip datos\\PAPELERIA CORIBA CORNEJO.fdb"
+            string databasePath = "";
 
+            var partes = conection.Split(';');
+            foreach (var parte in partes)
+            {
+                if (parte.Trim().StartsWith("Database", StringComparison.OrdinalIgnoreCase))
+                {
+                    databasePath = parte.Split('=')[1].Trim();
+                    break;
+                }
+            }
             ApiBas.SetErrorHandling(0, 0);
             if (GlobalSettings.Instance.Bd == 0)
                 GlobalSettings.Instance.Bd = ApiBas.NewDB();
             //Objeto transaccion
             GlobalSettings.Instance.Trn = ApiBas.NewTrn(GlobalSettings.Instance.Bd, 3);
-            string path = GlobalSettings.Instance.Ip + ":" + GlobalSettings.Instance.Direccion;
+            string path = GlobalSettings.Instance.Ip + ":" + databasePath;
             int conecta = ApiBas.DBConnect(GlobalSettings.Instance.Bd, path, GlobalSettings.Instance.User, GlobalSettings.Instance.Pw);
             StringBuilder obtieneError = new StringBuilder(1000);
             int codigoError = ApiBas.GetLastErrorMessage(obtieneError);
@@ -345,7 +356,7 @@ namespace ATCORE_SUITE.Logic
                 {
                     return null;
                 }
-                preciolista = GetValue("SELECT PRECIO FROM PRECIOS_ARTICULOS WHERE ARTICULO_ID = '" + articulo_id + "' AND PRECIO_EMPRESA_ID = '42';");
+                preciolista = GetValue(GlobalSettings.Instance.StringConnection, "SELECT PRECIO FROM PRECIOS_ARTICULOS WHERE ARTICULO_ID = '" + articulo_id + "' AND PRECIO_EMPRESA_ID = '42';");
                 string queryc = "SELECT CLAVE_ARTICULO FROM CLAVES_ARTICULOS WHERE ARTICULO_ID = '" + articulo_id + "' AND ROL_CLAVE_ART_ID = '17'";
                 FbCommand commandc = new FbCommand(queryc, con);
                 FbDataReader readerc = commandc.ExecuteReader();
@@ -357,8 +368,8 @@ namespace ATCORE_SUITE.Logic
                 {
                     return null;
                 }
-                impuestoid = GetValue("SELECT IMPUESTO_ID FROM IMPUESTOS_ARTICULOS WHERE ARTICULO_ID = '" + articulo_id + "';");
-                impuesto = GetValue("SELECT PCTJE_IMPUESTO FROM IMPUESTOS WHERE IMPUESTO_ID = '" + impuestoid + "';");
+                impuestoid = GetValue(GlobalSettings.Instance.StringConnection, "SELECT IMPUESTO_ID FROM IMPUESTOS_ARTICULOS WHERE ARTICULO_ID = '" + articulo_id + "';");
+                impuesto = GetValue(GlobalSettings.Instance.StringConnection, "SELECT PCTJE_IMPUESTO FROM IMPUESTOS WHERE IMPUESTO_ID = '" + impuestoid + "';");
                 string queryb = "SELECT NOMBRE FROM ARTICULOS WHERE ARTICULO_ID = '" + articulo_id + "'";
                 FbCommand commandb = new FbCommand(queryb, con);
                 FbDataReader readerb = commandb.ExecuteReader();
@@ -386,9 +397,9 @@ namespace ATCORE_SUITE.Logic
         public string[] GetImpuestoArticulo(string Clave_articulo)
         {
            
-                string articulo_id = GetValue("SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + Clave_articulo + "';");
-                string impuestoid = GetValue("SELECT IMPUESTO_ID FROM IMPUESTOS_ARTICULOS WHERE ARTICULO_ID = '" + articulo_id + "';");
-                string impuesto = GetValue("SELECT PCTJE_IMPUESTO FROM IMPUESTOS WHERE IMPUESTO_ID = '" + impuestoid + "';");
+                string articulo_id = GetValue(GlobalSettings.Instance.StringConnection, "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + Clave_articulo + "';");
+                string impuestoid = GetValue(GlobalSettings.Instance.StringConnection, "SELECT IMPUESTO_ID FROM IMPUESTOS_ARTICULOS WHERE ARTICULO_ID = '" + articulo_id + "';");
+                string impuesto = GetValue(GlobalSettings.Instance.StringConnection, "SELECT PCTJE_IMPUESTO FROM IMPUESTOS WHERE IMPUESTO_ID = '" + impuestoid + "';");
                 return new string[] {impuesto };
         }
     }

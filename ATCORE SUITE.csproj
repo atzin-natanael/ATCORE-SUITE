@@ -11,6 +11,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ApiMspBasicaExt.cs" />
+    <Compile Remove="ApiMspComprasExt.cs" />
+    <Compile Remove="ApiMspInventExt.cs" />
+    <Compile Remove="ApiMspVentasExt.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ApiMicrosip.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\ApiMicrosip.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ApiMspBasicaExt.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ApiMspComprasExt.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ApiMspInventExt.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ApiMspVentasExt.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ICON LOGO.ico" />
   </ItemGroup>
 

@@ -11,8 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ATCORE_SUITE.Mesa_de_control.Compra_Salida;
-using ApiBas = ATCORE_SUITE.ApiMspBasicaExt;
-using ApiInv = ATCORE_SUITE.ApiMspInventExt;
+using ApiBas = ApisMicrosip.ApiMspBasicaExt;
+using ApiInv = ApisMicrosip.ApiMspInventExt;
 
 namespace ATCORE_SUITE.Mesa_de_control
 {
@@ -48,7 +48,7 @@ namespace ATCORE_SUITE.Mesa_de_control
             {
                 return;
             }
-            int conecta = GetFireBirdValue.ConectaBD();
+            int conecta = GetFireBirdValue.ConectaBD(GlobalSettings.Instance.StringConnection);
             if (conecta == 1)
             {
                 //culiacan
@@ -88,7 +88,7 @@ namespace ATCORE_SUITE.Mesa_de_control
                 ErrorFolio2 = ApiInv.NuevaEntrada(25, almacen, fecha.ToString(), "", "Entrada de Traspaso: " + TxtFolio.Text, 0);
                 for (int i = 0; i < ArticulosTraspasoE.Count; ++i)
                 {
-                    string artic = GetFireBirdValue.GetValue("SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + ArticulosTraspasoE[i][1].ToString() + "';");
+                    string artic = GetFireBirdValue.GetValue(GlobalSettings.Instance.StringConnection, "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + ArticulosTraspasoE[i][1].ToString() + "';");
                     int Renglon = ApiInv.RenglonEntrada(int.Parse(artic), double.Parse(ArticulosTraspasoE[i][3].ToString()), double.Parse(ArticulosTraspasoE[i][4].ToString()), 0);
                 }
                 int final = ApiInv.AplicaEntrada();
@@ -118,7 +118,7 @@ namespace ATCORE_SUITE.Mesa_de_control
                     mensaje.Texto.Text = "No se pudo realizar la salida por existencia insuficiente\n";
                     for (int i = 0; i < ArticulosTraspasoE.Count; ++i)
                     {
-                        string ArtId = DataBridge.GetArticuloId(ArticulosTraspasoE[i][1].ToString());
+                        string ArtId = DataBridge.GetArticuloId(GlobalSettings.Instance.StringConnection, ArticulosTraspasoE[i][1].ToString());
                         string ExArt = DataBridge.GetExistencia(ArtId, "108401");
                         if (int.Parse(ExArt) < int.Parse(ArticulosTraspasoE[i][3]))
                         {

@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace ATCORE_SUITE
+namespace ApisMicrosip
 {
     public class ApiMspBasicaExt
     {
@@ -232,7 +232,7 @@ namespace ATCORE_SUITE
         //Var FieldValue: Double): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
         public static extern int DtstGetFieldAsDouble
-        (int DtstHandle, string FieldName, ref double FieldValue);
+        (int DtstHandle, string FieldName, ref Double FieldValue);
 
         //function DtstGetFieldAsMemo(DtstHandle: Integer; FieldName: PChar; FieldValue: PChar): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
@@ -264,7 +264,7 @@ namespace ATCORE_SUITE
 
         //function DtstSetFieldAsDouble(DtstHandle: Integer; FieldName: PChar; FieldValue: Double): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
-        public static extern int DtstSetFieldAsDouble(int DtstHandle, string FieldName, double FieldValue);
+        public static extern int DtstSetFieldAsDouble(int DtstHandle, string FieldName, Double FieldValue);
 
         //function DtstSetFieldAsMemo(dtstHandle: Integer; FieldName, FieldValue: PChar): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]                           // Es tipo memo
@@ -337,7 +337,7 @@ namespace ATCORE_SUITE
 
         //function SqlSetParamAsDouble(SqlHandle: Integer; ParamName: PChar; ParamValue: Double): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
-        public static extern int SqlSetParamAsDouble(int SqlHandle, string ParamName, double ParamValue);
+        public static extern int SqlSetParamAsDouble(int SqlHandle, string ParamName, Double ParamValue);
 
         //function SqlSetParamAsMemo(SqlHandle: Integer; ParamName: PChar; ParamValue: PChar): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
@@ -380,13 +380,13 @@ namespace ATCORE_SUITE
         //function SqlGetFieldAsTime(SqlHandle: Integer; FieldName: PChar;
         //  Var Hour, Minute, Second: Word): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
-        public static extern int SqlGetFieldAsTime(int SqlHandle, string FieldName,
+        public static extern int SqlGetFieldAsTime(int SqlHandle, String FieldName,
           ref ushort Hour, ref ushort Minute, ref ushort Second);
 
         //function SqlGetFieldAsDateTime(SqlHandle: Integer; FieldName: PChar;
         //  Var Day, Month, Year, Hour, Minute, Second: Word): Integer; stdcall;
         [DllImport("ApiMicrosip.dll", SetLastError = true)]
-        public static extern int SqlGetFieldAsDateTime(int SqlHandle, string FieldName,
+        public static extern int SqlGetFieldAsDateTime(int SqlHandle, String FieldName,
           ref ushort Day, ref ushort Month, ref ushort Year, ref ushort Hour, ref ushort Minute, ref ushort Second);
 
         //function SqlGetFieldAsInteger(SqlHandle: Integer; FieldName: PChar;
@@ -483,7 +483,7 @@ namespace ATCORE_SUITE
         // var ParamValue: Double): Integer; stdcall;
 		[DllImport("ApiMicrosip.dll", SetLastError = true)]
         public static extern int SpGetParamAsDouble(int SpHandle, string ParamName,
-		  ref double ParamValue);
+		  ref Double ParamValue);
 
         //// Objeto semaforo
         //function NewSem(DBHandle: Integer): Integer; stdcall;

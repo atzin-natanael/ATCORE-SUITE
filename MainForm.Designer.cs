@@ -56,6 +56,7 @@ namespace ATCORE_SUITE
             BtnTEntrada = new Button();
             BtnInventario = new Button();
             SubpanelMenuPedido = new Panel();
+            BtnExportar = new Button();
             EnviarTicket = new Button();
             BtnValidarPedido = new Button();
             Btnpedido = new Button();
@@ -269,7 +270,7 @@ namespace ATCORE_SUITE
             SubPanelMenuAdmin.Controls.Add(BtnRoles);
             SubPanelMenuAdmin.Controls.Add(BtnUsuarios);
             SubPanelMenuAdmin.Dock = DockStyle.Top;
-            SubPanelMenuAdmin.Location = new Point(0, 463);
+            SubPanelMenuAdmin.Location = new Point(0, 517);
             SubPanelMenuAdmin.Name = "SubPanelMenuAdmin";
             SubPanelMenuAdmin.Size = new Size(240, 106);
             SubPanelMenuAdmin.TabIndex = 4;
@@ -326,7 +327,7 @@ namespace ATCORE_SUITE
             BtnAdministrador.FlatStyle = FlatStyle.Flat;
             BtnAdministrador.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnAdministrador.ForeColor = SystemColors.Control;
-            BtnAdministrador.Location = new Point(0, 409);
+            BtnAdministrador.Location = new Point(0, 463);
             BtnAdministrador.Name = "BtnAdministrador";
             BtnAdministrador.Size = new Size(240, 54);
             BtnAdministrador.TabIndex = 0;
@@ -344,7 +345,7 @@ namespace ATCORE_SUITE
             SubPanelInventario.Controls.Add(BtnTSalida);
             SubPanelInventario.Controls.Add(BtnTEntrada);
             SubPanelInventario.Dock = DockStyle.Top;
-            SubPanelInventario.Location = new Point(0, 207);
+            SubPanelInventario.Location = new Point(0, 261);
             SubPanelInventario.Name = "SubPanelInventario";
             SubPanelInventario.Size = new Size(240, 202);
             SubPanelInventario.TabIndex = 5;
@@ -443,7 +444,7 @@ namespace ATCORE_SUITE
             BtnInventario.FlatStyle = FlatStyle.Flat;
             BtnInventario.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnInventario.ForeColor = SystemColors.Control;
-            BtnInventario.Location = new Point(0, 153);
+            BtnInventario.Location = new Point(0, 207);
             BtnInventario.Name = "BtnInventario";
             BtnInventario.Size = new Size(240, 54);
             BtnInventario.TabIndex = 2;
@@ -456,13 +457,35 @@ namespace ATCORE_SUITE
             // 
             // SubpanelMenuPedido
             // 
+            SubpanelMenuPedido.Controls.Add(BtnExportar);
             SubpanelMenuPedido.Controls.Add(EnviarTicket);
             SubpanelMenuPedido.Controls.Add(BtnValidarPedido);
             SubpanelMenuPedido.Dock = DockStyle.Top;
             SubpanelMenuPedido.Location = new Point(0, 54);
             SubpanelMenuPedido.Name = "SubpanelMenuPedido";
-            SubpanelMenuPedido.Size = new Size(240, 99);
+            SubpanelMenuPedido.Size = new Size(240, 153);
             SubpanelMenuPedido.TabIndex = 1;
+            // 
+            // BtnExportar
+            // 
+            BtnExportar.BackColor = Color.Silver;
+            BtnExportar.Cursor = Cursors.Hand;
+            BtnExportar.Dock = DockStyle.Top;
+            BtnExportar.FlatAppearance.BorderSize = 0;
+            BtnExportar.FlatAppearance.MouseOverBackColor = Color.Gray;
+            BtnExportar.FlatStyle = FlatStyle.Flat;
+            BtnExportar.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnExportar.ForeColor = Color.Black;
+            BtnExportar.Location = new Point(0, 100);
+            BtnExportar.Name = "BtnExportar";
+            BtnExportar.Size = new Size(240, 50);
+            BtnExportar.TabIndex = 2;
+            BtnExportar.TabStop = false;
+            BtnExportar.Text = "Exportar a Isi Office";
+            BtnExportar.UseVisualStyleBackColor = false;
+            BtnExportar.Click += BtnExportar_Click;
+            BtnExportar.MouseEnter += BtnExportar_MouseEnter;
+            BtnExportar.MouseLeave += BtnExportar_MouseLeave;
             // 
             // EnviarTicket
             // 
@@ -628,5 +651,6 @@ namespace ATCORE_SUITE
         private Button Btnpedido;
         private Panel Leftpanel;
         public Button BtnInventario;
+        public Button BtnExportar;
     }
 }

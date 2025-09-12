@@ -11,8 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ATCORE_SUITE.Mesa_de_control.Compra_Salida;
-using ApiBas = ATCORE_SUITE.ApiMspBasicaExt;
-using ApiInv = ATCORE_SUITE.ApiMspInventExt;
+using ApiBas = ApisMicrosip.ApiMspBasicaExt;
+using ApiInv = ApisMicrosip.ApiMspInventExt;
 using ATCORE_SUITE.ChildForms;
 
 namespace ATCORE_SUITE.Mesa_de_control
@@ -49,7 +49,7 @@ namespace ATCORE_SUITE.Mesa_de_control
             {
                 return;
             }
-            int conecta = GetFireBirdValue.ConectaBD();
+            int conecta = GetFireBirdValue.ConectaBD(GlobalSettings.Instance.StringConnection);
             if (conecta == 1)
             {
                 //culiacan
@@ -86,7 +86,7 @@ namespace ATCORE_SUITE.Mesa_de_control
                     ErrorFolio2 = ApiInv.NuevaSalida(36, 108401, 108402, fecha.ToString(), "", "Salida de Compra: " + TxtFolio.Text, 0);
                     for (int i = 0; i < ArticulosCompraE.Count; ++i)
                     {
-                        string artic = GetFireBirdValue.GetValue("SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + ArticulosCompraE[i][1].ToString() + "';");
+                        string artic = GetFireBirdValue.GetValue(GlobalSettings.Instance.StringConnection, "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + ArticulosCompraE[i][1].ToString() + "';");
                         int Renglon = ApiInv.RenglonSalida(int.Parse(artic), double.Parse(ArticulosCompraE[i][3].ToString()), 0, 0);
                     }
                     int final = ApiInv.AplicaSalida();
@@ -116,7 +116,7 @@ namespace ATCORE_SUITE.Mesa_de_control
                         mensaje.Texto.Text = "No se pudo realizar la salida por existencia insuficiente\n";
                         for (int i = 0; i < ArticulosCompraE.Count; ++i)
                         {
-                            string ArtId = DataBridge.GetArticuloId(ArticulosCompraE[i][1].ToString());
+                            string ArtId = DataBridge.GetArticuloId(GlobalSettings.Instance.StringConnection, ArticulosCompraE[i][1].ToString());
                             string ExArt = DataBridge.GetExistencia(ArtId, "108401");
                             if (int.Parse(ExArt) < int.Parse(ArticulosCompraE[i][3]))
                             {
@@ -157,7 +157,7 @@ namespace ATCORE_SUITE.Mesa_de_control
 
                     ErrorFolio2 = ApiInv.NuevaEntrada(25, 108402, fecha.ToString(), "", "Entrada de Compra: " + TxtFolio.Text, 0);
                     for (int i = 0; i < ArticulosCompraE.Count; ++i) { 
-                        string artic = GetFireBirdValue.GetValue("SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + ArticulosCompraE[i][1].ToString() + "';");
+                        string artic = GetFireBirdValue.GetValue(GlobalSettings.Instance.StringConnection, "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + ArticulosCompraE[i][1].ToString() + "';");
                         int Renglon = ApiInv.RenglonEntrada(int.Parse(artic), double.Parse(ArticulosCompraE[i][3].ToString()), double.Parse(ArticulosCompraE[i][4].ToString()), 0);
                     }
                     int final = ApiInv.AplicaEntrada();
@@ -302,7 +302,7 @@ namespace ATCORE_SUITE.Mesa_de_control
                 if (Tabla.CurrentRow.Cells[0].Value != null)
                 {
                     Existencias existencias = new Existencias();
-                    string articuloid = DataBridge.GetArticuloId(Tabla.CurrentRow.Cells[1].Value.ToString());
+                    string articuloid = DataBridge.GetArticuloId(GlobalSettings.Instance.StringConnection, Tabla.CurrentRow.Cells[1].Value.ToString());
                     string Exalmacen = DataBridge.GetExistencia(articuloid, "108401");
                     string Extienda = DataBridge.GetExistencia(articuloid, "108403");
                     existencias.Descripcion.Text = Tabla.CurrentRow.Cells[2].Value.ToString();

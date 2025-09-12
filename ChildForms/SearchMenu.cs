@@ -63,7 +63,7 @@ namespace ATCORE_SUITE.ChildForms
                     string codigo = reader.GetString(0);
                     string nombre = reader.GetString(1);
                     string precio = reader.GetString(2);
-                    string articuloid = DataBridge.GetArticuloId(codigo);
+                    string articuloid = DataBridge.GetArticuloId(GlobalSettings.Instance.StringConnection, codigo);
                     string Exalmacen = DataBridge.GetExistencia(articuloid, "108401");
                     string Extienda = DataBridge.GetExistencia(articuloid, "108403");
                     decimal ExistenciaTotal = decimal.Parse(Exalmacen) + decimal.Parse(Extienda);

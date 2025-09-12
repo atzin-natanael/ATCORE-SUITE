@@ -870,7 +870,7 @@ namespace ATCORE_SUITE.ChildForms
                 if (Tabla.CurrentCell != null && Tabla.CurrentCell.ColumnIndex == 2)
                 {
                     Existencias existencias = new Existencias();
-                    string articuloid = DataBridge.GetArticuloId(Tabla.CurrentRow.Cells[1].Value.ToString());
+                    string articuloid = DataBridge.GetArticuloId(GlobalSettings.Instance.StringConnection, Tabla.CurrentRow.Cells[1].Value.ToString());
                     existencias.Descripcion.Text = Tabla.CurrentRow.Cells[2].Value.ToString();
                     string Exalmacen = DataBridge.GetExistencia(articuloid, "108401");
                     string Extienda = DataBridge.GetExistencia(articuloid, "108403");
@@ -2526,7 +2526,7 @@ namespace ATCORE_SUITE.ChildForms
                         {
                             if (Articulos[i].Id == codigo)
                             {
-                                articuloid = DataBridge.GetArticuloId(Articulos[i].Codigo);
+                                articuloid = DataBridge.GetArticuloId(GlobalSettings.Instance.StringConnection, Articulos[i].Codigo);
                                 existencias.Descripcion.Text = Tabla.CurrentRow.Cells[2].Value.ToString();
                                 string Exalmacen = DataBridge.GetExistencia(articuloid, "108401");
                                 string Extienda = DataBridge.GetExistencia(articuloid, "108403");

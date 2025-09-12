@@ -70,7 +70,7 @@ namespace ATCORE_SUITE.Mesa_de_control
                 string folioMod = CambioFolio();
                 char Mvto = 'S';
                 string query = "SELECT * FROM DOCTOS_IN WHERE FOLIO = '" + folioMod + "' AND NATURALEZA_CONCEPTO = '" + Mvto + "';";
-                string Docto_In_Id = GetFireBirdValue.GetValue(query);
+                string Docto_In_Id = GetFireBirdValue.GetValue(GlobalSettings.Instance.StringConnection, query);
                 if (Docto_In_Id == null)
                 {
                     MessageBox.Show("No se encontró el folio ingresado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -98,7 +98,7 @@ namespace ATCORE_SUITE.Mesa_de_control
                         id++;
                         string articulo_id = reader.GetString(1);
                         query = "SELECT NOMBRE FROM ARTICULOS WHERE ARTICULO_ID = '" + articulo_id + "';";
-                        string nombre = GetFireBirdValue.GetValue(query);
+                        string nombre = GetFireBirdValue.GetValue(GlobalSettings.Instance.StringConnection, query);
                         Tabla.Rows.Add(id, reader.GetString(0), nombre, reader.GetString(2));
                         //ADD LISTA
                         List<string> ArticuloC = new List<string>();

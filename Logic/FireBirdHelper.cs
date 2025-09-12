@@ -42,7 +42,7 @@ namespace ATCORE_SUITE.Logic
                 // Asume que la columna 0 es string
                 result.Add(reader.GetString(0));
             }
-
+                        return result;
             return result;
         }
 

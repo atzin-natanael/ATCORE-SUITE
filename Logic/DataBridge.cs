@@ -77,7 +77,7 @@ namespace ATCORE_SUITE.Logic
         }
         #endregion
         #region Datos Articulo
-        static public string? GetArticuloId(string claveArticulo)
+        static public string? GetArticuloId(string conection, string claveArticulo)
         {
             var sql = "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = @c;";
             var rows = new FireBirdHelper().ExecuteSingleColumn(sql, new Dictionary<string, object>

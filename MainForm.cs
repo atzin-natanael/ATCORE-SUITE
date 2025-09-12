@@ -58,6 +58,14 @@ namespace ATCORE_SUITE
         }
         private void Btnpedido_Click(object sender, EventArgs e)
         {
+            if (SubPanelMenuAdmin.Visible == true)
+            {
+                SubPanelMenuAdmin.Visible = false;
+            }
+            if (SubPanelInventario.Visible == true)
+            {
+                SubPanelInventario.Visible = false;
+            }
             mostrarSubmenu(SubpanelMenuPedido);
         }
         public void Design()
@@ -305,6 +313,14 @@ namespace ATCORE_SUITE
 
         private void BtnAdministrador_Click(object sender, EventArgs e)
         {
+            if (SubpanelMenuPedido.Visible == true)
+            {
+                SubpanelMenuPedido.Visible = false;
+            }
+            if (SubPanelInventario.Visible == true)
+            {
+                SubPanelInventario.Visible = false;
+            }
             mostrarSubmenu(SubPanelMenuAdmin);
         }
 
@@ -406,23 +422,25 @@ namespace ATCORE_SUITE
 
         private void Max_Click(object sender, EventArgs e)
         {
-            if (!activo) {
+            if (!activo)
+            {
                 this.CenterToScreen();
                 this.WindowState = FormWindowState.Maximized;
                 int alto = this.Height;
                 int ancho = this.Width;
                 this.WindowState = FormWindowState.Normal;
                 this.Width = ancho;
-                this.Height = alto-10;
-                this.Location = new Point(0,0);
+                this.Height = alto - 10;
+                this.Location = new Point(0, 0);
                 activo = true;
             }
-            else {
+            else
+            {
                 this.WindowState = FormWindowState.Normal;
                 this.Size = new Size(800, 600);
                 this.Location = new Point(0, 0);
                 activo = false;
-                 }
+            }
         }
 
         private void Min_Click(object sender, EventArgs e)
@@ -432,6 +450,14 @@ namespace ATCORE_SUITE
 
         private void BtnInventario_Click(object sender, EventArgs e)
         {
+            if(SubpanelMenuPedido.Visible == true)
+            {
+                SubpanelMenuPedido.Visible = false;
+            }
+            if (SubPanelMenuAdmin.Visible == true)
+            {
+                SubPanelMenuAdmin.Visible = false;
+            }
             mostrarSubmenu(SubPanelInventario);
         }
         private void AnyControl_MouseEnter(object sender, EventArgs e)
@@ -623,6 +649,26 @@ namespace ATCORE_SUITE
             HideSubmenu();
             HideSubmenu();
             Ocultar();
+        }
+        private void BtnExportar_Click(object sender, EventArgs e)
+        {
+            ExitMain.Visible = false;
+            var frmT = new Surtido.FormExportarIsi();
+            openChild(frmT);
+            frmT.Txt_Pedido.Focus();
+            HideSubmenu();
+            HideSubmenu();
+            Ocultar();
+        }
+
+        private void BtnExportar_MouseEnter(object sender, EventArgs e)
+        {
+            BtnExportar.ForeColor = System.Drawing.Color.White;
+        }
+
+        private void BtnExportar_MouseLeave(object sender, EventArgs e)
+        {
+            BtnExportar.ForeColor = System.Drawing.Color.Black;
         }
     }
 }

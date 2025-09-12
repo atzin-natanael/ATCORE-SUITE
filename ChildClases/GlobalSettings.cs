@@ -11,6 +11,8 @@ namespace ATCORE_SUITE.ChildClases
         private static GlobalSettings instance;
         public string StringConnectionCloud  { get ; set;}
         public string StringConnection  { get; set; }
+        public string IsiStringConnection { get; set; } = "User= SYSDBA;Password= C0r1b423;Database= C:\\\\Microsip datos\\\\ISI OFFICE SA DE CV.fdb;DataSource= 192.168.0.239;Port= 3050;Dialect=3;Charset=UTF8;";
+
         //public string StringConnection { get; set; }
         public string Ip { get; set; }
         public string Puerto { get; set; }

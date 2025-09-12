@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             panel1 = new Panel();
+            panelTop = new Panel();
+            Exit = new Button();
             LbCodigo = new Label();
             panel2 = new Panel();
             Lb_Nota = new Label();
@@ -41,6 +44,7 @@
             label2 = new Label();
             label1 = new Label();
             panel1.SuspendLayout();
+            panelTop.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Cantidad).BeginInit();
             SuspendLayout();
@@ -48,21 +52,53 @@
             // panel1
             // 
             panel1.Controls.Add(LbCodigo);
+            panel1.Controls.Add(panelTop);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(915, 138);
+            panel1.Size = new Size(878, 138);
             panel1.TabIndex = 0;
+            // 
+            // panelTop
+            // 
+            panelTop.BackColor = Color.FromArgb(50, 50, 50);
+            panelTop.Controls.Add(Exit);
+            panelTop.Cursor = Cursors.Hand;
+            panelTop.Dock = DockStyle.Top;
+            panelTop.Location = new Point(0, 0);
+            panelTop.Name = "panelTop";
+            panelTop.Size = new Size(878, 56);
+            panelTop.TabIndex = 2;
+            panelTop.MouseDown += panelTop_MouseDown;
+            // 
+            // Exit
+            // 
+            Exit.BackColor = Color.FromArgb(50, 50, 50);
+            Exit.Cursor = Cursors.Hand;
+            Exit.Dock = DockStyle.Right;
+            Exit.FlatAppearance.BorderSize = 0;
+            Exit.FlatAppearance.MouseOverBackColor = Color.Red;
+            Exit.FlatStyle = FlatStyle.Flat;
+            Exit.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Exit.ForeColor = Color.Black;
+            Exit.Image = (Image)resources.GetObject("Exit.Image");
+            Exit.Location = new Point(769, 0);
+            Exit.Name = "Exit";
+            Exit.Size = new Size(109, 56);
+            Exit.TabIndex = 0;
+            Exit.TabStop = false;
+            Exit.UseVisualStyleBackColor = false;
+            Exit.Click += Exit_Click;
             // 
             // LbCodigo
             // 
-            LbCodigo.BackColor = Color.FromArgb(60, 60, 60);
+            LbCodigo.BackColor = Color.FromArgb(120, 120, 120);
             LbCodigo.Dock = DockStyle.Fill;
-            LbCodigo.Font = new Font("Arial", 14.25F);
+            LbCodigo.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LbCodigo.ForeColor = Color.White;
-            LbCodigo.Location = new Point(0, 0);
+            LbCodigo.Location = new Point(0, 56);
             LbCodigo.Name = "LbCodigo";
-            LbCodigo.Size = new Size(915, 138);
+            LbCodigo.Size = new Size(878, 82);
             LbCodigo.TabIndex = 1;
             LbCodigo.Text = "222";
             LbCodigo.TextAlign = ContentAlignment.MiddleCenter;
@@ -73,17 +109,17 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 138);
             panel2.Name = "panel2";
-            panel2.Size = new Size(915, 131);
+            panel2.Size = new Size(878, 131);
             panel2.TabIndex = 1;
             // 
             // Lb_Nota
             // 
             Lb_Nota.Dock = DockStyle.Fill;
-            Lb_Nota.Font = new Font("Arial", 14.25F);
+            Lb_Nota.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Lb_Nota.ForeColor = Color.White;
             Lb_Nota.Location = new Point(0, 0);
             Lb_Nota.Name = "Lb_Nota";
-            Lb_Nota.Size = new Size(915, 131);
+            Lb_Nota.Size = new Size(878, 131);
             Lb_Nota.TabIndex = 2;
             Lb_Nota.Text = "222";
             Lb_Nota.TextAlign = ContentAlignment.MiddleCenter;
@@ -91,87 +127,87 @@
             // LbRecibido
             // 
             LbRecibido.AutoSize = true;
-            LbRecibido.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            LbRecibido.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LbRecibido.ForeColor = Color.White;
-            LbRecibido.Location = new Point(472, 335);
+            LbRecibido.Location = new Point(432, 318);
             LbRecibido.Name = "LbRecibido";
-            LbRecibido.Size = new Size(103, 25);
+            LbRecibido.Size = new Size(111, 24);
             LbRecibido.TabIndex = 16;
             LbRecibido.Text = "RECIBIDO:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            label4.Font = new Font("Microsoft Sans Serif", 14.25F);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(354, 335);
+            label4.Location = new Point(314, 318);
             label4.Name = "label4";
-            label4.Size = new Size(103, 25);
+            label4.Size = new Size(102, 24);
             label4.TabIndex = 15;
             label4.Text = "RECIBIDO:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(496, 415);
+            label3.Location = new Point(456, 398);
             label3.Name = "label3";
-            label3.Size = new Size(76, 25);
+            label3.Size = new Size(82, 24);
             label3.TabIndex = 14;
             label3.Text = "PIEZAS";
             // 
             // Cantidad
             // 
-            Cantidad.Font = new Font("Arial Black", 12F, FontStyle.Bold);
-            Cantidad.Location = new Point(370, 410);
+            Cantidad.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            Cantidad.Location = new Point(330, 393);
             Cantidad.Maximum = new decimal(new int[] { 30000, 0, 0, 0 });
             Cantidad.Name = "Cantidad";
-            Cantidad.Size = new Size(120, 30);
+            Cantidad.Size = new Size(120, 29);
             Cantidad.TabIndex = 13;
             Cantidad.KeyDown += Cantidad_KeyDown;
             // 
             // LbPendiente
             // 
             LbPendiente.AutoSize = true;
-            LbPendiente.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            LbPendiente.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LbPendiente.ForeColor = Color.White;
-            LbPendiente.Location = new Point(472, 370);
+            LbPendiente.Location = new Point(432, 353);
             LbPendiente.Name = "LbPendiente";
-            LbPendiente.Size = new Size(127, 25);
+            LbPendiente.Size = new Size(137, 24);
             LbPendiente.TabIndex = 12;
             LbPendiente.Text = "SOLICITADO:";
             // 
             // LbSolicitado
             // 
             LbSolicitado.AutoSize = true;
-            LbSolicitado.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            LbSolicitado.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LbSolicitado.ForeColor = Color.White;
-            LbSolicitado.Location = new Point(472, 299);
+            LbSolicitado.Location = new Point(432, 282);
             LbSolicitado.Name = "LbSolicitado";
-            LbSolicitado.Size = new Size(127, 25);
+            LbSolicitado.Size = new Size(137, 24);
             LbSolicitado.TabIndex = 11;
             LbSolicitado.Text = "SOLICITADO:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            label2.Font = new Font("Microsoft Sans Serif", 14.25F);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(337, 370);
+            label2.Location = new Point(297, 353);
             label2.Name = "label2";
-            label2.Size = new Size(120, 25);
+            label2.Size = new Size(123, 24);
             label2.TabIndex = 10;
             label2.Text = "PENDIENTE:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            label1.Font = new Font("Microsoft Sans Serif", 14.25F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(330, 299);
+            label1.Location = new Point(290, 282);
             label1.Name = "label1";
-            label1.Size = new Size(127, 25);
+            label1.Size = new Size(126, 24);
             label1.TabIndex = 9;
             label1.Text = "SOLICITADO:";
             // 
@@ -179,8 +215,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(60, 60, 60);
-            ClientSize = new Size(915, 510);
+            BackColor = Color.FromArgb(120, 120, 120);
+            ClientSize = new Size(878, 447);
             Controls.Add(LbRecibido);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -196,6 +232,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";
             panel1.ResumeLayout(false);
+            panelTop.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Cantidad).EndInit();
             ResumeLayout(false);
@@ -216,5 +253,7 @@
         private Label LbSolicitado;
         private Label label2;
         private Label label1;
+        private Panel panelTop;
+        private Button Exit;
     }
 }

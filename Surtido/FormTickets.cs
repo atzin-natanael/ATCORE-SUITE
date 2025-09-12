@@ -323,7 +323,7 @@ namespace ATCORE_SUITE.ChildForms
         {
             FbConnection con = new FbConnection(GlobalSettings.Instance.StringConnection);
             con.Open();
-            string Docto_id = GetFireBirdValue.GetValue("SELECT DOCTO_VE_ID FROM DOCTOS_VE WHERE FOLIO = '" + Txt_Pedido.Text + "' AND TIPO_DOCTO = 'P'; ");
+            string Docto_id = GetFireBirdValue.GetValue(GlobalSettings.Instance.StringConnection, "SELECT DOCTO_VE_ID FROM DOCTOS_VE WHERE FOLIO = '" + Txt_Pedido.Text + "' AND TIPO_DOCTO = 'P'; ");
             if (string.IsNullOrEmpty(Docto_id))
             {
                 MessageBox.Show("Folio no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -360,7 +360,7 @@ namespace ATCORE_SUITE.ChildForms
         {
             FbConnection con = new FbConnection(GlobalSettings.Instance.StringConnection);
             con.Open();
-            string Docto_id = GetFireBirdValue.GetValue("SELECT DOCTO_VE_ID FROM DOCTOS_VE WHERE FOLIO = '" + Txt_Pedido.Text + "' AND TIPO_DOCTO = 'P'; ");
+            string Docto_id = GetFireBirdValue.GetValue(GlobalSettings.Instance.StringConnection, "SELECT DOCTO_VE_ID FROM DOCTOS_VE WHERE FOLIO = '" + Txt_Pedido.Text + "' AND TIPO_DOCTO = 'P'; ");
             if (string.IsNullOrEmpty(Docto_id))
             {
                 con.Close();

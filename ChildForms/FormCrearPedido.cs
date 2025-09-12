@@ -4,8 +4,8 @@ using FirebirdSql.Data.FirebirdClient;
 using ATCORE_SUITE.ChildClases;
 using ATCORE_SUITE.Logic;
 using static ATCORE_SUITE.ChildForms.SearchCliente;
-using ApiBas = ATCORE_SUITE.ApiMspBasicaExt;
-using ApiVen = ATCORE_SUITE.ApiMspVentasExt;
+using ApiBas = ApisMicrosip.ApiMspBasicaExt;
+using ApiVen = ApisMicrosip.ApiMspVentasExt;
 namespace ATCORE_SUITE.ChildForms
 {
     public partial class FormCrearPedido : Form
@@ -119,56 +119,56 @@ namespace ATCORE_SUITE.ChildForms
         }
         private void Save_Click(object sender, EventArgs e)
         {
-            int conectar = GetFireBirdValue.ConectaBD();
-            if (conectar != 1)
-            {
-                MessageBox.Show("Error al conectar a la base de datos", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            ApiMspBasicaExt.DBConnected(GlobalSettings.Instance.Bd);
-            ApiMspVentasExt.SetDBVentas(GlobalSettings.Instance.Bd);
-            string cliente_id = "";
-            if (txtBox_clienteId.Text != string.Empty)
-            {
-                string query = "SELECT CLIENTE_ID FROM CLAVES_CLIENTES WHERE CLAVE_CLIENTE = '" + txtBox_clienteId.Text + "'";
-                cliente_id = GetFireBirdValue.GetValue(query);
-            }
-            string vendedor_id = "";
+            //int conectar = GetFireBirdValue.ConectaBD();
+            //if (conectar != 1)
+            //{
+            //    MessageBox.Show("Error al conectar a la base de datos", "¡Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+            //ApiMspBasicaExt.DBConnected(GlobalSettings.Instance.Bd);
+            //ApiMspVentasExt.SetDBVentas(GlobalSettings.Instance.Bd);
+            //string cliente_id = "";
+            //if (txtBox_clienteId.Text != string.Empty)
+            //{
+            //    string query = "SELECT CLIENTE_ID FROM CLAVES_CLIENTES WHERE CLAVE_CLIENTE = '" + txtBox_clienteId.Text + "'";
+            //    cliente_id = GetFireBirdValue.GetValue(query);
+            //}
+            //string vendedor_id = "";
 
-            var vendedor = vendedores.FirstOrDefault(v => v[1] == Cb_Vendedor.Text);
-            if (vendedor != null)
-            {
-                vendedor_id = vendedor[0];
-            }
-            int DoctoId = ApiMspVentasExt.NuevoPedido(DateTime.Now.ToString(), "P", int.Parse(cliente_id), 0, 108401, "", "P", 0, "", "", int.Parse(vendedor_id), 0, 0, 0);
-            ApiMspVentasExt.GetDoctoVeId(ref DoctoId);
-            for (int k = 0; k < Tabla.Rows.Count; k++)
-            {
-                if (Tabla.Rows[k].Cells[0].Value == null)
-                {
-                    break;
-                }
-                string query = "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + Tabla.Rows[k].Cells[0].Value.ToString() + "'";
-                string articulo_id = GetFireBirdValue.GetValue(query);
-                ApiMspVentasExt.RenglonPedido(int.Parse(articulo_id), double.Parse(Tabla.Rows[k].Cells[2].Value.ToString()), double.Parse(Tabla.Rows[k].Cells[3].Value.ToString()), double.Parse(Tabla.Rows[k].Cells[4].Value.ToString()), "");
-            }
-            if (ApiMspVentasExt.AplicaPedido() != 0)
-            {
-                MessageBox.Show("PROBLEMAS CON GENERAR EL PEDIDO", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                return;
-            }
-            else
-            {
-                CrearLibres(DoctoId.ToString());
-                ApiBas.DBDisconnect(GlobalSettings.Instance.Bd);
-                MessageBox.Show("Pedido Generado Correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtBox_clienteId.Text = string.Empty;
-                txtBox_clienteNombre.Text = string.Empty;
-                Tabla.Rows.Clear();
-                Cb_Vendedor.Focus();
-                precioConDescuento.Text = "$ 0.00";
-                valorDescuento.Text = "$ 0.00";
-            }
+            //var vendedor = vendedores.FirstOrDefault(v => v[1] == Cb_Vendedor.Text);
+            //if (vendedor != null)
+            //{
+            //    vendedor_id = vendedor[0];
+            //}
+            //int DoctoId = ApiMspVentasExt.NuevoPedido(DateTime.Now.ToString(), "P", int.Parse(cliente_id), 0, 108401, "", "P", 0, "", "", int.Parse(vendedor_id), 0, 0, 0);
+            //ApiMspVentasExt.GetDoctoVeId(ref DoctoId);
+            //for (int k = 0; k < Tabla.Rows.Count; k++)
+            //{
+            //    if (Tabla.Rows[k].Cells[0].Value == null)
+            //    {
+            //        break;
+            //    }
+            //    string query = "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + Tabla.Rows[k].Cells[0].Value.ToString() + "'";
+            //    string articulo_id = GetFireBirdValue.GetValue(query);
+            //    ApiMspVentasExt.RenglonPedido(int.Parse(articulo_id), double.Parse(Tabla.Rows[k].Cells[2].Value.ToString()), double.Parse(Tabla.Rows[k].Cells[3].Value.ToString()), double.Parse(Tabla.Rows[k].Cells[4].Value.ToString()), "");
+            //}
+            //if (ApiMspVentasExt.AplicaPedido() != 0)
+            //{
+            //    MessageBox.Show("PROBLEMAS CON GENERAR EL PEDIDO", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            //    return;
+            //}
+            //else
+            //{
+            //    CrearLibres(DoctoId.ToString());
+            //    ApiBas.DBDisconnect(GlobalSettings.Instance.Bd);
+            //    MessageBox.Show("Pedido Generado Correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    txtBox_clienteId.Text = string.Empty;
+            //    txtBox_clienteNombre.Text = string.Empty;
+            //    Tabla.Rows.Clear();
+            //    Cb_Vendedor.Focus();
+            //    precioConDescuento.Text = "$ 0.00";
+            //    valorDescuento.Text = "$ 0.00";
+            //}
         }
         public void CrearLibres(string DoctoId)
         {
@@ -338,7 +338,7 @@ namespace ATCORE_SUITE.ChildForms
         /// <param name="_articulo_id"></param>
         private decimal CalcularDescuentoClave(string clavearticulo)
         {
-            string _articulo_id = GetFireBirdValue.GetValue("SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + clavearticulo + "'");
+            string _articulo_id = GetFireBirdValue.GetValue(GlobalSettings.Instance.StringConnection, "SELECT ARTICULO_ID FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + clavearticulo + "'");
             decimal _descuentoPorArticulo = decimal.Parse(DataBridge.GetDiscountByArticle(_articulo_id) ?? "-1");
 
             // Calcular el descuento total efectivo usando la fórmula
@@ -411,11 +411,11 @@ namespace ATCORE_SUITE.ChildForms
                 if (Tabla.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value != null)
                 {
                     codigodebarras = Tabla.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value.ToString();
-                    cantidadcodigobarras = GetFireBirdValue.GetValue("SELECT CONTENIDO_EMPAQUE FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + codigodebarras + "'");
+                    cantidadcodigobarras = GetFireBirdValue.GetValue(GlobalSettings.Instance.StringConnection, "SELECT CONTENIDO_EMPAQUE FROM CLAVES_ARTICULOS WHERE CLAVE_ARTICULO = '" + codigodebarras + "'");
 
                 }
                 string Clave_Principal = DatosArticulo[0];
-                string articulo_id = DataBridge.GetArticuloId(Clave_Principal);
+                string articulo_id = DataBridge.GetArticuloId(GlobalSettings.Instance.StringConnection, Clave_Principal);
                 Tabla.EndEdit();
                 Tabla.CurrentRow.Cells[(int)ColTabla.CodigoBarras].Value = Clave_Principal;
                 Tabla.CurrentRow.Cells[(int)ColTabla.Descripcion].Value = DatosArticulo[1];
@@ -543,7 +543,7 @@ namespace ATCORE_SUITE.ChildForms
                 if (Tabla.CurrentRow.Cells[0].Value != null && (Tabla.CurrentCell.ColumnIndex == 1 || Tabla.CurrentCell.ColumnIndex == 0))
                 {
                     Existencias existencias = new Existencias();
-                    string articuloid = DataBridge.GetArticuloId(Tabla.CurrentRow.Cells[0].Value.ToString());
+                    string articuloid = DataBridge.GetArticuloId(GlobalSettings.Instance.StringConnection, Tabla.CurrentRow.Cells[0].Value.ToString());
                     string Exalmacen = DataBridge.GetExistencia(articuloid, "108401");
                     string Extienda = DataBridge.GetExistencia(articuloid, "108403");
                     existencias.Descripcion.Text = Tabla.CurrentRow.Cells[1].Value.ToString();
